@@ -17,3 +17,9 @@ extension Array {
         return self[randomizer.next(max: count)]
     }
 }
+
+extension Array where Element: Location {
+    func withNoItems() -> [Location] {
+        return self.filter({ $0.item == .Nothing })
+    }
+}
