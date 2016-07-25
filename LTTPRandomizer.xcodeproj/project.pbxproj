@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA29C70F1D43FFC700CB1D7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29C70E1D43FFC700CB1D7A /* AppDelegate.swift */; };
+		FA29C7111D43FFC700CB1D7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29C7101D43FFC700CB1D7A /* ViewController.swift */; };
+		FA29C7131D43FFC700CB1D7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA29C7121D43FFC700CB1D7A /* Assets.xcassets */; };
+		FA29C7161D43FFC700CB1D7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA29C7141D43FFC700CB1D7A /* Main.storyboard */; };
+		FA29C7211D43FFC700CB1D7A /* LTTPRandomizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29C7201D43FFC700CB1D7A /* LTTPRandomizerTests.swift */; };
+		FA29C72C1D43FFC700CB1D7A /* LTTPRandomizerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29C72B1D43FFC700CB1D7A /* LTTPRandomizerUITests.swift */; };
+		FA29C73A1D44032500CB1D7A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29C7391D44032500CB1D7A /* Item.swift */; };
+		FA29C73C1D44079500CB1D7A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29C73B1D44079500CB1D7A /* Location.swift */; };
+		FA3929BB1D440AF4006BDC9A /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3929BA1D440AF4006BDC9A /* Region.swift */; };
+		FA3929BD1D440C25006BDC9A /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3929BC1D440C25006BDC9A /* Difficulty.swift */; };
+		FA3929BF1D440C73006BDC9A /* RomBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3929BE1D440C73006BDC9A /* RomBuilder.swift */; };
+		FA4E845D1D459660001789E8 /* Dungeon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E845C1D459660001789E8 /* Dungeon.swift */; };
+		FA4E84611D459885001789E8 /* DifficultyCasual.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E84601D459885001789E8 /* DifficultyCasual.swift */; };
+		FA4E84631D45B586001789E8 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E84621D45B586001789E8 /* ArrayExtension.swift */; };
+		FA7F0B8B1D45372C00DF642E /* SeededRandomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B8A1D45372C00DF642E /* SeededRandomizer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA29C71D1D43FFC700CB1D7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA29C7031D43FFC700CB1D7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA29C70A1D43FFC700CB1D7A;
+			remoteInfo = LTTPRandomizer;
+		};
+		FA29C7281D43FFC700CB1D7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA29C7031D43FFC700CB1D7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA29C70A1D43FFC700CB1D7A;
+			remoteInfo = LTTPRandomizer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FA29C70B1D43FFC700CB1D7A /* LTTPRandomizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LTTPRandomizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA29C70E1D43FFC700CB1D7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA29C7101D43FFC700CB1D7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA29C7121D43FFC700CB1D7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA29C7151D43FFC700CB1D7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FA29C7171D43FFC700CB1D7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA29C71C1D43FFC700CB1D7A /* LTTPRandomizerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LTTPRandomizerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA29C7201D43FFC700CB1D7A /* LTTPRandomizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTTPRandomizerTests.swift; sourceTree = "<group>"; };
+		FA29C7221D43FFC700CB1D7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA29C7271D43FFC700CB1D7A /* LTTPRandomizerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LTTPRandomizerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA29C72B1D43FFC700CB1D7A /* LTTPRandomizerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTTPRandomizerUITests.swift; sourceTree = "<group>"; };
+		FA29C72D1D43FFC700CB1D7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA29C7391D44032500CB1D7A /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		FA29C73B1D44079500CB1D7A /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		FA3929BA1D440AF4006BDC9A /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
+		FA3929BC1D440C25006BDC9A /* Difficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
+		FA3929BE1D440C73006BDC9A /* RomBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomBuilder.swift; sourceTree = "<group>"; };
+		FA4E845C1D459660001789E8 /* Dungeon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dungeon.swift; sourceTree = "<group>"; };
+		FA4E84601D459885001789E8 /* DifficultyCasual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyCasual.swift; sourceTree = "<group>"; };
+		FA4E84621D45B586001789E8 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = LTTPRandomizer/ArrayExtension.swift; sourceTree = "<group>"; };
+		FA7F0B8A1D45372C00DF642E /* SeededRandomizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeededRandomizer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA29C7081D43FFC700CB1D7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA29C7191D43FFC700CB1D7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA29C7241D43FFC700CB1D7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA29C7021D43FFC700CB1D7A = {
+			isa = PBXGroup;
+			children = (
+				FA4E84621D45B586001789E8 /* ArrayExtension.swift */,
+				FA29C70D1D43FFC700CB1D7A /* LTTPRandomizer */,
+				FA29C71F1D43FFC700CB1D7A /* LTTPRandomizerTests */,
+				FA29C72A1D43FFC700CB1D7A /* LTTPRandomizerUITests */,
+				FA29C70C1D43FFC700CB1D7A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA29C70C1D43FFC700CB1D7A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA29C70B1D43FFC700CB1D7A /* LTTPRandomizer.app */,
+				FA29C71C1D43FFC700CB1D7A /* LTTPRandomizerTests.xctest */,
+				FA29C7271D43FFC700CB1D7A /* LTTPRandomizerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA29C70D1D43FFC700CB1D7A /* LTTPRandomizer */ = {
+			isa = PBXGroup;
+			children = (
+				FA29C70E1D43FFC700CB1D7A /* AppDelegate.swift */,
+				FA3929BC1D440C25006BDC9A /* Difficulty.swift */,
+				FA4E84601D459885001789E8 /* DifficultyCasual.swift */,
+				FA4E845C1D459660001789E8 /* Dungeon.swift */,
+				FA29C7391D44032500CB1D7A /* Item.swift */,
+				FA29C73B1D44079500CB1D7A /* Location.swift */,
+				FA3929BA1D440AF4006BDC9A /* Region.swift */,
+				FA3929BE1D440C73006BDC9A /* RomBuilder.swift */,
+				FA7F0B8A1D45372C00DF642E /* SeededRandomizer.swift */,
+				FA29C7101D43FFC700CB1D7A /* ViewController.swift */,
+				FA29C7121D43FFC700CB1D7A /* Assets.xcassets */,
+				FA29C7141D43FFC700CB1D7A /* Main.storyboard */,
+				FA29C7171D43FFC700CB1D7A /* Info.plist */,
+			);
+			path = LTTPRandomizer;
+			sourceTree = "<group>";
+		};
+		FA29C71F1D43FFC700CB1D7A /* LTTPRandomizerTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA29C7201D43FFC700CB1D7A /* LTTPRandomizerTests.swift */,
+				FA29C7221D43FFC700CB1D7A /* Info.plist */,
+			);
+			path = LTTPRandomizerTests;
+			sourceTree = "<group>";
+		};
+		FA29C72A1D43FFC700CB1D7A /* LTTPRandomizerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FA29C72B1D43FFC700CB1D7A /* LTTPRandomizerUITests.swift */,
+				FA29C72D1D43FFC700CB1D7A /* Info.plist */,
+			);
+			path = LTTPRandomizerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA29C70A1D43FFC700CB1D7A /* LTTPRandomizer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA29C7301D43FFC700CB1D7A /* Build configuration list for PBXNativeTarget "LTTPRandomizer" */;
+			buildPhases = (
+				FA29C7071D43FFC700CB1D7A /* Sources */,
+				FA29C7081D43FFC700CB1D7A /* Frameworks */,
+				FA29C7091D43FFC700CB1D7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LTTPRandomizer;
+			productName = LTTPRandomizer;
+			productReference = FA29C70B1D43FFC700CB1D7A /* LTTPRandomizer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA29C71B1D43FFC700CB1D7A /* LTTPRandomizerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA29C7331D43FFC700CB1D7A /* Build configuration list for PBXNativeTarget "LTTPRandomizerTests" */;
+			buildPhases = (
+				FA29C7181D43FFC700CB1D7A /* Sources */,
+				FA29C7191D43FFC700CB1D7A /* Frameworks */,
+				FA29C71A1D43FFC700CB1D7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA29C71E1D43FFC700CB1D7A /* PBXTargetDependency */,
+			);
+			name = LTTPRandomizerTests;
+			productName = LTTPRandomizerTests;
+			productReference = FA29C71C1D43FFC700CB1D7A /* LTTPRandomizerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FA29C7261D43FFC700CB1D7A /* LTTPRandomizerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA29C7361D43FFC700CB1D7A /* Build configuration list for PBXNativeTarget "LTTPRandomizerUITests" */;
+			buildPhases = (
+				FA29C7231D43FFC700CB1D7A /* Sources */,
+				FA29C7241D43FFC700CB1D7A /* Frameworks */,
+				FA29C7251D43FFC700CB1D7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA29C7291D43FFC700CB1D7A /* PBXTargetDependency */,
+			);
+			name = LTTPRandomizerUITests;
+			productName = LTTPRandomizerUITests;
+			productReference = FA29C7271D43FFC700CB1D7A /* LTTPRandomizerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA29C7031D43FFC700CB1D7A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Eric Stern";
+				TargetAttributes = {
+					FA29C70A1D43FFC700CB1D7A = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = ASLLFQJ445;
+						DevelopmentTeamName = "Eric Stern";
+						ProvisioningStyle = Automatic;
+					};
+					FA29C71B1D43FFC700CB1D7A = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = ASLLFQJ445;
+						DevelopmentTeamName = "Eric Stern";
+						ProvisioningStyle = Automatic;
+						TestTargetID = FA29C70A1D43FFC700CB1D7A;
+					};
+					FA29C7261D43FFC700CB1D7A = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = ASLLFQJ445;
+						DevelopmentTeamName = "Eric Stern";
+						ProvisioningStyle = Automatic;
+						TestTargetID = FA29C70A1D43FFC700CB1D7A;
+					};
+				};
+			};
+			buildConfigurationList = FA29C7061D43FFC700CB1D7A /* Build configuration list for PBXProject "LTTPRandomizer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA29C7021D43FFC700CB1D7A;
+			productRefGroup = FA29C70C1D43FFC700CB1D7A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA29C70A1D43FFC700CB1D7A /* LTTPRandomizer */,
+				FA29C71B1D43FFC700CB1D7A /* LTTPRandomizerTests */,
+				FA29C7261D43FFC700CB1D7A /* LTTPRandomizerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA29C7091D43FFC700CB1D7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA29C7131D43FFC700CB1D7A /* Assets.xcassets in Resources */,
+				FA29C7161D43FFC700CB1D7A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA29C71A1D43FFC700CB1D7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA29C7251D43FFC700CB1D7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA29C7071D43FFC700CB1D7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA3929BF1D440C73006BDC9A /* RomBuilder.swift in Sources */,
+				FA4E84611D459885001789E8 /* DifficultyCasual.swift in Sources */,
+				FA4E845D1D459660001789E8 /* Dungeon.swift in Sources */,
+				FA4E84631D45B586001789E8 /* ArrayExtension.swift in Sources */,
+				FA29C7111D43FFC700CB1D7A /* ViewController.swift in Sources */,
+				FA29C73A1D44032500CB1D7A /* Item.swift in Sources */,
+				FA3929BD1D440C25006BDC9A /* Difficulty.swift in Sources */,
+				FA29C73C1D44079500CB1D7A /* Location.swift in Sources */,
+				FA3929BB1D440AF4006BDC9A /* Region.swift in Sources */,
+				FA7F0B8B1D45372C00DF642E /* SeededRandomizer.swift in Sources */,
+				FA29C70F1D43FFC700CB1D7A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA29C7181D43FFC700CB1D7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA29C7211D43FFC700CB1D7A /* LTTPRandomizerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA29C7231D43FFC700CB1D7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA29C72C1D43FFC700CB1D7A /* LTTPRandomizerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA29C71E1D43FFC700CB1D7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA29C70A1D43FFC700CB1D7A /* LTTPRandomizer */;
+			targetProxy = FA29C71D1D43FFC700CB1D7A /* PBXContainerItemProxy */;
+		};
+		FA29C7291D43FFC700CB1D7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA29C70A1D43FFC700CB1D7A /* LTTPRandomizer */;
+			targetProxy = FA29C7281D43FFC700CB1D7A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA29C7141D43FFC700CB1D7A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA29C7151D43FFC700CB1D7A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA29C72E1D43FFC700CB1D7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA29C72F1D43FFC700CB1D7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		FA29C7311D43FFC700CB1D7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = LTTPRandomizer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericstern.LTTPRandomizer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		FA29C7321D43FFC700CB1D7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = LTTPRandomizer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericstern.LTTPRandomizer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		FA29C7341D43FFC700CB1D7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = LTTPRandomizerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericstern.LTTPRandomizerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LTTPRandomizer.app/Contents/MacOS/LTTPRandomizer";
+			};
+			name = Debug;
+		};
+		FA29C7351D43FFC700CB1D7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = LTTPRandomizerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericstern.LTTPRandomizerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LTTPRandomizer.app/Contents/MacOS/LTTPRandomizer";
+			};
+			name = Release;
+		};
+		FA29C7371D43FFC700CB1D7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = LTTPRandomizerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericstern.LTTPRandomizerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = LTTPRandomizer;
+			};
+			name = Debug;
+		};
+		FA29C7381D43FFC700CB1D7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = LTTPRandomizerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericstern.LTTPRandomizerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = LTTPRandomizer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA29C7061D43FFC700CB1D7A /* Build configuration list for PBXProject "LTTPRandomizer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA29C72E1D43FFC700CB1D7A /* Debug */,
+				FA29C72F1D43FFC700CB1D7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA29C7301D43FFC700CB1D7A /* Build configuration list for PBXNativeTarget "LTTPRandomizer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA29C7311D43FFC700CB1D7A /* Debug */,
+				FA29C7321D43FFC700CB1D7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA29C7331D43FFC700CB1D7A /* Build configuration list for PBXNativeTarget "LTTPRandomizerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA29C7341D43FFC700CB1D7A /* Debug */,
+				FA29C7351D43FFC700CB1D7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA29C7361D43FFC700CB1D7A /* Build configuration list for PBXNativeTarget "LTTPRandomizerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA29C7371D43FFC700CB1D7A /* Debug */,
+				FA29C7381D43FFC700CB1D7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA29C7031D43FFC700CB1D7A /* Project object */;
+}
