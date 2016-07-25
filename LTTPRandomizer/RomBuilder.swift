@@ -11,7 +11,7 @@ import Foundation
 class RomBuilder {
 
     /// The pseudo-randomizer
-    private var random: SeededRandomizer
+    private var random: Randomizer
 
     /// The provider of the item pool, location list, and placement rules
     private var difficulty: Difficulty

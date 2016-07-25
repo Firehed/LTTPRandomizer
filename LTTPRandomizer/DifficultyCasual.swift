@@ -23,7 +23,7 @@ class DifficultyCasual: Difficulty {
         })
     }
 
-    func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location], randomizer: SeededRandomizer) -> Item {
+    func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location], randomizer: Randomizer) -> Item {
         var badLateGameItem: Bool, needUniqueItem: Bool, preferLateGameItem: Bool
 
         var item: Item
@@ -43,7 +43,7 @@ class DifficultyCasual: Difficulty {
         return item
     }
 
-    func getLocationForItemPlacement(possibleLocations: [Location], item: Item, randomizer: SeededRandomizer) -> Location {
+    func getLocationForItemPlacement(possibleLocations: [Location], item: Item, randomizer: Randomizer) -> Location {
         var location: Location
         var badLateGameLocation: Bool, badUniqueItemLocation: Bool, unusedUniqueLocation: Bool
         repeat {
@@ -58,7 +58,7 @@ class DifficultyCasual: Difficulty {
         return location
     }
 
-    func getItemPool(random: SeededRandomizer) -> [Item] {
+    func getItemPool(random: Randomizer) -> [Item] {
 //        setLateGateItems()
         return [
             Item.Bombos,

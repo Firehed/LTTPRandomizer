@@ -11,8 +11,8 @@ import Foundation
 protocol Difficulty {
     var locations: [Location] { get }
     func reset() -> Void
-    func getItemPool(random: SeededRandomizer) -> [Item]
+    func getItemPool(random: Randomizer) -> [Item]
     func getUnavailableLocations(have: Set<Item>) -> [Location]
-    func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location], randomizer: SeededRandomizer) -> Item
-    func getLocationForItemPlacement(possibleLocations: [Location], item: Item, randomizer: SeededRandomizer) -> Location
+    func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location], randomizer: Randomizer) -> Item
+    func getLocationForItemPlacement(possibleLocations: [Location], item: Item, randomizer: Randomizer) -> Location
 }

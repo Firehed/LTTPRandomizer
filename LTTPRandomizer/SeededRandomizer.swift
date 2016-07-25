@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SeededRandomizer {
+struct SeededRandomizer: Randomizer {
     let seed: Int
 
 

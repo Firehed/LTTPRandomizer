@@ -22,6 +22,7 @@
 		FA4E84611D459885001789E8 /* DifficultyCasual.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E84601D459885001789E8 /* DifficultyCasual.swift */; };
 		FA4E84631D45B586001789E8 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E84621D45B586001789E8 /* ArrayExtension.swift */; };
 		FA7F0B8B1D45372C00DF642E /* SeededRandomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B8A1D45372C00DF642E /* SeededRandomizer.swift */; };
+		FAC6861A1D45EEA30044D17E /* Randomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC686191D45EEA30044D17E /* Randomizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +62,9 @@
 		FA3929BE1D440C73006BDC9A /* RomBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomBuilder.swift; sourceTree = "<group>"; };
 		FA4E845C1D459660001789E8 /* Dungeon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dungeon.swift; sourceTree = "<group>"; };
 		FA4E84601D459885001789E8 /* DifficultyCasual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyCasual.swift; sourceTree = "<group>"; };
-		FA4E84621D45B586001789E8 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = LTTPRandomizer/ArrayExtension.swift; sourceTree = "<group>"; };
+		FA4E84621D45B586001789E8 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		FA7F0B8A1D45372C00DF642E /* SeededRandomizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeededRandomizer.swift; sourceTree = "<group>"; };
+		FAC686191D45EEA30044D17E /* Randomizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Randomizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,6 @@
 		FA29C7021D43FFC700CB1D7A = {
 			isa = PBXGroup;
 			children = (
-				FA4E84621D45B586001789E8 /* ArrayExtension.swift */,
 				FA29C70D1D43FFC700CB1D7A /* LTTPRandomizer */,
 				FA29C71F1D43FFC700CB1D7A /* LTTPRandomizerTests */,
 				FA29C72A1D43FFC700CB1D7A /* LTTPRandomizerUITests */,
@@ -115,11 +116,13 @@
 			isa = PBXGroup;
 			children = (
 				FA29C70E1D43FFC700CB1D7A /* AppDelegate.swift */,
+				FA4E84621D45B586001789E8 /* ArrayExtension.swift */,
 				FA3929BC1D440C25006BDC9A /* Difficulty.swift */,
 				FA4E84601D459885001789E8 /* DifficultyCasual.swift */,
 				FA4E845C1D459660001789E8 /* Dungeon.swift */,
 				FA29C7391D44032500CB1D7A /* Item.swift */,
 				FA29C73B1D44079500CB1D7A /* Location.swift */,
+				FAC686191D45EEA30044D17E /* Randomizer.swift */,
 				FA3929BA1D440AF4006BDC9A /* Region.swift */,
 				FA3929BE1D440C73006BDC9A /* RomBuilder.swift */,
 				FA7F0B8A1D45372C00DF642E /* SeededRandomizer.swift */,
@@ -298,6 +301,7 @@
 				FA29C73C1D44079500CB1D7A /* Location.swift in Sources */,
 				FA3929BB1D440AF4006BDC9A /* Region.swift in Sources */,
 				FA7F0B8B1D45372C00DF642E /* SeededRandomizer.swift in Sources */,
+				FAC6861A1D45EEA30044D17E /* Randomizer.swift in Sources */,
 				FA29C70F1D43FFC700CB1D7A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

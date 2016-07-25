@@ -13,7 +13,7 @@ extension Array {
         return !isEmpty
     }
 
-    func selectAtRandom(_ randomizer: SeededRandomizer) -> Element {
+    func selectAtRandom(_ randomizer: Randomizer) -> Element {
         return self[randomizer.next(max: count)]
     }
 }
