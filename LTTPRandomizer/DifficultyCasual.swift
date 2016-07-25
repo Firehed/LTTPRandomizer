@@ -29,7 +29,7 @@ class DifficultyCasual: Difficulty {
         var item: Item
         repeat {
             // Grab an item randomly
-            item = possibleItems[randomizer.next(max: possibleItems.count)]
+            item = possibleItems.selectAtRandom(randomizer)
 
             // Late-game items are discarded if no late-game locations are available
             badLateGameItem = isLateGameItem(item) && possibleLocations.filter({ $0.lateGameItem }).isEmpty
