@@ -8,6 +8,13 @@
 
 import Foundation
 
+extension NSMutableData {
+    func patch(atByteOffset: Int, withData data: [UInt8]) {
+        let range = NSRange(location: atByteOffset, length: data.count)
+        replaceBytes(in: range, withBytes: data)
+    }
+}
+
 class RomBuilder {
 
     /// The pseudo-randomizer
@@ -58,9 +65,7 @@ class RomBuilder {
             }
 
             let addr = location.address
-            var value = location.item.rawValue
-            let range = NSRange(location: addr, length: 1)
-            rom.replaceBytes(in: range, withBytes: &value)
+            rom.patch(atByteOffset: addr, withData: [location.item.rawValue])
         }
         let output = "/Users/firehed/Desktop/lttp_patched.sfc"
         do {

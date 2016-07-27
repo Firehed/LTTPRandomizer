@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Item: CUnsignedChar, CustomStringConvertible {
+enum Item: UInt8, CustomStringConvertible {
     
     case Nothing = 0xFF
     case L1SwordAndShield = 0x00 // can't be used until after uncle dies
