@@ -27,6 +27,7 @@ class Location {
     var lateGameItem: Bool
     var region: Region
     var isAccessibleWithInventory: ((Set<Item>) -> Bool)
+    var onPatchingRom: ((NSMutableData, Item) -> Void)?
 
     var uniqueItemOnly: Bool = false
     var keyZone: Int = 0
