@@ -82,6 +82,15 @@ class Location {
         self.isAccessibleWithInventory = accessRequirements
         self.uniqueItemOnly = uniqueItemOnly
     }
+    init(lateGameItem: Bool, region: Region, name: String, address: Int, uniqueItemOnly: Bool, accessRequirements: ((Set<Item>) -> Bool), onPatchingRom: ((NSMutableData, Item) -> Void)) {
+        self.name = name
+        self.address = address
+        self.lateGameItem = lateGameItem
+        self.region = region
+        self.isAccessibleWithInventory = accessRequirements
+        self.onPatchingRom = onPatchingRom
+        self.uniqueItemOnly = uniqueItemOnly
+    }
 
     func isInOrBeforeKeyZone(_ zone: Int) -> Bool {
         return item == .Nothing && !name.contains("big chest") && keyZone <= zone
@@ -2000,13 +2009,12 @@ func allLocations() -> [Location] {
                 return canEnterTowerOfHera(items)
                 && canGetMasterSword(items)
                 && items.contains(Item.BookOfMudora)
+            },
+            onPatchingRom: { (rom: NSMutableData, item: Item) -> Void in
+                // Inventory item check?
+                rom.patch(atByteOffset: 0x44AA9, withData: [item.rawValue])
             }
-//            WriteItemCheck =
-//                (rom, item) =>
-//                {
-//                    rom.Seek(0x44AA9, SeekOrigin.Begin);
-//                    rom.Write(new [] { (byte)item ), 0, 1);
-//                }
+
         ),
         Location(
             lateGameItem: false,
@@ -2018,13 +2026,11 @@ func allLocations() -> [Location] {
                 return canAccessLowerDarkWorld(items)
                 && canGetMasterSword(items)
                 && items.contains(Item.BookOfMudora)
+            },
+            onPatchingRom: { rom, item in
+                // Inventory item check?
+                rom.patch(atByteOffset: 0x44AAE, withData: [item.rawValue])
             }
-//            WriteItemCheck =
-//                (rom, item) =>
-//                {
-//                    rom.Seek(0x44AAE, SeekOrigin.Begin);
-//                    rom.Write(new [] { (byte)item ), 0, 1);
-//                }
         ),
         Location(
             lateGameItem: false,

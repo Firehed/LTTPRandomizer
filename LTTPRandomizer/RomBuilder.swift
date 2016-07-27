@@ -66,7 +66,13 @@ class RomBuilder {
 
             let addr = location.address
             rom.patch(atByteOffset: addr, withData: [location.item.rawValue])
+
+            // Apply additional patch if one exists
+            if location.onPatchingRom != nil {
+                location.onPatchingRom!(rom, location.item)
+            }
         }
+
         let output = "/Users/firehed/Desktop/lttp_patched.sfc"
         do {
             try rom.write(toFile: output, options: NSData.WritingOptions.atomic)
