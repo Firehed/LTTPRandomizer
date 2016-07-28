@@ -204,7 +204,7 @@ enum Item: UInt8, CustomStringConvertible {
         return isConsumable || isMoney || isHealth || isDungeonItem
     }
 
-    var level: Int {
+    private var level: UInt8 {
         switch self {
         case .RedBoomerang: fallthrough
         case .Powder: fallthrough
@@ -226,6 +226,85 @@ enum Item: UInt8, CustomStringConvertible {
         default:
             return 1
         }
+    }
+
+    private var inventoryCheckLocation: UInt8 {
+        switch self {
+        case Item.Bow: fallthrough
+        case Item.BowAndArrows: fallthrough
+        case Item.BowAndSilverArrows:
+            return 0x40;
+        case Item.Boomerang: fallthrough
+        case Item.RedBoomerang:
+            return 0x41
+        case Item.Hookshot:
+            return 0x42
+        case Item.Mushroom: fallthrough
+        case Item.Powder:
+            return 0x44
+        case Item.FireRod:
+            return 0x45
+        case Item.IceRod:
+            return 0x46
+        case Item.Bombos:
+            return 0x47
+        case Item.Ether:
+            return 0x48
+        case Item.Quake:
+            return 0x49
+        case Item.Lamp:
+            return 0x4a
+        case Item.Hammer:
+            return 0x4b
+        case Item.Shovel: fallthrough
+        case Item.OcarinaActive: fallthrough
+        case Item.OcarinaInactive:
+            return 0x4c
+        case Item.BugCatchingNet:
+            return 0x4d
+        case Item.BookOfMudora:
+            return 0x4e
+        case Item.CaneOfSomaria:
+            return 0x50
+        case Item.StaffOfByrna:
+            return 0x51
+        case Item.Cape:
+            return 0x52
+        case Item.MagicMirror:
+            return 0x53
+        case Item.PowerGlove: fallthrough
+        case Item.TitansMitt:
+            return 0x54
+        case Item.PegasusBoots:
+            return 0x55
+        case Item.Flippers:
+            return 0x56
+        case Item.MoonPearl:
+            return 0x57
+        case Item.L1Sword: fallthrough
+        case Item.L1SwordAndShield: fallthrough
+        case Item.L2Sword: fallthrough
+        case Item.L3Sword: fallthrough
+        case Item.L4Sword:
+            return 0x59
+        case Item.BlueShield: fallthrough
+        case Item.RedShield: fallthrough
+        case Item.MirrorShield:
+            return 0x5a
+        case Item.BlueMail: fallthrough
+        case Item.RedMail:
+            return 0x5b
+        default:
+            return 0x00
+        }
+    }
+
+    /// Special sequence of bytes to write indicating which item must not be in Link's posession to proceed
+    var bytesForInventoryCheckOverride: [UInt8] {
+        if inventoryCheckLocation == 0 {
+            return [0, 0, 0, 0]
+        }
+        return [level, inventoryCheckLocation, 0xF3, 0x7E]
     }
 
 }

@@ -2043,12 +2043,12 @@ func allLocations() -> [Location] {
                 && items.contains(Item.PowerGlove)
                 && (items.contains(Item.PegasusBoots)
                     || items.contains(Item.TitansMitt))
+            },
+            onPatchingRom: { rom, item in
+                // (This is a guess based on the Windows source)
+                // Indicates what item's presence will block the Catfish scene
+                rom.patch(atByteOffset: 0x180204, withData: item.bytesForInventoryCheckOverride)
             }
-//            WriteItemCheck =
-//                (rom, item) =>
-//                {
-//                    WriteSpecialItemCheck(rom, item, 0x180204);
-//                }
         ),
         // Zora's appearance is based on if you items flippers or not
         Location(
@@ -2059,15 +2059,14 @@ func allLocations() -> [Location] {
             uniqueItemOnly:  false,
             accessRequirements: { items in
                 return canAccessZorasRiver(items)
+            },
+            onPatchingRom: { rom, item in
+                // (This is a guess based on the Windows source)
+                // Indicates what item's presence will block the Zora scene
+                rom.patch(atByteOffset: 0x180200, withData: item.bytesForInventoryCheckOverride)
+                // TODO:  zora credit trick?
+                // rom.patch(atByteOffset: 0x76A85, withData: [20 bytes for item name])
             }
-//            WriteItemCheck =
-//                (rom, item) =>
-//                {
-//                    WriteSpecialItemCheck(rom, item, 0x180200);
-//
-//                    rom.Seek(0x76A85, SeekOrigin.Begin);
-//                    rom.Write(Item.GetCreditsName(item), 0, 20);
-//                }
         ),
         Location(
             lateGameItem: false,
