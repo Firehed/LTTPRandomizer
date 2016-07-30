@@ -64,7 +64,7 @@ class RomBuilder {
             }
 
             if !location.item.isJunk {
-                NSLog("%@: %@", location.name, location.item.description)
+                NSLog("%@: %@", location.item.description, location.name)
             }
 
             let addr = location.address
