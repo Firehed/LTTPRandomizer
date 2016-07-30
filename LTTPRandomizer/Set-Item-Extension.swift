@@ -167,9 +167,7 @@ extension SetAlgebra where Element == Item {
 
     func canEnterTurtleRock() -> Bool {
         return canAccessEastDarkWorldDeathMountain()
-            && contains(Item.Hammer)
-            && contains(Item.Quake)
-            && contains(Item.CaneOfSomaria)
+            && containsAll(Item.Hammer, Item.Quake, Item.CaneOfSomaria)
     }
 
     func canEnterGanonsTower() -> Bool {
@@ -189,9 +187,8 @@ extension SetAlgebra where Element == Item {
 
     func canDefeatDarkPalace() -> Bool {
         return canEnterDarkPalace()
-            && contains(Item.Bow)
-            && contains(Item.Hammer)
-            && contains(Item.Lamp) // canLightTorches?
+            && canLightTorches()
+            && containsAll(Item.Bow, Item.Hammer)
     }
 
     func canDefeatSwampPalace() -> Bool {
