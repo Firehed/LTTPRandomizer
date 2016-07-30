@@ -2064,8 +2064,8 @@ func allLocations() -> [Location] {
                 // (This is a guess based on the Windows source)
                 // Indicates what item's presence will block the Zora scene
                 rom.patch(atByteOffset: 0x180200, withData: item.bytesForInventoryCheckOverride)
-                // TODO:  zora credit trick?
-                // rom.patch(atByteOffset: 0x76A85, withData: [20 bytes for item name])
+                // Update end-game credits
+                rom.patch(atByteOffset: 0x76A85, withData: item.bytesForCredits)
             }
         ),
         Location(

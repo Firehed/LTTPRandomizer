@@ -311,4 +311,35 @@ enum Item: UInt8, CustomStringConvertible {
         return NSData(bytes: [self.rawValue], length: 1)
     }
 
+    var bytesForCredits: NSData {
+        // TODO: Vary text based on item
+        let creditText = " cash money for sale"
+        guard var bytes = creditText.data(using: String.Encoding.ascii, allowLossyConversion: false) else {
+            return NSMutableData(length: 20)! // NUL x20
+        }
+
+        let text: NSMutableData = NSMutableData(capacity: 20)!
+        for i in 0..<20 {
+            var byte: UInt8
+            switch bytes[i] {
+            case 0x20: // space
+                byte = 0x9f
+                break
+            case 0x5c: // \
+                byte = 0x35
+                break
+            case 0x2d: // -
+                byte = 0x36
+                break
+            case 0x2c: // ,
+                byte = 0x37
+                break
+            default:
+                byte = bytes[i] - 0x47
+                break
+            }
+            text.append([byte], length: 1)
+        }
+        return text
+    }
 }
