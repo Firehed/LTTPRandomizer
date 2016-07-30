@@ -23,6 +23,7 @@
 		FA4E84631D45B586001789E8 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E84621D45B586001789E8 /* ArrayExtension.swift */; };
 		FA7F0B8B1D45372C00DF642E /* SeededRandomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B8A1D45372C00DF642E /* SeededRandomizer.swift */; };
 		FAC6861A1D45EEA30044D17E /* Randomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC686191D45EEA30044D17E /* Randomizer.swift */; };
+		FAC6861C1D4D525C0044D17E /* Set-Item-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6861B1D4D525C0044D17E /* Set-Item-Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		FA4E84621D45B586001789E8 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		FA7F0B8A1D45372C00DF642E /* SeededRandomizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeededRandomizer.swift; sourceTree = "<group>"; };
 		FAC686191D45EEA30044D17E /* Randomizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Randomizer.swift; sourceTree = "<group>"; };
+		FAC6861B1D4D525C0044D17E /* Set-Item-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Set-Item-Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				FA3929BA1D440AF4006BDC9A /* Region.swift */,
 				FA3929BE1D440C73006BDC9A /* RomBuilder.swift */,
 				FA7F0B8A1D45372C00DF642E /* SeededRandomizer.swift */,
+				FAC6861B1D4D525C0044D17E /* Set-Item-Extension.swift */,
 				FA29C7101D43FFC700CB1D7A /* ViewController.swift */,
 				FA29C7121D43FFC700CB1D7A /* Assets.xcassets */,
 				FA29C7141D43FFC700CB1D7A /* Main.storyboard */,
@@ -292,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA3929BF1D440C73006BDC9A /* RomBuilder.swift in Sources */,
+				FAC6861C1D4D525C0044D17E /* Set-Item-Extension.swift in Sources */,
 				FA4E84611D459885001789E8 /* DifficultyCasual.swift in Sources */,
 				FA4E845D1D459660001789E8 /* Dungeon.swift in Sources */,
 				FA4E84631D45B586001789E8 /* ArrayExtension.swift in Sources */,
