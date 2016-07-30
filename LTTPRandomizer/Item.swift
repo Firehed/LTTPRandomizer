@@ -93,6 +93,7 @@ enum Item: UInt8, CustomStringConvertible {
         case .OneRupee: return "$1"
         case .FiveRupees: return "$5"
         case .TwentyRupees: return "$20"
+        case .FiftyRupees: return "$50"
         case .OneHundredRupees: return "$100"
         case .ThreeHundredRupees: return "$300"
         case .PieceOfHeart: return "Heart Piece"
