@@ -155,9 +155,6 @@ extension SetAlgebra where Element == Item {
     func canEnterDesertPalace() -> Bool {
         return canEscapeCastle()
             && contains(Item.BookOfMudora)
-            // The boots aren't necessary to enter, but required to progress. There's not a great way to express upstream
-            // TODO: remove boots from here?
-            && contains(Item.PegasusBoots)
     }
 
     func canEnterTowerOfHera() -> Bool {
@@ -635,8 +632,8 @@ func allLocations() -> [Location] {
             address: 0xE9C2,
             keyZone: 1,
             accessRequirements: { items in
-                // TODO: Boots, no KeyZone?
                 return items.canEnterDesertPalace()
+                    && items.contains(Item.PegasusBoots)
             }
         ),
         Location(
@@ -665,8 +662,8 @@ func allLocations() -> [Location] {
             address: 0xE9CB,
             keyZone: 1,
             accessRequirements: { items in
-                // TODO: Boots, no keyZone?
                 return items.canEnterDesertPalace()
+                    && items.contains(Item.PegasusBoots)
             }
         ),
         Location(
