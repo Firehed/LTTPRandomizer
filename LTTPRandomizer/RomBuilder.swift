@@ -109,6 +109,10 @@ class RomBuilder {
                     current.selectAtRandom(random).item = Item.Key
                 }
             }
+            if dungeon.hasBigKey {
+                let avail = dungeonLocations.withNoItems().filter({ !$0.bigKeyNeeded })
+                avail.selectAtRandom(random).item = Item.BigKey
+            }
             if dungeon.hasMap {
                 let avail = dungeonLocations.withNoItems()
                 avail.selectAtRandom(random).item = Item.Map
@@ -116,10 +120,6 @@ class RomBuilder {
             if dungeon.hasCompass {
                 let avail = dungeonLocations.withNoItems()
                 avail.selectAtRandom(random).item = Item.Compass
-            }
-            if dungeon.hasBigKey {
-                let avail = dungeonLocations.withNoItems()
-                avail.selectAtRandom(random).item = Item.BigKey
             }
         }
     }
