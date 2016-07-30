@@ -200,8 +200,20 @@ enum Item: UInt8, CustomStringConvertible {
         }
     }
 
+    var isArmor: Bool {
+        switch self {
+        case .BlueShield: fallthrough
+        case .RedShield: fallthrough
+        case .MirrorShield: fallthrough
+        case .BlueMail: fallthrough
+        case .RedMail:
+            return true
+        default:
+            return false
+        }
+    }
     var isJunk: Bool {
-        return isConsumable || isMoney || isHealth || isDungeonItem
+        return isConsumable || isMoney || isHealth || isDungeonItem || isArmor
     }
 
     private var level: UInt8 {
