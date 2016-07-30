@@ -300,11 +300,15 @@ enum Item: UInt8, CustomStringConvertible {
     }
 
     /// Special sequence of bytes to write indicating which item must not be in Link's posession to proceed
-    var bytesForInventoryCheckOverride: [UInt8] {
+    var bytesForInventoryCheckOverride: NSData {
         if inventoryCheckLocation == 0 {
-            return [0, 0, 0, 0]
+            return NSMutableData(length: 4)! // NUL x4
         }
-        return [level, inventoryCheckLocation, 0xF3, 0x7E]
+        return NSData(bytes: [level, inventoryCheckLocation, 0xF3, 0x7E], length: 4)
+    }
+
+    func asData() -> NSData {
+        return NSData(bytes: [self.rawValue], length: 1)
     }
 
 }

@@ -9,10 +9,13 @@
 import Foundation
 
 extension NSMutableData {
-    func patch(atByteOffset: Int, withData data: [UInt8]) {
-        let range = NSRange(location: atByteOffset, length: data.count)
-        replaceBytes(in: range, withBytes: data)
+
+    func patch(atByteOffset: Int, withData data: NSData) {
+        var data = data
+        let range = NSRange(location: atByteOffset, length: data.length)
+        replaceBytes(in: range, withBytes: &data)
     }
+
 }
 
 class RomBuilder {
@@ -65,7 +68,7 @@ class RomBuilder {
             }
 
             let addr = location.address
-            rom.patch(atByteOffset: addr, withData: [location.item.rawValue])
+            rom.patch(atByteOffset: addr, withData: location.item.asData())
 
             // Apply additional patch if one exists
             if location.onPatchingRom != nil {
@@ -79,7 +82,6 @@ class RomBuilder {
         } catch {
             print("write error")
         }
-
 
     }
 

@@ -2012,7 +2012,7 @@ func allLocations() -> [Location] {
             },
             onPatchingRom: { (rom: NSMutableData, item: Item) -> Void in
                 // Inventory item check?
-                rom.patch(atByteOffset: 0x44AA9, withData: [item.rawValue])
+                rom.patch(atByteOffset: 0x44AA9, withData: item.asData())
             }
 
         ),
@@ -2029,7 +2029,7 @@ func allLocations() -> [Location] {
             },
             onPatchingRom: { rom, item in
                 // Inventory item check?
-                rom.patch(atByteOffset: 0x44AAE, withData: [item.rawValue])
+                rom.patch(atByteOffset: 0x44AAE, withData: item.asData())
             }
         ),
         Location(
