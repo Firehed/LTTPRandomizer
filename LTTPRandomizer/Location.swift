@@ -1127,10 +1127,6 @@ func lightWorldItems() -> [Location] {
             address: 0xE9BF,
             accessRequirements: { items in
                 return items.canAccessEasternDeathMountain()
-                //                return items.canClimbDeathMountain()
-                //                && ((items.canBeInDarkWorld()
-                //                        && items.contains(Item.Hammer))
-                //                    || items.contains(Item.Hookshot))
             }
         ),
 
@@ -1299,10 +1295,6 @@ func lightWorldItems() -> [Location] {
             address: 0xEB2A,
             accessRequirements: { items in
                 return items.canAccessEasternDeathMountain()
-                //                return items.canClimbDeathMountain()
-                //                && ((items.canBeInDarkWorld()
-                //                        && items.contains(Item.Hammer))
-                //                    || items.contains(Item.Hookshot))
             }
         ),
         Location(
@@ -1312,10 +1304,6 @@ func lightWorldItems() -> [Location] {
             address: 0xEB2D,
             accessRequirements: { items in
                 return items.canAccessEasternDeathMountain()
-                //                return items.canClimbDeathMountain()
-                //                && ((items.canBeInDarkWorld()
-                //                        && items.contains(Item.Hammer))
-                //                    || items.contains(Item.Hookshot))
             }
         ),
         Location(
@@ -1325,10 +1313,6 @@ func lightWorldItems() -> [Location] {
             address: 0xEB30,
             accessRequirements: { items in
                 return items.canAccessEasternDeathMountain()
-                //                return items.canClimbDeathMountain()
-                //                && ((items.canBeInDarkWorld()
-                //                        && items.contains(Item.Hammer))
-                //                    || items.contains(Item.Hookshot))
             }
         ),
         Location(
@@ -1338,11 +1322,6 @@ func lightWorldItems() -> [Location] {
             address: 0xEB33,
             accessRequirements: { items in
                 return items.canAccessEasternDeathMountain()
-                //
-                //                return items.canClimbDeathMountain()
-                //                && ((items.canBeInDarkWorld()
-                //                        && items.contains(Item.Hammer))
-                //                    || items.contains(Item.Hookshot))
             }
         ),
         Location(
@@ -1352,11 +1331,6 @@ func lightWorldItems() -> [Location] {
             address: 0xEB36,
             accessRequirements: { items in
                 return items.canAccessEasternDeathMountain()
-                //
-                //                return items.canClimbDeathMountain()
-                //                && ((items.canBeInDarkWorld()
-                //                        && items.contains(Item.Hammer))
-                //                    || items.contains(Item.Hookshot))
             }
         ),
         Location(
@@ -1366,10 +1340,6 @@ func lightWorldItems() -> [Location] {
             address: 0xEB39,
             accessRequirements: { items in
                 return items.canAccessEasternDeathMountain()
-                //                return items.canClimbDeathMountain()
-                //                && ((items.canBeInDarkWorld()
-                //                        && items.contains(Item.Hammer))
-                //                    || items.contains(Item.Hookshot))
             }
         ),
         Location(
@@ -1379,10 +1349,6 @@ func lightWorldItems() -> [Location] {
             address: 0xEB3C,
             accessRequirements: { items in
                 return items.canAccessEasternDeathMountain()
-                //return items.canClimbDeathMountain()
-                //                && ((items.canBeInDarkWorld()
-                //                        && items.contains(Item.Hammer))
-                //                    || items.contains(Item.Hookshot))
             }
         ),
         Location(
@@ -1729,11 +1695,6 @@ func darkWorldItems() -> [Location] {
                 return items.canAccessLowerDarkWorld()
             }
         ),
-
-
-
-
-
         Location(
             lateGameItem: true,
             region: Region.DarkWorld,
@@ -2245,8 +2206,5 @@ func ganonsTowerItems() -> [Location] {
                 && items.canLightTorches()
             }
         ),
-
-
-
     ]
 }
