@@ -10,11 +10,12 @@ import Foundation
 
 /// This is a class not a struct since (for now) we want the side-effect of setting the `item` to non-nil to propagate over all containers
 class Location {
+
     var name: String
     var address: Int
     var lateGameItem: Bool
     var region: Region
-    var isAccessibleWithInventory: ((Set<Item>) -> Bool)
+    var _isAccessibleWithInventory: ((Set<Item>) -> Bool)
     var onPatchingRom: ((NSMutableData, Item) -> Void)?
 
     var uniqueItemOnly: Bool = false
@@ -31,7 +32,7 @@ class Location {
         self.address = address
         self.lateGameItem = lateGameItem
         self.region = region
-        self.isAccessibleWithInventory = accessRequirements
+        self._isAccessibleWithInventory = accessRequirements
 
     }
     init(lateGameItem: Bool, region: Region, name: String, address: Int, keyZone: Int, accessRequirements: ((Set<Item>) -> Bool)) {
@@ -39,7 +40,7 @@ class Location {
         self.address = address
         self.lateGameItem = lateGameItem
         self.region = region
-        self.isAccessibleWithInventory = accessRequirements
+        self._isAccessibleWithInventory = accessRequirements
         self.keyZone = keyZone
     }
 
@@ -48,7 +49,7 @@ class Location {
         self.address = address
         self.lateGameItem = lateGameItem
         self.region = region
-        self.isAccessibleWithInventory = accessRequirements
+        self._isAccessibleWithInventory = accessRequirements
         self.bigKeyNeeded = bigKeyNeeded
     }
 
@@ -57,7 +58,7 @@ class Location {
         self.address = address
         self.lateGameItem = lateGameItem
         self.region = region
-        self.isAccessibleWithInventory = accessRequirements
+        self._isAccessibleWithInventory = accessRequirements
         self.keyZone = keyZone
         self.bigKeyNeeded = bigKeyNeeded
     }
@@ -67,7 +68,7 @@ class Location {
         self.address = address
         self.lateGameItem = lateGameItem
         self.region = region
-        self.isAccessibleWithInventory = accessRequirements
+        self._isAccessibleWithInventory = accessRequirements
         self.uniqueItemOnly = uniqueItemOnly
     }
     init(lateGameItem: Bool, region: Region, name: String, address: Int, uniqueItemOnly: Bool, accessRequirements: ((Set<Item>) -> Bool), onPatchingRom: ((NSMutableData, Item) -> Void)) {
@@ -75,7 +76,7 @@ class Location {
         self.address = address
         self.lateGameItem = lateGameItem
         self.region = region
-        self.isAccessibleWithInventory = accessRequirements
+        self._isAccessibleWithInventory = accessRequirements
         self.onPatchingRom = onPatchingRom
         self.uniqueItemOnly = uniqueItemOnly
     }
@@ -85,6 +86,9 @@ class Location {
     }
     func isInKeyZone(_ zone: Int) -> Bool {
         return item == .Nothing && !name.contains("big chest") && keyZone == zone
+    }
+    func isAccessible(inventory: Set<Item>) -> Bool {
+        return _isAccessibleWithInventory(inventory)
     }
 }
 

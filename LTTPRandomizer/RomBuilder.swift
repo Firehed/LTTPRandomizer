@@ -140,7 +140,7 @@ class RomBuilder {
     private func generateItemPositions() -> Void {
         repeat {
             let emptyLocations = difficulty.locations.withNoItems()
-            let possibleLocations = emptyLocations.filter({ $0.isAccessibleWithInventory(haveItems) })
+            let possibleLocations = emptyLocations.filter({ $0.isAccessible(inventory: haveItems) })
 
             // Something has gone deeply wrong during the dependency-solving process
             if (possibleLocations.isEmpty) {
@@ -155,7 +155,7 @@ class RomBuilder {
             for item in itemPool {
                 var haveTemp = haveItems
                 haveTemp.insert(item)
-                let newLocations = emptyLocations.filter({ $0.isAccessibleWithInventory(haveTemp) })
+                let newLocations = emptyLocations.filter({ $0.isAccessible(inventory: haveTemp) })
                 if newLocations.count > possibleLocations.count {
                     candidateItems.append(item)
                 }
