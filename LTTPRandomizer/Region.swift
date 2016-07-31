@@ -25,4 +25,23 @@ enum Region: Int {
     case MiseryMire
     case TurtleRock
     case GanonsTower
+
+    static let all: [Region] = [
+        .Progression,
+        .HyruleCastleEscape,
+        .LightWorld,
+        .EasternPalace,
+        .DesertPalace,
+        .TowerOfHera,
+        .HyruleCastleTower,
+        .DarkWorld,
+        .DarkPalace,
+        .SwampPalace,
+        .SkullWoods,
+        .ThievesTown,
+        .IcePalace,
+        .MiseryMire,
+        .TurtleRock,
+        .GanonsTower,
+    ]
 }
