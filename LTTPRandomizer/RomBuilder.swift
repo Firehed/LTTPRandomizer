@@ -20,6 +20,8 @@ extension NSMutableData {
 
 class RomBuilder {
 
+    var writeSRAMTrace: Bool = false
+
     /// The pseudo-randomizer
     private var random: Randomizer
 
@@ -74,6 +76,11 @@ class RomBuilder {
             if location.onPatchingRom != nil {
                 location.onPatchingRom!(rom, location.item)
             }
+        }
+
+        if writeSRAMTrace {
+            let bytes: [UInt8] = [0x00, 0x80, 0x21]
+            rom.patch(atByteOffset: 0x57, withData: NSData(bytes: bytes, length: 3))
         }
 
         let output = "/Users/firehed/Desktop/lttp_patched.sfc"
