@@ -19,7 +19,7 @@ class DifficultyCasual: Difficulty {
         return locations.filter({
             $0.item == .Nothing
         }).filter({
-            !$0.isAccessibleWithInventory(have)
+            !$0.isAccessible(inventory: have)
         })
     }
 
