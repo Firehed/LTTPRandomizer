@@ -13,7 +13,6 @@ class Location {
 
     var name: String
     var address: Int
-    var lateGameItem: Bool
     var region: Region
     var _additionalAccessRequirements: ((Set<Item>) -> Bool)?
     var onPatchingRom: ((NSMutableData, Item) -> Void)?
@@ -27,52 +26,63 @@ class Location {
     var item: Item = Item.Nothing
     var weight: Int = 0
 
-    init(lateGameItem: Bool, region: Region, name: String, address: Int) {
+    var isLateGame: Bool {
+        switch region {
+        case .Progression: fallthrough
+        case .LightWorld: fallthrough
+        case .EasternPalace: fallthrough
+        case .DesertPalace: fallthrough
+        case .TowerOfHera: fallthrough
+        case .HyruleCastleTower:
+            return true
+        // TODO: there are a tiny number of locations where this doesn't map as cleanly per the original logic. Not sure if I really care!
+        default:
+            return false
+        }
+    }
+
+    init(region: Region, name: String, address: Int) {
         self.name = name
         self.address = address
-        self.lateGameItem = lateGameItem
         self.region = region
     }
-    init(lateGameItem: Bool, region: Region, name: String, address: Int, keyZone: Int, bigKeyNeeded: Bool) {
+    init(region: Region, name: String, address: Int, keyZone: Int, bigKeyNeeded: Bool) {
         self.name = name
         self.address = address
-        self.lateGameItem = lateGameItem
         self.region = region
         self.keyZone = keyZone
         self.bigKeyNeeded = bigKeyNeeded
     }
 
-    init(lateGameItem: Bool, region: Region, name: String, address: Int, accessRequirements: ((Set<Item>) -> Bool)) {
+    init(region: Region, name: String, address: Int, accessRequirements: ((Set<Item>) -> Bool)) {
         self.name = name
         self.address = address
-        self.lateGameItem = lateGameItem
         self.region = region
         self._additionalAccessRequirements = accessRequirements
 
     }
 
-    init(lateGameItem: Bool, region: Region, name: String, address: Int, keyZone: Int, bigKeyNeeded: Bool, accessRequirements: ((Set<Item>) -> Bool)) {
+    init(region: Region, name: String, address: Int, keyZone: Int, bigKeyNeeded: Bool, accessRequirements: ((Set<Item>) -> Bool)) {
         self.name = name
         self.address = address
-        self.lateGameItem = lateGameItem
         self.region = region
         self._additionalAccessRequirements = accessRequirements
         self.keyZone = keyZone
         self.bigKeyNeeded = bigKeyNeeded
     }
 
-    init(lateGameItem: Bool, region: Region, name: String, address: Int, uniqueItemOnly: Bool, accessRequirements: ((Set<Item>) -> Bool)) {
+
+
+    init(region: Region, name: String, address: Int, uniqueItemOnly: Bool, accessRequirements: ((Set<Item>) -> Bool)) {
         self.name = name
         self.address = address
-        self.lateGameItem = lateGameItem
         self.region = region
         self._additionalAccessRequirements = accessRequirements
         self.uniqueItemOnly = uniqueItemOnly
     }
-    init(lateGameItem: Bool, region: Region, name: String, address: Int, accessRequirements: ((Set<Item>) -> Bool), onPatchingRom: ((NSMutableData, Item) -> Void)) {
+    init(region: Region, name: String, address: Int, accessRequirements: ((Set<Item>) -> Bool), onPatchingRom: ((NSMutableData, Item) -> Void)) {
         self.name = name
         self.address = address
-        self.lateGameItem = lateGameItem
         self.region = region
         self._additionalAccessRequirements = accessRequirements
         self.onPatchingRom = onPatchingRom
@@ -179,7 +189,6 @@ func locationsForRegion(region: Region) -> [Location] {
 func hyruleEscapeItems() -> [Location] {
     return [
         Location(
-            lateGameItem: false,
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B1] Escape - first B1 room",
             address: 0xE96E,
@@ -187,7 +196,6 @@ func hyruleEscapeItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: false,
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B1] Hyrule Castle - boomerang room",
             address: 0xE974,
@@ -195,7 +203,6 @@ func hyruleEscapeItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: false,
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-1F] Sanctuary",
             address: 0xEA79,
@@ -203,7 +210,6 @@ func hyruleEscapeItems() -> [Location] {
             bigKeyNeeded: false // Technically it is needed, but BK doesn't spawn in a chest so this would break
         ),
         Location(
-            lateGameItem: false,
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B3] Hyrule Castle - next to Zelda",
             address: 0xEB09,
@@ -211,13 +217,11 @@ func hyruleEscapeItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: false,
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B1] Hyrule Castle - map room",
             address: 0xEB0C
         ),
         Location(
-            lateGameItem: false,
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B1] Escape - final basement room [left chest]",
             address: 0xEB5D,
@@ -228,7 +232,6 @@ func hyruleEscapeItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B1] Escape - final basement room [middle chest]",
             address: 0xEB60,
@@ -239,7 +242,6 @@ func hyruleEscapeItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B1] Escape - final basement room [right chest]",
             address: 0xEB63,
@@ -256,13 +258,11 @@ func hyruleEscapeItems() -> [Location] {
 func easternPalaceItems() -> [Location] {
     return [
         Location(
-            lateGameItem: false,
             region: Region.EasternPalace,
             name: "[dungeon-L1-1F] Eastern Palace - compass room",
             address: 0xE977
         ),
         Location(
-            lateGameItem: false,
             region: Region.EasternPalace,
             name: "[dungeon-L1-1F] Eastern Palace - big chest",
             address: 0xE97D,
@@ -271,13 +271,11 @@ func easternPalaceItems() -> [Location] {
             // big chests require all the items that other chests in the dungeon require (that also don't require big key)
         ),
         Location(
-            lateGameItem: false,
             region: Region.EasternPalace,
             name: "[dungeon-L1-1F] Eastern Palace - big ball room",
             address: 0xE9B3
         ),
         Location(
-            lateGameItem: false,
             region: Region.EasternPalace,
             name: "[dungeon-L1-1F] Eastern Palace - Big key",
             address: 0xE9B9,
@@ -285,7 +283,6 @@ func easternPalaceItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: false,
             region: Region.EasternPalace,
             name: "[dungeon-L1-1F] Eastern Palace - map room",
             address: 0xE9F5
@@ -296,7 +293,6 @@ func easternPalaceItems() -> [Location] {
 func desertPalaceItems() -> [Location] {
     return [
         Location(
-            lateGameItem: false,
             region: Region.DesertPalace,
             name: "[dungeon-L2-B1] Desert Palace - big chest",
             address: 0xE98F,
@@ -305,13 +301,11 @@ func desertPalaceItems() -> [Location] {
             // big chests require all the items that other chests in the dungeon require (that also don't require big key)
         ),
         Location(
-            lateGameItem: false,
             region: Region.DesertPalace,
             name: "[dungeon-L2-B1] Desert Palace - Map room",
             address: 0xE9B6
         ),
         Location(
-            lateGameItem: false,
             region: Region.DesertPalace,
             name: "[dungeon-L2-B1] Desert Palace - Big key room",
             address: 0xE9C2,
@@ -322,7 +316,6 @@ func desertPalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.DesertPalace,
             name: "[dungeon-L2-B1] Desert Palace - compass room",
             address: 0xE9CB,
@@ -338,13 +331,11 @@ func desertPalaceItems() -> [Location] {
 func towerOfHeraItems() -> [Location] {
     return [
         Location(
-            lateGameItem: false,
             region: Region.TowerOfHera,
             name: "[dungeon-L3-2F] Tower of Hera - Entrance",
             address: 0xE9AD
         ),
         Location(
-            lateGameItem: false,
             region: Region.TowerOfHera,
             name: "[dungeon-L3-1F] Tower of Hera - first floor",
             address: 0xE9E6,
@@ -355,7 +346,6 @@ func towerOfHeraItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.TowerOfHera,
             name: "[dungeon-L3-4F] Tower of Hera - big chest",
             address: 0xE9F8,
@@ -367,7 +357,6 @@ func towerOfHeraItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.TowerOfHera,
             name: "[dungeon-L3-4F] Tower of Hera - 4F [small chest]",
             address: 0xE9FB,
@@ -380,7 +369,6 @@ func towerOfHeraItems() -> [Location] {
 func darkPalaceItems() -> [Location] {
     return [
         Location(
-            lateGameItem: true,
             region: Region.DarkPalace,
             name: "[dungeon-D1-1F] Dark Palace - big key room",
             address: 0xEA37,
@@ -388,7 +376,6 @@ func darkPalaceItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkPalace,
             name: "[dungeon-D1-1F] Dark Palace - jump room [right chest]",
             address: 0xEA3A,
@@ -397,7 +384,6 @@ func darkPalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkPalace,
             name: "[dungeon-D1-1F] Dark Palace - jump room [left chest]",
             address: 0xEA3D,
@@ -405,7 +391,6 @@ func darkPalaceItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkPalace,
             name: "[dungeon-D1-1F] Dark Palace - big chest",
             address: 0xEA40,
@@ -418,7 +403,6 @@ func darkPalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkPalace,
             name: "[dungeon-D1-1F] Dark Palace - compass room",
             address: 0xEA43,
@@ -426,7 +410,6 @@ func darkPalaceItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkPalace,
             name: "[dungeon-D1-1F] Dark Palace - spike statue room",
             address: 0xEA46,
@@ -434,7 +417,6 @@ func darkPalaceItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkPalace,
             name: "[dungeon-D1-B1] Dark Palace - turtle stalfos room",
             address: 0xEA49,
@@ -442,7 +424,6 @@ func darkPalaceItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkPalace,
             name: "[dungeon-D1-B1] Dark Palace - room leading to Helmasaur [left chest]",
             address: 0xEA4C,
@@ -453,7 +434,6 @@ func darkPalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkPalace,
             name: "[dungeon-D1-B1] Dark Palace - room leading to Helmasaur [right chest]",
             address: 0xEA4F,
@@ -464,7 +444,6 @@ func darkPalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkPalace,
             name: "[dungeon-D1-1F] Dark Palace - statue push room",
             address: 0xEA52,
@@ -473,7 +452,6 @@ func darkPalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkPalace,
             name: "[dungeon-D1-1F] Dark Palace - maze room [top chest]",
             address: 0xEA55,
@@ -484,7 +462,6 @@ func darkPalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkPalace,
             name: "[dungeon-D1-1F] Dark Palace - maze room [bottom chest]",
             address: 0xEA58,
@@ -495,7 +472,6 @@ func darkPalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkPalace,
             name: "[dungeon-D1-B1] Dark Palace - shooter room",
             address: 0xEA5B
@@ -506,7 +482,6 @@ func darkPalaceItems() -> [Location] {
 func swampPalaceItems() -> [Location] {
     return [
         Location(
-            lateGameItem: true,
             region: Region.SwampPalace,
             name: "[dungeon-D2-B1] Swamp Palace - map room",
             address: 0xE986,
@@ -514,7 +489,6 @@ func swampPalaceItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.SwampPalace,
             name: "[dungeon-D2-B1] Swamp Palace - big chest",
             address: 0xE989,
@@ -523,13 +497,11 @@ func swampPalaceItems() -> [Location] {
             // big chests require all the items that other chests in the dungeon require (that also don't require big key)
         ),
         Location(
-            lateGameItem: true,
             region: Region.SwampPalace,
             name: "[dungeon-D2-1F] Swamp Palace - first room",
             address: 0xEA9D
         ),
         Location(
-            lateGameItem: true,
             region: Region.SwampPalace,
             name: "[dungeon-D2-B1] Swamp Palace - south of hookshot room",
             address: 0xEAA0,
@@ -540,7 +512,6 @@ func swampPalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.SwampPalace,
             name: "[dungeon-D2-B1] Swamp Palace - push 4 blocks room",
             address: 0xEAA3,
@@ -551,7 +522,6 @@ func swampPalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.SwampPalace,
             name: "[dungeon-D2-B1] Swamp Palace - big key room",
             address: 0xEAA6,
@@ -562,7 +532,6 @@ func swampPalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.SwampPalace,
             name: "[dungeon-D2-B2] Swamp Palace - flooded room [left chest]",
             address: 0xEAA9,
@@ -574,7 +543,6 @@ func swampPalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.SwampPalace,
             name: "[dungeon-D2-B2] Swamp Palace - flooded room [right chest]",
             address: 0xEAAC,
@@ -586,7 +554,6 @@ func swampPalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.SwampPalace,
             name: "[dungeon-D2-B2] Swamp Palace - hidden waterfall door room",
             address: 0xEAAF,
@@ -605,7 +572,6 @@ func swampPalaceItems() -> [Location] {
 func skullWoodsItems() -> [Location] {
     return [
         Location(
-            lateGameItem: true,
             region: Region.SkullWoods,
             name: "[dungeon-D3-B1] Skull Woods - Compass room",
             address: 0xE992,
@@ -613,7 +579,6 @@ func skullWoodsItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.SkullWoods,
             name: "[dungeon-D3-B1] Skull Woods - big chest",
             address: 0xE998,
@@ -622,7 +587,6 @@ func skullWoodsItems() -> [Location] {
             // big chests require all the items that other chests in the dungeon require (that also don't require big key)
         ),
         Location(
-            lateGameItem: true,
             region: Region.SkullWoods,
             name: "[dungeon-D3-B1] Skull Woods - east of Fire Rod room",
             address: 0xE99B,
@@ -630,7 +594,6 @@ func skullWoodsItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.SkullWoods,
             name: "[dungeon-D3-B1] Skull Woods - Big Key room",
             address: 0xE99E,
@@ -638,7 +601,6 @@ func skullWoodsItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.SkullWoods,
             name: "[dungeon-D3-B1] Skull Woods - Gibdo/Stalfos room",
             address: 0xE9A1,
@@ -646,13 +608,11 @@ func skullWoodsItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.SkullWoods,
             name: "[dungeon-D3-B1] Skull Woods - south of Fire Rod room",
             address: 0xE9C8
         ),
         Location(
-            lateGameItem: true,
             region: Region.SkullWoods,
             name: "[dungeon-D3-B1] Skull Woods - Entrance to part 2",
             address: 0xE9FE,
@@ -669,31 +629,26 @@ func skullWoodsItems() -> [Location] {
 func thievesTownItems() -> [Location] {
     return [
         Location(
-            lateGameItem: true,
             region: Region.ThievesTown,
             name: "[dungeon-D4-B1] Thieves' Town - Bottom left of huge room [top left chest]",
             address: 0xEA01
         ),
         Location(
-            lateGameItem: true,
             region: Region.ThievesTown,
             name: "[dungeon-D4-B1] Thieves' Town - Bottom left of huge room [bottom right chest]",
             address: 0xEA04
         ),
         Location(
-            lateGameItem: true,
             region: Region.ThievesTown,
             name: "[dungeon-D4-B1] Thieves' Town - Bottom right of huge room",
             address: 0xEA07
         ),
         Location(
-            lateGameItem: true,
             region: Region.ThievesTown,
             name: "[dungeon-D4-B1] Thieves' Town - Top left of huge room",
             address: 0xEA0A
         ),
         Location(
-            lateGameItem: true,
             region: Region.ThievesTown,
             name: "[dungeon-D4-1F] Thieves' Town - Room above boss",
             address: 0xEA0D,
@@ -701,7 +656,6 @@ func thievesTownItems() -> [Location] {
             bigKeyNeeded: true
         ),
         Location(
-            lateGameItem: true,
             region: Region.ThievesTown,
             name: "[dungeon-D4-B2] Thieves' Town - big chest",
             address: 0xEA10,
@@ -713,7 +667,6 @@ func thievesTownItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.ThievesTown,
             name: "[dungeon-D4-B2] Thieves' Town - next to Blind",
             address: 0xEA13,
@@ -727,7 +680,6 @@ func icePalaceItems() -> [Location] {
 
     return [
         Location(
-            lateGameItem: true,
             region: Region.IcePalace,
             name: "[dungeon-D5-B4] Ice Palace - above Blue Mail room",
             address: 0xE995,
@@ -736,7 +688,6 @@ func icePalaceItems() -> [Location] {
         ),
 
         Location(
-            lateGameItem: true,
             region: Region.IcePalace,
             name: "[dungeon-D5-B1] Ice Palace - Big Key room",
             address: 0xE9A4,
@@ -749,7 +700,6 @@ func icePalaceItems() -> [Location] {
         ),
 
         Location(
-            lateGameItem: true,
             region: Region.IcePalace,
             name: "[dungeon-D5-B5] Ice Palace - big chest",
             address: 0xE9AA,
@@ -762,7 +712,6 @@ func icePalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.IcePalace,
             name: "[dungeon-D5-B1] Ice Palace - compass room",
             address: 0xE9D4,
@@ -770,7 +719,6 @@ func icePalaceItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.IcePalace,
             name: "[dungeon-D5-B2] Ice Palace - map room",
             address: 0xE9DD,
@@ -782,7 +730,6 @@ func icePalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.IcePalace,
             name: "[dungeon-D5-B3] Ice Palace - spike room",
             address: 0xE9E0,
@@ -793,7 +740,6 @@ func icePalaceItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.IcePalace,
             name: "[dungeon-D5-B5] Ice Palace - b5 up staircase",
             address: 0xE9E3,
@@ -807,13 +753,11 @@ func miseryMireItems() -> [Location] {
     return [
 
         Location(
-            lateGameItem: true,
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - spike room",
             address: 0xE9DA
         ),
         Location(
-            lateGameItem: true,
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - big hub room",
             address: 0xEA5E,
@@ -821,13 +765,11 @@ func miseryMireItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - end of bridge",
             address: 0xEA61
         ),
         Location(
-            lateGameItem: true,
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - compass",
             address: 0xEA64,
@@ -838,7 +780,6 @@ func miseryMireItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - big chest",
             address: 0xEA67,
@@ -852,7 +793,6 @@ func miseryMireItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - map room",
             address: 0xEA6A,
@@ -860,7 +800,6 @@ func miseryMireItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - big key",
             address: 0xEA6D,
@@ -876,7 +815,6 @@ func miseryMireItems() -> [Location] {
 func turtleRockItems() -> [Location] {
     return [
         Location(
-            lateGameItem: true,
             region: Region.TurtleRock,
             name: "[dungeon-D7-1F] Turtle Rock - Chain chomp room",
             address: 0xEA16,
@@ -887,7 +825,6 @@ func turtleRockItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.TurtleRock,
             name: "[dungeon-D7-B1] Turtle Rock - big chest",
             address: 0xEA19,
@@ -899,7 +836,6 @@ func turtleRockItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.TurtleRock,
             name: "[dungeon-D7-1F] Turtle Rock - Map room [left chest]",
             address: 0xEA1C,
@@ -908,7 +844,6 @@ func turtleRockItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.TurtleRock,
             name: "[dungeon-D7-1F] Turtle Rock - Map room [right chest]",
             address: 0xEA1F,
@@ -917,13 +852,11 @@ func turtleRockItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.TurtleRock,
             name: "[dungeon-D7-1F] Turtle Rock - compass room",
             address: 0xEA22
         ),
         Location(
-            lateGameItem: true,
             region: Region.TurtleRock,
             name: "[dungeon-D7-B1] Turtle Rock - big key room",
             address: 0xEA25,
@@ -934,7 +867,6 @@ func turtleRockItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.TurtleRock,
             name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [top right chest]",
             address: 0xEA28,
@@ -947,7 +879,6 @@ func turtleRockItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.TurtleRock,
             name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [top left chest]",
             address: 0xEA2B,
@@ -960,7 +891,6 @@ func turtleRockItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.TurtleRock,
             name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [bottom right chest]",
             address: 0xEA2E,
@@ -973,7 +903,6 @@ func turtleRockItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.TurtleRock,
             name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [bottom left chest]",
             address: 0xEA31,
@@ -985,7 +914,6 @@ func turtleRockItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.TurtleRock,
             name: "[dungeon-D7-B1] Turtle Rock - Roller switch room",
             address: 0xEA34,
@@ -1001,13 +929,11 @@ func turtleRockItems() -> [Location] {
 func lightWorldItems() -> [Location] {
     return [
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-034] Hyrule Castle secret entrance",
             address: 0xE971
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-018] Graveyard - top right grave",
             address: 0xE97A,
@@ -1019,7 +945,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-047] Dam",
             address: 0xE98C,
@@ -1028,13 +953,11 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-040] Link's House",
             address: 0xE9BC
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-012-1F] Death Mountain - wall of caves - left cave",
             address: 0xE9BF,
@@ -1042,9 +965,8 @@ func lightWorldItems() -> [Location] {
                 return items.canAccessEasternDeathMountain()
             }
         ),
-
+        // MARK: Late Game
         Location(
-            lateGameItem: true,
             region: Region.LightWorld,
             name: "[cave-013] Mimic cave (from Turtle Rock)",
             address: 0xE9C5,
@@ -1055,7 +977,6 @@ func lightWorldItems() -> [Location] {
         ),
 
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-031] Tavern",
             address: 0xE9CE,
@@ -1067,7 +988,6 @@ func lightWorldItems() -> [Location] {
 
 
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-026] chicken house",
             address: 0xE9E9,
@@ -1076,7 +996,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-044] Aginah's cave",
             address: 0xE9F2,
@@ -1085,7 +1004,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-035] Sahasrahla's Hut [left chest]",
             address: 0xEA82,
@@ -1094,7 +1012,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-035] Sahasrahla's Hut [center chest]",
             address: 0xEA85,
@@ -1103,7 +1020,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-035] Sahasrahla's Hut [right chest]",
             address: 0xEA88,
@@ -1112,7 +1028,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [top chest]",
             address: 0xEA8E,
@@ -1121,7 +1036,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [left chest row of 3]",
             address: 0xEA91,
@@ -1130,7 +1044,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [center chest row of 3]",
             address: 0xEA94,
@@ -1139,7 +1052,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [right chest row of 3]",
             address: 0xEA97,
@@ -1148,7 +1060,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [bottom chest]",
             address: 0xEA9A,
@@ -1157,7 +1068,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [top chest]",
             address: 0xEB0F,
@@ -1166,7 +1076,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [top left chest]",
             address: 0xEB12,
@@ -1175,7 +1084,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [top right chest]",
             address: 0xEB15,
@@ -1184,7 +1092,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [bottom left chest]",
             address: 0xEB18,
@@ -1193,7 +1100,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [bottom right chest]",
             address: 0xEB1B,
@@ -1202,7 +1108,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top left chest]",
             address: 0xEB2A,
@@ -1211,7 +1116,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top left middle chest]",
             address: 0xEB2D,
@@ -1220,7 +1124,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top right middle chest]",
             address: 0xEB30,
@@ -1229,7 +1132,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top right chest]",
             address: 0xEB33,
@@ -1238,7 +1140,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-009-1F] Death Mountain - wall of caves - right cave [bottom chest]",
             address: 0xEB36,
@@ -1247,7 +1148,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-009-B1] Death Mountain - wall of caves - right cave [left chest]",
             address: 0xEB39,
@@ -1256,7 +1156,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-009-B1] Death Mountain - wall of caves - right cave [right chest]",
             address: 0xEB3C,
@@ -1265,7 +1164,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-016] cave under rocks west of Santuary",
             address: 0xEB3F,
@@ -1275,7 +1173,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia [bottom left chest]",
             address: 0xEB42,
@@ -1284,7 +1181,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia [top left chest]",
             address: 0xEB45,
@@ -1293,7 +1189,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia [top right chest]",
             address: 0xEB48,
@@ -1302,7 +1197,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia [bottom right chest]",
             address: 0xEB4B,
@@ -1311,7 +1205,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-051] Ice Cave",
             address: 0xEB4E,
@@ -1330,7 +1223,6 @@ func lightWorldItems() -> [Location] {
         //    }
         //),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Bottle Vendor",
             address: 0x2EB18,
@@ -1339,7 +1231,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Sahasrahla",
             address: 0x2F1FC,
@@ -1348,7 +1239,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Sick Kid",
             address: 0x339CF,
@@ -1358,7 +1248,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Purple Chest",
             address: 0x33D68,
@@ -1368,7 +1257,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Hobo",
             address: 0x33E7D,
@@ -1378,7 +1266,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Ether",
             address: 0x48B7C,
@@ -1394,7 +1281,6 @@ func lightWorldItems() -> [Location] {
 
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Bombos",
             address: 0x48B81,
@@ -1410,7 +1296,6 @@ func lightWorldItems() -> [Location] {
         ),
         // Zora's appearance is based on if you items flippers or not
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "King Zora",
             address: 0xEE1C3,
@@ -1427,7 +1312,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Old mountain man",
             address: 0xF69FA,
@@ -1436,7 +1320,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Piece of Heart (Thieves' Forest Hideout)",
             address: 0x180000,
@@ -1445,7 +1328,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Piece of Heart (Lumberjack Tree)",
             address: 0x180001,
@@ -1455,7 +1337,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Piece of Heart (Spectacle Rock Cave)",
             address: 0x180002,
@@ -1464,7 +1345,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Piece of Heart (south of Haunted Grove)",
             address: 0x180003,
@@ -1473,7 +1353,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Piece of Heart (Graveyard)",
             address: 0x180004,
@@ -1482,7 +1361,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Piece of Heart (Desert - northeast corner)",
             address: 0x180005,
@@ -1492,7 +1370,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia - generous guy",
             address: 0x180010,
@@ -1501,7 +1378,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Library",
             address: 0x180012,
@@ -1511,7 +1387,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Piece of Heart (Spectacle Rock)",
             address: 0x180140,
@@ -1521,7 +1396,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Piece of Heart (Death Mountain - floating island)",
             address: 0x180141,
@@ -1530,7 +1404,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Piece of Heart (Maze Race)",
             address: 0x180142,
@@ -1539,7 +1412,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Piece of Heart (Desert - west side)",
             address: 0x180143,
@@ -1549,7 +1421,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Piece of Heart (Lake Hylia)",
             address: 0x180144,
@@ -1560,7 +1431,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Piece of Heart (Dam)",
             address: 0x180145,
@@ -1569,7 +1439,6 @@ func lightWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: false,
             region: Region.LightWorld,
             name: "Piece of Heart (Zora's River)",
             address: 0x180149,
@@ -1584,7 +1453,6 @@ func lightWorldItems() -> [Location] {
 func darkWorldItems() -> [Location] {
     return [
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-063] doorless hut",
             address: 0xE9EC,
@@ -1593,7 +1461,6 @@ func darkWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-062] C-shaped house",
             address: 0xE9EF,
@@ -1602,7 +1469,6 @@ func darkWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-071] Misery Mire west area [left chest]",
             address: 0xEA73,
@@ -1611,7 +1477,6 @@ func darkWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-071] Misery Mire west area [right chest]",
             address: 0xEA76,
@@ -1620,7 +1485,6 @@ func darkWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [top chest]",
             address: 0xEA7C,
@@ -1629,7 +1493,6 @@ func darkWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [bottom chest]",
             address: 0xEA7F,
@@ -1639,7 +1502,6 @@ func darkWorldItems() -> [Location] {
         ),
         // TODO: watch for softlock?
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-055] Spike cave",
             address: 0xEA8B,
@@ -1651,7 +1513,6 @@ func darkWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-073] cave northeast of swamp palace [top chest]",
             address: 0xEB1E,
@@ -1660,7 +1521,6 @@ func darkWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-073] cave northeast of swamp palace [top middle chest]",
             address: 0xEB21,
@@ -1669,7 +1529,6 @@ func darkWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-073] cave northeast of swamp palace [bottom middle chest]",
             address: 0xEB24,
@@ -1678,7 +1537,6 @@ func darkWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-073] cave northeast of swamp palace [bottom chest]",
             address: 0xEB27,
@@ -1688,7 +1546,6 @@ func darkWorldItems() -> [Location] {
         ),
 
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-056] Dark World Death Mountain - cave under boulder [top right chest]",
             address: 0xEB51,
@@ -1698,7 +1555,6 @@ func darkWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-056] Dark World Death Mountain - cave under boulder [top left chest]",
             address: 0xEB54,
@@ -1708,7 +1564,6 @@ func darkWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom left chest]",
             address: 0xEB57,
@@ -1718,7 +1573,6 @@ func darkWorldItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.DarkWorld,
             name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom right chest]",
             address: 0xEB5A,
@@ -1729,10 +1583,8 @@ func darkWorldItems() -> [Location] {
                     && items.contains(Item.FireRod)
             }
         ),
-
-
+        // MARK: not late game
         Location(
-            lateGameItem: false,
             region: Region.DarkWorld,
             name: "Flute Boy",
             address: 0x330C7,
@@ -1740,9 +1592,8 @@ func darkWorldItems() -> [Location] {
                 return items.canAccessLowerDarkWorld()
             }
         ),
-
+        // MARK: not late game
         Location(
-            lateGameItem: false,
             region: Region.DarkWorld,
             name: "Catfish",
             address: 0xEE185,
@@ -1758,9 +1609,8 @@ func darkWorldItems() -> [Location] {
                 rom.patch(atByteOffset: 0x180204, withData: item.bytesForInventoryCheckOverride)
             }
         ),
-
+        // MARK: not late game
         Location(
-            lateGameItem: false,
             region: Region.DarkWorld,
             name: "Piece of Heart (Dark World blacksmith pegs)",
             address: 0x180006,
@@ -1770,9 +1620,8 @@ func darkWorldItems() -> [Location] {
                     && items.contains(Item.Hammer)
             }
         ),
-
+        // MARK: not late game
         Location(
-            lateGameItem: false,
             region: Region.DarkWorld,
             name: "[cave-073] cave northeast of swamp palace - generous guy",
             address: 0x180011,
@@ -1780,9 +1629,8 @@ func darkWorldItems() -> [Location] {
                 return items.canAccessLowerDarkWorld()
             }
         ),
-
+        // MARK: not late game
         Location(
-            lateGameItem: false,
             region: Region.DarkWorld,
             name: "Piece of Heart (Dark World - bumper cave)",
             address: 0x180146,
@@ -1791,8 +1639,8 @@ func darkWorldItems() -> [Location] {
                     && items.contains(Item.Cape)
             }
         ),
+        // MARK: not late game
         Location(
-            lateGameItem: false,
             region: Region.DarkWorld,
             name: "Piece of Heart (Pyramid)",
             address: 0x180147,
@@ -1800,6 +1648,7 @@ func darkWorldItems() -> [Location] {
                 return items.canAccessPyramid()
             }
         ),
+        // MARK: not late game
         //new Location
         //{
         //    lateGameItem: false,
@@ -1816,7 +1665,6 @@ func darkWorldItems() -> [Location] {
 func hyruleCastleTowerItems() -> [Location] {
     return [
         Location(
-            lateGameItem: false,
             region: Region.HyruleCastleTower,
             name: "[dungeon-A1-3F] Hyrule Castle Tower - maze room",
             address: 0xEAB2,
@@ -1824,7 +1672,6 @@ func hyruleCastleTowerItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: false,
             region: Region.HyruleCastleTower,
             name: "[dungeon-A1-2F] Hyrule Castle Tower - 2 knife guys room",
             address: 0xEAB5,
@@ -1839,31 +1686,26 @@ func ganonsTowerItems() -> [Location] {
 
     return [
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [top left chest]",
             address: 0xEAB8
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [top right chest]",
             address: 0xEABB
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [bottom left chest]",
             address: 0xEABE
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [bottom right chest]",
             address: 0xEAC1
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [top left chest]",
             address: 0xEAC4,
@@ -1871,7 +1713,6 @@ func ganonsTowerItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [top right chest]",
             address: 0xEAC7,
@@ -1879,7 +1720,6 @@ func ganonsTowerItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [bottom left chest]",
             address: 0xEACA,
@@ -1887,7 +1727,6 @@ func ganonsTowerItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [bottom right chest]",
             address: 0xEACD,
@@ -1895,7 +1734,6 @@ func ganonsTowerItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - north of teleport room",
             address: 0xEAD0,
@@ -1903,7 +1741,6 @@ func ganonsTowerItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - map room",
             address: 0xEAD3,
@@ -1911,7 +1748,6 @@ func ganonsTowerItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - big chest",
             address: 0xEAD6,
@@ -1920,19 +1756,16 @@ func ganonsTowerItems() -> [Location] {
             // big chests require all the items that other chests in the dungeon require (that also don't require big key)
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - down right staircase from entrance [left chest]",
             address: 0xEAD9
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - down right staircase from entrance [right chest]",
             address: 0xEADC
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - above Armos",
             address: 0xEADF,
@@ -1940,13 +1773,11 @@ func ganonsTowerItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - east of down right staircase from entrace",
             address: 0xEAE2
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - compass room [top left chest]",
             address: 0xEAE5,
@@ -1957,7 +1788,6 @@ func ganonsTowerItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - compass room [top right chest]",
             address: 0xEAE8,
@@ -1968,7 +1798,6 @@ func ganonsTowerItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - compass room [bottom left chest]",
             address: 0xEAEB,
@@ -1979,7 +1808,6 @@ func ganonsTowerItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - compass room [bottom right chest]",
             address: 0xEAEE,
@@ -1990,7 +1818,6 @@ func ganonsTowerItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-B1] Ganon's Tower - north of Armos room [bottom chest]",
             address: 0xEAF1,
@@ -1998,7 +1825,6 @@ func ganonsTowerItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-B1] Ganon's Tower - north of Armos room [left chest]",
             address: 0xEAF4,
@@ -2006,7 +1832,6 @@ func ganonsTowerItems() -> [Location] {
             bigKeyNeeded: false
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-B1] Ganon's Tower - north of Armos room [right chest]",
             address: 0xEAF7,
@@ -2015,7 +1840,6 @@ func ganonsTowerItems() -> [Location] {
         ),
 
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-6F] Ganon's Tower - north of falling floor four torches [top left chest]",
             address: 0xEAFD,
@@ -2026,7 +1850,6 @@ func ganonsTowerItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-6F] Ganon's Tower - north of falling floor four torches [top right chest]",
             address: 0xEB00,
@@ -2037,7 +1860,6 @@ func ganonsTowerItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-6F] Ganon's Tower - before Moldorm",
             address: 0xEB03,
@@ -2048,7 +1870,6 @@ func ganonsTowerItems() -> [Location] {
             }
         ),
         Location(
-            lateGameItem: true,
             region: Region.GanonsTower,
             name: "[dungeon-A2-6F] Ganon's Tower - Moldorm room",
             address: 0xEB06,

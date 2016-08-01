@@ -32,13 +32,13 @@ class DifficultyCasual: Difficulty {
             item = possibleItems.selectAtRandom(randomizer)
 
             // Late-game items are discarded if no late-game locations are available
-            badLateGameItem = isLateGameItem(item) && possibleLocations.filter({ $0.lateGameItem }).isEmpty
+            badLateGameItem = isLateGameItem(item) && possibleLocations.filter({ $0.isLateGame }).isEmpty
 
             // Non-unique items are discarded if only unique-item locations are available
             needUniqueItem = !isUniqueItem(item) && possibleLocations.filter({ !$0.uniqueItemOnly }).isEmpty
 
             // If we picked a non-late game item, and we have both late-game items and late-game locations, discard
-            preferLateGameItem = !isLateGameItem(item) && possibleLocations.filter({ $0.lateGameItem }).isNonEmpty && possibleItems.filter({ isLateGameItem($0) }).isNonEmpty
+            preferLateGameItem = !isLateGameItem(item) && possibleLocations.filter({ $0.isLateGame }).isNonEmpty && possibleItems.filter({ isLateGameItem($0) }).isNonEmpty
         } while (badLateGameItem || needUniqueItem || preferLateGameItem)
         return item
     }
@@ -49,7 +49,7 @@ class DifficultyCasual: Difficulty {
         repeat {
             location = possibleLocations.selectAtRandom(randomizer)
 
-            badLateGameLocation = isLateGameItem(item) && !location.lateGameItem
+            badLateGameLocation = isLateGameItem(item) && !location.isLateGame
             badUniqueItemLocation = !isUniqueItem(item) && location.uniqueItemOnly
             // todo: bad first item (don't really care)
             unusedUniqueLocation = isUniqueItem(item) && !location.uniqueItemOnly && possibleLocations.filter({ $0.uniqueItemOnly }).isNonEmpty
