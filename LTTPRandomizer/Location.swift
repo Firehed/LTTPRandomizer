@@ -1245,7 +1245,7 @@ func lightWorldItems() -> [Location] {
             address: 0x33D68,
             accessRequirements: { items in
                 return items.canAccessLowerDarkWorld()
-                    && items.contains(Item.TitansMitt)
+                    && items.canLiftHeavyRocks()
             }
         ),
         Location(
@@ -1590,8 +1590,9 @@ func darkWorldItems() -> [Location] {
             name: "Catfish",
             address: 0xEE185,
             accessRequirements: { items in
+                // TODO: boots/mitt unnecessary?
                 return items.canAccessPyramid()
-                    && items.contains(Item.PowerGlove)
+                    && items.canLiftRocks()
                     && (items.contains(Item.PegasusBoots)
                         || items.contains(Item.TitansMitt))
             },
@@ -1608,7 +1609,7 @@ func darkWorldItems() -> [Location] {
             address: 0x180006,
             accessRequirements: { items in
                 return items.canAccessLowerDarkWorld()
-                    && items.contains(Item.TitansMitt)
+                    && items.canLiftHeavyRocks()
                     && items.contains(Item.Hammer)
             }
         ),

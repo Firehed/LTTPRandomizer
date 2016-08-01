@@ -15,7 +15,7 @@ extension SetAlgebra where Element == Item {
 
     func canAccessDeathMountain() -> Bool {
         return canEscapeCastle()
-            && contains(Item.PowerGlove)
+            && canLiftRocks()
     }
 
     /// "Wall of caves" area
@@ -73,7 +73,7 @@ extension SetAlgebra where Element == Item {
         // Note: Originally contained Bow. Very confident that isn't required.
         return canEnterDesertPalace()
             && canLightTorches()
-            && contains(Item.PowerGlove)
+            && canLiftRocks()
     }
 
     func canDefeatTowerOfHera() -> Bool {
@@ -114,7 +114,7 @@ extension SetAlgebra where Element == Item {
 
     func canAccessMireArea() -> Bool {
         return canFly()
-            && contains(Item.TitansMitt)
+            && canLiftHeavyRocks()
             && canMoveInDarkWorld()
     }
 
