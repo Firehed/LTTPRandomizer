@@ -237,6 +237,7 @@ extension SetAlgebra where Element == Item {
 
     func canDefeatIcePalace() -> Bool {
         return canEnterIcePalace()
+            && contains(.Hammer)
     }
 
     func canDefeatMiseryMire() -> Bool {
