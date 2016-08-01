@@ -1556,7 +1556,7 @@ func darkWorldItems() -> [Location] {
             address: 0xEB51,
             accessRequirements: { items in
                 return items.canAccessEastDarkWorldDeathMountain()
-                    && items.contains(Item.Hookshot)
+                    && items.containsAll(Item.Hookshot, Item.MoonPearl)
             }
         ),
         Location(
@@ -1565,7 +1565,7 @@ func darkWorldItems() -> [Location] {
             address: 0xEB54,
             accessRequirements: { items in
                 return items.canAccessEastDarkWorldDeathMountain()
-                    && items.contains(Item.Hookshot)
+                    && items.containsAll(Item.Hookshot, Item.MoonPearl)
             }
         ),
         Location(
@@ -1574,7 +1574,7 @@ func darkWorldItems() -> [Location] {
             address: 0xEB57,
             accessRequirements: { items in
                 return items.canAccessEastDarkWorldDeathMountain()
-                    && items.contains(Item.Hookshot)
+                    && items.containsAll(Item.Hookshot, Item.MoonPearl)
             }
         ),
         Location(
@@ -1583,7 +1583,7 @@ func darkWorldItems() -> [Location] {
             address: 0xEB5A,
             accessRequirements: { items in
                 return items.canAccessEastDarkWorldDeathMountain()
-                    && items.contains(Item.Hookshot)
+                    && items.containsAll(Item.Hookshot, Item.MoonPearl)
                     // not actually required here, but stops some deadlocks
                     && items.contains(Item.FireRod)
             }
