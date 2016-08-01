@@ -1285,8 +1285,9 @@ func lightWorldItems() -> [Location] {
             name: "Purple Chest",
             address: 0x33D68,
             accessRequirements: { items in
-                return items.canAccessLowerDarkWorld()
+                return items.canAccessNorthWestDarkWorld()
                     && items.canLiftHeavyRocks()
+                    && items.contains(Item.MagicMirror)
             }
         ),
         Location(
@@ -1318,9 +1319,9 @@ func lightWorldItems() -> [Location] {
             name: "Bombos",
             address: 0x48B81,
             accessRequirements: { items in
-                return items.canAccessLowerDarkWorld()
+                return items.canAccessSouthDarkWorld()
                     && items.canGetMasterSword()
-                    && items.contains(Item.BookOfMudora)
+                    && items.containsAll(Item.BookOfMudora, Item.MagicMirror)
             },
             onPatchingRom: { rom, item in
                 // Inventory item check?
@@ -1351,7 +1352,8 @@ func lightWorldItems() -> [Location] {
             name: "Piece of Heart (south of Haunted Grove)",
             address: 0x180003,
             accessRequirements: { items in
-                return items.canAccessLowerDarkWorld()
+                return items.canAccessSouthDarkWorld()
+                    && items.contains(Item.MagicMirror)
             }
         ),
         Location(
@@ -1359,7 +1361,8 @@ func lightWorldItems() -> [Location] {
             name: "Piece of Heart (Graveyard)",
             address: 0x180004,
             accessRequirements: { items in
-                return items.canAccessLowerDarkWorld()
+                return items.canAccessNorthWestDarkWorld()
+                    && items.contains(Item.MagicMirror)
             }
         ),
         Location(
@@ -1419,8 +1422,8 @@ func lightWorldItems() -> [Location] {
             address: 0x180144,
             accessRequirements: { items in
                 return items.canEscapeCastle()
-                    && items.contains(Item.Flippers)
-                    && items.canAccessLowerDarkWorld()
+                    && items.containsAll(Item.Flippers, Item.MagicMirror)
+                    && items.canAccessSouthDarkWorld()
             }
         ),
         Location(
@@ -1441,7 +1444,7 @@ func darkWorldItems() -> [Location] {
             name: "[cave-063] doorless hut",
             address: 0xE9EC,
             accessRequirements: { items in
-                return items.canAccessLowerDarkWorld()
+                return items.canAccessNorthWestDarkWorld()
             }
         ),
         Location(
@@ -1449,7 +1452,7 @@ func darkWorldItems() -> [Location] {
             name: "[cave-062] C-shaped house",
             address: 0xE9EF,
             accessRequirements: { items in
-                return items.canAccessLowerDarkWorld()
+                return items.canAccessNorthWestDarkWorld()
             }
         ),
         Location(
@@ -1501,7 +1504,7 @@ func darkWorldItems() -> [Location] {
             name: "[cave-073] cave northeast of swamp palace [top chest]",
             address: 0xEB1E,
             accessRequirements: { items in
-                return items.canAccessLowerDarkWorld()
+                return items.canAccessSouthDarkWorld()
             }
         ),
         Location(
@@ -1509,7 +1512,7 @@ func darkWorldItems() -> [Location] {
             name: "[cave-073] cave northeast of swamp palace [top middle chest]",
             address: 0xEB21,
             accessRequirements: { items in
-                return items.canAccessLowerDarkWorld()
+                return items.canAccessSouthDarkWorld()
             }
         ),
         Location(
@@ -1517,7 +1520,7 @@ func darkWorldItems() -> [Location] {
             name: "[cave-073] cave northeast of swamp palace [bottom middle chest]",
             address: 0xEB24,
             accessRequirements: { items in
-                return items.canAccessLowerDarkWorld()
+                return items.canAccessSouthDarkWorld()
             }
         ),
         Location(
@@ -1525,7 +1528,7 @@ func darkWorldItems() -> [Location] {
             name: "[cave-073] cave northeast of swamp palace [bottom chest]",
             address: 0xEB27,
             accessRequirements: { items in
-                return items.canAccessLowerDarkWorld()
+                return items.canAccessSouthDarkWorld()
             }
         ),
 
@@ -1573,7 +1576,7 @@ func darkWorldItems() -> [Location] {
             name: "Flute Boy",
             address: 0x330C7,
             accessRequirements: { items in
-                return items.canAccessLowerDarkWorld()
+                return items.canAccessSouthDarkWorld()
             }
         ),
         // MARK: not late game
@@ -1600,7 +1603,7 @@ func darkWorldItems() -> [Location] {
             name: "Piece of Heart (Dark World blacksmith pegs)",
             address: 0x180006,
             accessRequirements: { items in
-                return items.canAccessLowerDarkWorld()
+                return items.canAccessNorthWestDarkWorld()
                     && items.canLiftHeavyRocks()
                     && items.contains(Item.Hammer)
             }
@@ -1611,7 +1614,7 @@ func darkWorldItems() -> [Location] {
             name: "[cave-073] cave northeast of swamp palace - generous guy",
             address: 0x180011,
             accessRequirements: { items in
-                return items.canAccessLowerDarkWorld()
+                return items.canAccessSouthDarkWorld()
             }
         ),
         // MARK: not late game
@@ -1620,7 +1623,7 @@ func darkWorldItems() -> [Location] {
             name: "Piece of Heart (Dark World - bumper cave)",
             address: 0x180146,
             accessRequirements: { items in
-                return items.canAccessLowerDarkWorld()
+                return items.canAccessNorthWestDarkWorld()
                     && items.contains(Item.Cape)
             }
         ),

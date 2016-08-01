@@ -165,12 +165,13 @@ extension SetAlgebra where Element == Item {
     }
 
     func canEnterSwampPalace() -> Bool {
-        return canAccessLowerDarkWorld()
+        return canAccessSouthDarkWorld()
             && contains(Item.Flippers)
+            && contains(Item.MagicMirror)
     }
 
     func canEnterSkullWoods() -> Bool {
-        return canAccessLowerDarkWorld()
+        return canAccessNorthWestDarkWorld()
     }
 
     // Boss section
@@ -180,19 +181,18 @@ extension SetAlgebra where Element == Item {
     }
 
     func canEnterThievesTown() -> Bool {
-        return canAccessLowerDarkWorld()
+        return canAccessNorthWestDarkWorld()
     }
 
     func canEnterIcePalace() -> Bool {
-        return canMoveInDarkWorld()
-            && containsAll(Item.Flippers)
+        return containsAll(Item.Flippers, Item.MoonPearl)
             && canLiftHeavyRocks()
             && containsAny(Item.FireRod, Item.Bombos)
     }
 
     func canEnterMiseryMire() -> Bool {
         return canAccessMireArea()
-            && contains(Item.Ether)
+            && containsAll(Item.Ether, Item.MoonPearl)
             && containsAny(Item.PegasusBoots, Item.Hookshot)
     }
 
