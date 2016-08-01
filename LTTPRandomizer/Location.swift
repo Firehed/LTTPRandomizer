@@ -131,6 +131,9 @@ extension Region {
         case .ZorasDomain:
             return inventory.canAccessZorasDomain()
 
+        case .DarkWorldMire:
+            return inventory.canAccessMireArea()
+
         case .Progression: fallthrough
         case .LightWorld: fallthrough
         case .DarkWorld:
@@ -181,6 +184,8 @@ func locationsForRegion(region: Region) -> [Location] {
         return zorasDomainItems()
     case .DarkWorld:
         return darkWorldItems()
+    case .DarkWorldMire:
+        return mireItems()
     case .HyruleCastleTower:
         return hyruleCastleTowerItems()
     case .GanonsTower:
@@ -188,6 +193,29 @@ func locationsForRegion(region: Region) -> [Location] {
     case .Progression:
         return []
     }
+}
+
+func mireItems() -> [Location] {
+    return [
+        Location(
+            region: Region.DarkWorldMire,
+            name: "[cave-071] Misery Mire west area [left chest]",
+            address: 0xEA73
+        ),
+        Location(
+            region: Region.DarkWorldMire,
+            name: "[cave-071] Misery Mire west area [right chest]",
+            address: 0xEA76
+        ),
+        Location(
+            region: Region.DarkWorldMire,
+            name: "Piece of Heart (Desert - northeast corner)",
+            address: 0x180005,
+            accessRequirements: { items in
+                return items.contains(Item.MagicMirror)
+            }
+        ),
+    ]
 }
 
 func zorasDomainItems() -> [Location] {
@@ -1368,15 +1396,6 @@ func lightWorldItems() -> [Location] {
         ),
         Location(
             region: Region.LightWorld,
-            name: "Piece of Heart (Desert - northeast corner)",
-            address: 0x180005,
-            accessRequirements: { items in
-                return items.canAccessMireArea()
-                    && items.contains(Item.MagicMirror)
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia - generous guy",
             address: 0x180010,
             accessRequirements: { items in
@@ -1456,22 +1475,7 @@ func darkWorldItems() -> [Location] {
                 return items.canAccessNorthWestDarkWorld()
             }
         ),
-        Location(
-            region: Region.DarkWorld,
-            name: "[cave-071] Misery Mire west area [left chest]",
-            address: 0xEA73,
-            accessRequirements: { items in
-                return items.canAccessMireArea()
-            }
-        ),
-        Location(
-            region: Region.DarkWorld,
-            name: "[cave-071] Misery Mire west area [right chest]",
-            address: 0xEA76,
-            accessRequirements: { items in
-                return items.canAccessMireArea()
-            }
-        ),
+
         Location(
             region: Region.DarkWorld,
             name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [top chest]",

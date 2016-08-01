@@ -21,6 +21,7 @@ enum Region: Int {
     case ZorasDomain
 
     case DarkWorld
+    case DarkWorldMire
     case DarkPalace
     case SwampPalace
     case SkullWoods
@@ -42,6 +43,7 @@ enum Region: Int {
         .HyruleCastleTower,
         .ZorasDomain,
         .DarkWorld,
+        .DarkWorldMire,
         .DarkPalace,
         .SwampPalace,
         .SkullWoods,
@@ -67,6 +69,7 @@ enum Region: Int {
         case .ZorasDomain:
             return true
         case .DarkWorld: fallthrough
+        case .DarkWorldMire: fallthrough
         case .DarkPalace: fallthrough
         case .SwampPalace: fallthrough
         case .SkullWoods: fallthrough
