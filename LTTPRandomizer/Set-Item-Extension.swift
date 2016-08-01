@@ -96,11 +96,6 @@ extension SetAlgebra where Element == Item {
         return canAccessPyramid() && canLiftRocks()
     }
 
-    func canAccessDarkWorld() -> Bool {
-        return canMoveInDarkWorld()
-            && (canDefeatAgahnim1() || containsAny(Item.Hammer, Item.TitansMitt))
-    }
-
     func canAccessEastDarkWorldDeathMountain() -> Bool {
         return canAccessEasternDeathMountain()
             && canLiftHeavyRocks() // All warp tiles require
@@ -122,11 +117,6 @@ extension SetAlgebra where Element == Item {
         return canAccessPyramid()
             && contains(.Hookshot)
             && (canLiftRocks() || contains(.Flippers) || contains(.Hammer))
-    }
-
-    func canAccessLowerDarkWorld() -> Bool {
-        return canAccessDarkWorld()
-            && containsAny(Item.Hammer, Item.Hookshot)
     }
 
     func canAccessSouthDarkWorld() -> Bool {
@@ -282,9 +272,4 @@ extension SetAlgebra where Element == Item {
         return containsAny(Item.Lamp, Item.FireRod)
     }
 
-    /// Link will have general free movement in DW (not bunny, can go to LW)
-    func canMoveInDarkWorld() -> Bool {
-        return containsAll(Item.MoonPearl, Item.MagicMirror)
-    }
-    
 }
