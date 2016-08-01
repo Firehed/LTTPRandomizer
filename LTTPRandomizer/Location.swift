@@ -27,18 +27,8 @@ class Location {
     var weight: Int = 0
 
     var isLateGame: Bool {
-        switch region {
-        case .Progression: fallthrough
-        case .LightWorld: fallthrough
-        case .EasternPalace: fallthrough
-        case .DesertPalace: fallthrough
-        case .TowerOfHera: fallthrough
-        case .HyruleCastleTower:
-            return true
-        // TODO: there are a tiny number of locations where this doesn't map as cleanly per the original logic. Not sure if I really care!
-        default:
-            return false
-        }
+        // There are a few exceptions in this in the original, filing under "close enough" for now
+        return region.isDarkWorld
     }
 
     init(region: Region, name: String, address: Int) {
