@@ -154,6 +154,7 @@ enum Item: UInt8, CustomStringConvertible {
         }
     }
 
+    /// Various quantities of rupees
     var isMoney: Bool {
         switch self {
         case .OneRupee: fallthrough
@@ -168,6 +169,8 @@ enum Item: UInt8, CustomStringConvertible {
             return false
         }
     }
+
+    /// Bombs and arrows
     var isConsumable: Bool {
         switch self {
         case .Bomb: fallthrough
@@ -180,6 +183,8 @@ enum Item: UInt8, CustomStringConvertible {
             return false
         }
     }
+
+    /// Heart containers
     var isHealth: Bool {
         switch self {
         case .HeartContainer: fallthrough
@@ -189,6 +194,8 @@ enum Item: UInt8, CustomStringConvertible {
             return false
         }
     }
+
+    /// Keys, compass, map
     var isDungeonItem: Bool {
         switch self {
         case .Key: fallthrough
@@ -201,6 +208,7 @@ enum Item: UInt8, CustomStringConvertible {
         }
     }
 
+    /// Clothes and shields
     var isArmor: Bool {
         switch self {
         case .BlueShield: fallthrough
@@ -213,6 +221,24 @@ enum Item: UInt8, CustomStringConvertible {
             return false
         }
     }
+
+    /// Bottles and pre-filled variants
+    var isBottle: Bool {
+        switch self {
+        case .Bottle: fallthrough
+        case .BottleWithGreenPotion: fallthrough
+        case .BottleWithBluePotion: fallthrough
+        case .BottleWithRedPotion: fallthrough
+        case .BottleWithBee: fallthrough
+        case .BottleWithGoldBee: fallthrough
+        case .BottleWithFairy:
+            return true
+        default:
+            return false
+        }
+    }
+
+    /// Does not help game progression
     var isJunk: Bool {
         return isConsumable || isMoney || isHealth || isDungeonItem || isArmor
     }
