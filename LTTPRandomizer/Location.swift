@@ -1586,11 +1586,10 @@ func darkWorldItems() -> [Location] {
             name: "Catfish",
             address: 0xEE185,
             accessRequirements: { items in
-                // TODO: boots/mitt unnecessary?
+                // Note: Upstream says (boots || mitt) also required
                 return items.canAccessPyramid()
                     && items.canLiftRocks()
-                    && (items.contains(Item.PegasusBoots)
-                        || items.contains(Item.TitansMitt))
+                    && items.contains(Item.MoonPearl)
             },
             onPatchingRom: { rom, item in
                 // (This is a guess based on the Windows source)
