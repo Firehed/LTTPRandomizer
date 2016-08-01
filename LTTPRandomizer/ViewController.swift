@@ -14,7 +14,9 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let r = RomBuilder(seed: 0, locations: DifficultyCasual())
+
+        let difficulty = DifficultyCasual()
+        let r = RomBuilder(seed: 0, locations: difficulty)
         r.assignItems()
         r.write()
     }
