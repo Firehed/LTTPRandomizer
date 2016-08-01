@@ -128,6 +128,8 @@ extension Region {
             return inventory.canAccessDeathMountain()
         case .LightWorldEasternDeathMountain:
             return inventory.canAccessEasternDeathMountain()
+        case .ZorasDomain:
+            return inventory.canAccessZorasDomain()
 
         case .Progression: fallthrough
         case .LightWorld: fallthrough
@@ -175,6 +177,8 @@ func locationsForRegion(region: Region) -> [Location] {
         return lightWorthDeathMountainItems()
     case .LightWorldEasternDeathMountain:
         return lightWorldEasternDeathMountainItems()
+    case .ZorasDomain:
+        return zorasDomainItems()
     case .DarkWorld:
         return darkWorldItems()
     case .HyruleCastleTower:
@@ -184,6 +188,34 @@ func locationsForRegion(region: Region) -> [Location] {
     case .Progression:
         return []
     }
+}
+
+func zorasDomainItems() -> [Location] {
+    return [
+        // Zora's appearance is based on if you items flippers or not
+        Location(
+            region: Region.LightWorld,
+            name: "King Zora",
+            address: 0xEE1C3,
+            accessRequirements: { _ in return true }, // TODO: remove after tidying initializers
+            onPatchingRom: { rom, item in
+                // (This is a guess based on the Windows source)
+                // Indicates what item's presence will block the Zora scene
+                rom.patch(atByteOffset: 0x180200, withData: item.bytesForInventoryCheckOverride)
+                // Update end-game credits
+                rom.patch(atByteOffset: 0x76A85, withData: item.bytesForCredits)
+
+            }
+        ),
+        Location(
+            region: Region.LightWorld,
+            name: "Piece of Heart (Zora's River)",
+            address: 0x180149,
+            accessRequirements: { items in
+                return items.contains(Item.Flippers)
+            }
+        ),
+    ]
 }
 
 func lightWorthDeathMountainItems() -> [Location] {
@@ -1299,23 +1331,7 @@ func lightWorldItems() -> [Location] {
                 rom.patch(atByteOffset: 0x44AAE, withData: item.asData())
             }
         ),
-        // Zora's appearance is based on if you items flippers or not
-        Location(
-            region: Region.LightWorld,
-            name: "King Zora",
-            address: 0xEE1C3,
-            accessRequirements: { items in
-                return items.canAccessZorasDomain()
-            },
-            onPatchingRom: { rom, item in
-                // (This is a guess based on the Windows source)
-                // Indicates what item's presence will block the Zora scene
-                rom.patch(atByteOffset: 0x180200, withData: item.bytesForInventoryCheckOverride)
-                // Update end-game credits
-                rom.patch(atByteOffset: 0x76A85, withData: item.bytesForCredits)
 
-            }
-        ),
 
         Location(
             region: Region.LightWorld,
@@ -1417,15 +1433,6 @@ func lightWorldItems() -> [Location] {
             address: 0x180145,
             accessRequirements: { items in
                 return items.canEscapeCastle()
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Piece of Heart (Zora's River)",
-            address: 0x180149,
-            accessRequirements: { items in
-                return items.canAccessZorasDomain()
-                    && items.contains(Item.Flippers)
             }
         ),
     ]
