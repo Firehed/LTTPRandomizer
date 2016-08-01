@@ -107,9 +107,40 @@ extension SetAlgebra where Element == Item {
             && contains(Item.Hammer)
     }
 
+    func canAccessNorthWestDarkWorld() -> Bool {
+        guard contains(.MoonPearl) else {
+            return false
+        }
+        // Village warp tile direct path
+        if canLiftHeavyRocks() {
+            return true
+        }
+        // Village warp tile through forest (typical NMG route)
+        if canLiftRocks() && contains(.Hammer) {
+            return true
+        }
+        // Start at Pyramid and hookshot across
+        return canAccessPyramid()
+            && contains(.Hookshot)
+            && (canLiftRocks() || contains(.Flippers) || contains(.Hammer))
+    }
+
     func canAccessLowerDarkWorld() -> Bool {
         return canAccessDarkWorld()
             && containsAny(Item.Hammer, Item.Hookshot)
+    }
+
+    func canAccessSouthDarkWorld() -> Bool {
+        guard contains(.MoonPearl) else {
+            return false
+        }
+        // Can access south from north, reverse not guarateed
+        if canAccessNorthWestDarkWorld() {
+            return true
+        }
+        // v5 says hammer or hookshot... I'm pretty sure it's actually just hammer
+        return canAccessPyramid() && contains(.Hammer)
+//        return canAccessPyramid() && containsAny(.Hammer, .Hookshot)
     }
 
     func canAccessMireArea() -> Bool {
