@@ -152,7 +152,7 @@ class RomBuilder {
             var candidateItems: [Item] = []
             // Prefer to place an item from the available pool that expands the
             // number of accessible locations
-            for item in itemPool {
+            for item in itemPool.filter({ !$0.isJunk }) { // Only solve on items that even have a chance of improving progression - just a performance optimization
                 var haveTemp = haveItems
                 haveTemp.insert(item)
                 let newLocations = emptyLocations.filter({ $0.isAccessible(inventory: haveTemp) })
