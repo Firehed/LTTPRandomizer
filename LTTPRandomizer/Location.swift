@@ -133,6 +133,8 @@ extension Region {
 
         case .DarkWorldMire:
             return inventory.canAccessMireArea()
+        case .DarkWorldSouth:
+            return inventory.canAccessSouthDarkWorld()
 
         case .Progression: fallthrough
         case .LightWorld: fallthrough
@@ -186,6 +188,8 @@ func locationsForRegion(region: Region) -> [Location] {
         return darkWorldItems()
     case .DarkWorldMire:
         return mireItems()
+    case .DarkWorldSouth:
+        return southDarkWorldItems()
     case .HyruleCastleTower:
         return hyruleCastleTowerItems()
     case .GanonsTower:
@@ -193,6 +197,78 @@ func locationsForRegion(region: Region) -> [Location] {
     case .Progression:
         return []
     }
+}
+
+func southDarkWorldItems() -> [Location] {
+    return [
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "[cave-073] cave northeast of swamp palace [top chest]",
+            address: 0xEB1E
+        ),
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "[cave-073] cave northeast of swamp palace [top middle chest]",
+            address: 0xEB21
+        ),
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "[cave-073] cave northeast of swamp palace [bottom middle chest]",
+            address: 0xEB24
+        ),
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "[cave-073] cave northeast of swamp palace [bottom chest]",
+            address: 0xEB27
+        ),
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "Flute Boy",
+            address: 0x330C7
+        ),
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "[cave-073] cave northeast of swamp palace - generous guy",
+            address: 0x180011
+        ),
+        // Technically spawns in LW (warp from peg area)
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "Bombos",
+            address: 0x48B81,
+            accessRequirements: { items in
+                return items.canGetMasterSword()
+                    && items.containsAll(Item.BookOfMudora, Item.MagicMirror)
+            },
+            onPatchingRom: { rom, item in
+                // Inventory item check?
+                rom.patch(atByteOffset: 0x44AAE, withData: item.asData())
+            }
+        ),
+        // Technically spawns in LW (warp from circle of bushes)
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "Piece of Heart (south of Haunted Grove)",
+            address: 0x180003,
+            accessRequirements: { items in
+                return items.contains(Item.MagicMirror)
+            }
+        ),
+        // Technically spawns in LW (warp from circle of stones in lake)
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "Piece of Heart (Lake Hylia)",
+            address: 0x180144,
+            accessRequirements: { items in
+                return items.containsAll(Item.Flippers, Item.MagicMirror)
+            }
+        ),
+    ]
 }
 
 func mireItems() -> [Location] {
@@ -1343,20 +1419,6 @@ func lightWorldItems() -> [Location] {
             }
 
         ),
-        Location(
-            region: Region.LightWorld,
-            name: "Bombos",
-            address: 0x48B81,
-            accessRequirements: { items in
-                return items.canAccessSouthDarkWorld()
-                    && items.canGetMasterSword()
-                    && items.containsAll(Item.BookOfMudora, Item.MagicMirror)
-            },
-            onPatchingRom: { rom, item in
-                // Inventory item check?
-                rom.patch(atByteOffset: 0x44AAE, withData: item.asData())
-            }
-        ),
 
 
         Location(
@@ -1374,15 +1436,6 @@ func lightWorldItems() -> [Location] {
             accessRequirements: { items in
                 return items.canDefeatAgahnim1()
                     && items.contains(Item.PegasusBoots)
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Piece of Heart (south of Haunted Grove)",
-            address: 0x180003,
-            accessRequirements: { items in
-                return items.canAccessSouthDarkWorld()
-                    && items.contains(Item.MagicMirror)
             }
         ),
         Location(
@@ -1436,16 +1489,7 @@ func lightWorldItems() -> [Location] {
                     && items.contains(Item.BookOfMudora)
             }
         ),
-        Location(
-            region: Region.LightWorld,
-            name: "Piece of Heart (Lake Hylia)",
-            address: 0x180144,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-                    && items.containsAll(Item.Flippers, Item.MagicMirror)
-                    && items.canAccessSouthDarkWorld()
-            }
-        ),
+
         Location(
             region: Region.LightWorld,
             name: "Piece of Heart (Dam)",
@@ -1504,38 +1548,7 @@ func darkWorldItems() -> [Location] {
                 // Quake: Why? "stops some deadlocks"
             }
         ),
-        Location(
-            region: Region.DarkWorld,
-            name: "[cave-073] cave northeast of swamp palace [top chest]",
-            address: 0xEB1E,
-            accessRequirements: { items in
-                return items.canAccessSouthDarkWorld()
-            }
-        ),
-        Location(
-            region: Region.DarkWorld,
-            name: "[cave-073] cave northeast of swamp palace [top middle chest]",
-            address: 0xEB21,
-            accessRequirements: { items in
-                return items.canAccessSouthDarkWorld()
-            }
-        ),
-        Location(
-            region: Region.DarkWorld,
-            name: "[cave-073] cave northeast of swamp palace [bottom middle chest]",
-            address: 0xEB24,
-            accessRequirements: { items in
-                return items.canAccessSouthDarkWorld()
-            }
-        ),
-        Location(
-            region: Region.DarkWorld,
-            name: "[cave-073] cave northeast of swamp palace [bottom chest]",
-            address: 0xEB27,
-            accessRequirements: { items in
-                return items.canAccessSouthDarkWorld()
-            }
-        ),
+
 
         Location(
             region: Region.DarkWorld,
@@ -1578,15 +1591,6 @@ func darkWorldItems() -> [Location] {
         // MARK: not late game
         Location(
             region: Region.DarkWorld,
-            name: "Flute Boy",
-            address: 0x330C7,
-            accessRequirements: { items in
-                return items.canAccessSouthDarkWorld()
-            }
-        ),
-        // MARK: not late game
-        Location(
-            region: Region.DarkWorld,
             name: "Catfish",
             address: 0xEE185,
             accessRequirements: { items in
@@ -1612,15 +1616,7 @@ func darkWorldItems() -> [Location] {
                     && items.contains(Item.Hammer)
             }
         ),
-        // MARK: not late game
-        Location(
-            region: Region.DarkWorld,
-            name: "[cave-073] cave northeast of swamp palace - generous guy",
-            address: 0x180011,
-            accessRequirements: { items in
-                return items.canAccessSouthDarkWorld()
-            }
-        ),
+
         // MARK: not late game
         Location(
             region: Region.DarkWorld,
