@@ -228,6 +228,7 @@ class DifficultyCasual: Difficulty {
     private func isLateGameItem(_ item: Item) -> Bool {
         // TODO: original randomizer seeds one of four (mitt, hammer, mitt again, hammer+mitt) to raise difficulty during earlier setup. not touching that for now.
         switch item {
+        case .TitansMitt: fallthrough
         case .RedMail: fallthrough
         case .MirrorShield:
             return true
