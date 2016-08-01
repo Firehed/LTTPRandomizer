@@ -12,6 +12,7 @@ enum Region: Int {
     case Progression
     case HyruleCastleEscape
     case LightWorld
+    case LightWorldDeathMountain
     case LightWorldEasternDeathMountain
     case EasternPalace
     case DesertPalace
@@ -31,6 +32,7 @@ enum Region: Int {
         .Progression,
         .HyruleCastleEscape,
         .LightWorld,
+        .LightWorldDeathMountain,
         .LightWorldEasternDeathMountain,
         .EasternPalace,
         .DesertPalace,
@@ -53,6 +55,7 @@ enum Region: Int {
             return true
         case .HyruleCastleEscape: fallthrough
         case .LightWorld: fallthrough
+        case .LightWorldDeathMountain: fallthrough
         case .LightWorldEasternDeathMountain: fallthrough
         case .EasternPalace: fallthrough
         case .DesertPalace: fallthrough

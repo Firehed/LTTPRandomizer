@@ -124,6 +124,8 @@ extension Region {
         case .GanonsTower:
             return inventory.canEnterGanonsTower()
 
+        case .LightWorldDeathMountain:
+            return inventory.canAccessDeathMountain()
         case .LightWorldEasternDeathMountain:
             return inventory.canAccessEasternDeathMountain()
 
@@ -169,6 +171,8 @@ func locationsForRegion(region: Region) -> [Location] {
         return turtleRockItems()
     case .LightWorld:
         return lightWorldItems()
+    case .LightWorldDeathMountain:
+        return lightWorthDeathMountainItems()
     case .LightWorldEasternDeathMountain:
         return lightWorldEasternDeathMountainItems()
     case .DarkWorld:
@@ -180,6 +184,29 @@ func locationsForRegion(region: Region) -> [Location] {
     case .Progression:
         return []
     }
+}
+
+func lightWorthDeathMountainItems() -> [Location] {
+    return [
+        Location(
+            region: Region.LightWorldDeathMountain,
+            name: "Old mountain man",
+            address: 0xF69FA
+        ),
+        Location(
+            region: Region.LightWorldDeathMountain,
+            name: "Piece of Heart (Spectacle Rock Cave)",
+            address: 0x180002
+        ),
+        Location(
+            region: Region.LightWorldDeathMountain,
+            name: "Piece of Heart (Spectacle Rock)",
+            address: 0x180140,
+            accessRequirements: { items in
+                return items.contains(Item.MagicMirror)
+            }
+        ),
+    ]
 }
 
 func lightWorldEasternDeathMountainItems() -> [Location] {
@@ -1289,14 +1316,7 @@ func lightWorldItems() -> [Location] {
 
             }
         ),
-        Location(
-            region: Region.LightWorld,
-            name: "Old mountain man",
-            address: 0xF69FA,
-            accessRequirements: { items in
-                return items.canAccessDeathMountain()
-            }
-        ),
+
         Location(
             region: Region.LightWorld,
             name: "Piece of Heart (Thieves' Forest Hideout)",
@@ -1312,14 +1332,6 @@ func lightWorldItems() -> [Location] {
             accessRequirements: { items in
                 return items.canDefeatAgahnim1()
                     && items.contains(Item.PegasusBoots)
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Piece of Heart (Spectacle Rock Cave)",
-            address: 0x180002,
-            accessRequirements: { items in
-                return items.canAccessDeathMountain()
             }
         ),
         Location(
@@ -1362,15 +1374,6 @@ func lightWorldItems() -> [Location] {
             accessRequirements: { items in
                 return items.canEscapeCastle()
                     && items.contains(Item.PegasusBoots)
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Piece of Heart (Spectacle Rock)",
-            address: 0x180140,
-            accessRequirements: { items in
-                return items.canAccessDeathMountain()
-                    && items.contains(Item.MagicMirror)
             }
         ),
         Location(
