@@ -51,16 +51,25 @@ class DifficultyCasual: Difficulty {
     }
 
     func getLocationForItemPlacement(possibleLocations: [Location], item: Item, randomizer: Randomizer) -> Location {
+        var badLateGameLocation: Bool,
+            badUniqueItemLocation: Bool,
+            unusedUniqueLocation: Bool
+
         var location: Location
-        var badLateGameLocation: Bool, badUniqueItemLocation: Bool, unusedUniqueLocation: Bool
         repeat {
             location = possibleLocations.selectAtRandom(randomizer)
 
-            badLateGameLocation = isLateGameItem(item) && !location.isLateGame
-            badUniqueItemLocation = !isUniqueItem(item) && location.uniqueItemOnly
-            // todo: bad first item (don't really care)
-            unusedUniqueLocation = isUniqueItem(item) && !location.uniqueItemOnly && possibleLocations.filter({ $0.uniqueItemOnly }).isNonEmpty
+            badLateGameLocation = isLateGameItem(item) // Late game item
+                && !location.isLateGame // early-game location
 
+            badUniqueItemLocation = !isUniqueItem(item) // Non-unique item
+                && location.uniqueItemOnly // in a unique location
+
+            unusedUniqueLocation = isUniqueItem(item) // Unique item
+                && !location.uniqueItemOnly // non-unique-item location
+                && possibleLocations.filter({ $0.uniqueItemOnly }).isNonEmpty // unique-item locations available
+
+            // TODO: bad first item (don't really care)
         } while (badLateGameLocation || badUniqueItemLocation || unusedUniqueLocation)
         return location
     }
