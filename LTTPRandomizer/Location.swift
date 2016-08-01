@@ -519,13 +519,8 @@ func swampPalaceItems() -> [Location] {
             name: "[dungeon-D2-B1] Swamp Palace - big chest",
             address: 0xE989,
             keyZone: 3,
-            bigKeyNeeded: true,
+            bigKeyNeeded: true
             // big chests require all the items that other chests in the dungeon require (that also don't require big key)
-            accessRequirements: { items in
-                return true
-                //                        && items.contains(Item.Hammer)
-                //                        && items.contains(Item.Hookshot)
-            }
         ),
         Location(
             lateGameItem: true,
@@ -623,11 +618,8 @@ func skullWoodsItems() -> [Location] {
             name: "[dungeon-D3-B1] Skull Woods - big chest",
             address: 0xE998,
             keyZone: 2,
-            bigKeyNeeded: true,
+            bigKeyNeeded: true
             // big chests require all the items that other chests in the dungeon require (that also don't require big key)
-            accessRequirements: { items in
-                return items.canEnterSkullWoods2()
-            }
         ),
         Location(
             lateGameItem: true,
