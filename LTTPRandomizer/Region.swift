@@ -23,6 +23,7 @@ enum Region: Int {
     case DarkWorld
     case DarkWorldMire
     case DarkWorldSouth
+    case DarkWorldEasternDeathMountain
     case DarkPalace
     case SwampPalace
     case SkullWoods
@@ -46,6 +47,7 @@ enum Region: Int {
         .DarkWorld,
         .DarkWorldMire,
         .DarkWorldSouth,
+        .DarkWorldEasternDeathMountain,
         .DarkPalace,
         .SwampPalace,
         .SkullWoods,
@@ -73,6 +75,7 @@ enum Region: Int {
         case .DarkWorld: fallthrough
         case .DarkWorldMire: fallthrough
         case .DarkWorldSouth: fallthrough
+        case .DarkWorldEasternDeathMountain: fallthrough
         case .DarkPalace: fallthrough
         case .SwampPalace: fallthrough
         case .SkullWoods: fallthrough

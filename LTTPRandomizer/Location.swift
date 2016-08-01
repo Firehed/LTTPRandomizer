@@ -135,6 +135,8 @@ extension Region {
             return inventory.canAccessMireArea()
         case .DarkWorldSouth:
             return inventory.canAccessSouthDarkWorld()
+        case .DarkWorldEasternDeathMountain:
+            return inventory.canAccessEastDarkWorldDeathMountain()
 
         case .Progression: fallthrough
         case .LightWorld: fallthrough
@@ -190,6 +192,8 @@ func locationsForRegion(region: Region) -> [Location] {
         return mireItems()
     case .DarkWorldSouth:
         return southDarkWorldItems()
+    case .DarkWorldEasternDeathMountain:
+        return easternDarkWorldDeathMountainItems()
     case .HyruleCastleTower:
         return hyruleCastleTowerItems()
     case .GanonsTower:
@@ -197,6 +201,63 @@ func locationsForRegion(region: Region) -> [Location] {
     case .Progression:
         return []
     }
+}
+
+func easternDarkWorldDeathMountainItems() -> [Location] {
+    return [
+        Location(
+            region: Region.LightWorld,
+            name: "Piece of Heart (Death Mountain - floating island)",
+            address: 0x180141,
+            accessRequirements: { items in
+                return items.contains(Item.MoonPearl)
+            }
+        ),
+        Location(
+            region: Region.DarkWorldEasternDeathMountain,
+            name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [top chest]",
+            address: 0xEA7C
+        ),
+        Location(
+            region: Region.DarkWorldEasternDeathMountain,
+            name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [bottom chest]",
+            address: 0xEA7F
+        ),
+        Location(
+            region: Region.DarkWorldEasternDeathMountain,
+            name: "[cave-056] Dark World Death Mountain - cave under boulder [top right chest]",
+            address: 0xEB51,
+            accessRequirements: { items in
+                return items.containsAll(Item.Hookshot, Item.MoonPearl)
+            }
+        ),
+        Location(
+            region: Region.DarkWorldEasternDeathMountain,
+            name: "[cave-056] Dark World Death Mountain - cave under boulder [top left chest]",
+            address: 0xEB54,
+            accessRequirements: { items in
+                return items.containsAll(Item.Hookshot, Item.MoonPearl)
+            }
+        ),
+        Location(
+            region: Region.DarkWorldEasternDeathMountain,
+            name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom left chest]",
+            address: 0xEB57,
+            accessRequirements: { items in
+                return items.containsAll(Item.Hookshot, Item.MoonPearl)
+            }
+        ),
+        Location(
+            region: Region.DarkWorldEasternDeathMountain,
+            name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom right chest]",
+            address: 0xEB5A,
+            accessRequirements: { items in
+                return items.containsAll(Item.Hookshot, Item.MoonPearl)
+                    // not actually required here, but stops some deadlocks
+                    && items.contains(Item.FireRod)
+            }
+        ),
+    ]
 }
 
 func southDarkWorldItems() -> [Location] {
@@ -1466,14 +1527,6 @@ func lightWorldItems() -> [Location] {
         ),
         Location(
             region: Region.LightWorld,
-            name: "Piece of Heart (Death Mountain - floating island)",
-            address: 0x180141,
-            accessRequirements: { items in
-                return items.canAccessEastDarkWorldDeathMountain()
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
             name: "Piece of Heart (Maze Race)",
             address: 0x180142,
             accessRequirements: { items in
@@ -1520,22 +1573,7 @@ func darkWorldItems() -> [Location] {
             }
         ),
 
-        Location(
-            region: Region.DarkWorld,
-            name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [top chest]",
-            address: 0xEA7C,
-            accessRequirements: { items in
-                return items.canAccessEastDarkWorldDeathMountain()
-            }
-        ),
-        Location(
-            region: Region.DarkWorld,
-            name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [bottom chest]",
-            address: 0xEA7F,
-            accessRequirements: { items in
-                return items.canAccessEastDarkWorldDeathMountain()
-            }
-        ),
+
         // TODO: watch for softlock?
         Location(
             region: Region.DarkWorld,
@@ -1550,44 +1588,7 @@ func darkWorldItems() -> [Location] {
         ),
 
 
-        Location(
-            region: Region.DarkWorld,
-            name: "[cave-056] Dark World Death Mountain - cave under boulder [top right chest]",
-            address: 0xEB51,
-            accessRequirements: { items in
-                return items.canAccessEastDarkWorldDeathMountain()
-                    && items.containsAll(Item.Hookshot, Item.MoonPearl)
-            }
-        ),
-        Location(
-            region: Region.DarkWorld,
-            name: "[cave-056] Dark World Death Mountain - cave under boulder [top left chest]",
-            address: 0xEB54,
-            accessRequirements: { items in
-                return items.canAccessEastDarkWorldDeathMountain()
-                    && items.containsAll(Item.Hookshot, Item.MoonPearl)
-            }
-        ),
-        Location(
-            region: Region.DarkWorld,
-            name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom left chest]",
-            address: 0xEB57,
-            accessRequirements: { items in
-                return items.canAccessEastDarkWorldDeathMountain()
-                    && items.containsAll(Item.Hookshot, Item.MoonPearl)
-            }
-        ),
-        Location(
-            region: Region.DarkWorld,
-            name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom right chest]",
-            address: 0xEB5A,
-            accessRequirements: { items in
-                return items.canAccessEastDarkWorldDeathMountain()
-                    && items.containsAll(Item.Hookshot, Item.MoonPearl)
-                    // not actually required here, but stops some deadlocks
-                    && items.contains(Item.FireRod)
-            }
-        ),
+
         // MARK: not late game
         Location(
             region: Region.DarkWorld,
