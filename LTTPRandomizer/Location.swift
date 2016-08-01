@@ -449,12 +449,8 @@ func towerOfHeraItems() -> [Location] {
             region: Region.TowerOfHera,
             name: "[dungeon-L3-4F] Tower of Hera - big chest",
             address: 0xE9F8,
-            keyZone: 1,
-            bigKeyNeeded: true,
-            // big chests require all the items that other chests in the dungeon require (that also don't require big key)
-            accessRequirements: { items in
-                return items.canLightTorches()
-            }
+            keyZone: 0,
+            bigKeyNeeded: true
         ),
         Location(
             region: Region.TowerOfHera,
