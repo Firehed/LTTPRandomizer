@@ -1371,8 +1371,8 @@ func lightWorldItems() -> [Location] {
             name: "Piece of Heart (Desert - northeast corner)",
             address: 0x180005,
             accessRequirements: { items in
-                // Mirror is techincally redundant
-                return items.canAccessMireArea() && items.contains(Item.MagicMirror)
+                return items.canAccessMireArea()
+                    && items.contains(Item.MagicMirror)
             }
         ),
         Location(

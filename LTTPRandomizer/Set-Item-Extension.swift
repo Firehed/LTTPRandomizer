@@ -145,7 +145,6 @@ extension SetAlgebra where Element == Item {
     func canAccessMireArea() -> Bool {
         return canFly()
             && canLiftHeavyRocks()
-            && canMoveInDarkWorld()
     }
 
     func canAccessPyramid() -> Bool {
