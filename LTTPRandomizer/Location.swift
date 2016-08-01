@@ -1036,8 +1036,9 @@ func lightWorldItems() -> [Location] {
             accessRequirements: { items in
                 return items.canEscapeCastle()
                     && items.contains(Item.PegasusBoots)
-                    && (items.contains(Item.TitansMitt)
-                        || items.canAccessLowerDarkWorld())
+                    && (items.canLiftHeavyRocks()
+                        || (items.canAccessNorthWestDarkWorld()
+                            && items.contains(Item.MagicMirror)))
             }
         ),
         Location(
