@@ -124,6 +124,8 @@ extension Region {
         case .GanonsTower:
             return inventory.canEnterGanonsTower()
 
+        case .LightWorldEasternDeathMountain:
+            return inventory.canAccessEasternDeathMountain()
 
         case .Progression: fallthrough
         case .LightWorld: fallthrough
@@ -167,6 +169,8 @@ func locationsForRegion(region: Region) -> [Location] {
         return turtleRockItems()
     case .LightWorld:
         return lightWorldItems()
+    case .LightWorldEasternDeathMountain:
+        return lightWorldEasternDeathMountainItems()
     case .DarkWorld:
         return darkWorldItems()
     case .HyruleCastleTower:
@@ -176,6 +180,51 @@ func locationsForRegion(region: Region) -> [Location] {
     case .Progression:
         return []
     }
+}
+
+func lightWorldEasternDeathMountainItems() -> [Location] {
+    return [
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top left chest]",
+            address: 0xEB2A
+        ),
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top left middle chest]",
+            address: 0xEB2D
+        ),
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top right middle chest]",
+            address: 0xEB30
+        ),
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top right chest]",
+            address: 0xEB33
+        ),
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [bottom chest]",
+            address: 0xEB36
+        ),
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-009-B1] Death Mountain - wall of caves - right cave [left chest]",
+            address: 0xEB39
+        ),
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-009-B1] Death Mountain - wall of caves - right cave [right chest]",
+            address: 0xEB3C
+        ),
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-012-1F] Death Mountain - wall of caves - left cave",
+            address: 0xE9BF
+        ),
+    ]
 }
 
 func hyruleEscapeItems() -> [Location] {
@@ -949,14 +998,6 @@ func lightWorldItems() -> [Location] {
             name: "[cave-040] Link's House",
             address: 0xE9BC
         ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-012-1F] Death Mountain - wall of caves - left cave",
-            address: 0xE9BF,
-            accessRequirements: { items in
-                return items.canAccessEasternDeathMountain()
-            }
-        ),
         // MARK: Late Game
         Location(
             region: Region.LightWorld,
@@ -1099,62 +1140,7 @@ func lightWorldItems() -> [Location] {
                 return items.canEscapeCastle()
             }
         ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top left chest]",
-            address: 0xEB2A,
-            accessRequirements: { items in
-                return items.canAccessEasternDeathMountain()
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top left middle chest]",
-            address: 0xEB2D,
-            accessRequirements: { items in
-                return items.canAccessEasternDeathMountain()
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top right middle chest]",
-            address: 0xEB30,
-            accessRequirements: { items in
-                return items.canAccessEasternDeathMountain()
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top right chest]",
-            address: 0xEB33,
-            accessRequirements: { items in
-                return items.canAccessEasternDeathMountain()
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [bottom chest]",
-            address: 0xEB36,
-            accessRequirements: { items in
-                return items.canAccessEasternDeathMountain()
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-009-B1] Death Mountain - wall of caves - right cave [left chest]",
-            address: 0xEB39,
-            accessRequirements: { items in
-                return items.canAccessEasternDeathMountain()
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-009-B1] Death Mountain - wall of caves - right cave [right chest]",
-            address: 0xEB3C,
-            accessRequirements: { items in
-                return items.canAccessEasternDeathMountain()
-            }
-        ),
+
         Location(
             region: Region.LightWorld,
             name: "[cave-016] cave under rocks west of Santuary",
