@@ -163,7 +163,7 @@ class RomBuilder {
 
             var selected: Item
             if candidateItems.count > 0 {
-                selected = candidateItems.selectAtRandom(random)
+                selected = difficulty.getItemForInsertion(possibleItems: candidateItems, possibleLocations: possibleLocations, randomizer: random)
             } else {
                 selected = difficulty.getItemForInsertion(possibleItems: itemPool, possibleLocations: possibleLocations, randomizer: random)
             }
