@@ -44,4 +44,32 @@ enum Region: Int {
         .TurtleRock,
         .GanonsTower,
     ]
+
+    var isLightWorld: Bool {
+        switch self {
+        case .Progression:
+            return true
+        case .HyruleCastleEscape: fallthrough
+        case .LightWorld: fallthrough
+        case .EasternPalace: fallthrough
+        case .DesertPalace: fallthrough
+        case .TowerOfHera: fallthrough
+        case .HyruleCastleTower:
+            return true
+        case .DarkWorld: fallthrough
+        case .DarkPalace: fallthrough
+        case .SwampPalace: fallthrough
+        case .SkullWoods: fallthrough
+        case .ThievesTown: fallthrough
+        case .IcePalace: fallthrough
+        case .MiseryMire: fallthrough
+        case .TurtleRock: fallthrough
+        case .GanonsTower:
+            return false
+
+        }
+    }
+    var isDarkWorld: Bool {
+        return !isLightWorld
+    }
 }
