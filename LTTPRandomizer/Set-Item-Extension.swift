@@ -102,10 +102,8 @@ extension SetAlgebra where Element == Item {
     }
 
     func canAccessEastDarkWorldDeathMountain() -> Bool {
-        return canAccessDeathMountain()
-            && canMoveInDarkWorld()
-            && canLiftHeavyRocks()
-            && contains(Item.Hammer)
+        return canAccessEasternDeathMountain()
+            && canLiftHeavyRocks() // All warp tiles require
     }
 
     func canAccessNorthWestDarkWorld() -> Bool {
@@ -199,7 +197,7 @@ extension SetAlgebra where Element == Item {
 
     func canEnterTurtleRock() -> Bool {
         return canAccessEastDarkWorldDeathMountain()
-            && containsAll(Item.Hammer, Item.Quake, Item.CaneOfSomaria)
+            && containsAll(Item.Hammer, Item.Quake, Item.CaneOfSomaria, Item.MoonPearl)
     }
 
     func canEnterGanonsTower() -> Bool {
