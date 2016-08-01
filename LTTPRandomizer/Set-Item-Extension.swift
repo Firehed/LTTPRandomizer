@@ -21,7 +21,8 @@ extension SetAlgebra where Element == Item {
     /// "Wall of caves" area
     func canAccessEasternDeathMountain() -> Bool {
         return canAccessDeathMountain()
-            && (contains(Item.Hookshot) || containsAll(Item.Hammer, Item.MagicMirror))
+            && (contains(Item.Hookshot) // Southern route
+                || containsAll(Item.Hammer, Item.MagicMirror)) // from Hera
     }
 
     func canAccessZorasDomain() -> Bool {
