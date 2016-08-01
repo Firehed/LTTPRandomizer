@@ -148,9 +148,9 @@ extension SetAlgebra where Element == Item {
     }
 
     func canAccessPyramid() -> Bool {
-        // If Link arrives in DW from having an early Titan's Mitt but no hammer, the Pyramid is inaccessible
-        return canAccessDarkWorld()
-            && (canDefeatAgahnim1() || contains(Item.Hammer))
+        return canDefeatAgahnim1() // Normal progression
+            || (contains(.Hammer) && canLiftRocks()) // Swamp palace warp tile
+            || (contains(.Flippers) && canLiftHeavyRocks()) // Village and swim
     }
 
 }
@@ -160,6 +160,7 @@ extension SetAlgebra where Element == Item {
 
     func canEnterDarkPalace() -> Bool {
         return canAccessPyramid()
+            && contains(.MoonPearl)
     }
 
     func canEnterSwampPalace() -> Bool {
