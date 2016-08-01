@@ -125,7 +125,9 @@ extension Region {
             return inventory.canEnterGanonsTower()
 
 
-        default:
+        case .Progression: fallthrough
+        case .LightWorld: fallthrough
+        case .DarkWorld:
             return true
         }
     }
