@@ -1269,141 +1269,87 @@ func lightWorldItems() -> [Location] {
         Location(
             region: Region.LightWorld,
             name: "[cave-047] Dam",
-            address: 0xE98C,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xE98C
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-031] Tavern",
-            address: 0xE9CE,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xE9CE
         ),
-
-
-
         Location(
             region: Region.LightWorld,
             name: "[cave-026] chicken house",
-            address: 0xE9E9,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xE9E9
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-044] Aginah's cave",
-            address: 0xE9F2,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xE9F2
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-035] Sahasrahla's Hut [left chest]",
-            address: 0xEA82,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEA82
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-035] Sahasrahla's Hut [center chest]",
-            address: 0xEA85,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEA85
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-035] Sahasrahla's Hut [right chest]",
-            address: 0xEA88,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEA88
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [top chest]",
-            address: 0xEA8E,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEA8E
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [left chest row of 3]",
-            address: 0xEA91,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEA91
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [center chest row of 3]",
-            address: 0xEA94,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEA94
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [right chest row of 3]",
-            address: 0xEA97,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEA97
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [bottom chest]",
-            address: 0xEA9A,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEA9A
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [top chest]",
-            address: 0xEB0F,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEB0F
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [top left chest]",
-            address: 0xEB12,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEB12
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [top right chest]",
-            address: 0xEB15,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEB15
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [bottom left chest]",
-            address: 0xEB18,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEB18
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [bottom right chest]",
-            address: 0xEB1B,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEB1B
         ),
 
         Location(
@@ -1411,49 +1357,33 @@ func lightWorldItems() -> [Location] {
             name: "[cave-016] cave under rocks west of Santuary",
             address: 0xEB3F,
             accessRequirements: { items in
-                return items.canEscapeCastle()
-                    && items.contains(Item.PegasusBoots)
+                return items.contains(Item.PegasusBoots)
             }
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia [bottom left chest]",
-            address: 0xEB42,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEB42
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia [top left chest]",
-            address: 0xEB45,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEB45
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia [top right chest]",
-            address: 0xEB48,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEB48
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia [bottom right chest]",
-            address: 0xEB4B,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEB4B
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-051] Ice Cave",
-            address: 0xEB4E,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0xEB4E
         ),
         //// Getting anything other than the sword here can be bad for progress... may as well keep the sword here since you can't use it if you get it before the uncle.
         //Location(
@@ -1468,10 +1398,7 @@ func lightWorldItems() -> [Location] {
         Location(
             region: Region.LightWorld,
             name: "Bottle Vendor",
-            address: 0x2EB18,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0x2EB18
         ),
         Location(
             region: Region.LightWorld,
@@ -1486,8 +1413,7 @@ func lightWorldItems() -> [Location] {
             name: "Sick Kid",
             address: 0x339CF,
             accessRequirements: { items in
-                return items.canEscapeCastle()
-                    && items.contains(Item.Bottle)
+                return items.contains(Item.Bottle)
             }
         ),
         Location(
@@ -1505,8 +1431,7 @@ func lightWorldItems() -> [Location] {
             name: "Hobo",
             address: 0x33E7D,
             accessRequirements: { items in
-                return items.canEscapeCastle()
-                    && items.contains(Item.Flippers)
+                return items.contains(Item.Flippers)
             }
         ),
         Location(
@@ -1522,17 +1447,11 @@ func lightWorldItems() -> [Location] {
                 // Inventory item check?
                 rom.patch(atByteOffset: 0x44AA9, withData: item.asData())
             }
-
         ),
-
-
         Location(
             region: Region.LightWorld,
             name: "Piece of Heart (Thieves' Forest Hideout)",
-            address: 0x180000,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0x180000
         ),
         Location(
             region: Region.LightWorld,
@@ -1555,45 +1474,33 @@ func lightWorldItems() -> [Location] {
         Location(
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia - generous guy",
-            address: 0x180010,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0x180010
         ),
         Location(
             region: Region.LightWorld,
             name: "Library",
             address: 0x180012,
             accessRequirements: { items in
-                return items.canEscapeCastle()
-                    && items.contains(Item.PegasusBoots)
+                return items.contains(Item.PegasusBoots)
             }
         ),
         Location(
             region: Region.LightWorld,
             name: "Piece of Heart (Maze Race)",
-            address: 0x180142,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0x180142
         ),
         Location(
             region: Region.LightWorld,
             name: "Piece of Heart (Desert - west side)",
             address: 0x180143,
             accessRequirements: { items in
-                return items.canEscapeCastle()
-                    && items.contains(Item.BookOfMudora)
+                return items.contains(Item.BookOfMudora)
             }
         ),
-
         Location(
             region: Region.LightWorld,
             name: "Piece of Heart (Dam)",
-            address: 0x180145,
-            accessRequirements: { items in
-                return items.canEscapeCastle()
-            }
+            address: 0x180145
         ),
     ]
 }
