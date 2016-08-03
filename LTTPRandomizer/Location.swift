@@ -1227,6 +1227,17 @@ func turtleRockItems() -> [Location] {
                 return items.contains(Item.FireRod)
             }
         ),
+        // Technically it's LW, but accessed inside TR
+        Location(
+            region: Region.TurtleRock,
+            name: "[cave-013] Mimic cave (from Turtle Rock)",
+            address: 0xE9C5,
+            accessRequirements: { items in
+                return items.canEnterTurtleRock()
+                    // FireRod should not strictly be necessary depending on key placement
+                    && items.containsAll(Item.FireRod, Item.MagicMirror)
+            }
+        ),
     ]
 }
 
@@ -1262,17 +1273,6 @@ func lightWorldItems() -> [Location] {
             name: "[cave-040] Link's House",
             address: 0xE9BC
         ),
-        // MARK: Late Game
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-013] Mimic cave (from Turtle Rock)",
-            address: 0xE9C5,
-            accessRequirements: { items in
-                return items.canEnterTurtleRock()
-                    && items.contains(Item.FireRod)
-            }
-        ),
-
         Location(
             region: Region.LightWorld,
             name: "[cave-031] Tavern",
