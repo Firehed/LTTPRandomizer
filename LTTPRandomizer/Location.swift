@@ -240,11 +240,12 @@ func progressionItems() -> [Location] {
 func easternDarkWorldDeathMountainItems() -> [Location] {
     return [
         Location(
-            region: Region.LightWorld,
+            region: Region.DarkWorldEasternDeathMountain,
             name: "Piece of Heart (Death Mountain - floating island)",
             address: 0x180141,
             accessRequirements: { items in
-                return items.contains(Item.MoonPearl)
+                // No hookshot here, just the invisible path
+                return items.containsAll(Item.MagicMirror, Item.MoonPearl)
             }
         ),
         Location(
