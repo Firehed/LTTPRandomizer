@@ -1102,9 +1102,7 @@ func miseryMireItems() -> [Location] {
             bigKeyNeeded: true,
             // big chests require all the items that other chests in the dungeon require (that also don't require big key)
             accessRequirements: { items in
-                return (items.contains(Item.Hookshot)
-                        || items.contains(Item.PegasusBoots))
-                    && items.canLightTorches()
+                return items.containsAny(Item.Hookshot, Item.PegasusBoots)
             }
         ),
         Location(
