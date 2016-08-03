@@ -97,6 +97,8 @@ extension Region {
         switch self {
 
         case .HyruleCastleEscape:
+            return true
+        case .LightWorld:
             return inventory.canEscapeCastle()
         case .EasternPalace:
             return inventory.canEnterEasternPalace()
@@ -139,7 +141,6 @@ extension Region {
             return inventory.canAccessEastDarkWorldDeathMountain()
 
         case .Progression: fallthrough
-        case .LightWorld: fallthrough
         case .DarkWorld:
             return true
         }
