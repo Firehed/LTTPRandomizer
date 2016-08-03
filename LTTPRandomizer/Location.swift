@@ -1260,8 +1260,7 @@ func lightWorldItems() -> [Location] {
             name: "[cave-018] Graveyard - top right grave",
             address: 0xE97A,
             accessRequirements: { items in
-                return items.canEscapeCastle()
-                    && items.contains(Item.PegasusBoots)
+                return items.contains(Item.PegasusBoots)
                     && (items.canLiftHeavyRocks()
                         || (items.canAccessNorthWestDarkWorld()
                             && items.contains(Item.MagicMirror)))
