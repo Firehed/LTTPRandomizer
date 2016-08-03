@@ -139,7 +139,7 @@ extension SetAlgebra where Element == Item {
 
     func canAccessPyramid() -> Bool {
         return canDefeatAgahnim1() // Normal progression
-            || (contains(.Hammer) && canLiftRocks()) // Swamp palace warp tile
+            || (containsAll(.Hammer, .MoonPearl) && canLiftRocks()) // Swamp palace warp tile
             || (contains(.Flippers) && canLiftHeavyRocks()) // Village and swim
     }
 
