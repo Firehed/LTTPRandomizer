@@ -436,6 +436,16 @@ func lightWorthDeathMountainItems() -> [Location] {
                 return items.contains(Item.MagicMirror)
             }
         ),
+        // This is technically in DW directly below the warp tile
+        Location(
+            region: Region.LightWorldDeathMountain,
+            name: "[cave-055] Spike cave",
+            address: 0xEA8B,
+            accessRequirements: { items in
+                return items.contains(Item.MoonPearl)
+                    && items.contains(Item.Hammer)
+            }
+        ),
     ]
 }
 
@@ -1607,18 +1617,6 @@ func darkWorldItems() -> [Location] {
         ),
 
 
-        // TODO: watch for softlock?
-        Location(
-            region: Region.DarkWorld,
-            name: "[cave-055] Spike cave",
-            address: 0xEA8B,
-            accessRequirements: { items in
-                return items.canAccessDeathMountain()
-                    && items.contains(Item.MoonPearl)
-                    && items.contains(Item.Hammer)
-                // Quake: Why? "stops some deadlocks"
-            }
-        ),
 
 
 
