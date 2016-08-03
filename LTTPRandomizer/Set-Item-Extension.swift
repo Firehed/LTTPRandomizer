@@ -51,9 +51,9 @@ extension SetAlgebra where Element == Item {
     }
 
     func canEnterTowerOfHera() -> Bool {
-        return canEscapeCastle()
-            && canAccessDeathMountain()
-            && contains(Item.MagicMirror)
+        return canAccessDeathMountain()
+            && (containsAll(Item.Hookshot, Item.Hammer) // wrap around via Eastern
+                || contains(Item.MagicMirror)) // standard route
     }
 
     func canEnterHyruleCastleTower() -> Bool {
