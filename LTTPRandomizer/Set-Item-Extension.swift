@@ -15,7 +15,7 @@ extension SetAlgebra where Element == Item {
 
     func canAccessDeathMountain() -> Bool {
         return canEscapeCastle()
-            && canLiftRocks()
+            && (canLiftRocks() || canFly())
     }
 
     /// "Wall of caves" area
