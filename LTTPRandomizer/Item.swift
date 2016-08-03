@@ -32,9 +32,11 @@ enum Item: UInt8, CustomStringConvertible {
     case Lamp = 0x12 // alt: 5 rupees
     case Shovel = 0x13
     case OcarinaInactive = 0x14
+    /// Red cane
     case CaneOfSomaria = 0x15
     case Bottle = 0x16
     case PieceOfHeart = 0x17
+    /// Blue cane
     case StaffOfByrna = 0x18
     case Cape = 0x19
     case MagicMirror = 0x1a
