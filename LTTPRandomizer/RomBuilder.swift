@@ -61,7 +61,9 @@ class RomBuilder {
         for location in locations {
 
             if location.item == .Nothing {
-                NSLog("%@ has no item", location.name)
+                if location.region != .Progression {
+                    NSLog("%@ has no item", location.name)
+                }
                 continue
             }
 
@@ -140,7 +142,7 @@ class RomBuilder {
     private func generateItemPositions() -> Void {
         repeat {
             let emptyLocations = difficulty.locations.withNoItems()
-            let possibleLocations = emptyLocations.filter({ $0.isAccessible(inventory: haveItems) })
+            var possibleLocations = emptyLocations.filter({ $0.isAccessible(inventory: haveItems) })
 
             // Something has gone deeply wrong during the dependency-solving process
             if (possibleLocations.isEmpty) {
@@ -160,6 +162,8 @@ class RomBuilder {
                     candidateItems.append(item)
                 }
             }
+            // Remove the fake locations
+            possibleLocations = possibleLocations.filter({ return $0.region != .Progression })
 
             var selected: Item
             if candidateItems.count > 0 {

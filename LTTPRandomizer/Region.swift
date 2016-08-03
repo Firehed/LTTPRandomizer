@@ -9,6 +9,7 @@
 import Foundation
 
 enum Region: Int {
+    /// Fake rooms created to break ambiguous depsolving
     case Progression
     case HyruleCastleEscape
     case LightWorld
