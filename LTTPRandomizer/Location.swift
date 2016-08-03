@@ -499,6 +499,16 @@ func hyruleEscapeItems() -> [Location] {
     return [
         Location(
             region: Region.HyruleCastleEscape,
+            name: "[cave-040] Link's House",
+            address: 0xE9BC
+        ),
+        Location(
+            region: Region.HyruleCastleEscape,
+            name: "[cave-034] Hyrule Castle secret entrance",
+            address: 0xE971
+        ),
+        Location(
+            region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B1] Escape - first B1 room",
             address: 0xE96E,
             keyZone: 2,
@@ -1246,11 +1256,6 @@ func lightWorldItems() -> [Location] {
     return [
         Location(
             region: Region.LightWorld,
-            name: "[cave-034] Hyrule Castle secret entrance",
-            address: 0xE971
-        ),
-        Location(
-            region: Region.LightWorld,
             name: "[cave-018] Graveyard - top right grave",
             address: 0xE97A,
             accessRequirements: { items in
@@ -1268,11 +1273,6 @@ func lightWorldItems() -> [Location] {
             accessRequirements: { items in
                 return items.canEscapeCastle()
             }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-040] Link's House",
-            address: 0xE9BC
         ),
         Location(
             region: Region.LightWorld,
