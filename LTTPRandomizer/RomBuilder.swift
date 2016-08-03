@@ -97,6 +97,7 @@ class RomBuilder {
     private func generateItemList() -> Void {
         difficulty.reset()
         itemPool = difficulty.getItemPool(random: random)
+        haveItems = []
     }
 
     /**
