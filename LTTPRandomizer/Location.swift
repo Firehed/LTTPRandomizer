@@ -498,11 +498,13 @@ func lightWorldEasternDeathMountainItems() -> [Location] {
 
 func hyruleEscapeItems() -> [Location] {
     return [
+        // FIXME: No keys here!
         Location(
             region: Region.HyruleCastleEscape,
             name: "[cave-040] Link's House",
             address: 0xE9BC
         ),
+        // FIXME: No keys here! (?)
         Location(
             region: Region.HyruleCastleEscape,
             name: "[cave-034] Hyrule Castle secret entrance",
@@ -522,19 +524,20 @@ func hyruleEscapeItems() -> [Location] {
             keyZone: 1,
             bigKeyNeeded: false
         ),
+        // FIXME: no keys here!
         Location(
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-1F] Sanctuary",
             address: 0xEA79,
             keyZone: 4,
-            bigKeyNeeded: false // Technically it is needed, but BK doesn't spawn in a chest so this would break
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B3] Hyrule Castle - next to Zelda",
             address: 0xEB09,
             keyZone: 2,
-            bigKeyNeeded: false
+            bigKeyNeeded: false // Technically it is needed, but BK doesn't spawn in a chest so this would break
         ),
         Location(
             region: Region.HyruleCastleEscape,
@@ -993,7 +996,6 @@ func thievesTownItems() -> [Location] {
 }
 
 func icePalaceItems() -> [Location] {
-
     return [
         Location(
             region: Region.IcePalace,
@@ -1002,7 +1004,6 @@ func icePalaceItems() -> [Location] {
             keyZone: 2,
             bigKeyNeeded: false
         ),
-
         Location(
             region: Region.IcePalace,
             name: "[dungeon-D5-B1] Ice Palace - Big Key room",
@@ -1014,7 +1015,6 @@ func icePalaceItems() -> [Location] {
                     && items.contains(Item.Hammer)
             }
         ),
-
         Location(
             region: Region.IcePalace,
             name: "[dungeon-D5-B5] Ice Palace - big chest",
@@ -1067,7 +1067,6 @@ func icePalaceItems() -> [Location] {
 
 func miseryMireItems() -> [Location] {
     return [
-
         Location(
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - spike room",
@@ -1240,6 +1239,7 @@ func turtleRockItems() -> [Location] {
             }
         ),
         // Technically it's LW, but accessed inside TR
+        // FIXME: no key here
         Location(
             region: Region.TurtleRock,
             name: "[cave-013] Mimic cave (from Turtle Rock)",
@@ -1524,11 +1524,6 @@ func darkWorldItems() -> [Location] {
                 return items.canAccessNorthWestDarkWorld()
             }
         ),
-
-
-
-
-
         // MARK: not late game
         Location(
             region: Region.DarkWorld,
@@ -1557,7 +1552,6 @@ func darkWorldItems() -> [Location] {
                     && items.contains(Item.Hammer)
             }
         ),
-
         // MARK: not late game
         Location(
             region: Region.DarkWorld,
@@ -1608,11 +1602,9 @@ func hyruleCastleTowerItems() -> [Location] {
             bigKeyNeeded: false
         ),
     ]
-
 }
 
 func ganonsTowerItems() -> [Location] {
-
     return [
         Location(
             region: Region.GanonsTower,
