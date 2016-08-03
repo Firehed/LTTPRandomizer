@@ -152,7 +152,7 @@ class RomBuilder {
                 return
             }
 
-            var candidateItems: [Item] = []
+            var progressionItems: [Item] = []
             // Prefer to place an item from the available pool that expands the
             // number of accessible locations
             for item in itemPool.filter({ !$0.isJunk }) { // Only solve on items that even have a chance of improving progression - just a performance optimization
@@ -160,15 +160,15 @@ class RomBuilder {
                 haveTemp.insert(item)
                 let newLocations = emptyLocations.filter({ $0.isAccessible(inventory: haveTemp) })
                 if newLocations.count > possibleLocations.count {
-                    candidateItems.append(item)
+                    progressionItems.append(item)
                 }
             }
             // Remove the fake locations
             possibleLocations = possibleLocations.filter({ return $0.region != .Progression })
 
             var selected: Item
-            if candidateItems.count > 0 {
-                selected = difficulty.getItemForInsertion(possibleItems: candidateItems, possibleLocations: possibleLocations, randomizer: random)
+            if progressionItems.count > 0 {
+                selected = difficulty.getItemForInsertion(possibleItems: progressionItems, possibleLocations: possibleLocations, randomizer: random)
             } else {
                 selected = difficulty.getItemForInsertion(possibleItems: itemPool, possibleLocations: possibleLocations, randomizer: random)
             }
