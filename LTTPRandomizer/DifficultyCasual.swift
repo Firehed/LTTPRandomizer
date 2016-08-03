@@ -24,6 +24,9 @@ class DifficultyCasual: Difficulty {
     }
 
     func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location], randomizer: Randomizer) -> Item {
+        if possibleItems.count == 1 {
+            return possibleItems.first!
+        }
         var badLateGameItem: Bool,
             needUniqueItem: Bool,
             preferLateGameItem: Bool
@@ -51,6 +54,9 @@ class DifficultyCasual: Difficulty {
     }
 
     func getLocationForItemPlacement(possibleLocations: [Location], item: Item, randomizer: Randomizer) -> Location {
+        if possibleLocations.count == 1 {
+            return possibleLocations.first!
+        }
         var badLateGameLocation: Bool,
             badUniqueItemLocation: Bool,
             unusedUniqueLocation: Bool
