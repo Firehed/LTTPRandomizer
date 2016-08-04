@@ -220,16 +220,5 @@ class DifficultyCasual: Difficulty {
         }
     }
 
-    private func isBadFirstItem(_ item: Item) -> Bool {
-        switch item {
-        case Item.PowerGlove: fallthrough
-        case Item.TitansMitt: fallthrough
-        case Item.RedShield: fallthrough
-        case Item.MirrorShield:
-            return true
-        default:
-            return false
-        }
-    }
 }
 
