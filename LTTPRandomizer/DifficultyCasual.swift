@@ -15,14 +15,6 @@ class DifficultyCasual: Difficulty {
         locations = allLocations()
     }
 
-    func getUnavailableLocations(have: Set<Item>) -> [Location] {
-        return locations.filter({
-            $0.item == .Nothing
-        }).filter({
-            !$0.isAccessible(inventory: have)
-        })
-    }
-
     func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location], randomizer: Randomizer) -> Item {
         if possibleItems.count == 1 {
             return possibleItems.first!
@@ -67,7 +59,6 @@ class DifficultyCasual: Difficulty {
     }
 
     func getItemPool(random: Randomizer) -> [Item] {
-//        setLateGateItems()
         return [
             Item.Bombos,
             Item.BookOfMudora,
