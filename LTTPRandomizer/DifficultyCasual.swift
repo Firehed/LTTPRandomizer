@@ -28,7 +28,6 @@ class DifficultyCasual: Difficulty {
             return possibleItems.first!
         }
         var badLateGameItem: Bool,
-            needUniqueItem: Bool,
             preferLateGameItem: Bool
 
         var item: Item
@@ -40,16 +39,12 @@ class DifficultyCasual: Difficulty {
             badLateGameItem = isLateGameItem(item)
                 && possibleLocations.filter({ $0.isLateGame }).isEmpty
 
-            // Non-unique items are discarded if only unique-item locations are available
-            needUniqueItem = !isUniqueItem(item)
-                && possibleLocations.filter({ !$0.uniqueItemOnly }).isEmpty
-
             // If we picked a non-late game item, and we have both late-game items and late-game locations, discard
             preferLateGameItem = !isLateGameItem(item)
                 && possibleLocations.filter({ $0.isLateGame }).isNonEmpty
                 && possibleItems.filter({ isLateGameItem($0) }).isNonEmpty
 
-        } while (badLateGameItem || needUniqueItem || preferLateGameItem)
+        } while (badLateGameItem || preferLateGameItem)
         return item
     }
 
@@ -57,9 +52,7 @@ class DifficultyCasual: Difficulty {
         if possibleLocations.count == 1 {
             return possibleLocations.first!
         }
-        var badLateGameLocation: Bool,
-            badUniqueItemLocation: Bool,
-            unusedUniqueLocation: Bool
+        var badLateGameLocation: Bool
 
         var location: Location
         repeat {
@@ -68,15 +61,8 @@ class DifficultyCasual: Difficulty {
             badLateGameLocation = isLateGameItem(item) // Late game item
                 && !location.isLateGame // early-game location
 
-            badUniqueItemLocation = !isUniqueItem(item) // Non-unique item
-                && location.uniqueItemOnly // in a unique location
-
-            unusedUniqueLocation = isUniqueItem(item) // Unique item
-                && !location.uniqueItemOnly // non-unique-item location
-                && possibleLocations.filter({ $0.uniqueItemOnly }).isNonEmpty // unique-item locations available
-
             // TODO: bad first item (don't really care)
-        } while (badLateGameLocation || badUniqueItemLocation || unusedUniqueLocation)
+        } while (badLateGameLocation)
         return location
     }
 
@@ -237,37 +223,6 @@ class DifficultyCasual: Difficulty {
         case .TitansMitt: fallthrough
         case .RedMail: fallthrough
         case .MirrorShield:
-            return true
-        default:
-            return false
-        }
-    }
-
-    private func isUniqueItem(_ item: Item) -> Bool {
-        switch item {
-        case Item.Bow: fallthrough
-        case Item.CaneOfSomaria: fallthrough
-        case Item.FireRod: fallthrough
-        case Item.Flippers: fallthrough
-        //case Item.Hammer: fallthrough
-        case Item.Hookshot: fallthrough
-        case Item.IceRod: fallthrough
-        //case Item.Lamp: fallthrough
-        case Item.MagicMirror: fallthrough
-        case Item.MoonPearl: fallthrough
-        case Item.PegasusBoots: fallthrough
-        case Item.PowerGlove: fallthrough
-        case Item.Quake: fallthrough
-        case Item.Shovel: fallthrough
-        //case Item.TitansMitt: fallthrough
-        case Item.BlueMail: fallthrough
-        //case Item.Boomerang: fallthrough
-        case Item.BugCatchingNet: fallthrough
-        case Item.Cape: fallthrough
-        //case Item.MirrorShield: fallthrough
-        //case Item.RedBoomerang: fallthrough
-        //case Item.RedMail: fallthrough
-        case Item.StaffOfByrna:
             return true
         default:
             return false

@@ -17,8 +17,6 @@ class Location {
     var _additionalAccessRequirements: ((Set<Item>) -> Bool)?
     var onPatchingRom: ((NSMutableData, Item) -> Void)?
 
-    var uniqueItemOnly: Bool = false
-
     var dungeonRules: DungeonRules
 
 //    public Action<FileStream, Item> WriteItemCheck { get; set; }
@@ -47,14 +45,7 @@ class Location {
         self._additionalAccessRequirements = accessRequirements
         self.dungeonRules = DungeonRules.none()
     }
-    init(region: Region, name: String, address: Int, uniqueItemOnly: Bool, accessRequirements: ((Set<Item>) -> Bool)) {
-        self.name = name
-        self.address = address
-        self.region = region
-        self._additionalAccessRequirements = accessRequirements
-        self.uniqueItemOnly = uniqueItemOnly
-        self.dungeonRules = DungeonRules.none()
-    }
+
     init(region: Region, name: String, address: Int, accessRequirements: ((Set<Item>) -> Bool), onPatchingRom: ((NSMutableData, Item) -> Void)) {
         self.name = name
         self.address = address
