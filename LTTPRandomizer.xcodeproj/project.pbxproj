@@ -26,6 +26,7 @@
 		FAC6861C1D4D525C0044D17E /* Set-Item-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6861B1D4D525C0044D17E /* Set-Item-Extension.swift */; };
 		FAC6861E1D4D53370044D17E /* SetAlgebraExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6861D1D4D53370044D17E /* SetAlgebraExtension.swift */; };
 		FAC686241D52F4B90044D17E /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC686231D52F4B90044D17E /* Locations.swift */; };
+		FAC686261D530D600044D17E /* DungeonRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC686251D530D600044D17E /* DungeonRules.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		FAC6861B1D4D525C0044D17E /* Set-Item-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Set-Item-Extension.swift"; sourceTree = "<group>"; };
 		FAC6861D1D4D53370044D17E /* SetAlgebraExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetAlgebraExtension.swift; sourceTree = "<group>"; };
 		FAC686231D52F4B90044D17E /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
+		FAC686251D530D600044D17E /* DungeonRules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DungeonRules.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				FA3929BC1D440C25006BDC9A /* Difficulty.swift */,
 				FA4E84601D459885001789E8 /* DifficultyCasual.swift */,
 				FA4E845C1D459660001789E8 /* Dungeon.swift */,
+				FAC686251D530D600044D17E /* DungeonRules.swift */,
 				FA29C7391D44032500CB1D7A /* Item.swift */,
 				FA29C73B1D44079500CB1D7A /* Location.swift */,
 				FAC686231D52F4B90044D17E /* Locations.swift */,
@@ -308,6 +311,7 @@
 				FAC686241D52F4B90044D17E /* Locations.swift in Sources */,
 				FA4E84631D45B586001789E8 /* ArrayExtension.swift in Sources */,
 				FA29C7111D43FFC700CB1D7A /* ViewController.swift in Sources */,
+				FAC686261D530D600044D17E /* DungeonRules.swift in Sources */,
 				FA29C73A1D44032500CB1D7A /* Item.swift in Sources */,
 				FA3929BD1D440C25006BDC9A /* Difficulty.swift in Sources */,
 				FA29C73C1D44079500CB1D7A /* Location.swift in Sources */,
