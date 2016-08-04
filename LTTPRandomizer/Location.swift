@@ -133,6 +133,8 @@ extension Region {
         case .ZorasDomain:
             return inventory.canAccessZorasDomain()
 
+        case .DarkWorldPyramid:
+            return inventory.canAccessPyramid()
         case .DarkWorldMire:
             return inventory.canAccessMireArea()
         case .DarkWorldNorthWest:
@@ -142,8 +144,7 @@ extension Region {
         case .DarkWorldEasternDeathMountain:
             return inventory.canAccessEastDarkWorldDeathMountain()
 
-        case .Progression: fallthrough
-        case .DarkWorld:
+        case .Progression:
             return true
         }
     }
@@ -189,8 +190,8 @@ func locationsForRegion(region: Region) -> [Location] {
         return lightWorldEasternDeathMountainItems()
     case .ZorasDomain:
         return zorasDomainItems()
-    case .DarkWorld:
-        return darkWorldItems()
+    case .DarkWorldPyramid:
+        return darkWorldPyramidItems()
     case .DarkWorldMire:
         return mireItems()
     case .DarkWorldNorthWest:
@@ -1541,17 +1542,17 @@ func northWestDarkWorldItems() -> [Location] {
     ]
 }
 
-func darkWorldItems() -> [Location] {
+func darkWorldPyramidItems() -> [Location] {
     return [
+
         // MARK: not late game
         Location(
-            region: Region.DarkWorld,
+            region: Region.DarkWorldPyramid,
             name: "Catfish",
             address: 0xEE185,
             accessRequirements: { items in
                 // Note: Upstream says (boots || mitt) also required
-                return items.canAccessPyramid()
-                    && items.canLiftRocks()
+                return items.canLiftRocks()
                     && items.contains(Item.MoonPearl)
             },
             onPatchingRom: { rom, item in
@@ -1563,12 +1564,9 @@ func darkWorldItems() -> [Location] {
 
         // MARK: not late game
         Location(
-            region: Region.DarkWorld,
+            region: Region.DarkWorldPyramid,
             name: "Piece of Heart (Pyramid)",
-            address: 0x180147,
-            accessRequirements: { items in
-                return items.canAccessPyramid()
-            }
+            address: 0x180147
         ),
         // MARK: not late game
         //new Location
