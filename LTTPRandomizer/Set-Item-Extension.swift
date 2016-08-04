@@ -92,10 +92,6 @@ extension SetAlgebra where Element == Item {
 // MARK: Dark world: Overworld
 extension SetAlgebra where Element == Item {
 
-    func canAccessCatfish() -> Bool {
-        return canAccessPyramid() && canLiftRocks()
-    }
-
     func canAccessEastDarkWorldDeathMountain() -> Bool {
         return canAccessEasternDeathMountain()
             && canLiftHeavyRocks() // All warp tiles require
