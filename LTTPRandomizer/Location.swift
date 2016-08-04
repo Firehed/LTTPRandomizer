@@ -201,36 +201,3 @@ func locationsForRegion(region: Region) -> [Location] {
     }
 }
 
-/**
- The entrance to TRock require Quake and Cane of Somaria. Neither is
- individually required for any location, so during item placement neither will
- be selected during the search for expansion-enabling items unless the other had
- already been selected totally at random. This can cause the unlucky
- circumstance of filling all remaining chests with junk items and deadlocking
- progress.
-
- The locations in here create artification progression so that the items *do*
- get picked up during the expansion search. They get filtered out as potential
- destinatons during placement so no items get vanished.
- */
-func progressionItems() -> [Location] {
-    return [
-        Location(
-            region: Region.Progression,
-            name: "Undeadlock: Quake",
-            address: 0,
-            accessRequirements: { items in
-                return items.contains(Item.Quake)
-            }
-        ),
-        Location(
-            region: Region.Progression,
-            name: "Undeadlock: Cane of Somaria",
-            address: 0,
-            accessRequirements: { items in
-                return items.contains(Item.CaneOfSomaria)
-            }
-        ),
-    ]
-}
-
