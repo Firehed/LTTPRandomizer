@@ -18,8 +18,8 @@ class Location {
     var onPatchingRom: ((NSMutableData, Item) -> Void)?
 
     var uniqueItemOnly: Bool = false
-    var keyZone: Int = 0
-    var bigKeyNeeded: Bool = false
+
+    var dungeonRules: DungeonRules
 
 //    public Action<FileStream, Item> WriteItemCheck { get; set; }
 
@@ -31,17 +31,13 @@ class Location {
         return region.isDarkWorld
     }
 
+    // MARK: Out-of-dungeon initializers
+
     init(region: Region, name: String, address: Int) {
         self.name = name
         self.address = address
         self.region = region
-    }
-    init(region: Region, name: String, address: Int, keyZone: Int, bigKeyNeeded: Bool) {
-        self.name = name
-        self.address = address
-        self.region = region
-        self.keyZone = keyZone
-        self.bigKeyNeeded = bigKeyNeeded
+        self.dungeonRules = DungeonRules.none()
     }
 
     init(region: Region, name: String, address: Int, accessRequirements: ((Set<Item>) -> Bool)) {
@@ -49,26 +45,15 @@ class Location {
         self.address = address
         self.region = region
         self._additionalAccessRequirements = accessRequirements
-
+        self.dungeonRules = DungeonRules.none()
     }
-
-    init(region: Region, name: String, address: Int, keyZone: Int, bigKeyNeeded: Bool, accessRequirements: ((Set<Item>) -> Bool)) {
-        self.name = name
-        self.address = address
-        self.region = region
-        self._additionalAccessRequirements = accessRequirements
-        self.keyZone = keyZone
-        self.bigKeyNeeded = bigKeyNeeded
-    }
-
-
-
     init(region: Region, name: String, address: Int, uniqueItemOnly: Bool, accessRequirements: ((Set<Item>) -> Bool)) {
         self.name = name
         self.address = address
         self.region = region
         self._additionalAccessRequirements = accessRequirements
         self.uniqueItemOnly = uniqueItemOnly
+        self.dungeonRules = DungeonRules.none()
     }
     init(region: Region, name: String, address: Int, accessRequirements: ((Set<Item>) -> Bool), onPatchingRom: ((NSMutableData, Item) -> Void)) {
         self.name = name
@@ -76,13 +61,31 @@ class Location {
         self.region = region
         self._additionalAccessRequirements = accessRequirements
         self.onPatchingRom = onPatchingRom
+        self.dungeonRules = DungeonRules.none()
+    }
+
+    // MARK: In-dungeon initializers
+
+    init(region: Region, name: String, address: Int, keyZone: Int, bigKeyNeeded: Bool) {
+        self.name = name
+        self.address = address
+        self.region = region
+        self.dungeonRules = DungeonRules(zone: keyZone, bigKeyZone: bigKeyNeeded)
+    }
+
+    init(region: Region, name: String, address: Int, keyZone: Int, bigKeyNeeded: Bool, accessRequirements: ((Set<Item>) -> Bool)) {
+        self.name = name
+        self.address = address
+        self.region = region
+        self._additionalAccessRequirements = accessRequirements
+        self.dungeonRules = DungeonRules(zone: keyZone, bigKeyZone: bigKeyNeeded)
     }
 
     func isInOrBeforeKeyZone(_ zone: Int) -> Bool {
-        return item == .Nothing && !name.contains("big chest") && keyZone <= zone
+        return item == .Nothing && !name.contains("big chest") && dungeonRules.zone <= zone
     }
     func isInKeyZone(_ zone: Int) -> Bool {
-        return item == .Nothing && !name.contains("big chest") && keyZone == zone
+        return item == .Nothing && !name.contains("big chest") && dungeonRules.zone == zone
     }
     func isAccessible(inventory: Set<Item>) -> Bool {
         return region.isAccessible(inventory: inventory)

@@ -106,7 +106,11 @@ class RomBuilder {
     */
     private func generateDungeonItems() -> Void {
         for dungeon in Dungeon.all {
-            let dungeonLocations = difficulty.locations.filter({ $0.region == dungeon.region })
+            let dungeonLocations = difficulty
+                .locations
+                .filter({ $0.region == dungeon.region })
+                .filter({ $0.dungeonRules.canHoldDungeonItems })
+
             for zone in dungeon.keyZones {
                 for _ in 0..<zone.count {
                     let current: [Location]
@@ -120,7 +124,7 @@ class RomBuilder {
                 }
             }
             if dungeon.hasBigKey {
-                let avail = dungeonLocations.withNoItems().filter({ !$0.bigKeyNeeded })
+                let avail = dungeonLocations.withNoItems().filter({ !$0.dungeonRules.bigKeyZone })
                 avail.selectAtRandom(random).item = Item.BigKey
             }
             if dungeon.hasMap {
