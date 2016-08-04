@@ -812,3 +812,758 @@ func easternDarkWorldDeathMountainItems() -> Locations {
         ),
     ]
 }
+
+// MARK: DW Dungeons
+
+func darkPalaceItems() -> Locations {
+    return [
+        Location(
+            region: Region.DarkPalace,
+            name: "[dungeon-D1-1F] Dark Palace - big key room",
+            address: 0xEA37,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.DarkPalace,
+            name: "[dungeon-D1-1F] Dark Palace - jump room [right chest]",
+            address: 0xEA3A,
+            accessRequirements: { items in
+                return items.contains(Item.Bow)
+            }
+        ),
+        Location(
+            region: Region.DarkPalace,
+            name: "[dungeon-D1-1F] Dark Palace - jump room [left chest]",
+            address: 0xEA3D,
+            keyZone: 1,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.DarkPalace,
+            name: "[dungeon-D1-1F] Dark Palace - big chest",
+            address: 0xEA40,
+            keyZone: 3,
+            bigKeyNeeded: true,
+            accessRequirements: { items in
+                return items.contains(Item.Lamp)
+                    && items.contains(Item.Bow)
+            }
+        ),
+        Location(
+            region: Region.DarkPalace,
+            name: "[dungeon-D1-1F] Dark Palace - compass room",
+            address: 0xEA43,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.DarkPalace,
+            name: "[dungeon-D1-1F] Dark Palace - spike statue room",
+            address: 0xEA46,
+            keyZone: 3,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.DarkPalace,
+            name: "[dungeon-D1-B1] Dark Palace - turtle stalfos room",
+            address: 0xEA49,
+            keyZone: 1,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.DarkPalace,
+            name: "[dungeon-D1-B1] Dark Palace - room leading to Helmasaur [left chest]",
+            address: 0xEA4C,
+            keyZone: 2,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.Lamp)
+            }
+        ),
+        Location(
+            region: Region.DarkPalace,
+            name: "[dungeon-D1-B1] Dark Palace - room leading to Helmasaur [right chest]",
+            address: 0xEA4F,
+            keyZone: 2,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.Lamp)
+            }
+        ),
+        Location(
+            region: Region.DarkPalace,
+            name: "[dungeon-D1-1F] Dark Palace - statue push room",
+            address: 0xEA52,
+            accessRequirements: { items in
+                return items.contains(Item.Bow)
+            }
+        ),
+        Location(
+            region: Region.DarkPalace,
+            name: "[dungeon-D1-1F] Dark Palace - maze room [top chest]",
+            address: 0xEA55,
+            keyZone: 3,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.Lamp)
+            }
+        ),
+        Location(
+            region: Region.DarkPalace,
+            name: "[dungeon-D1-1F] Dark Palace - maze room [bottom chest]",
+            address: 0xEA58,
+            keyZone: 3,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.Lamp)
+            }
+        ),
+        Location(
+            region: Region.DarkPalace,
+            name: "[dungeon-D1-B1] Dark Palace - shooter room",
+            address: 0xEA5B
+        ),
+    ]
+}
+
+func swampPalaceItems() -> Locations {
+    return [
+        Location(
+            region: Region.SwampPalace,
+            name: "[dungeon-D2-B1] Swamp Palace - map room",
+            address: 0xE986,
+            keyZone: 1,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.SwampPalace,
+            name: "[dungeon-D2-B1] Swamp Palace - big chest",
+            address: 0xE989,
+            keyZone: 3,
+            bigKeyNeeded: true
+        ),
+        Location(
+            region: Region.SwampPalace,
+            name: "[dungeon-D2-1F] Swamp Palace - first room",
+            address: 0xEA9D
+        ),
+        Location(
+            region: Region.SwampPalace,
+            name: "[dungeon-D2-B1] Swamp Palace - south of hookshot room",
+            address: 0xEAA0,
+            keyZone: 3,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.Hammer)
+            }
+        ),
+        Location(
+            region: Region.SwampPalace,
+            name: "[dungeon-D2-B1] Swamp Palace - push 4 blocks room",
+            address: 0xEAA3,
+            keyZone: 4,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.Hammer)
+            }
+        ),
+        Location(
+            region: Region.SwampPalace,
+            name: "[dungeon-D2-B1] Swamp Palace - big key room",
+            address: 0xEAA6,
+            keyZone: 4,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.Hammer)
+            }
+        ),
+        Location(
+            region: Region.SwampPalace,
+            name: "[dungeon-D2-B2] Swamp Palace - flooded room [left chest]",
+            address: 0xEAA9,
+            keyZone: 4,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.Hookshot)
+                    && items.contains(Item.Hammer)
+            }
+        ),
+        Location(
+            region: Region.SwampPalace,
+            name: "[dungeon-D2-B2] Swamp Palace - flooded room [right chest]",
+            address: 0xEAAC,
+            keyZone: 4,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.Hookshot)
+                    && items.contains(Item.Hammer)
+            }
+        ),
+        Location(
+            region: Region.SwampPalace,
+            name: "[dungeon-D2-B2] Swamp Palace - hidden waterfall door room",
+            address: 0xEAAF,
+            keyZone: 4,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.Hookshot)
+                    && items.contains(Item.Hammer)
+            }
+        ),
+    ]
+}
+
+func skullWoodsItems() -> Locations {
+    return [
+        Location(
+            region: Region.SkullWoods,
+            name: "[dungeon-D3-B1] Skull Woods - Compass room",
+            address: 0xE992,
+            keyZone: 1,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.SkullWoods,
+            name: "[dungeon-D3-B1] Skull Woods - big chest",
+            address: 0xE998,
+            keyZone: 2,
+            bigKeyNeeded: true
+        ),
+        Location(
+            region: Region.SkullWoods,
+            name: "[dungeon-D3-B1] Skull Woods - east of Fire Rod room",
+            address: 0xE99B,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.SkullWoods,
+            name: "[dungeon-D3-B1] Skull Woods - Big Key room",
+            address: 0xE99E,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.SkullWoods,
+            name: "[dungeon-D3-B1] Skull Woods - Gibdo/Stalfos room",
+            address: 0xE9A1,
+            keyZone: 1,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.SkullWoods,
+            name: "[dungeon-D3-B1] Skull Woods - south of Fire Rod room",
+            address: 0xE9C8
+        ),
+        Location(
+            region: Region.SkullWoods,
+            name: "[dungeon-D3-B1] Skull Woods - Entrance to part 2",
+            address: 0xE9FE,
+            keyZone: 2,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.canEnterSkullWoods2()
+            }
+        ),
+    ]
+}
+
+func thievesTownItems() -> Locations {
+    return [
+        Location(
+            region: Region.ThievesTown,
+            name: "[dungeon-D4-B1] Thieves' Town - Bottom left of huge room [top left chest]",
+            address: 0xEA01
+        ),
+        Location(
+            region: Region.ThievesTown,
+            name: "[dungeon-D4-B1] Thieves' Town - Bottom left of huge room [bottom right chest]",
+            address: 0xEA04
+        ),
+        Location(
+            region: Region.ThievesTown,
+            name: "[dungeon-D4-B1] Thieves' Town - Bottom right of huge room",
+            address: 0xEA07
+        ),
+        Location(
+            region: Region.ThievesTown,
+            name: "[dungeon-D4-B1] Thieves' Town - Top left of huge room",
+            address: 0xEA0A
+        ),
+        Location(
+            region: Region.ThievesTown,
+            name: "[dungeon-D4-1F] Thieves' Town - Room above boss",
+            address: 0xEA0D,
+            keyZone: 2,
+            bigKeyNeeded: true
+        ),
+        Location(
+            region: Region.ThievesTown,
+            name: "[dungeon-D4-B2] Thieves' Town - big chest",
+            address: 0xEA10,
+            keyZone: 2,
+            bigKeyNeeded: true,
+            accessRequirements: { items in
+                return items.contains(Item.Hammer)
+            }
+        ),
+        Location(
+            region: Region.ThievesTown,
+            name: "[dungeon-D4-B2] Thieves' Town - next to Blind",
+            address: 0xEA13,
+            keyZone: 1,
+            bigKeyNeeded: true
+        ),
+    ]
+}
+
+func icePalaceItems() -> Locations {
+    return [
+        Location(
+            region: Region.IcePalace,
+            name: "[dungeon-D5-B4] Ice Palace - above Blue Mail room",
+            address: 0xE995,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.IcePalace,
+            name: "[dungeon-D5-B1] Ice Palace - Big Key room",
+            address: 0xE9A4,
+            keyZone: 2,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.Hookshot)
+                    && items.contains(Item.Hammer)
+            }
+        ),
+        Location(
+            region: Region.IcePalace,
+            name: "[dungeon-D5-B5] Ice Palace - big chest",
+            address: 0xE9AA,
+            keyZone: 2,
+            bigKeyNeeded: true,
+            accessRequirements: { items in
+                return items.contains(Item.Hookshot)
+                    && items.contains(Item.Hammer)
+            }
+        ),
+        Location(
+            region: Region.IcePalace,
+            name: "[dungeon-D5-B1] Ice Palace - compass room",
+            address: 0xE9D4,
+            keyZone: 1,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.IcePalace,
+            name: "[dungeon-D5-B2] Ice Palace - map room",
+            address: 0xE9DD,
+            keyZone: 2,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.Hookshot)
+                    && items.contains(Item.Hammer)
+            }
+        ),
+        Location(
+            region: Region.IcePalace,
+            name: "[dungeon-D5-B3] Ice Palace - spike room",
+            address: 0xE9E0,
+            keyZone: 2,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.Hookshot)
+            }
+        ),
+        Location(
+            region: Region.IcePalace,
+            name: "[dungeon-D5-B5] Ice Palace - b5 up staircase",
+            address: 0xE9E3,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+    ]
+}
+
+func miseryMireItems() -> Locations {
+    return [
+        Location(
+            region: Region.MiseryMire,
+            name: "[dungeon-D6-B1] Misery Mire - spike room",
+            address: 0xE9DA
+        ),
+        Location(
+            region: Region.MiseryMire,
+            name: "[dungeon-D6-B1] Misery Mire - big hub room",
+            address: 0xEA5E,
+            keyZone: 1,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.MiseryMire,
+            name: "[dungeon-D6-B1] Misery Mire - end of bridge",
+            address: 0xEA61
+        ),
+        Location(
+            region: Region.MiseryMire,
+            name: "[dungeon-D6-B1] Misery Mire - compass",
+            address: 0xEA64,
+            keyZone: 2,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.canLightTorches()
+            }
+        ),
+        Location(
+            region: Region.MiseryMire,
+            name: "[dungeon-D6-B1] Misery Mire - big chest",
+            address: 0xEA67,
+            keyZone: 0,
+            bigKeyNeeded: true,
+            accessRequirements: { items in
+                return items.containsAny(Item.Hookshot, Item.PegasusBoots)
+            }
+        ),
+        Location(
+            region: Region.MiseryMire,
+            name: "[dungeon-D6-B1] Misery Mire - map room",
+            address: 0xEA6A,
+            keyZone: 1,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.MiseryMire,
+            name: "[dungeon-D6-B1] Misery Mire - big key",
+            address: 0xEA6D,
+            keyZone: 2,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.canLightTorches()
+            }
+        ),
+    ]
+}
+
+func turtleRockItems() -> Locations {
+    return [
+        Location(
+            region: Region.TurtleRock,
+            name: "[dungeon-D7-1F] Turtle Rock - Chain chomp room",
+            address: 0xEA16,
+            keyZone: 2,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.FireRod)
+            }
+        ),
+        Location(
+            region: Region.TurtleRock,
+            name: "[dungeon-D7-B1] Turtle Rock - big chest",
+            address: 0xEA19,
+            keyZone: 3,
+            bigKeyNeeded: true,
+            accessRequirements: { items in
+                return items.contains(Item.FireRod)
+            }
+        ),
+        Location(
+            region: Region.TurtleRock,
+            name: "[dungeon-D7-1F] Turtle Rock - Map room [left chest]",
+            address: 0xEA1C,
+            accessRequirements: { items in
+                return items.contains(Item.FireRod)
+            }
+        ),
+        Location(
+            region: Region.TurtleRock,
+            name: "[dungeon-D7-1F] Turtle Rock - Map room [right chest]",
+            address: 0xEA1F,
+            accessRequirements: { items in
+                return items.contains(Item.FireRod)
+            }
+        ),
+        Location(
+            region: Region.TurtleRock,
+            name: "[dungeon-D7-1F] Turtle Rock - compass room",
+            address: 0xEA22
+        ),
+        Location(
+            region: Region.TurtleRock,
+            name: "[dungeon-D7-B1] Turtle Rock - big key room",
+            address: 0xEA25,
+            keyZone: 4,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.FireRod)
+            }
+        ),
+        Location(
+            region: Region.TurtleRock,
+            name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [top right chest]",
+            address: 0xEA28,
+            keyZone: 6,
+            bigKeyNeeded: true,
+            accessRequirements: { items in
+                return items.contains(Item.MirrorShield)
+                    && items.contains(Item.FireRod)
+                    && items.contains(Item.Lamp)
+            }
+        ),
+        Location(
+            region: Region.TurtleRock,
+            name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [top left chest]",
+            address: 0xEA2B,
+            keyZone: 6,
+            bigKeyNeeded: true,
+            accessRequirements: { items in
+                return items.contains(Item.MirrorShield)
+                    && items.contains(Item.FireRod)
+                    && items.contains(Item.Lamp)
+            }
+        ),
+        Location(
+            region: Region.TurtleRock,
+            name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [bottom right chest]",
+            address: 0xEA2E,
+            keyZone: 6,
+            bigKeyNeeded: true,
+            accessRequirements: { items in
+                return items.contains(Item.MirrorShield)
+                    && items.contains(Item.FireRod)
+                    && items.contains(Item.Lamp)
+            }
+        ),
+        Location(
+            region: Region.TurtleRock,
+            name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [bottom left chest]",
+            address: 0xEA31,
+            keyZone: 6,
+            bigKeyNeeded: true,
+            accessRequirements: { items in
+                return items.contains(Item.MirrorShield)
+                    && items.contains(Item.FireRod)
+            }
+        ),
+        Location(
+            region: Region.TurtleRock,
+            name: "[dungeon-D7-B1] Turtle Rock - Roller switch room",
+            address: 0xEA34,
+            keyZone: 5,
+            bigKeyNeeded: true,
+            accessRequirements: { items in
+                return items.contains(Item.FireRod)
+            }
+        ),
+        // Technically it's LW, but accessed inside TR
+        // FIXME: no key here
+        Location(
+            region: Region.TurtleRock,
+            name: "[cave-013] Mimic cave (from Turtle Rock)",
+            address: 0xE9C5,
+            accessRequirements: { items in
+                return items.canEnterTurtleRock()
+                    // FireRod should not strictly be necessary depending on key placement
+                    && items.containsAll(Item.FireRod, Item.MagicMirror)
+            }
+        ),
+    ]
+}
+
+func ganonsTowerItems() -> Locations {
+    return [
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [top left chest]",
+            address: 0xEAB8
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [top right chest]",
+            address: 0xEABB
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [bottom left chest]",
+            address: 0xEABE
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [bottom right chest]",
+            address: 0xEAC1
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [top left chest]",
+            address: 0xEAC4,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [top right chest]",
+            address: 0xEAC7,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [bottom left chest]",
+            address: 0xEACA,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [bottom right chest]",
+            address: 0xEACD,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - north of teleport room",
+            address: 0xEAD0,
+            keyZone: 1,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - map room",
+            address: 0xEAD3,
+            keyZone: 1,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - big chest",
+            address: 0xEAD6,
+            keyZone: 2,
+            bigKeyNeeded: true
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - down right staircase from entrance [left chest]",
+            address: 0xEAD9
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - down right staircase from entrance [right chest]",
+            address: 0xEADC
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - above Armos",
+            address: 0xEADF,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - east of down right staircase from entrace",
+            address: 0xEAE2
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - compass room [top left chest]",
+            address: 0xEAE5,
+            keyZone: 1,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.canLightTorches()
+            }
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - compass room [top right chest]",
+            address: 0xEAE8,
+            keyZone: 1,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.canLightTorches()
+            }
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - compass room [bottom left chest]",
+            address: 0xEAEB,
+            keyZone: 1,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.canLightTorches()
+            }
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-1F] Ganon's Tower - compass room [bottom right chest]",
+            address: 0xEAEE,
+            keyZone: 1,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.canLightTorches()
+            }
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-B1] Ganon's Tower - north of Armos room [bottom chest]",
+            address: 0xEAF1,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-B1] Ganon's Tower - north of Armos room [left chest]",
+            address: 0xEAF4,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-B1] Ganon's Tower - north of Armos room [right chest]",
+            address: 0xEAF7,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-6F] Ganon's Tower - north of falling floor four torches [top left chest]",
+            address: 0xEAFD,
+            keyZone: 3,
+            bigKeyNeeded: true,
+            accessRequirements: { items in
+                return items.canLightTorches()
+            }
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-6F] Ganon's Tower - north of falling floor four torches [top right chest]",
+            address: 0xEB00,
+            keyZone: 3,
+            bigKeyNeeded: true,
+            accessRequirements: { items in
+                return items.canLightTorches()
+            }
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-6F] Ganon's Tower - before Moldorm",
+            address: 0xEB03,
+            keyZone: 4,
+            bigKeyNeeded: true,
+            accessRequirements: { items in
+                return items.canLightTorches()
+            }
+        ),
+        Location(
+            region: Region.GanonsTower,
+            name: "[dungeon-A2-6F] Ganon's Tower - Moldorm room",
+            address: 0xEB06,
+            keyZone: 5,
+            bigKeyNeeded: true,
+            accessRequirements: { items in
+                return items.canLightTorches()
+            }
+        ),
+    ]
+}
