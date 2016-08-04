@@ -150,14 +150,6 @@ extension Region {
     }
 }
 
-func allLocations() -> [Location] {
-    var all = [Location]()
-    for region in Region.all {
-        all.append(contentsOf: locationsForRegion(region: region))
-    }
-    return all
-}
-
 func locationsForRegion(region: Region) -> [Location] {
     switch region {
     case .HyruleCastleEscape:
