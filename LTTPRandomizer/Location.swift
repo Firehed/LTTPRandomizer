@@ -1333,16 +1333,6 @@ func lightWorldItems() -> [Location] {
         ),
         Location(
             region: Region.LightWorld,
-            name: "Purple Chest",
-            address: 0x33D68,
-            accessRequirements: { items in
-                return items.canAccessNorthWestDarkWorld()
-                    && items.canLiftHeavyRocks()
-                    && items.contains(Item.MagicMirror)
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
             name: "Hobo",
             address: 0x33E7D,
             accessRequirements: { items in
@@ -1449,6 +1439,16 @@ func northWestDarkWorldItems() -> [Location] {
             address: 0x180146,
             accessRequirements: { items in
                 return items.contains(Item.Cape)
+            }
+        ),
+        // Technically item is in LW, but put here for access reqs
+        Location(
+            region: Region.DarkWorldNorthWest,
+            name: "Purple Chest",
+            address: 0x33D68,
+            accessRequirements: { items in
+                return items.canLiftHeavyRocks()
+                    && items.contains(Item.MagicMirror)
             }
         ),
     ]
