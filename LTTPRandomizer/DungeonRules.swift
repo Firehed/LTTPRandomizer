@@ -14,7 +14,7 @@ public struct DungeonRules {
     private(set) public var zone: Int
 
     /// Requires big key to access
-    private(set) public var bigKeyZone: Bool
+    private(set) public var isBigKeyZone: Bool
 
     /// If false, loacation may not hold keys, map, or compass
     private(set) public var canHoldDungeonItems: Bool
@@ -28,7 +28,7 @@ public struct DungeonRules {
 
     init(zone: Int, bigKeyZone: Bool) {
         self.zone = zone
-        self.bigKeyZone = bigKeyZone
+        self.isBigKeyZone = bigKeyZone
         self.canHoldDungeonItems = true
     }
 

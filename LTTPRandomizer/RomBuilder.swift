@@ -124,7 +124,7 @@ class RomBuilder {
                 }
             }
             if dungeon.hasBigKey {
-                let avail = dungeonLocations.withNoItems().filter({ !$0.dungeonRules.bigKeyZone })
+                let avail = dungeonLocations.withNoItems().filter({ !$0.dungeonRules.isBigKeyZone })
                 avail.selectAtRandom(random).item = Item.BigKey
             }
             if dungeon.hasMap {
