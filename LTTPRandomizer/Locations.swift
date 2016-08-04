@@ -449,7 +449,9 @@ func hyruleEscapeItems() -> Locations {
         Location(
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B1] Hyrule Castle - map room",
-            address: 0xEB0C
+            address: 0xEB0C,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.HyruleCastleEscape,
@@ -489,7 +491,9 @@ func easternPalaceItems() -> Locations {
         Location(
             region: Region.EasternPalace,
             name: "[dungeon-L1-1F] Eastern Palace - compass room",
-            address: 0xE977
+            address: 0xE977,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.EasternPalace,
@@ -501,7 +505,9 @@ func easternPalaceItems() -> Locations {
         Location(
             region: Region.EasternPalace,
             name: "[dungeon-L1-1F] Eastern Palace - big ball room",
-            address: 0xE9B3
+            address: 0xE9B3,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.EasternPalace,
@@ -513,7 +519,9 @@ func easternPalaceItems() -> Locations {
         Location(
             region: Region.EasternPalace,
             name: "[dungeon-L1-1F] Eastern Palace - map room",
-            address: 0xE9F5
+            address: 0xE9F5,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
     ]
 }
@@ -530,7 +538,9 @@ func desertPalaceItems() -> Locations {
         Location(
             region: Region.DesertPalace,
             name: "[dungeon-L2-B1] Desert Palace - Map room",
-            address: 0xE9B6
+            address: 0xE9B6,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.DesertPalace,
@@ -560,7 +570,9 @@ func towerOfHeraItems() -> Locations {
         Location(
             region: Region.TowerOfHera,
             name: "[dungeon-L3-2F] Tower of Hera - Entrance",
-            address: 0xE9AD
+            address: 0xE9AD,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.TowerOfHera,
@@ -862,6 +874,8 @@ func darkPalaceItems() -> Locations {
             region: Region.DarkPalace,
             name: "[dungeon-D1-1F] Dark Palace - jump room [right chest]",
             address: 0xEA3A,
+            keyZone: 0,
+            bigKeyNeeded: false,
             accessRequirements: { items in
                 return items.contains(Item.Bow)
             }
@@ -929,6 +943,8 @@ func darkPalaceItems() -> Locations {
             region: Region.DarkPalace,
             name: "[dungeon-D1-1F] Dark Palace - statue push room",
             address: 0xEA52,
+            keyZone: 0,
+            bigKeyNeeded: false,
             accessRequirements: { items in
                 return items.contains(Item.Bow)
             }
@@ -956,7 +972,9 @@ func darkPalaceItems() -> Locations {
         Location(
             region: Region.DarkPalace,
             name: "[dungeon-D1-B1] Dark Palace - shooter room",
-            address: 0xEA5B
+            address: 0xEA5B,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
     ]
 }
@@ -980,7 +998,9 @@ func swampPalaceItems() -> Locations {
         Location(
             region: Region.SwampPalace,
             name: "[dungeon-D2-1F] Swamp Palace - first room",
-            address: 0xEA9D
+            address: 0xEA9D,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.SwampPalace,
@@ -1088,7 +1108,9 @@ func skullWoodsItems() -> Locations {
         Location(
             region: Region.SkullWoods,
             name: "[dungeon-D3-B1] Skull Woods - south of Fire Rod room",
-            address: 0xE9C8
+            address: 0xE9C8,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.SkullWoods,
@@ -1108,22 +1130,30 @@ func thievesTownItems() -> Locations {
         Location(
             region: Region.ThievesTown,
             name: "[dungeon-D4-B1] Thieves' Town - Bottom left of huge room [top left chest]",
-            address: 0xEA01
+            address: 0xEA01,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.ThievesTown,
             name: "[dungeon-D4-B1] Thieves' Town - Bottom left of huge room [bottom right chest]",
-            address: 0xEA04
+            address: 0xEA04,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.ThievesTown,
             name: "[dungeon-D4-B1] Thieves' Town - Bottom right of huge room",
-            address: 0xEA07
+            address: 0xEA07,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.ThievesTown,
             name: "[dungeon-D4-B1] Thieves' Town - Top left of huge room",
-            address: 0xEA0A
+            address: 0xEA0A,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.ThievesTown,
@@ -1226,7 +1256,9 @@ func miseryMireItems() -> Locations {
         Location(
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - spike room",
-            address: 0xE9DA
+            address: 0xE9DA,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.MiseryMire,
@@ -1238,7 +1270,9 @@ func miseryMireItems() -> Locations {
         Location(
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - end of bridge",
-            address: 0xEA61
+            address: 0xEA61,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.MiseryMire,
@@ -1306,6 +1340,8 @@ func turtleRockItems() -> Locations {
             region: Region.TurtleRock,
             name: "[dungeon-D7-1F] Turtle Rock - Map room [left chest]",
             address: 0xEA1C,
+            keyZone: 0,
+            bigKeyNeeded: false,
             accessRequirements: { items in
                 return items.contains(Item.FireRod)
             }
@@ -1314,6 +1350,8 @@ func turtleRockItems() -> Locations {
             region: Region.TurtleRock,
             name: "[dungeon-D7-1F] Turtle Rock - Map room [right chest]",
             address: 0xEA1F,
+            keyZone: 0,
+            bigKeyNeeded: false,
             accessRequirements: { items in
                 return items.contains(Item.FireRod)
             }
@@ -1321,7 +1359,9 @@ func turtleRockItems() -> Locations {
         Location(
             region: Region.TurtleRock,
             name: "[dungeon-D7-1F] Turtle Rock - compass room",
-            address: 0xEA22
+            address: 0xEA22,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.TurtleRock,
@@ -1410,22 +1450,30 @@ func ganonsTowerItems() -> Locations {
         Location(
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [top left chest]",
-            address: 0xEAB8
+            address: 0xEAB8,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [top right chest]",
-            address: 0xEABB
+            address: 0xEABB,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [bottom left chest]",
-            address: 0xEABE
+            address: 0xEABE,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [bottom right chest]",
-            address: 0xEAC1
+            address: 0xEAC1,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.GanonsTower,
@@ -1479,12 +1527,16 @@ func ganonsTowerItems() -> Locations {
         Location(
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - down right staircase from entrance [left chest]",
-            address: 0xEAD9
+            address: 0xEAD9,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - down right staircase from entrance [right chest]",
-            address: 0xEADC
+            address: 0xEADC,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.GanonsTower,
@@ -1496,7 +1548,9 @@ func ganonsTowerItems() -> Locations {
         Location(
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - east of down right staircase from entrace",
-            address: 0xEAE2
+            address: 0xEAE2,
+            keyZone: 0,
+            bigKeyNeeded: false
         ),
         Location(
             region: Region.GanonsTower,
