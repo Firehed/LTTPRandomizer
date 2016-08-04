@@ -573,3 +573,242 @@ func hyruleCastleTowerItems() -> Locations {
         ),
     ]
 }
+
+// MARK: DW Overworld
+
+func darkWorldPyramidItems() -> Locations {
+    return [
+
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldPyramid,
+            name: "Catfish",
+            address: 0xEE185,
+            accessRequirements: { items in
+                // Note: Upstream says (boots || mitt) also required
+                return items.canLiftRocks()
+                    && items.contains(Item.MoonPearl)
+            },
+            onPatchingRom: { rom, item in
+                // (This is a guess based on the Windows source)
+                // Indicates what item's presence will block the Catfish scene
+                rom.patch(atByteOffset: 0x180204, withData: item.bytesForInventoryCheckOverride)
+            }
+        ),
+
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldPyramid,
+            name: "Piece of Heart (Pyramid)",
+            address: 0x180147
+        ),
+        // MARK: not late game
+        //new Location
+        //{
+        //    lateGameItem: false,
+        //    region: Region.DarkWorld,
+        //    name: "Piece of Heart (Digging Game)",
+        //    address: 0x180148,
+        //    accessRequirements: { items in
+        //        return items.canAccessLowerDarkWorld()
+        //    }
+        //),
+    ]
+}
+
+func southDarkWorldItems() -> Locations {
+    return [
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "[cave-073] cave northeast of swamp palace [top chest]",
+            address: 0xEB1E
+        ),
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "[cave-073] cave northeast of swamp palace [top middle chest]",
+            address: 0xEB21
+        ),
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "[cave-073] cave northeast of swamp palace [bottom middle chest]",
+            address: 0xEB24
+        ),
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "[cave-073] cave northeast of swamp palace [bottom chest]",
+            address: 0xEB27
+        ),
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "Flute Boy",
+            address: 0x330C7
+        ),
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "[cave-073] cave northeast of swamp palace - generous guy",
+            address: 0x180011
+        ),
+        // Technically spawns in LW (warp from peg area)
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "Bombos",
+            address: 0x48B81,
+            accessRequirements: { items in
+                return items.canGetMasterSword()
+                    && items.containsAll(Item.BookOfMudora, Item.MagicMirror)
+            },
+            onPatchingRom: { rom, item in
+                // Inventory item check?
+                rom.patch(atByteOffset: 0x44AAE, withData: item.asData())
+            }
+        ),
+        // Technically spawns in LW (warp from circle of bushes)
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "Piece of Heart (south of Haunted Grove)",
+            address: 0x180003,
+            accessRequirements: { items in
+                return items.contains(Item.MagicMirror)
+            }
+        ),
+        // Technically spawns in LW (warp from circle of stones in lake)
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "Piece of Heart (Lake Hylia)",
+            address: 0x180144,
+            accessRequirements: { items in
+                return items.containsAll(Item.Flippers, Item.MagicMirror)
+            }
+        ),
+    ]
+}
+
+func northWestDarkWorldItems() -> Locations {
+    return [
+        Location(
+            region: Region.DarkWorldNorthWest,
+            name: "[cave-063] doorless hut",
+            address: 0xE9EC
+        ),
+        Location(
+            region: Region.DarkWorldNorthWest,
+            name: "[cave-062] C-shaped house",
+            address: 0xE9EF
+        ),
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldNorthWest,
+            name: "Piece of Heart (Dark World blacksmith pegs)",
+            address: 0x180006,
+            accessRequirements: { items in
+                return items.canLiftHeavyRocks()
+                    && items.contains(Item.Hammer)
+            }
+        ),
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldNorthWest,
+            name: "Piece of Heart (Dark World - bumper cave)",
+            address: 0x180146,
+            accessRequirements: { items in
+                return items.contains(Item.Cape)
+            }
+        ),
+        // Technically item is in LW, but put here for access reqs
+        Location(
+            region: Region.DarkWorldNorthWest,
+            name: "Purple Chest",
+            address: 0x33D68,
+            accessRequirements: { items in
+                return items.canLiftHeavyRocks()
+                    && items.contains(Item.MagicMirror)
+            }
+        ),
+    ]
+}
+
+func mireItems() -> Locations {
+    return [
+        Location(
+            region: Region.DarkWorldMire,
+            name: "[cave-071] Misery Mire west area [left chest]",
+            address: 0xEA73
+        ),
+        Location(
+            region: Region.DarkWorldMire,
+            name: "[cave-071] Misery Mire west area [right chest]",
+            address: 0xEA76
+        ),
+        Location(
+            region: Region.DarkWorldMire,
+            name: "Piece of Heart (Desert - northeast corner)",
+            address: 0x180005,
+            accessRequirements: { items in
+                return items.contains(Item.MagicMirror)
+            }
+        ),
+    ]
+}
+
+func easternDarkWorldDeathMountainItems() -> Locations {
+    return [
+        Location(
+            region: Region.DarkWorldEasternDeathMountain,
+            name: "Piece of Heart (Death Mountain - floating island)",
+            address: 0x180141,
+            accessRequirements: { items in
+                // No hookshot here, just the invisible path
+                return items.containsAll(Item.MagicMirror, Item.MoonPearl)
+            }
+        ),
+        Location(
+            region: Region.DarkWorldEasternDeathMountain,
+            name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [top chest]",
+            address: 0xEA7C
+        ),
+        Location(
+            region: Region.DarkWorldEasternDeathMountain,
+            name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [bottom chest]",
+            address: 0xEA7F
+        ),
+        Location(
+            region: Region.DarkWorldEasternDeathMountain,
+            name: "[cave-056] Dark World Death Mountain - cave under boulder [top right chest]",
+            address: 0xEB51,
+            accessRequirements: { items in
+                return items.containsAll(Item.Hookshot, Item.MoonPearl)
+            }
+        ),
+        Location(
+            region: Region.DarkWorldEasternDeathMountain,
+            name: "[cave-056] Dark World Death Mountain - cave under boulder [top left chest]",
+            address: 0xEB54,
+            accessRequirements: { items in
+                return items.containsAll(Item.Hookshot, Item.MoonPearl)
+            }
+        ),
+        Location(
+            region: Region.DarkWorldEasternDeathMountain,
+            name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom left chest]",
+            address: 0xEB57,
+            accessRequirements: { items in
+                return items.containsAll(Item.Hookshot, Item.MoonPearl)
+            }
+        ),
+        Location(
+            region: Region.DarkWorldEasternDeathMountain,
+            name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom right chest]",
+            address: 0xEB5A,
+            accessRequirements: { items in
+                return items.containsAll(Item.Hookshot, Item.MoonPearl)
+                    // not actually required here, but stops some deadlocks
+                    && items.contains(Item.FireRod)
+            }
+        ),
+    ]
+}
