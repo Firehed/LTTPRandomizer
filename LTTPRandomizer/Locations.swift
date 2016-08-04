@@ -18,86 +18,7 @@ func allLocations() -> Locations {
     return all
 }
 
-func hyruleEscapeItems() -> Locations {
-    return [
-        // FIXME: No keys here!
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[cave-040] Link's House",
-            address: 0xE9BC
-        ),
-        // FIXME: No keys here! (?)
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[cave-034] Hyrule Castle secret entrance",
-            address: 0xE971
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B1] Escape - first B1 room",
-            address: 0xE96E,
-            keyZone: 2,
-            bigKeyNeeded: false
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B1] Hyrule Castle - boomerang room",
-            address: 0xE974,
-            keyZone: 1,
-            bigKeyNeeded: false
-        ),
-        // FIXME: no keys here!
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-1F] Sanctuary",
-            address: 0xEA79,
-            keyZone: 4,
-            bigKeyNeeded: false
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B3] Hyrule Castle - next to Zelda",
-            address: 0xEB09,
-            keyZone: 2,
-            bigKeyNeeded: false // Technically it is needed, but BK doesn't spawn in a chest so this would break
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B1] Hyrule Castle - map room",
-            address: 0xEB0C
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B1] Escape - final basement room [left chest]",
-            address: 0xEB5D,
-            keyZone: 4,
-            bigKeyNeeded: false,
-            accessRequirements: { items in
-                return items.canLiftRocks()
-            }
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B1] Escape - final basement room [middle chest]",
-            address: 0xEB60,
-            keyZone: 4,
-            bigKeyNeeded: false,
-            accessRequirements: { items in
-                return items.canLiftRocks()
-            }
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B1] Escape - final basement room [right chest]",
-            address: 0xEB63,
-            keyZone: 4,
-            bigKeyNeeded: false,
-            accessRequirements: { items in
-                return items.canLiftRocks()
-            }
-        ),
-    ]
-}
+// MARK: LW Overworld
 
 func lightWorldItems() -> Locations {
     return [
@@ -336,6 +257,319 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "Piece of Heart (Dam)",
             address: 0x180145
+        ),
+    ]
+}
+
+func lightWorthDeathMountainItems() -> Locations {
+    return [
+        Location(
+            region: Region.LightWorldDeathMountain,
+            name: "Old mountain man",
+            address: 0xF69FA
+        ),
+        Location(
+            region: Region.LightWorldDeathMountain,
+            name: "Piece of Heart (Spectacle Rock Cave)",
+            address: 0x180002
+        ),
+        Location(
+            region: Region.LightWorldDeathMountain,
+            name: "Piece of Heart (Spectacle Rock)",
+            address: 0x180140,
+            accessRequirements: { items in
+                return items.contains(Item.MagicMirror)
+            }
+        ),
+        // This is technically in DW directly below the warp tile
+        Location(
+            region: Region.LightWorldDeathMountain,
+            name: "[cave-055] Spike cave",
+            address: 0xEA8B,
+            accessRequirements: { items in
+                return items.contains(Item.MoonPearl)
+                    && items.contains(Item.Hammer)
+            }
+        ),
+    ]
+}
+
+func lightWorldEasternDeathMountainItems() -> Locations {
+    return [
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top left chest]",
+            address: 0xEB2A
+        ),
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top left middle chest]",
+            address: 0xEB2D
+        ),
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top right middle chest]",
+            address: 0xEB30
+        ),
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top right chest]",
+            address: 0xEB33
+        ),
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [bottom chest]",
+            address: 0xEB36
+        ),
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-009-B1] Death Mountain - wall of caves - right cave [left chest]",
+            address: 0xEB39
+        ),
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-009-B1] Death Mountain - wall of caves - right cave [right chest]",
+            address: 0xEB3C
+        ),
+        Location(
+            region: Region.LightWorldEasternDeathMountain,
+            name: "[cave-012-1F] Death Mountain - wall of caves - left cave",
+            address: 0xE9BF
+        ),
+    ]
+}
+
+func zorasDomainItems() -> Locations {
+    return [
+        // Zora's appearance is based on if you items flippers or not
+        Location(
+            region: Region.LightWorld,
+            name: "King Zora",
+            address: 0xEE1C3,
+            accessRequirements: { _ in return true }, // TODO: remove after tidying initializers
+            onPatchingRom: { rom, item in
+                // (This is a guess based on the Windows source)
+                // Indicates what item's presence will block the Zora scene
+                rom.patch(atByteOffset: 0x180200, withData: item.bytesForInventoryCheckOverride)
+                // Update end-game credits
+                rom.patch(atByteOffset: 0x76A85, withData: item.bytesForCredits)
+
+            }
+        ),
+        Location(
+            region: Region.LightWorld,
+            name: "Piece of Heart (Zora's River)",
+            address: 0x180149,
+            accessRequirements: { items in
+                return items.contains(Item.Flippers)
+            }
+        ),
+    ]
+}
+
+// MARK: LW Dungeons
+
+func hyruleEscapeItems() -> Locations {
+    return [
+        // FIXME: No keys here!
+        Location(
+            region: Region.HyruleCastleEscape,
+            name: "[cave-040] Link's House",
+            address: 0xE9BC
+        ),
+        // FIXME: No keys here! (?)
+        Location(
+            region: Region.HyruleCastleEscape,
+            name: "[cave-034] Hyrule Castle secret entrance",
+            address: 0xE971
+        ),
+        Location(
+            region: Region.HyruleCastleEscape,
+            name: "[dungeon-C-B1] Escape - first B1 room",
+            address: 0xE96E,
+            keyZone: 2,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.HyruleCastleEscape,
+            name: "[dungeon-C-B1] Hyrule Castle - boomerang room",
+            address: 0xE974,
+            keyZone: 1,
+            bigKeyNeeded: false
+        ),
+        // FIXME: no keys here!
+        Location(
+            region: Region.HyruleCastleEscape,
+            name: "[dungeon-C-1F] Sanctuary",
+            address: 0xEA79,
+            keyZone: 4,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.HyruleCastleEscape,
+            name: "[dungeon-C-B3] Hyrule Castle - next to Zelda",
+            address: 0xEB09,
+            keyZone: 2,
+            bigKeyNeeded: false // Technically it is needed, but BK doesn't spawn in a chest so this would break
+        ),
+        Location(
+            region: Region.HyruleCastleEscape,
+            name: "[dungeon-C-B1] Hyrule Castle - map room",
+            address: 0xEB0C
+        ),
+        Location(
+            region: Region.HyruleCastleEscape,
+            name: "[dungeon-C-B1] Escape - final basement room [left chest]",
+            address: 0xEB5D,
+            keyZone: 4,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.canLiftRocks()
+            }
+        ),
+        Location(
+            region: Region.HyruleCastleEscape,
+            name: "[dungeon-C-B1] Escape - final basement room [middle chest]",
+            address: 0xEB60,
+            keyZone: 4,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.canLiftRocks()
+            }
+        ),
+        Location(
+            region: Region.HyruleCastleEscape,
+            name: "[dungeon-C-B1] Escape - final basement room [right chest]",
+            address: 0xEB63,
+            keyZone: 4,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.canLiftRocks()
+            }
+        ),
+    ]
+}
+
+func easternPalaceItems() -> Locations {
+    return [
+        Location(
+            region: Region.EasternPalace,
+            name: "[dungeon-L1-1F] Eastern Palace - compass room",
+            address: 0xE977
+        ),
+        Location(
+            region: Region.EasternPalace,
+            name: "[dungeon-L1-1F] Eastern Palace - big chest",
+            address: 0xE97D,
+            keyZone: 0,
+            bigKeyNeeded: true
+        ),
+        Location(
+            region: Region.EasternPalace,
+            name: "[dungeon-L1-1F] Eastern Palace - big ball room",
+            address: 0xE9B3
+        ),
+        Location(
+            region: Region.EasternPalace,
+            name: "[dungeon-L1-1F] Eastern Palace - Big key",
+            address: 0xE9B9,
+            keyZone: 1,
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.EasternPalace,
+            name: "[dungeon-L1-1F] Eastern Palace - map room",
+            address: 0xE9F5
+        ),
+    ]
+}
+
+func desertPalaceItems() -> Locations {
+    return [
+        Location(
+            region: Region.DesertPalace,
+            name: "[dungeon-L2-B1] Desert Palace - big chest",
+            address: 0xE98F,
+            keyZone: 0,
+            bigKeyNeeded: true
+        ),
+        Location(
+            region: Region.DesertPalace,
+            name: "[dungeon-L2-B1] Desert Palace - Map room",
+            address: 0xE9B6
+        ),
+        Location(
+            region: Region.DesertPalace,
+            name: "[dungeon-L2-B1] Desert Palace - Big key room",
+            address: 0xE9C2,
+            keyZone: 1,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.PegasusBoots)
+            }
+        ),
+        Location(
+            region: Region.DesertPalace,
+            name: "[dungeon-L2-B1] Desert Palace - compass room",
+            address: 0xE9CB,
+            keyZone: 1,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.contains(Item.PegasusBoots)
+            }
+        ),
+    ]
+}
+
+func towerOfHeraItems() -> Locations {
+    return [
+        Location(
+            region: Region.TowerOfHera,
+            name: "[dungeon-L3-2F] Tower of Hera - Entrance",
+            address: 0xE9AD
+        ),
+        Location(
+            region: Region.TowerOfHera,
+            name: "[dungeon-L3-1F] Tower of Hera - first floor",
+            address: 0xE9E6,
+            keyZone: 1,
+            bigKeyNeeded: false,
+            accessRequirements: { items in
+                return items.canLightTorches()
+            }
+        ),
+        Location(
+            region: Region.TowerOfHera,
+            name: "[dungeon-L3-4F] Tower of Hera - big chest",
+            address: 0xE9F8,
+            keyZone: 0,
+            bigKeyNeeded: true
+        ),
+        Location(
+            region: Region.TowerOfHera,
+            name: "[dungeon-L3-4F] Tower of Hera - 4F [small chest]",
+            address: 0xE9FB,
+            keyZone: 0,
+            bigKeyNeeded: true
+        ),
+    ]
+}
+
+func hyruleCastleTowerItems() -> Locations {
+    return [
+        Location(
+            region: Region.HyruleCastleTower,
+            name: "[dungeon-A1-3F] Hyrule Castle Tower - maze room",
+            address: 0xEAB2,
+            keyZone: 1, // added this
+            bigKeyNeeded: false
+        ),
+        Location(
+            region: Region.HyruleCastleTower,
+            name: "[dungeon-A1-2F] Hyrule Castle Tower - 2 knife guys room",
+            address: 0xEAB5,
+            keyZone: 0, // added this
+            bigKeyNeeded: false
         ),
     ]
 }
