@@ -23,6 +23,7 @@ enum Region: Int {
 
     case DarkWorld
     case DarkWorldMire
+    case DarkWorldNorthWest
     case DarkWorldSouth
     case DarkWorldEasternDeathMountain
     case DarkPalace
@@ -47,6 +48,7 @@ enum Region: Int {
         .ZorasDomain,
         .DarkWorld,
         .DarkWorldMire,
+        .DarkWorldNorthWest,
         .DarkWorldSouth,
         .DarkWorldEasternDeathMountain,
         .DarkPalace,
@@ -75,6 +77,7 @@ enum Region: Int {
             return true
         case .DarkWorld: fallthrough
         case .DarkWorldMire: fallthrough
+        case .DarkWorldNorthWest: fallthrough
         case .DarkWorldSouth: fallthrough
         case .DarkWorldEasternDeathMountain: fallthrough
         case .DarkPalace: fallthrough

@@ -135,6 +135,8 @@ extension Region {
 
         case .DarkWorldMire:
             return inventory.canAccessMireArea()
+        case .DarkWorldNorthWest:
+            return inventory.canAccessNorthWestDarkWorld()
         case .DarkWorldSouth:
             return inventory.canAccessSouthDarkWorld()
         case .DarkWorldEasternDeathMountain:
@@ -191,6 +193,8 @@ func locationsForRegion(region: Region) -> [Location] {
         return darkWorldItems()
     case .DarkWorldMire:
         return mireItems()
+    case .DarkWorldNorthWest:
+        return northWestDarkWorldItems()
     case .DarkWorldSouth:
         return southDarkWorldItems()
     case .DarkWorldEasternDeathMountain:
@@ -1503,24 +1507,42 @@ func lightWorldItems() -> [Location] {
     ]
 }
 
-func darkWorldItems() -> [Location] {
+func northWestDarkWorldItems() -> [Location] {
     return [
         Location(
-            region: Region.DarkWorld,
+            region: Region.DarkWorldNorthWest,
             name: "[cave-063] doorless hut",
-            address: 0xE9EC,
-            accessRequirements: { items in
-                return items.canAccessNorthWestDarkWorld()
-            }
+            address: 0xE9EC
         ),
         Location(
-            region: Region.DarkWorld,
+            region: Region.DarkWorldNorthWest,
             name: "[cave-062] C-shaped house",
-            address: 0xE9EF,
+            address: 0xE9EF
+        ),
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldNorthWest,
+            name: "Piece of Heart (Dark World blacksmith pegs)",
+            address: 0x180006,
             accessRequirements: { items in
-                return items.canAccessNorthWestDarkWorld()
+                return items.canLiftHeavyRocks()
+                    && items.contains(Item.Hammer)
             }
         ),
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldNorthWest,
+            name: "Piece of Heart (Dark World - bumper cave)",
+            address: 0x180146,
+            accessRequirements: { items in
+                return items.contains(Item.Cape)
+            }
+        ),
+    ]
+}
+
+func darkWorldItems() -> [Location] {
+    return [
         // MARK: not late game
         Location(
             region: Region.DarkWorld,
@@ -1538,27 +1560,7 @@ func darkWorldItems() -> [Location] {
                 rom.patch(atByteOffset: 0x180204, withData: item.bytesForInventoryCheckOverride)
             }
         ),
-        // MARK: not late game
-        Location(
-            region: Region.DarkWorld,
-            name: "Piece of Heart (Dark World blacksmith pegs)",
-            address: 0x180006,
-            accessRequirements: { items in
-                return items.canAccessNorthWestDarkWorld()
-                    && items.canLiftHeavyRocks()
-                    && items.contains(Item.Hammer)
-            }
-        ),
-        // MARK: not late game
-        Location(
-            region: Region.DarkWorld,
-            name: "Piece of Heart (Dark World - bumper cave)",
-            address: 0x180146,
-            accessRequirements: { items in
-                return items.canAccessNorthWestDarkWorld()
-                    && items.contains(Item.Cape)
-            }
-        ),
+
         // MARK: not late game
         Location(
             region: Region.DarkWorld,
