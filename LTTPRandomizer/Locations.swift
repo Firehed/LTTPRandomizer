@@ -368,49 +368,49 @@ func lightWorldEasternDeathMountainItems() -> Locations {
             region: Region.LightWorldEasternDeathMountain,
             name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top left chest]",
             address: 0xEB2A,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.LightWorldEasternDeathMountain,
             name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top left middle chest]",
             address: 0xEB2D,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.LightWorldEasternDeathMountain,
             name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top right middle chest]",
             address: 0xEB30,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.LightWorldEasternDeathMountain,
             name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top right chest]",
             address: 0xEB33,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.LightWorldEasternDeathMountain,
             name: "[cave-009-1F] Death Mountain - wall of caves - right cave [bottom chest]",
             address: 0xEB36,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.LightWorldEasternDeathMountain,
             name: "[cave-009-B1] Death Mountain - wall of caves - right cave [left chest]",
             address: 0xEB39,
-            item: Item.Nothing
+            item: Item.ThreeBombs
         ),
         Location(
             region: Region.LightWorldEasternDeathMountain,
             name: "[cave-009-B1] Death Mountain - wall of caves - right cave [right chest]",
             address: 0xEB3C,
-            item: Item.Nothing
+            item: Item.TenArrows
         ),
         Location(
             region: Region.LightWorldEasternDeathMountain,
             name: "[cave-012-1F] Death Mountain - wall of caves - left cave",
             address: 0xE9BF,
-            item: Item.Nothing
+            item: Item.FiftyRupees
         ),
     ]
 }
