@@ -9,10 +9,19 @@
 import Foundation
 
 class DifficultyCasual: Difficulty {
+
     var locations: [Location] = []
+    private var pool = [Item]()
 
     func reset() {
+        pool = []
         locations = allLocations()
+        for location in locations {
+            if !location.item.isDungeonItem {
+                pool.append(location.item)
+            }
+            location.item = .Nothing
+        }
     }
 
     func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location], randomizer: Randomizer) -> Item {
@@ -59,153 +68,12 @@ class DifficultyCasual: Difficulty {
     }
 
     func getItemPool(random: Randomizer) -> [Item] {
-        return [
-            Item.Bombos,
-            Item.BookOfMudora,
-            Item.Bow,
-            Item.CaneOfSomaria,
-            Item.Ether,
-            Item.FireRod,
-            Item.Flippers,
-            Item.Hammer,
-            Item.Hookshot,
-            Item.IceRod,
-            Item.Lamp,
-            //Item.L1SwordAndShield,
-            Item.MagicMirror,
-            Item.MoonPearl,
-            Item.PegasusBoots,
-            Item.PowerGlove,
-            Item.Quake,
-            Item.Shovel,
-            Item.TitansMitt,
-            // nice-to-have items
-            Item.BlueMail,
-            Item.Boomerang,
-            // 4
-            Item.Bottle,
-            Item.Bottle,
-            Item.Bottle,
-            Item.Bottle,
-            Item.BugCatchingNet,
-            Item.Cape,
-            Item.HeartContainer,
-            Item.MirrorShield,
-            // 22 POH (excl dig and chest games)
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            Item.PieceOfHeart,
-            //Item.PieceOfHeart,
-            Item.RedBoomerang,
-            Item.RedMail,
-            Item.RedShield,
-            Item.StaffOfByrna,
-            // other treasure box contents
-            Item.Arrow,
-            // 11
-            Item.TenArrows,
-            Item.TenArrows,
-            Item.TenArrows,
-            Item.TenArrows,
-            Item.TenArrows,
-            Item.TenArrows,
-            Item.TenArrows,
-            Item.TenArrows,
-            Item.TenArrows,
-            Item.TenArrows,
-            Item.TenArrows,
-            // 17
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            Item.ThreeBombs,
-            // 2
-            Item.OneRupee,
-            Item.OneRupee,
-            // 2
-            Item.FiveRupees,
-            Item.FiveRupees,
-            // 26
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            Item.TwentyRupees,
-            // 7
-            Item.FiftyRupees,
-            Item.FiftyRupees,
-            Item.FiftyRupees,
-            Item.FiftyRupees,
-            Item.FiftyRupees,
-            Item.FiftyRupees,
-            Item.FiftyRupees,
-
-            // 6
-            Item.OneHundredRupees,
-            Item.OneHundredRupees,
-            Item.OneHundredRupees,
-            Item.OneHundredRupees,
-            Item.OneHundredRupees,
-            Item.OneHundredRupees,
-            // 4
-            Item.ThreeHundredRupees,
-            Item.ThreeHundredRupees,
-            Item.ThreeHundredRupees,
-            Item.ThreeHundredRupees,
-        ]
+        // TODO: possible difficulty shifts
+        // - Change rupees/bombs/arrows
+        // - Change bottle contents
+        // - Replace non-critical inventory items
+        // - Replace heart pieces
+        return pool
     }
 
     private func isLateGameItem(_ item: Item) -> Bool {
