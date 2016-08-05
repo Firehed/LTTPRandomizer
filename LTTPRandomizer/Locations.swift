@@ -422,7 +422,7 @@ func zorasDomainItems() -> Locations {
             region: Region.LightWorld,
             name: "King Zora",
             address: 0xEE1C3,
-            item: Item.Nothing,
+            item: Item.Flippers,
             accessRequirements: { _ in return true }, // TODO: remove after tidying initializers
             onPatchingRom: { rom, item in
                 // (This is a guess based on the Windows source)
