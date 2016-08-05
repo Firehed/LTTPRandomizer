@@ -714,39 +714,39 @@ func southDarkWorldItems() -> Locations {
             region: Region.DarkWorldSouth,
             name: "[cave-073] cave northeast of swamp palace [top chest]",
             address: 0xEB1E,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.DarkWorldSouth,
             name: "[cave-073] cave northeast of swamp palace [top middle chest]",
             address: 0xEB21,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.DarkWorldSouth,
             name: "[cave-073] cave northeast of swamp palace [bottom middle chest]",
             address: 0xEB24,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.DarkWorldSouth,
             name: "[cave-073] cave northeast of swamp palace [bottom chest]",
             address: 0xEB27,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         // MARK: not late game
         Location(
             region: Region.DarkWorldSouth,
             name: "Flute Boy",
             address: 0x330C7,
-            item: Item.Nothing
+            item: Item.Shovel
         ),
         // MARK: not late game
         Location(
             region: Region.DarkWorldSouth,
             name: "[cave-073] cave northeast of swamp palace - generous guy",
             address: 0x180011,
-            item: Item.Nothing
+            item: Item.ThreeHundredRupees
         ),
         // Technically spawns in LW (warp from peg area)
         // MARK: not late game
@@ -754,7 +754,7 @@ func southDarkWorldItems() -> Locations {
             region: Region.DarkWorldSouth,
             name: "Bombos",
             address: 0x48B81,
-            item: Item.Nothing,
+            item: Item.Bombos,
             accessRequirements: { items in
                 return items.canGetMasterSword()
                     && items.containsAll(Item.BookOfMudora, Item.MagicMirror)
