@@ -10,12 +10,15 @@ import Foundation
 
 class DifficultyCasual: Difficulty {
 
+    private var randomizer: Randomizer
+
     /// Locations that will be randomized
     private var locations: [Location] = []
 
     private var pool = [Item]()
 
-    init() {
+    required init(randomizer: Randomizer) {
+        self.randomizer = randomizer
         reset()
     }
 

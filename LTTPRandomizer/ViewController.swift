@@ -15,7 +15,8 @@ class ViewController: NSViewController {
 
         // Do any additional setup after loading the view.
 
-        let difficulty = DifficultyCasual()
+        let randomizer: Randomizer = SeededRandomizer(seed: 0)
+        let difficulty = DifficultyCasual(randomizer: randomizer)
         let r = RomBuilder(seed: 0, locations: difficulty)
         r.assignItems()
         r.write()

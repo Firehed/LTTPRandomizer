@@ -10,6 +10,13 @@ import Foundation
 
 protocol Difficulty {
 
+    /**
+     Initializer. Provides a randomizer to use during selection
+     - parameters:
+        - randomizer: a Randomizer
+    */
+    init(randomizer: Randomizer)
+
     func reset() -> Void
     func getItemPool(random: Randomizer) -> [Item]
 
