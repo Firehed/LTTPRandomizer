@@ -535,7 +535,7 @@ func easternPalaceItems() -> Locations {
             region: Region.EasternPalace,
             name: "[dungeon-L1-1F] Eastern Palace - compass room",
             address: 0xE977,
-            item: Item.Nothing,
+            item: Item.Compass,
             rules: DungeonRules(zone: 0, bigKeyZone: false)
         ),
         Location(
@@ -556,14 +556,14 @@ func easternPalaceItems() -> Locations {
             region: Region.EasternPalace,
             name: "[dungeon-L1-1F] Eastern Palace - Big key",
             address: 0xE9B9,
-            item: Item.Nothing,
+            item: Item.BigKey,
             rules: DungeonRules(zone: 1, bigKeyZone: false)
         ),
         Location(
             region: Region.EasternPalace,
             name: "[dungeon-L1-1F] Eastern Palace - map room",
             address: 0xE9F5,
-            item: Item.Nothing,
+            item: Item.Map,
             rules: DungeonRules(zone: 0, bigKeyZone: false)
         ),
     ]
@@ -582,14 +582,14 @@ func desertPalaceItems() -> Locations {
             region: Region.DesertPalace,
             name: "[dungeon-L2-B1] Desert Palace - Map room",
             address: 0xE9B6,
-            item: Item.Nothing,
+            item: Item.Map,
             rules: DungeonRules(zone: 0, bigKeyZone: false)
         ),
         Location(
             region: Region.DesertPalace,
             name: "[dungeon-L2-B1] Desert Palace - Big key room",
             address: 0xE9C2,
-            item: Item.Nothing,
+            item: Item.BigKey,
             rules: DungeonRules(zone: 1, bigKeyZone: false),
             accessRequirements: { items in
                 return items.contains(Item.PegasusBoots)
@@ -599,7 +599,7 @@ func desertPalaceItems() -> Locations {
             region: Region.DesertPalace,
             name: "[dungeon-L2-B1] Desert Palace - compass room",
             address: 0xE9CB,
-            item: Item.Nothing,
+            item: Item.Compass,
             rules: DungeonRules(zone: 1, bigKeyZone: false),
             accessRequirements: { items in
                 return items.contains(Item.PegasusBoots)
@@ -947,7 +947,7 @@ func darkPalaceItems() -> Locations {
             region: Region.DarkPalace,
             name: "[dungeon-D1-1F] Dark Palace - big key room",
             address: 0xEA37,
-            item: Item.Nothing,
+            item: Item.BigKey,
             rules: DungeonRules(zone: 2, bigKeyZone: false)
         ),
         Location(
@@ -982,7 +982,7 @@ func darkPalaceItems() -> Locations {
             region: Region.DarkPalace,
             name: "[dungeon-D1-1F] Dark Palace - compass room",
             address: 0xEA43,
-            item: Item.Nothing,
+            item: Item.Compass,
             rules: DungeonRules(zone: 2, bigKeyZone: false)
         ),
         Location(
@@ -1065,7 +1065,7 @@ func swampPalaceItems() -> Locations {
             region: Region.SwampPalace,
             name: "[dungeon-D2-B1] Swamp Palace - map room",
             address: 0xE986,
-            item: Item.Nothing,
+            item: Item.Map,
             rules: DungeonRules(zone: 1, bigKeyZone: false)
         ),
         Location(
@@ -1106,7 +1106,7 @@ func swampPalaceItems() -> Locations {
             region: Region.SwampPalace,
             name: "[dungeon-D2-B1] Swamp Palace - big key room",
             address: 0xEAA6,
-            item: Item.Nothing,
+            item: Item.BigKey,
             rules: DungeonRules(zone: 4, bigKeyZone: false),
             accessRequirements: { items in
                 return items.contains(Item.Hammer)
@@ -1154,7 +1154,7 @@ func skullWoodsItems() -> Locations {
             region: Region.SkullWoods,
             name: "[dungeon-D3-B1] Skull Woods - Compass room",
             address: 0xE992,
-            item: Item.Nothing,
+            item: Item.Compass,
             rules: DungeonRules(zone: 1, bigKeyZone: false)
         ),
         Location(
@@ -1175,7 +1175,7 @@ func skullWoodsItems() -> Locations {
             region: Region.SkullWoods,
             name: "[dungeon-D3-B1] Skull Woods - Big Key room",
             address: 0xE99E,
-            item: Item.Nothing,
+            item: Item.BigKey,
             rules: DungeonRules(zone: 2, bigKeyZone: false)
         ),
         Location(
@@ -1275,7 +1275,7 @@ func icePalaceItems() -> Locations {
             region: Region.IcePalace,
             name: "[dungeon-D5-B1] Ice Palace - Big Key room",
             address: 0xE9A4,
-            item: Item.Nothing,
+            item: Item.BigKey,
             rules: DungeonRules(zone: 2, bigKeyZone: false),
             accessRequirements: { items in
                 return items.contains(Item.Hookshot)
@@ -1297,14 +1297,14 @@ func icePalaceItems() -> Locations {
             region: Region.IcePalace,
             name: "[dungeon-D5-B1] Ice Palace - compass room",
             address: 0xE9D4,
-            item: Item.Nothing,
+            item: Item.Compass,
             rules: DungeonRules(zone: 1, bigKeyZone: false)
         ),
         Location(
             region: Region.IcePalace,
             name: "[dungeon-D5-B2] Ice Palace - map room",
             address: 0xE9DD,
-            item: Item.Nothing,
+            item: Item.Map,
             rules: DungeonRules(zone: 2, bigKeyZone: false),
             accessRequirements: { items in
                 return items.contains(Item.Hookshot)
@@ -1358,7 +1358,7 @@ func miseryMireItems() -> Locations {
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - compass",
             address: 0xEA64,
-            item: Item.Nothing,
+            item: Item.Compass,
             rules: DungeonRules(zone: 2, bigKeyZone: false),
             accessRequirements: { items in
                 return items.canLightTorches()
@@ -1378,14 +1378,14 @@ func miseryMireItems() -> Locations {
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - map room",
             address: 0xEA6A,
-            item: Item.Nothing,
+            item: Item.Map,
             rules: DungeonRules(zone: 1, bigKeyZone: false)
         ),
         Location(
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - big key",
             address: 0xEA6D,
-            item: Item.Nothing,
+            item: Item.BigKey,
             rules: DungeonRules(zone: 2, bigKeyZone: false),
             accessRequirements: { items in
                 return items.canLightTorches()
@@ -1420,7 +1420,7 @@ func turtleRockItems() -> Locations {
             region: Region.TurtleRock,
             name: "[dungeon-D7-1F] Turtle Rock - Map room [left chest]",
             address: 0xEA1C,
-            item: Item.Nothing,
+            item: Item.Map,
             rules: DungeonRules(zone: 0, bigKeyZone: false),
             accessRequirements: { items in
                 return items.contains(Item.FireRod)
@@ -1440,14 +1440,14 @@ func turtleRockItems() -> Locations {
             region: Region.TurtleRock,
             name: "[dungeon-D7-1F] Turtle Rock - compass room",
             address: 0xEA22,
-            item: Item.Nothing,
+            item: Item.Compass,
             rules: DungeonRules(zone: 0, bigKeyZone: false)
         ),
         Location(
             region: Region.TurtleRock,
             name: "[dungeon-D7-B1] Turtle Rock - big key room",
             address: 0xEA25,
-            item: Item.Nothing,
+            item: Item.BigKey,
             rules: DungeonRules(zone: 4, bigKeyZone: false),
             accessRequirements: { items in
                 return items.contains(Item.FireRod)
@@ -1595,7 +1595,7 @@ func ganonsTowerItems() -> Locations {
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - map room",
             address: 0xEAD3,
-            item: Item.Nothing,
+            item: Item.Map,
             rules: DungeonRules(zone: 1, bigKeyZone: false)
         ),
         Location(
@@ -1637,7 +1637,7 @@ func ganonsTowerItems() -> Locations {
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - compass room [top left chest]",
             address: 0xEAE5,
-            item: Item.Nothing,
+            item: Item.Compass,
             rules: DungeonRules(zone: 1, bigKeyZone: false),
             accessRequirements: { items in
                 return items.canLightTorches()
