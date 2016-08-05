@@ -331,7 +331,7 @@ func lightWorthDeathMountainItems() -> Locations {
             region: Region.LightWorldDeathMountain,
             name: "Old mountain man",
             address: 0xF69FA,
-            item: Item.Nothing
+            item: Item.MagicMirror
         ),
         Location(
             region: Region.LightWorldDeathMountain,
@@ -353,7 +353,7 @@ func lightWorthDeathMountainItems() -> Locations {
             region: Region.LightWorldDeathMountain,
             name: "[cave-055] Spike cave",
             address: 0xEA8B,
-            item: Item.Nothing,
+            item: Item.StaffOfByrna,
             accessRequirements: { items in
                 return items.contains(Item.MoonPearl)
                     && items.contains(Item.Hammer)
