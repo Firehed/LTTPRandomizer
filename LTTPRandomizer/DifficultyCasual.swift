@@ -15,6 +15,10 @@ class DifficultyCasual: Difficulty {
 
     private var pool = [Item]()
 
+    init() {
+        reset()
+    }
+
     func reset() {
         pool = []
         locations = allLocations()
