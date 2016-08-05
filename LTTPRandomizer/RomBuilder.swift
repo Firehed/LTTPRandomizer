@@ -28,6 +28,9 @@ class RomBuilder {
     /// The provider of the item pool, location list, and placement rules
     private var difficulty: Difficulty
 
+    /// Locations to be randomized
+    private var locations: Locations
+
     /// Items that have been placed into randomized locations.
     ///
     /// This is stored as a Set rather than an Array for performance reasons
@@ -41,6 +44,7 @@ class RomBuilder {
     init(seed: Int, locations: Difficulty) {
         difficulty = locations
         random = SeededRandomizer(seed: seed)
+        self.locations = locations.getLocations()
     }
 
     func assignItems() {
@@ -55,7 +59,6 @@ class RomBuilder {
         do {
             try rom = NSMutableData(contentsOfFile: path, options: NSData.ReadingOptions.uncached)
         } catch { return }
-        var locations = difficulty.locations
         locations.sort(isOrderedBefore: { $0.region.rawValue < $1.region.rawValue })
 
         for location in locations {
@@ -106,8 +109,7 @@ class RomBuilder {
     */
     private func generateDungeonItems() -> Void {
         for dungeon in Dungeon.all {
-            let dungeonLocations = difficulty
-                .locations
+            let dungeonLocations = locations
                 .filter({ $0.region == dungeon.region })
                 .filter({ $0.dungeonRules.canHoldDungeonItems })
 
@@ -146,7 +148,7 @@ class RomBuilder {
     */
     private func generateItemPositions() -> Void {
         repeat {
-            let emptyLocations = difficulty.locations.withNoItems()
+            let emptyLocations = locations.withNoItems()
             var possibleLocations = emptyLocations.filter({ $0.isAccessible(inventory: haveItems) })
 
             // Something has gone deeply wrong during the dependency-solving process
