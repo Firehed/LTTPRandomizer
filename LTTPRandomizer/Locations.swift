@@ -274,13 +274,13 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "Piece of Heart (Thieves' Forest Hideout)",
             address: 0x180000,
-            item: Item.Nothing
+            item: Item.PieceOfHeart
         ),
         Location(
             region: Region.LightWorld,
             name: "Piece of Heart (Lumberjack Tree)",
             address: 0x180001,
-            item: Item.Nothing,
+            item: Item.PieceOfHeart,
             accessRequirements: { items in
                 return items.canDefeatAgahnim1()
                     && items.contains(Item.PegasusBoots)
@@ -305,13 +305,13 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "Piece of Heart (Maze Race)",
             address: 0x180142,
-            item: Item.Nothing
+            item: Item.PieceOfHeart
         ),
         Location(
             region: Region.LightWorld,
             name: "Piece of Heart (Desert - west side)",
             address: 0x180143,
-            item: Item.Nothing,
+            item: Item.PieceOfHeart,
             accessRequirements: { items in
                 return items.contains(Item.BookOfMudora)
             }
@@ -320,7 +320,7 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "Piece of Heart (Dam)",
             address: 0x180145,
-            item: Item.Nothing
+            item: Item.PieceOfHeart
         ),
     ]
 }
@@ -337,13 +337,13 @@ func lightWorthDeathMountainItems() -> Locations {
             region: Region.LightWorldDeathMountain,
             name: "Piece of Heart (Spectacle Rock Cave)",
             address: 0x180002,
-            item: Item.Nothing
+            item: Item.PieceOfHeart
         ),
         Location(
             region: Region.LightWorldDeathMountain,
             name: "Piece of Heart (Spectacle Rock)",
             address: 0x180140,
-            item: Item.Nothing,
+            item: Item.PieceOfHeart,
             accessRequirements: { items in
                 return items.contains(Item.MagicMirror)
             }
@@ -437,7 +437,7 @@ func zorasDomainItems() -> Locations {
             region: Region.LightWorld,
             name: "Piece of Heart (Zora's River)",
             address: 0x180149,
-            item: Item.Nothing,
+            item: Item.PieceOfHeart,
             accessRequirements: { items in
                 return items.contains(Item.Flippers)
             }
@@ -691,7 +691,7 @@ func darkWorldPyramidItems() -> Locations {
             region: Region.DarkWorldPyramid,
             name: "Piece of Heart (Pyramid)",
             address: 0x180147,
-            item: Item.Nothing
+            item: Item.PieceOfHeart
         ),
         // MARK: not late game
         //new Location
@@ -700,7 +700,7 @@ func darkWorldPyramidItems() -> Locations {
         //    region: Region.DarkWorld,
         //    name: "Piece of Heart (Digging Game)",
         //    address: 0x180148,
-        //    item: Item.Nothing,
+        //    item: PieceOfHeart,
         //    accessRequirements: { items in
         //        return items.canAccessLowerDarkWorld()
         //    }
@@ -770,7 +770,7 @@ func southDarkWorldItems() -> Locations {
             region: Region.DarkWorldSouth,
             name: "Piece of Heart (south of Haunted Grove)",
             address: 0x180003,
-            item: Item.Nothing,
+            item: Item.PieceOfHeart,
             accessRequirements: { items in
                 return items.contains(Item.MagicMirror)
             }
@@ -781,7 +781,7 @@ func southDarkWorldItems() -> Locations {
             region: Region.DarkWorldSouth,
             name: "Piece of Heart (Lake Hylia)",
             address: 0x180144,
-            item: Item.Nothing,
+            item: Item.PieceOfHeart,
             accessRequirements: { items in
                 return items.containsAll(Item.Flippers, Item.MagicMirror)
             }
@@ -808,7 +808,7 @@ func northWestDarkWorldItems() -> Locations {
             region: Region.DarkWorldNorthWest,
             name: "Piece of Heart (Dark World blacksmith pegs)",
             address: 0x180006,
-            item: Item.Nothing,
+            item: Item.PieceOfHeart,
             accessRequirements: { items in
                 return items.canLiftHeavyRocks()
                     && items.contains(Item.Hammer)
@@ -819,7 +819,7 @@ func northWestDarkWorldItems() -> Locations {
             region: Region.DarkWorldNorthWest,
             name: "Piece of Heart (Dark World - bumper cave)",
             address: 0x180146,
-            item: Item.Nothing,
+            item: Item.PieceOfHeart,
             accessRequirements: { items in
                 return items.contains(Item.Cape)
             }
@@ -840,7 +840,7 @@ func northWestDarkWorldItems() -> Locations {
             region: Region.DarkWorldNorthWest,
             name: "Piece of Heart (Graveyard)",
             address: 0x180004,
-            item: Item.Nothing,
+            item: Item.PieceOfHeart,
             accessRequirements: { items in
                 return items.contains(Item.MagicMirror)
             }
@@ -866,7 +866,7 @@ func mireItems() -> Locations {
             region: Region.DarkWorldMire,
             name: "Piece of Heart (Desert - northeast corner)",
             address: 0x180005,
-            item: Item.Nothing,
+            item: Item.PieceOfHeart,
             accessRequirements: { items in
                 return items.contains(Item.MagicMirror)
             }
@@ -880,7 +880,7 @@ func easternDarkWorldDeathMountainItems() -> Locations {
             region: Region.DarkWorldEasternDeathMountain,
             name: "Piece of Heart (Death Mountain - floating island)",
             address: 0x180141,
-            item: Item.Nothing,
+            item: Item.PieceOfHeart,
             accessRequirements: { items in
                 // No hookshot here, just the invisible path
                 return items.containsAll(Item.MagicMirror, Item.MoonPearl)
