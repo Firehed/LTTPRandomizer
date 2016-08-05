@@ -47,10 +47,6 @@ class LTTPRandomizerTests: XCTestCase {
             XCTAssertEqual(dungeonLocations.filter({ $0.item == .Key }).count,
                            numKeys,
                            "Region \(dungeon.region) has the wrong number of keys")
-            // Everything else: nothing left as "none"
-            XCTAssertEqual(dungeonLocations.filter({ $0.item == .Nothing }).count,
-                           0,
-                           "Region \(dungeon.region) has some items set to Nothing")
         }
     }
 
