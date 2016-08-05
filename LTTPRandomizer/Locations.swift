@@ -549,7 +549,7 @@ func easternPalaceItems() -> Locations {
             region: Region.EasternPalace,
             name: "[dungeon-L1-1F] Eastern Palace - big ball room",
             address: 0xE9B3,
-            item: Item.Nothing,
+            item: Item.OneHundredRupees,
             rules: DungeonRules(zone: 0, bigKeyZone: false)
         ),
         Location(
@@ -614,14 +614,14 @@ func towerOfHeraItems() -> Locations {
             region: Region.TowerOfHera,
             name: "[dungeon-L3-2F] Tower of Hera - Entrance",
             address: 0xE9AD,
-            item: Item.Nothing,
+            item: Item.Map,
             rules: DungeonRules(zone: 0, bigKeyZone: false)
         ),
         Location(
             region: Region.TowerOfHera,
             name: "[dungeon-L3-1F] Tower of Hera - first floor",
             address: 0xE9E6,
-            item: Item.Nothing,
+            item: Item.BigKey,
             rules: DungeonRules(zone: 1, bigKeyZone: false),
             accessRequirements: { items in
                 return items.canLightTorches()
@@ -638,7 +638,7 @@ func towerOfHeraItems() -> Locations {
             region: Region.TowerOfHera,
             name: "[dungeon-L3-4F] Tower of Hera - 4F [small chest]",
             address: 0xE9FB,
-            item: Item.Nothing,
+            item: Item.Compass,
             rules: DungeonRules(zone: 0, bigKeyZone: true)
         ),
     ]
@@ -650,14 +650,14 @@ func hyruleCastleTowerItems() -> Locations {
             region: Region.HyruleCastleTower,
             name: "[dungeon-A1-3F] Hyrule Castle Tower - maze room",
             address: 0xEAB2,
-            item: Item.Nothing,
+            item: Item.Key,
             rules: DungeonRules(zone: 1, bigKeyZone: false)
         ),
         Location(
             region: Region.HyruleCastleTower,
             name: "[dungeon-A1-2F] Hyrule Castle Tower - 2 knife guys room",
             address: 0xEAB5,
-            item: Item.Nothing,
+            item: Item.Key,
             rules: DungeonRules(zone: 0, bigKeyZone: false)
         ),
     ]
