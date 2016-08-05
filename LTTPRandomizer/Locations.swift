@@ -795,13 +795,13 @@ func northWestDarkWorldItems() -> Locations {
             region: Region.DarkWorldNorthWest,
             name: "[cave-063] doorless hut",
             address: 0xE9EC,
-            item: Item.Nothing
+            item: Item.ThreeHundredRupees
         ),
         Location(
             region: Region.DarkWorldNorthWest,
             name: "[cave-062] C-shaped house",
             address: 0xE9EF,
-            item: Item.Nothing
+            item: Item.ThreeHundredRupees
         ),
         // MARK: not late game
         Location(
