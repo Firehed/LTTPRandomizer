@@ -37,7 +37,7 @@ class DifficultyCasual: Difficulty {
         return locations
     }
 
-    func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location], randomizer: Randomizer) -> Item {
+    func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location]) -> Item {
         if possibleItems.count == 1 {
             return possibleItems.first!
         }
@@ -62,7 +62,7 @@ class DifficultyCasual: Difficulty {
         return item
     }
 
-    func getLocationForItemPlacement(possibleLocations: [Location], item: Item, randomizer: Randomizer) -> Location {
+    func getLocationForItemPlacement(possibleLocations: [Location], item: Item) -> Location {
         if possibleLocations.count == 1 {
             return possibleLocations.first!
         }
@@ -80,7 +80,7 @@ class DifficultyCasual: Difficulty {
         return location
     }
 
-    func getItemPool(random: Randomizer) -> [Item] {
+    func getItemPool() -> [Item] {
         // TODO: possible difficulty shifts
         // - Change rupees/bombs/arrows
         // - Change bottle contents

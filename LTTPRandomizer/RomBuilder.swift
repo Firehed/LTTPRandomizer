@@ -99,7 +99,7 @@ class RomBuilder {
 
     private func generateItemList() -> Void {
         difficulty.reset()
-        itemPool = difficulty.getItemPool(random: random)
+        itemPool = difficulty.getItemPool()
         haveItems = []
     }
 
@@ -174,13 +174,13 @@ class RomBuilder {
 
             var selected: Item
             if progressionItems.count > 0 {
-                selected = difficulty.getItemForInsertion(possibleItems: progressionItems, possibleLocations: possibleLocations, randomizer: random)
+                selected = difficulty.getItemForInsertion(possibleItems: progressionItems, possibleLocations: possibleLocations)
             } else {
-                selected = difficulty.getItemForInsertion(possibleItems: itemPool, possibleLocations: possibleLocations, randomizer: random)
+                selected = difficulty.getItemForInsertion(possibleItems: itemPool, possibleLocations: possibleLocations)
             }
             haveItems.insert(selected)
             itemPool.remove(at: itemPool.index(of: selected)!) // remove the first one found
-            let targetLocation = difficulty.getLocationForItemPlacement(possibleLocations: possibleLocations, item: selected, randomizer: random)
+            let targetLocation = difficulty.getLocationForItemPlacement(possibleLocations: possibleLocations, item: selected)
             targetLocation.item = selected
         } while (itemPool.isNonEmpty)
     }

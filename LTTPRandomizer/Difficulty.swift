@@ -18,7 +18,12 @@ protocol Difficulty {
     init(randomizer: Randomizer)
 
     func reset() -> Void
-    func getItemPool(random: Randomizer) -> [Item]
+
+    /**
+     Return a list of `Item`s that can be randomly placed
+     - returns: an array of `Item`s
+    */
+    func getItemPool() -> [Item]
 
     /**
      Return a list of `Location`s that need items
@@ -31,18 +36,16 @@ protocol Difficulty {
      - parameters:
         - possibleItems: the item pool
         - possibleLocations: the currently accessible locations
-        - randomizer: a randomizer
      - returns: the Item to place
     */
-    func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location], randomizer: Randomizer) -> Item
+    func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location]) -> Item
 
     /**
      Given an item to place and currently-accessible locations, return the location to place the item
      - parameters:
         - possibleLocations: the currently accessible locations
         - item: the Item being placed
-        - randomizer: a randomizer
      - returns: the Location to place the Item
     */
-    func getLocationForItemPlacement(possibleLocations: [Location], item: Item, randomizer: Randomizer) -> Location
+    func getLocationForItemPlacement(possibleLocations: [Location], item: Item) -> Location
 }
