@@ -23,7 +23,7 @@ class RomBuilder {
     var writeSRAMTrace: Bool = false
 
     /// The pseudo-randomizer
-    private var random: Randomizer
+    private var randomizer: Randomizer
 
     /// The provider of the item pool, location list, and placement rules
     private var difficulty: Difficulty
@@ -43,7 +43,7 @@ class RomBuilder {
 
     init(randomizer: Randomizer, difficulty: Difficulty) {
         self.difficulty = difficulty
-        self.random = randomizer
+        self.randomizer = randomizer
         self.locations = difficulty.getLocations()
     }
 
@@ -122,20 +122,20 @@ class RomBuilder {
                     } else {
                         current = dungeonLocations.filter({ $0.isInKeyZone(zone.id) })
                     }
-                    current.selectAtRandom(random).item = Item.Key
+                    current.selectAtRandom(randomizer).item = Item.Key
                 }
             }
             if dungeon.hasBigKey {
                 let avail = dungeonLocations.withNoItems().filter({ !$0.dungeonRules.isBigKeyZone })
-                avail.selectAtRandom(random).item = Item.BigKey
+                avail.selectAtRandom(randomizer).item = Item.BigKey
             }
             if dungeon.hasMap {
                 let avail = dungeonLocations.withNoItems()
-                avail.selectAtRandom(random).item = Item.Map
+                avail.selectAtRandom(randomizer).item = Item.Map
             }
             if dungeon.hasCompass {
                 let avail = dungeonLocations.withNoItems()
-                avail.selectAtRandom(random).item = Item.Compass
+                avail.selectAtRandom(randomizer).item = Item.Compass
             }
         }
     }
