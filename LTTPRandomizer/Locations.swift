@@ -453,54 +453,54 @@ func hyruleEscapeItems() -> Locations {
             region: Region.HyruleCastleEscape,
             name: "[cave-040] Link's House",
             address: 0xE9BC,
-            item: Item.Nothing
+            item: Item.Lamp
         ),
         Location(
             region: Region.HyruleCastleEscape,
             name: "[cave-034] Hyrule Castle secret entrance",
             address: 0xE971,
-            item: Item.Nothing
+            item: Item.FiveRupees
         ),
         Location(
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B1] Escape - first B1 room",
             address: 0xE96E,
-            item: Item.Nothing,
+            item: Item.Key,
             rules: DungeonRules(zone: 2, bigKeyZone: false)
         ),
         Location(
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B1] Hyrule Castle - boomerang room",
             address: 0xE974,
-            item: Item.Nothing,
+            item: Item.Boomerang,
             rules: DungeonRules(zone: 1, bigKeyZone: false)
         ),
         Location(
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-1F] Sanctuary",
             address: 0xEA79,
-            item: Item.Nothing,
+            item: Item.HeartContainer,
             rules: DungeonRules(zone: 4, bigKeyZone: false)
         ),
         Location(
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B3] Hyrule Castle - next to Zelda",
             address: 0xEB09,
-            item: Item.Nothing,
+            item: Item.FiveRupees,
             rules: DungeonRules(zone: 2, bigKeyZone: false) // Technically it is needed, but BK doesn't spawn in a chest so this would break
         ),
         Location(
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B1] Hyrule Castle - map room",
             address: 0xEB0C,
-            item: Item.Nothing,
+            item: Item.Map,
             rules: DungeonRules(zone: 0, bigKeyZone: false)
         ),
         Location(
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B1] Escape - final basement room [left chest]",
             address: 0xEB5D,
-            item: Item.Nothing,
+            item: Item.ThreeBombs,
             rules: DungeonRules(zone: 4, bigKeyZone: false),
             accessRequirements: { items in
                 return items.canLiftRocks()
@@ -510,7 +510,7 @@ func hyruleEscapeItems() -> Locations {
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B1] Escape - final basement room [middle chest]",
             address: 0xEB60,
-            item: Item.Nothing,
+            item: Item.ThreeHundredRupees,
             rules: DungeonRules(zone: 4, bigKeyZone: false),
             accessRequirements: { items in
                 return items.canLiftRocks()
@@ -520,7 +520,7 @@ func hyruleEscapeItems() -> Locations {
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B1] Escape - final basement room [right chest]",
             address: 0xEB63,
-            item: Item.Nothing,
+            item: Item.TenArrows,
             rules: DungeonRules(zone: 4, bigKeyZone: false),
             accessRequirements: { items in
                 return items.canLiftRocks()
