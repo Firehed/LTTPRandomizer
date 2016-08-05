@@ -854,13 +854,13 @@ func mireItems() -> Locations {
             region: Region.DarkWorldMire,
             name: "[cave-071] Misery Mire west area [left chest]",
             address: 0xEA73,
-            item: Item.Nothing
+            item: Item.PieceOfHeart
         ),
         Location(
             region: Region.DarkWorldMire,
             name: "[cave-071] Misery Mire west area [right chest]",
             address: 0xEA76,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.DarkWorldMire,
