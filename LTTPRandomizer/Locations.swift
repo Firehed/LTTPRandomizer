@@ -890,19 +890,19 @@ func easternDarkWorldDeathMountainItems() -> Locations {
             region: Region.DarkWorldEasternDeathMountain,
             name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [top chest]",
             address: 0xEA7C,
-            item: Item.Nothing
+            item: Item.ThreeBombs
         ),
         Location(
             region: Region.DarkWorldEasternDeathMountain,
             name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [bottom chest]",
             address: 0xEA7F,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.DarkWorldEasternDeathMountain,
             name: "[cave-056] Dark World Death Mountain - cave under boulder [top right chest]",
             address: 0xEB51,
-            item: Item.Nothing,
+            item: Item.FiftyRupees,
             accessRequirements: { items in
                 return items.containsAll(Item.Hookshot, Item.MoonPearl)
             }
@@ -911,7 +911,7 @@ func easternDarkWorldDeathMountainItems() -> Locations {
             region: Region.DarkWorldEasternDeathMountain,
             name: "[cave-056] Dark World Death Mountain - cave under boulder [top left chest]",
             address: 0xEB54,
-            item: Item.Nothing,
+            item: Item.FiftyRupees,
             accessRequirements: { items in
                 return items.containsAll(Item.Hookshot, Item.MoonPearl)
             }
@@ -920,7 +920,7 @@ func easternDarkWorldDeathMountainItems() -> Locations {
             region: Region.DarkWorldEasternDeathMountain,
             name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom left chest]",
             address: 0xEB57,
-            item: Item.Nothing,
+            item: Item.FiftyRupees,
             accessRequirements: { items in
                 return items.containsAll(Item.Hookshot, Item.MoonPearl)
             }
@@ -929,7 +929,7 @@ func easternDarkWorldDeathMountainItems() -> Locations {
             region: Region.DarkWorldEasternDeathMountain,
             name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom right chest]",
             address: 0xEB5A,
-            item: Item.Nothing,
+            item: Item.FiftyRupees,
             accessRequirements: { items in
                 return items.containsAll(Item.Hookshot, Item.MoonPearl)
                     // not actually required here, but stops some deadlocks
