@@ -10,7 +10,9 @@ import Foundation
 
 class DifficultyCasual: Difficulty {
 
-    var locations: [Location] = []
+    /// Locations that will be randomized
+    private var locations: [Location] = []
+
     private var pool = [Item]()
 
     func reset() {
@@ -22,6 +24,10 @@ class DifficultyCasual: Difficulty {
             }
             location.item = .Nothing
         }
+    }
+
+    func getLocations() -> Locations {
+        return locations
     }
 
     func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location], randomizer: Randomizer) -> Item {

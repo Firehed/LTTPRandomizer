@@ -9,9 +9,15 @@
 import Foundation
 
 protocol Difficulty {
-    var locations: [Location] { get }
+
     func reset() -> Void
     func getItemPool(random: Randomizer) -> [Item]
+
+    /**
+     Return a list of `Location`s that need items
+     - returns: an array of `Location`s
+    */
+    func getLocations() -> Locations
 
     /**
      Given a pool of items and currently-accessible locations, returns an item to place.
