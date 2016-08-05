@@ -254,15 +254,6 @@ func lightWorldItems() -> Locations {
         ),
         Location(
             region: Region.LightWorld,
-            name: "Piece of Heart (Graveyard)",
-            address: 0x180004,
-            accessRequirements: { items in
-                return items.canAccessNorthWestDarkWorld()
-                    && items.contains(Item.MagicMirror)
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia - generous guy",
             address: 0x180010
         ),
@@ -773,6 +764,15 @@ func northWestDarkWorldItems() -> Locations {
             accessRequirements: { items in
                 return items.canLiftHeavyRocks()
                     && items.contains(Item.MagicMirror)
+            }
+        ),
+        // Same
+        Location(
+            region: Region.DarkWorldNorthWest,
+            name: "Piece of Heart (Graveyard)",
+            address: 0x180004,
+            accessRequirements: { items in
+                return items.contains(Item.MagicMirror)
             }
         ),
     ]
