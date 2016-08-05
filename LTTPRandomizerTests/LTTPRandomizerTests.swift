@@ -54,6 +54,14 @@ class LTTPRandomizerTests: XCTestCase {
         }
     }
 
+    func testNoLocationsAreMissingItems() {
+        let locations = allLocations().filter { $0.region != .Progression }
+        for location in locations {
+            XCTAssertFalse(location.item == .Nothing,
+                           "No item in \(location.name)")
+        }
+    }
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

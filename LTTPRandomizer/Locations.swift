@@ -62,7 +62,7 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "[cave-018] Graveyard - top right grave",
             address: 0xE97A,
-            item: Item.Nothing,
+            item: Item.Cape,
             accessRequirements: { items in
                 return items.contains(Item.PegasusBoots)
                     && (items.canLiftHeavyRocks()
@@ -74,7 +74,7 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "[cave-047] Dam",
             address: 0xE98C,
-            item: Item.Nothing
+            item: Item.ThreeBombs
         ),
         Location(
             region: Region.LightWorld,
@@ -86,97 +86,97 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "[cave-026] chicken house",
             address: 0xE9E9,
-            item: Item.Nothing
+            item: Item.TenArrows
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-044] Aginah's cave",
             address: 0xE9F2,
-            item: Item.Nothing
+            item: Item.PieceOfHeart
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-035] Sahasrahla's Hut [left chest]",
             address: 0xEA82,
-            item: Item.Nothing
+            item: Item.FiftyRupees
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-035] Sahasrahla's Hut [center chest]",
             address: 0xEA85,
-            item: Item.Nothing
+            item: Item.ThreeBombs
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-035] Sahasrahla's Hut [right chest]",
             address: 0xEA88,
-            item: Item.Nothing
+            item: Item.FiftyRupees
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [top chest]",
             address: 0xEA8E,
-            item: Item.Nothing
+            item: Item.PieceOfHeart
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [left chest row of 3]",
             address: 0xEA91,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [center chest row of 3]",
             address: 0xEA94,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [right chest row of 3]",
             address: 0xEA97,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-021] Kakariko well [bottom chest]",
             address: 0xEA9A,
-            item: Item.Nothing
+            item: Item.ThreeBombs
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [top chest]",
             address: 0xEB0F,
-            item: Item.Nothing
+            item: Item.PieceOfHeart
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [top left chest]",
             address: 0xEB12,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [top right chest]",
             address: 0xEB15,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [bottom left chest]",
             address: 0xEB18,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-022-B1] Thief's hut [bottom right chest]",
             address: 0xEB1B,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-016] cave under rocks west of Santuary",
             address: 0xEB3F,
-            item: Item.Nothing,
+            item: Item.PieceOfHeart,
             accessRequirements: { items in
                 return items.contains(Item.PegasusBoots)
             }
@@ -185,31 +185,31 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia [bottom left chest]",
             address: 0xEB42,
-            item: Item.Nothing
+            item: Item.ThreeBombs
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia [top left chest]",
             address: 0xEB45,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia [top right chest]",
             address: 0xEB48,
-            item: Item.Nothing
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia [bottom right chest]",
             address: 0xEB4B,
-            item: Item.Nothing
+            item: Item.TenArrows
         ),
         Location(
             region: Region.LightWorld,
             name: "[cave-051] Ice Cave",
             address: 0xEB4E,
-            item: Item.Nothing
+            item: Item.IceRod
         ),
         //// Getting anything other than the sword here can be bad for progress... may as well keep the sword here since you can't use it if you get it before the uncle.
         //Location(
@@ -232,7 +232,7 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "Sahasrahla",
             address: 0x2F1FC,
-            item: Item.Nothing,
+            item: Item.PegasusBoots,
             accessRequirements: { items in
                 return items.canDefeatEasternPalace()
             }
@@ -241,7 +241,7 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "Sick Kid",
             address: 0x339CF,
-            item: Item.Nothing,
+            item: Item.BugCatchingNet,
             accessRequirements: { items in
                 return items.contains(Item.Bottle)
             }
@@ -259,7 +259,7 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "Ether",
             address: 0x48B7C,
-            item: Item.Nothing,
+            item: Item.Ether,
             accessRequirements: { items in
                 return items.canEnterTowerOfHera()
                     && items.canGetMasterSword()
@@ -290,13 +290,13 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "[cave-050] cave southwest of Lake Hylia - generous guy",
             address: 0x180010,
-            item: Item.Nothing
+            item: Item.ThreeHundredRupees
         ),
         Location(
             region: Region.LightWorld,
             name: "Library",
             address: 0x180012,
-            item: Item.Nothing,
+            item: Item.BookOfMudora,
             accessRequirements: { items in
                 return items.contains(Item.PegasusBoots)
             }
