@@ -31,62 +31,50 @@ class Location {
 
     // MARK: Out-of-dungeon initializers
 
-    init(region: Region, name: String, address: Int) {
+    init(region: Region, name: String, address: Int, item: Item) {
         self.name = name
         self.address = address
         self.region = region
         self.dungeonRules = DungeonRules.none()
+        self.item = item
     }
 
-    init(region: Region, name: String, address: Int, accessRequirements: ((Set<Item>) -> Bool)) {
+    init(region: Region, name: String, address: Int, item: Item, accessRequirements: ((Set<Item>) -> Bool)) {
         self.name = name
         self.address = address
         self.region = region
         self._additionalAccessRequirements = accessRequirements
         self.dungeonRules = DungeonRules.none()
+        self.item = item
     }
 
-    init(region: Region, name: String, address: Int, accessRequirements: ((Set<Item>) -> Bool), onPatchingRom: ((NSMutableData, Item) -> Void)) {
+    init(region: Region, name: String, address: Int, item: Item, accessRequirements: ((Set<Item>) -> Bool), onPatchingRom: ((NSMutableData, Item) -> Void)) {
         self.name = name
         self.address = address
         self.region = region
         self._additionalAccessRequirements = accessRequirements
         self.onPatchingRom = onPatchingRom
         self.dungeonRules = DungeonRules.none()
+        self.item = item
     }
 
     // MARK: In-dungeon initializers
 
-    init(region: Region, name: String, address: Int, rules: DungeonRules) {
+    init(region: Region, name: String, address: Int, item: Item, rules: DungeonRules) {
         self.name = name
         self.address = address
         self.region = region
         self.dungeonRules = rules
+        self.item = item
     }
 
-    init(region: Region, name: String, address: Int, rules: DungeonRules, accessRequirements: ((Set<Item>) -> Bool)) {
+    init(region: Region, name: String, address: Int, item: Item, rules: DungeonRules, accessRequirements: ((Set<Item>) -> Bool)) {
         self.name = name
         self.address = address
         self.region = region
         self.dungeonRules = rules
         self._additionalAccessRequirements = accessRequirements
-    }
-
-    @available(*, deprecated, renamed:"Location.init(region:name:address:rules:)")
-    init(region: Region, name: String, address: Int, keyZone: Int, bigKeyNeeded: Bool) {
-        self.name = name
-        self.address = address
-        self.region = region
-        self.dungeonRules = DungeonRules(zone: keyZone, bigKeyZone: bigKeyNeeded)
-    }
-    @available(*, deprecated, renamed:"Location.init(region:name:address:rules:accessRequirements:)")
-
-    init(region: Region, name: String, address: Int, keyZone: Int, bigKeyNeeded: Bool, accessRequirements: ((Set<Item>) -> Bool)) {
-        self.name = name
-        self.address = address
-        self.region = region
-        self._additionalAccessRequirements = accessRequirements
-        self.dungeonRules = DungeonRules(zone: keyZone, bigKeyZone: bigKeyNeeded)
+        self.item = item
     }
 
     func isInOrBeforeKeyZone(_ zone: Int) -> Bool {
