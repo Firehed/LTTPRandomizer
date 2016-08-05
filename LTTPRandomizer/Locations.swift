@@ -542,7 +542,7 @@ func easternPalaceItems() -> Locations {
             region: Region.EasternPalace,
             name: "[dungeon-L1-1F] Eastern Palace - big chest",
             address: 0xE97D,
-            item: Item.Nothing,
+            item: Item.Bow,
             rules: DungeonRules(zone: 0, bigKeyZone: true)
         ),
         Location(
@@ -575,7 +575,7 @@ func desertPalaceItems() -> Locations {
             region: Region.DesertPalace,
             name: "[dungeon-L2-B1] Desert Palace - big chest",
             address: 0xE98F,
-            item: Item.Nothing,
+            item: Item.PowerGlove,
             rules: DungeonRules(zone: 0, bigKeyZone: true)
         ),
         Location(
@@ -631,7 +631,7 @@ func towerOfHeraItems() -> Locations {
             region: Region.TowerOfHera,
             name: "[dungeon-L3-4F] Tower of Hera - big chest",
             address: 0xE9F8,
-            item: Item.Nothing,
+            item: Item.MoonPearl,
             rules: DungeonRules(zone: 0, bigKeyZone: true)
         ),
         Location(
@@ -971,7 +971,7 @@ func darkPalaceItems() -> Locations {
             region: Region.DarkPalace,
             name: "[dungeon-D1-1F] Dark Palace - big chest",
             address: 0xEA40,
-            item: Item.Nothing,
+            item: Item.Hammer,
             rules: DungeonRules(zone: 3, bigKeyZone: true),
             accessRequirements: { items in
                 return items.contains(Item.Lamp)
@@ -1072,7 +1072,7 @@ func swampPalaceItems() -> Locations {
             region: Region.SwampPalace,
             name: "[dungeon-D2-B1] Swamp Palace - big chest",
             address: 0xE989,
-            item: Item.Nothing,
+            item: Item.Hookshot,
             rules: DungeonRules(zone: 3, bigKeyZone: true)
         ),
         Location(
@@ -1161,7 +1161,7 @@ func skullWoodsItems() -> Locations {
             region: Region.SkullWoods,
             name: "[dungeon-D3-B1] Skull Woods - big chest",
             address: 0xE998,
-            item: Item.Nothing,
+            item: Item.FireRod,
             rules: DungeonRules(zone: 2, bigKeyZone: true)
         ),
         Location(
@@ -1246,7 +1246,7 @@ func thievesTownItems() -> Locations {
             region: Region.ThievesTown,
             name: "[dungeon-D4-B2] Thieves' Town - big chest",
             address: 0xEA10,
-            item: Item.Nothing,
+            item: Item.TitansMitt,
             rules: DungeonRules(zone: 2, bigKeyZone: true),
             accessRequirements: { items in
                 return items.contains(Item.Hammer)
@@ -1286,7 +1286,7 @@ func icePalaceItems() -> Locations {
             region: Region.IcePalace,
             name: "[dungeon-D5-B5] Ice Palace - big chest",
             address: 0xE9AA,
-            item: Item.Nothing,
+            item: Item.BlueMail,
             rules: DungeonRules(zone: 2, bigKeyZone: true),
             accessRequirements: { items in
                 return items.contains(Item.Hookshot)
@@ -1368,7 +1368,7 @@ func miseryMireItems() -> Locations {
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - big chest",
             address: 0xEA67,
-            item: Item.Nothing,
+            item: Item.CaneOfSomaria,
             rules: DungeonRules(zone: 0, bigKeyZone: true),
             accessRequirements: { items in
                 return items.containsAny(Item.Hookshot, Item.PegasusBoots)
@@ -1410,7 +1410,7 @@ func turtleRockItems() -> Locations {
             region: Region.TurtleRock,
             name: "[dungeon-D7-B1] Turtle Rock - big chest",
             address: 0xEA19,
-            item: Item.Nothing,
+            item: Item.MirrorShield,
             rules: DungeonRules(zone: 3, bigKeyZone: true),
             accessRequirements: { items in
                 return items.contains(Item.FireRod)
@@ -1602,7 +1602,7 @@ func ganonsTowerItems() -> Locations {
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - big chest",
             address: 0xEAD6,
-            item: Item.Nothing,
+            item: Item.RedMail,
             rules: DungeonRules(zone: 2, bigKeyZone: true)
         ),
         Location(
