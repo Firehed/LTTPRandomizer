@@ -80,7 +80,7 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "[cave-031] Tavern",
             address: 0xE9CE,
-            item: Item.Nothing
+            item: Item.Bottle
         ),
         Location(
             region: Region.LightWorld,
@@ -226,7 +226,7 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "Bottle Vendor",
             address: 0x2EB18,
-            item: Item.Nothing
+            item: Item.Bottle
         ),
         Location(
             region: Region.LightWorld,
@@ -250,7 +250,7 @@ func lightWorldItems() -> Locations {
             region: Region.LightWorld,
             name: "Hobo",
             address: 0x33E7D,
-            item: Item.Nothing,
+            item: Item.Bottle,
             accessRequirements: { items in
                 return items.contains(Item.Flippers)
             }
@@ -829,7 +829,7 @@ func northWestDarkWorldItems() -> Locations {
             region: Region.DarkWorldNorthWest,
             name: "Purple Chest",
             address: 0x33D68,
-            item: Item.Nothing,
+            item: Item.Bottle,
             accessRequirements: { items in
                 return items.canLiftHeavyRocks()
                     && items.contains(Item.MagicMirror)
