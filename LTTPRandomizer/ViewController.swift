@@ -17,7 +17,7 @@ class ViewController: NSViewController {
 
         let randomizer: Randomizer = SeededRandomizer(seed: 0)
         let difficulty = DifficultyCasual(randomizer: randomizer)
-        let r = RomBuilder(seed: 0, locations: difficulty)
+        let r = RomBuilder(randomizer: randomizer, difficulty: difficulty)
         r.assignItems()
         r.write()
     }

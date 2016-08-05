@@ -41,10 +41,10 @@ class RomBuilder {
     /// Items that are available to be placed in randomized locations.
     private var itemPool: [Item] = []
 
-    init(seed: Int, locations: Difficulty) {
-        difficulty = locations
-        random = SeededRandomizer(seed: seed)
-        self.locations = locations.getLocations()
+    init(randomizer: Randomizer, difficulty: Difficulty) {
+        self.difficulty = difficulty
+        self.random = randomizer
+        self.locations = difficulty.getLocations()
     }
 
     func assignItems() {
