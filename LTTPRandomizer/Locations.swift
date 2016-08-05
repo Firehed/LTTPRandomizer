@@ -673,7 +673,7 @@ func darkWorldPyramidItems() -> Locations {
             region: Region.DarkWorldPyramid,
             name: "Catfish",
             address: 0xEE185,
-            item: Item.Nothing,
+            item: Item.Quake,
             accessRequirements: { items in
                 // Note: Upstream says (boots || mitt) also required
                 return items.canLiftRocks()
