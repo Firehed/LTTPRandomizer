@@ -57,12 +57,29 @@ class Location {
 
     // MARK: In-dungeon initializers
 
+    init(region: Region, name: String, address: Int, rules: DungeonRules) {
+        self.name = name
+        self.address = address
+        self.region = region
+        self.dungeonRules = rules
+    }
+
+    init(region: Region, name: String, address: Int, rules: DungeonRules, accessRequirements: ((Set<Item>) -> Bool)) {
+        self.name = name
+        self.address = address
+        self.region = region
+        self.dungeonRules = rules
+        self._additionalAccessRequirements = accessRequirements
+    }
+
+    @available(*, deprecated, renamed:"Location.init(region:name:address:rules:)")
     init(region: Region, name: String, address: Int, keyZone: Int, bigKeyNeeded: Bool) {
         self.name = name
         self.address = address
         self.region = region
         self.dungeonRules = DungeonRules(zone: keyZone, bigKeyZone: bigKeyNeeded)
     }
+    @available(*, deprecated, renamed:"Location.init(region:name:address:rules:accessRequirements:)")
 
     init(region: Region, name: String, address: Int, keyZone: Int, bigKeyNeeded: Bool, accessRequirements: ((Set<Item>) -> Bool)) {
         self.name = name
