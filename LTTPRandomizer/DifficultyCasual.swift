@@ -15,6 +15,7 @@ class DifficultyCasual: Difficulty {
     /// Locations that will be randomized
     private var locations: [Location] = []
 
+    /// Items that can be placed
     private var pool = [Item]()
 
     required init(randomizer: Randomizer) {

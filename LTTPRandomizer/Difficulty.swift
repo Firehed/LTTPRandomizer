@@ -17,6 +17,9 @@ protocol Difficulty {
     */
     init(randomizer: Randomizer)
 
+    /**
+     Reset any state in the difficulty
+     */
     func reset() -> Void
 
     /**
