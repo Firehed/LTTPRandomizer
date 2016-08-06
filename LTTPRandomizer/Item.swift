@@ -114,6 +114,7 @@ enum Item: UInt8, CustomStringConvertible {
         case .Boomerang: return "Blue Boomerang"
         case .Hookshot: return "Hookshot"
             // bombs
+        case .Mushroom: return "Mushroom"
         case .Powder: return "Powder"
 
         case .FireRod: return "Fire rod"
@@ -125,6 +126,7 @@ enum Item: UInt8, CustomStringConvertible {
         case .Lamp: return "Lamp"
         case .Hammer: return "Hammer"
         case .Shovel: return "Shovel"
+        case .OcarinaInactive: return "Flute"
         case .BugCatchingNet: return "Net"
         case .BookOfMudora: return "Book of Mudora"
 
@@ -134,7 +136,6 @@ enum Item: UInt8, CustomStringConvertible {
         case .Cape: return "Cape"
         case .MagicMirror: return "Mirror"
 
-        case .OcarinaInactive: return "Flute"
         case .RedBoomerang: return "Red Boomerang"
 
         case .BlueMail: return "Blue Mail"
