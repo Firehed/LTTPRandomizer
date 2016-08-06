@@ -355,8 +355,7 @@ func lightWorthDeathMountainItems() -> Locations {
             address: 0xEA8B,
             item: Item.StaffOfByrna,
             accessRequirements: { items in
-                return items.contains(Item.MoonPearl)
-                    && items.contains(Item.Hammer)
+                return items.containsAll(Item.MoonPearl, Item.Hammer)
             }
         ),
     ]
@@ -974,8 +973,7 @@ func darkPalaceItems() -> Locations {
             item: Item.Hammer,
             rules: DungeonRules(zone: 3, bigKeyZone: true),
             accessRequirements: { items in
-                return items.contains(Item.Lamp)
-                    && items.contains(Item.Bow)
+                return items.containsAll(Item.Lamp, Item.Bow)
             }
         ),
         Location(
@@ -1119,8 +1117,7 @@ func swampPalaceItems() -> Locations {
             item: Item.TwentyRupees,
             rules: DungeonRules(zone: 4, bigKeyZone: false),
             accessRequirements: { items in
-                return items.contains(Item.Hookshot)
-                    && items.contains(Item.Hammer)
+                return items.containsAll(Item.Hookshot, Item.Hammer)
             }
         ),
         Location(
@@ -1130,8 +1127,7 @@ func swampPalaceItems() -> Locations {
             item: Item.TwentyRupees,
             rules: DungeonRules(zone: 4, bigKeyZone: false),
             accessRequirements: { items in
-                return items.contains(Item.Hookshot)
-                    && items.contains(Item.Hammer)
+                return items.containsAll(Item.Hookshot, Item.Hammer)
             }
         ),
         Location(
@@ -1141,8 +1137,7 @@ func swampPalaceItems() -> Locations {
             item: Item.TwentyRupees,
             rules: DungeonRules(zone: 4, bigKeyZone: false),
             accessRequirements: { items in
-                return items.contains(Item.Hookshot)
-                    && items.contains(Item.Hammer)
+                return items.containsAll(Item.Hookshot, Item.Hammer)
             }
         ),
     ]
@@ -1278,8 +1273,7 @@ func icePalaceItems() -> Locations {
             item: Item.BigKey,
             rules: DungeonRules(zone: 2, bigKeyZone: false),
             accessRequirements: { items in
-                return items.contains(Item.Hookshot)
-                    && items.contains(Item.Hammer)
+                return items.containsAll(Item.Hookshot, Item.Hammer)
             }
         ),
         Location(
@@ -1289,8 +1283,7 @@ func icePalaceItems() -> Locations {
             item: Item.BlueMail,
             rules: DungeonRules(zone: 2, bigKeyZone: true),
             accessRequirements: { items in
-                return items.contains(Item.Hookshot)
-                    && items.contains(Item.Hammer)
+                return items.containsAll(Item.Hookshot, Item.Hammer)
             }
         ),
         Location(
@@ -1307,8 +1300,7 @@ func icePalaceItems() -> Locations {
             item: Item.Map,
             rules: DungeonRules(zone: 2, bigKeyZone: false),
             accessRequirements: { items in
-                return items.contains(Item.Hookshot)
-                    && items.contains(Item.Hammer)
+                return items.containsAll(Item.Hookshot, Item.Hammer)
             }
         ),
         Location(
@@ -1460,9 +1452,7 @@ func turtleRockItems() -> Locations {
             item: Item.OneRupee,
             rules: DungeonRules(zone: 6, bigKeyZone: true),
             accessRequirements: { items in
-                return items.contains(Item.MirrorShield)
-                    && items.contains(Item.FireRod)
-                    && items.contains(Item.Lamp)
+                return items.containsAll(Item.MirrorShield, Item.FireRod, Item.Lamp)
             }
         ),
         Location(
@@ -1472,9 +1462,7 @@ func turtleRockItems() -> Locations {
             item: Item.FiveRupees,
             rules: DungeonRules(zone: 6, bigKeyZone: true),
             accessRequirements: { items in
-                return items.contains(Item.MirrorShield)
-                    && items.contains(Item.FireRod)
-                    && items.contains(Item.Lamp)
+                return items.containsAll(Item.MirrorShield, Item.FireRod, Item.Lamp)
             }
         ),
         Location(
@@ -1484,9 +1472,7 @@ func turtleRockItems() -> Locations {
             item: Item.TwentyRupees,
             rules: DungeonRules(zone: 6, bigKeyZone: true),
             accessRequirements: { items in
-                return items.contains(Item.MirrorShield)
-                    && items.contains(Item.FireRod)
-                    && items.contains(Item.Lamp)
+                return items.containsAll(Item.MirrorShield, Item.FireRod, Item.Lamp)
             }
         ),
         Location(
@@ -1496,8 +1482,7 @@ func turtleRockItems() -> Locations {
             item: Item.Key,
             rules: DungeonRules(zone: 6, bigKeyZone: true),
             accessRequirements: { items in
-                return items.contains(Item.MirrorShield)
-                    && items.contains(Item.FireRod)
+                return items.containsAll(Item.MirrorShield, Item.FireRod)
             }
         ),
         Location(
