@@ -15,7 +15,7 @@ class Location {
     var address: Int
     var region: Region
     var _additionalAccessRequirements: ((Set<Item>) -> Bool)?
-    var onPatchingRom: ((NSMutableData, Item) -> Void)?
+    var onPatchingRom: ((inout Data, Item) -> Void)?
 
     var dungeonRules: DungeonRules
 
@@ -48,7 +48,7 @@ class Location {
         self.item = item
     }
 
-    init(region: Region, name: String, address: Int, item: Item, accessRequirements: ((Set<Item>) -> Bool), onPatchingRom: ((NSMutableData, Item) -> Void)) {
+    init(region: Region, name: String, address: Int, item: Item, accessRequirements: ((Set<Item>) -> Bool), onPatchingRom: ((inout Data, Item) -> Void)) {
         self.name = name
         self.address = address
         self.region = region

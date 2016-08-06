@@ -8,15 +8,6 @@
 
 import Foundation
 
-extension NSMutableData {
-
-    func patch(atByteOffset: Int, withData data: NSData) {
-        let range = NSRange(location: atByteOffset, length: data.length)
-        replaceBytes(in: range, withBytes: data.bytes)
-    }
-
-}
-
 class RomBuilder {
 
     var writeSRAMTrace: Bool = false
@@ -54,9 +45,9 @@ class RomBuilder {
 
     func write() {
         let path = "/Users/firehed/dev/alttprandomizer/AlttpRandomizer/Resources/alttp.sfc"
-        var rom: NSMutableData
+        var rom: Data
         do {
-            try rom = NSMutableData(contentsOfFile: path, options: NSData.ReadingOptions.uncached)
+            try rom = Data(contentsOf: URL.init(fileURLWithPath: path))
         } catch { return }
         locations.sort(isOrderedBefore: { $0.region.rawValue < $1.region.rawValue })
 
@@ -78,18 +69,18 @@ class RomBuilder {
 
             // Apply additional patch if one exists
             if location.onPatchingRom != nil {
-                location.onPatchingRom!(rom, location.item)
+                location.onPatchingRom!(&rom, location.item)
             }
         }
 
         if writeSRAMTrace {
             let bytes: [UInt8] = [0x00, 0x80, 0x21]
-            rom.patch(atByteOffset: 0x57, withData: NSData(bytes: bytes, length: 3))
+            rom.patch(atByteOffset: 0x57, withData: Data(bytes: bytes))
         }
 
         let output = "/Users/firehed/Desktop/lttp_patched.sfc"
         do {
-            try rom.write(toFile: output, options: NSData.WritingOptions.atomic)
+            try rom.write(to: URL.init(fileURLWithPath: output), options: .atomic)
         } catch {
             print("write error")
         }
