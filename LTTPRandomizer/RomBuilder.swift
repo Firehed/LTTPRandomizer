@@ -77,6 +77,7 @@ class RomBuilder {
             let bytes: [UInt8] = [0x00, 0x80, 0x21]
             rom.patch(atByteOffset: 0x57, withData: Data(bytes: bytes))
         }
+        writeRNG(in: &rom)
 
         let output = "/Users/firehed/Desktop/lttp_patched.sfc"
         do {
@@ -85,6 +86,13 @@ class RomBuilder {
             print("write error")
         }
 
+    }
+
+    func writeRNG(in rom: inout Data) {
+        for addr in 0x178000...0x1783FF {
+            let rnd = Data(bytes: [UInt8(randomizer.next(max: 0x100))])
+            rom.patch(atByteOffset: addr, withData: rnd)
+        }
     }
 
     private func generateItemList() -> Void {
