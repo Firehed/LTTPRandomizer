@@ -151,8 +151,7 @@ extension SetAlgebra where Element == Item {
 
     func canEnterSwampPalace() -> Bool {
         return canAccessSouthDarkWorld()
-            && contains(Item.Flippers)
-            && contains(Item.MagicMirror)
+            && containsAll(Item.Flippers, Item.MagicMirror)
     }
 
     func canEnterSkullWoods() -> Bool {
@@ -229,8 +228,7 @@ extension SetAlgebra where Element == Item {
 
     func canDefeatTurtleRock() -> Bool {
         return canEnterTurtleRock()
-            && contains(Item.IceRod)
-            && contains(Item.FireRod)
+            && containsAll(Item.IceRod, Item.FireRod)
     }
 
 }
