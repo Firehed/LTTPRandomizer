@@ -322,6 +322,27 @@ func lightWorldItems() -> Locations {
             address: 0x180145,
             item: Item.PieceOfHeart
         ),
+        Location(
+            region: Region.LightWorld,
+            name: "Mushroom",
+            address: 0x180013,
+            item: Item.Mushroom
+        ),
+        Location(
+            region: Region.LightWorld,
+            name: "Witch",
+            address: 0x180014,
+            item: Item.Powder,
+            accessRequirements: { items in
+                return items.contains(Item.Powder)
+            }
+        ),
+        Location(
+            region: Region.LightWorld,
+            name: "Haunted Grove Item",
+            address: 0x18014A,
+            item: Item.OcarinaInactive
+        ),
     ]
 }
 
@@ -692,18 +713,6 @@ func darkWorldPyramidItems() -> Locations {
             address: 0x180147,
             item: Item.PieceOfHeart
         ),
-        // MARK: not late game
-        //new Location
-        //{
-        //    lateGameItem: false,
-        //    region: Region.DarkWorld,
-        //    name: "Piece of Heart (Digging Game)",
-        //    address: 0x180148,
-        //    item: PieceOfHeart,
-        //    accessRequirements: { items in
-        //        return items.canAccessLowerDarkWorld()
-        //    }
-        //),
     ]
 }
 
@@ -785,6 +794,13 @@ func southDarkWorldItems() -> Locations {
                 return items.containsAll(Item.Flippers, Item.MagicMirror)
             }
         ),
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "Piece of Heart (Digging Game)",
+            address: 0x180148,
+            item: Item.PieceOfHeart
+        ),
     ]
 }
 
@@ -843,6 +859,12 @@ func northWestDarkWorldItems() -> Locations {
             accessRequirements: { items in
                 return items.contains(Item.MagicMirror)
             }
+        ),
+        Location(
+            region: Region.DarkWorldNorthWest,
+            name: "Piece of Heart (Treasure Chest Game)",
+            address: 0xEDA8,
+            item: Item.PieceOfHeart
         ),
     ]
 }
