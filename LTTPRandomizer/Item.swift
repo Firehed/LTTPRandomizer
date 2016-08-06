@@ -341,25 +341,25 @@ enum Item: UInt8, CustomStringConvertible {
     }
 
     /// Special sequence of bytes to write indicating which item must not be in Link's posession to proceed
-    var bytesForInventoryCheckOverride: NSData {
+    var bytesForInventoryCheckOverride: Data {
         if inventoryCheckLocation == 0 {
-            return NSMutableData(length: 4)! // NUL x4
+            return Data(count: 4)! // NUL x4
         }
-        return NSData(bytes: [level, inventoryCheckLocation, 0xF3, 0x7E], length: 4)
+        return Data(bytes: [level, inventoryCheckLocation, 0xF3, 0x7E])
     }
 
-    func asData() -> NSData {
-        return NSData(bytes: [self.rawValue], length: 1)
+    func asData() -> Data {
+        return Data(bytes: [self.rawValue])
     }
 
-    var bytesForCredits: NSData {
+    var bytesForCredits: Data {
         // TODO: Vary text based on item
         let creditText = " cash money for sale"
         guard var bytes = creditText.data(using: String.Encoding.ascii, allowLossyConversion: false) else {
-            return NSMutableData(length: 20)! // NUL x20
+            return Data(count: 20)! // NUL x20
         }
 
-        let text: NSMutableData = NSMutableData(capacity: 20)!
+        var text = Data(count: 20)!
         for i in 0..<20 {
             var byte: UInt8
             switch bytes[i] {
@@ -379,7 +379,7 @@ enum Item: UInt8, CustomStringConvertible {
                 byte = bytes[i] - 0x47
                 break
             }
-            text.append([byte], length: 1)
+            text[i] = byte
         }
         return text
     }
