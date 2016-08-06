@@ -1199,7 +1199,7 @@ func skullWoodsItems() -> Locations {
             item: Item.Key,
             rules: DungeonRules(zone: 2, bigKeyZone: false),
             accessRequirements: { items in
-                return items.canEnterSkullWoods2()
+                return items.contains(Item.FireRod)
             }
         ),
     ]

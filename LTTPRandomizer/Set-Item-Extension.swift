@@ -159,12 +159,6 @@ extension SetAlgebra where Element == Item {
         return canAccessNorthWestDarkWorld()
     }
 
-    // Boss section
-    func canEnterSkullWoods2() -> Bool {
-        return canEnterSkullWoods()
-            && contains(Item.FireRod)
-    }
-
     func canEnterThievesTown() -> Bool {
         return canAccessNorthWestDarkWorld()
     }
@@ -213,7 +207,8 @@ extension SetAlgebra where Element == Item {
     }
 
     func canDefeatSkullWoods() -> Bool {
-        return canEnterSkullWoods2()
+        return canEnterSkullWoods()
+            && contains(Item.FireRod)
     }
 
     func canDefeatThievesTown() -> Bool {
