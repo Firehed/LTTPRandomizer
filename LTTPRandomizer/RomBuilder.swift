@@ -11,9 +11,8 @@ import Foundation
 extension NSMutableData {
 
     func patch(atByteOffset: Int, withData data: NSData) {
-        var data = data
         let range = NSRange(location: atByteOffset, length: data.length)
-        replaceBytes(in: range, withBytes: &data)
+        replaceBytes(in: range, withBytes: data.bytes)
     }
 
 }
