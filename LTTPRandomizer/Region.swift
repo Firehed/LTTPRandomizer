@@ -11,6 +11,8 @@ import Foundation
 enum Region: Int {
     /// Fake rooms created to break ambiguous depsolving
     case Progression
+    /// Special case: holds the bottle fill-up info
+    case Fairy
     case HyruleCastleEscape
     case LightWorld
     case LightWorldDeathMountain
@@ -37,6 +39,7 @@ enum Region: Int {
 
     static let all: [Region] = [
         .Progression,
+        .Fairy,
         .HyruleCastleEscape,
         .LightWorld,
         .LightWorldDeathMountain,
@@ -63,7 +66,7 @@ enum Region: Int {
 
     var isLightWorld: Bool {
         switch self {
-        case .Progression:
+        case .Progression, .Fairy:
             return true
         case .HyruleCastleEscape: fallthrough
         case .LightWorld: fallthrough

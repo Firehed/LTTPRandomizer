@@ -1743,3 +1743,11 @@ func ganonsTowerItems() -> Locations {
         ),
     ]
 }
+
+
+func specialLocations() -> Locations {
+    return [
+        Location(region: Region.Fairy, name: "Waterfall of Wishing Fairy", address: 0x348FF, item: Item.BottleWithGreenPotion),
+        Location(region: Region.Fairy, name: "Cursed Fairy", address: 0x3493B, item: Item.BottleWithGreenPotion),
+    ]
+}

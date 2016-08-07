@@ -143,7 +143,7 @@ extension Region {
         case .DarkWorldEasternDeathMountain:
             return inventory.canAccessEastDarkWorldDeathMountain()
 
-        case .Progression:
+        case .Progression, .Fairy:
             return true
         }
     }
@@ -197,6 +197,9 @@ func locationsForRegion(region: Region) -> [Location] {
         return ganonsTowerItems()
     case .Progression:
         return progressionItems()
+    case .Fairy:
+        // Fairies get special placement rules, and are intentionally left out here
+        return []
     }
 }
 
