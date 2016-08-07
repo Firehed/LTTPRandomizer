@@ -17,7 +17,7 @@ class DifficultyEasy: Difficulty {
     /**
      Initializer. Provides a randomizer to use during selection
      - parameters:
-     - randomizer: a Randomizer
+        - randomizer: a Randomizer
      */
     required init(randomizer: Randomizer) {
         self.randomizer = randomizer
@@ -58,8 +58,8 @@ class DifficultyEasy: Difficulty {
     /**
      Given a pool of items and currently-accessible locations, returns an item to place.
      - parameters:
-     - possibleItems: the item pool
-     - possibleLocations: the currently accessible locations
+        - possibleItems: the item pool
+        - possibleLocations: the currently accessible locations
      - returns: the Item to place
      */
     func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location]) -> Item {
@@ -74,8 +74,8 @@ class DifficultyEasy: Difficulty {
     /**
      Given an item to place and currently-accessible locations, return the location to place the item
      - parameters:
-     - possibleLocations: the currently accessible locations
-     - item: the Item being placed
+        - possibleLocations: the currently accessible locations
+        - item: the Item being placed
      - returns: the Location to place the Item
      */
     func getLocationForItemPlacement(possibleLocations: [Location], item: Item) -> Location {
