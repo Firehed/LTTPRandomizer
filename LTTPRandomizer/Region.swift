@@ -13,6 +13,9 @@ enum Region: Int {
     case Progression
     /// Special case: holds the bottle fill-up info
     case Fairy
+    /// Special case: medallions to enter dungeons
+    case Entrance
+
     case HyruleCastleEscape
     case LightWorld
     case LightWorldDeathMountain
@@ -40,6 +43,7 @@ enum Region: Int {
     static let all: [Region] = [
         .Progression,
         .Fairy,
+        .Entrance,
         .HyruleCastleEscape,
         .LightWorld,
         .LightWorldDeathMountain,
@@ -66,7 +70,7 @@ enum Region: Int {
 
     var isLightWorld: Bool {
         switch self {
-        case .Progression, .Fairy:
+        case .Progression, .Fairy, .Entrance:
             return true
         case .HyruleCastleEscape: fallthrough
         case .LightWorld: fallthrough
