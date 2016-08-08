@@ -1751,3 +1751,72 @@ func fairyLocations() -> Locations {
         Location(region: Region.Fairy, name: "Cursed Fairy", address: 0x3493B, item: Item.BottleWithGreenPotion),
     ]
 }
+
+func entranceLocations() -> Locations {
+    return [
+        Location(
+            region: Region.Entrance,
+            name: "Misery Mire Entrance Medallion",
+            address: 0,
+            item: Item.MireEther,
+            accessRequirements: { _ in true }, // TODO: remove after tidying initializers
+            onPatchingRom: { rom, item in
+                var bytes = [(addr: Int, value: UInt8)]()
+                switch item {
+                case .MireBombos:
+                    bytes.append((addr: 0x4FF2, value: 0x31))
+                    bytes.append((addr: 0x50D1, value: 0x80))
+                    bytes.append((addr: 0x51B0, value: 0))
+                    bytes.append((addr: 0x180022, value: 0))
+                    break
+                case .MireEther:
+                    bytes.append((addr: 0x180022, value: 1))
+                    break
+                case .MireQuake:
+                    bytes.append((addr: 0x4FF2, value: 0x31))
+                    bytes.append((addr: 0x50D1, value: 0x88))
+                    bytes.append((addr: 0x51B0, value: 0))
+                    bytes.append((addr: 0x180022, value: 2))
+                    break
+                default:
+                    break
+                }
+                for byte in bytes {
+                    rom.patch(atByteOffset: byte.addr, withData: Data(bytes: [byte.value]))
+                }
+            }
+        ),
+        Location(
+            region: Region.Entrance,
+            name: "Turtle Rock Entrance Medallion",
+            address: 0,
+            item: Item.TRQuake,
+            accessRequirements: { _ in true }, // TODO: remove after tidying initializers
+            onPatchingRom: { rom, item in
+                var bytes = [(addr: Int, value: UInt8)]()
+                switch item {
+                case .TRBombos:
+                    bytes.append((addr: 0x5020, value: 0x31))
+                    bytes.append((addr: 0x50FF, value: 0x90))
+                    bytes.append((addr: 0x51DE, value: 0))
+                    bytes.append((addr: 0x180023, value: 0))
+                    break
+                case .TREther:
+                    bytes.append((addr: 0x5020, value: 0x31))
+                    bytes.append((addr: 0x50FF, value: 0x98))
+                    bytes.append((addr: 0x51DE, value: 0))
+                    bytes.append((addr: 0x180023, value: 1))
+                    break
+                case .TRQuake:
+                    bytes.append((addr: 0x180023, value: 2))
+                    break
+                default:
+                    break
+                }
+                for byte in bytes {
+                    rom.patch(atByteOffset: byte.addr, withData: Data(bytes: [byte.value]))
+                }
+            }
+        ),
+    ]
+}
