@@ -46,7 +46,10 @@ class RomBuilder {
     }
 
     func write() {
-        let path = "/Users/firehed/dev/alttprandomizer/AlttpRandomizer/Resources/alttp.sfc"
+        guard let path = Bundle.main.pathForResource("v5", ofType: "sfc") else {
+            NSLog("Bundled ROM not found")
+            return
+        }
         var rom: Data
         do {
             try rom = Data(contentsOf: URL.init(fileURLWithPath: path))
