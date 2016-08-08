@@ -175,16 +175,7 @@ extension SetAlgebra where Element == Item {
             NSLog("No source medallion found")
             return defaultItem
         }
-        switch medallion.first! {
-        case .MireBombos, .TRBombos:
-            return .Bombos
-        case .MireEther, .TREther:
-            return .Ether
-        case .MireQuake, .TRQuake:
-            return .Quake
-        default:
-            return defaultItem
-        }
+        return medallion.first!.associatedMedallion ?? defaultItem
     }
 
     private func findMireRequiredMedallion() -> Item {

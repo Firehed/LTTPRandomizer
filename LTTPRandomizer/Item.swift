@@ -421,6 +421,20 @@ enum Item: UInt8, CustomStringConvertible {
         return text
     }
 
+    /// Translates the virtual medallions into their physical counterpart. Nil if the source item is not a virtual medallion
+    var associatedMedallion: Item? {
+        switch self {
+        case .MireBombos, .TRBombos:
+            return .Bombos
+        case .MireEther, .TREther:
+            return .Ether
+        case .MireQuake, .TRQuake:
+            return .Quake
+        default:
+            return nil
+        }
+    }
+
     static let filledBottles: [Item] = [
         .BottleWithGreenPotion,
         .BottleWithRedPotion,
