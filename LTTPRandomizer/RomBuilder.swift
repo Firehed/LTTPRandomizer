@@ -39,6 +39,7 @@ class RomBuilder {
 
     func assignItems() {
         generateItemList()
+        randomizeEntrances()
         generateDungeonItems()
         generateItemPositions()
         randomizeFairies()
@@ -182,6 +183,35 @@ class RomBuilder {
             let targetLocation = difficulty.getLocationForItemPlacement(possibleLocations: possibleLocations, item: selected)
             targetLocation.item = selected
         } while (itemPool.isNonEmpty)
+    }
+
+    /**
+     Selects which medallion shall be required for entrance to MM and TR. Must
+     be performed before standard item placement to allow depsolving access to
+     the randomized item.
+    */
+    private func randomizeEntrances() -> Void {
+        for entrance in entranceLocations() {
+            let pool: [Item]
+            guard entrance.item.isMiseryMireEntranceItem || entrance.item.isTurtleRockEntranceItem else {
+                NSLog("Entrance location %@ didn't have an entrance item", entrance.name)
+                return
+            }
+            if entrance.item.isMiseryMireEntranceItem {
+                pool = [.MireBombos, .MireEther, .MireQuake]
+            } else {
+                pool = [.TRBombos, .TREther, .TRQuake]
+            }
+            entrance.item = pool.selectAtRandom(randomizer)
+            // Insert the selected virtual item to the inventory pool. It will
+            // be picked up during solving so the entrance requirements are
+            // accurate.
+            haveItems.insert(entrance.item)
+            // Insert the virtual location so the onWrite callback fires. The
+            // item is not .Nothing so it won't receive an actual item
+            locations.append(entrance)
+            NSLog("%@ opened with %@", entrance.name, entrance.item.description)
+        }
     }
 
     /**
