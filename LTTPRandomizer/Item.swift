@@ -148,9 +148,9 @@ enum Item: UInt8, CustomStringConvertible {
 
         case .FireRod: return "Fire rod"
         case .IceRod: return "Ice rod"
-        case .Bombos: return "Bombos"
-        case .Ether: return "Ether"
-        case .Quake: return "Quake"
+        case .Bombos, .MireBombos, .TRBombos: return "Bombos"
+        case .Ether, .MireEther, .TREther: return "Ether"
+        case .Quake, .MireQuake, .TRQuake: return "Quake"
 
         case .Lamp: return "Lamp"
         case .Hammer: return "Hammer"
