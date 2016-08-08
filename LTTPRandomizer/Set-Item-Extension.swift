@@ -168,15 +168,42 @@ extension SetAlgebra where Element == Item {
             && containsAny(Item.FireRod, Item.Bombos)
     }
 
+    private func findRequiredMedallion(from: [Item], default defaultItem: Item) -> Item {
+        let possible = Set(from) as! Self
+        let medallion = intersection(possible) as! Set<Item>
+        guard medallion.count == 1 else {
+            NSLog("No source medallion found")
+            return defaultItem
+        }
+        switch medallion.first! {
+        case .MireBombos, .TRBombos:
+            return .Bombos
+        case .MireEther, .TREther:
+            return .Ether
+        case .MireQuake, .TRQuake:
+            return .Quake
+        default:
+            return defaultItem
+        }
+    }
+
+    private func findMireRequiredMedallion() -> Item {
+        return findRequiredMedallion(from: [.MireBombos, .MireEther, .MireQuake], default: .Ether)
+    }
+
     func canEnterMiseryMire() -> Bool {
         return canAccessMireArea()
-            && containsAll(Item.Ether, Item.MoonPearl)
+            && containsAll(findMireRequiredMedallion(), Item.MoonPearl)
             && containsAny(Item.PegasusBoots, Item.Hookshot)
+    }
+
+    private func findTurtleRockRequiredMedallion() -> Item {
+        return findRequiredMedallion(from: [.TRBombos, .TREther, .TRQuake], default: .Quake)
     }
 
     func canEnterTurtleRock() -> Bool {
         return canAccessEastDarkWorldDeathMountain()
-            && containsAll(Item.Hammer, Item.Quake, Item.CaneOfSomaria, Item.MoonPearl)
+            && containsAll(Item.Hammer, findTurtleRockRequiredMedallion(), Item.CaneOfSomaria, Item.MoonPearl)
     }
 
     func canEnterGanonsTower() -> Bool {
