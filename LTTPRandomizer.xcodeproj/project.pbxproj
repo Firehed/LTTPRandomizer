@@ -29,6 +29,8 @@
 		FAC686241D52F4B90044D17E /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC686231D52F4B90044D17E /* Locations.swift */; };
 		FAC686261D530D600044D17E /* DungeonRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC686251D530D600044D17E /* DungeonRules.swift */; };
 		FAD8176E1D56764D00B0D2FC /* DifficultyEasy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD8176D1D56764D00B0D2FC /* DifficultyEasy.swift */; };
+		FAD817761D56862900B0D2FC /* v4.sfc in Resources */ = {isa = PBXBuildFile; fileRef = FAD817741D56862900B0D2FC /* v4.sfc */; };
+		FAD817771D56862900B0D2FC /* v5.sfc in Resources */ = {isa = PBXBuildFile; fileRef = FAD817751D56862900B0D2FC /* v5.sfc */; };
 		FAD8177C1D5697EE00B0D2FC /* DataExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD8177B1D5697EE00B0D2FC /* DataExtensionTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +80,8 @@
 		FAC686231D52F4B90044D17E /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		FAC686251D530D600044D17E /* DungeonRules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DungeonRules.swift; sourceTree = "<group>"; };
 		FAD8176D1D56764D00B0D2FC /* DifficultyEasy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyEasy.swift; sourceTree = "<group>"; };
+		FAD817741D56862900B0D2FC /* v4.sfc */ = {isa = PBXFileReference; lastKnownFileType = file; name = v4.sfc; path = Roms/v4.sfc; sourceTree = "<group>"; };
+		FAD817751D56862900B0D2FC /* v5.sfc */ = {isa = PBXFileReference; lastKnownFileType = file; name = v5.sfc; path = Roms/v5.sfc; sourceTree = "<group>"; };
 		FAD8177B1D5697EE00B0D2FC /* DataExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExtensionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +113,7 @@
 		FA29C7021D43FFC700CB1D7A = {
 			isa = PBXGroup;
 			children = (
+				FAD817711D56858500B0D2FC /* Roms */,
 				FA29C70D1D43FFC700CB1D7A /* LTTPRandomizer */,
 				FA29C71F1D43FFC700CB1D7A /* LTTPRandomizerTests */,
 				FA29C72A1D43FFC700CB1D7A /* LTTPRandomizerUITests */,
@@ -171,6 +176,15 @@
 				FA29C72D1D43FFC700CB1D7A /* Info.plist */,
 			);
 			path = LTTPRandomizerUITests;
+			sourceTree = "<group>";
+		};
+		FAD817711D56858500B0D2FC /* Roms */ = {
+			isa = PBXGroup;
+			children = (
+				FAD817741D56862900B0D2FC /* v4.sfc */,
+				FAD817751D56862900B0D2FC /* v5.sfc */,
+			);
+			name = Roms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,8 +300,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAD817761D56862900B0D2FC /* v4.sfc in Resources */,
 				FA29C7131D43FFC700CB1D7A /* Assets.xcassets in Resources */,
 				FA29C7161D43FFC700CB1D7A /* Main.storyboard in Resources */,
+				FAD817771D56862900B0D2FC /* v5.sfc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
