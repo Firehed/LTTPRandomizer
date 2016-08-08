@@ -99,6 +99,26 @@ enum Item: UInt8, CustomStringConvertible {
     case TREther
     case TRQuake
 
+    /// True if this is one of the "virtual items" for MM opening medallion
+    var isMiseryMireEntranceItem: Bool {
+        switch self {
+        case .MireBombos, .MireEther, .MireQuake:
+            return true
+        default:
+            return false
+        }
+    }
+
+    /// True if this is one of the "virtual items" for TR opening medallion
+    var isTurtleRockEntranceItem: Bool {
+        switch self {
+        case .TRBombos, .TREther, .TRQuake:
+            return true
+        default:
+            return false
+        }
+    }
+
     var description: String {
         switch self {
         case .OneRupee: return "$1"
