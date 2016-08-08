@@ -90,6 +90,15 @@ enum Item: UInt8, CustomStringConvertible {
     case OcarinaActive = 0x4a
     case PegasusBoots = 0x4b
 
+    /// Open MM with Bombos
+    case MireBombos
+    case MireEther
+    case MireQuake
+    /// Open TR with Bombos
+    case TRBombos
+    case TREther
+    case TRQuake
+
     var description: String {
         switch self {
         case .OneRupee: return "$1"
