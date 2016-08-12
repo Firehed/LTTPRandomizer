@@ -69,8 +69,9 @@ class RomBuilder {
                 NSLog("%@: %@", location.item.description, location.name)
             }
 
-            let addr = location.address
-            rom.patch(atByteOffset: addr, withData: location.item.asData())
+            if let addr = location.address {
+                rom.patch(atByteOffset: addr, withData: location.item.asData())
+            }
 
             // Apply additional patch if one exists
             if location.onPatchingRom != nil {
