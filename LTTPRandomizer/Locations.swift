@@ -36,7 +36,7 @@ func progressionItems() -> Locations {
         Location(
             region: Region.Progression,
             name: "Undeadlock: Quake",
-            address: 0,
+            address: nil,
             item: Item.Nothing,
             accessRequirements: { items in
                 return items.contains(Item.Quake)
@@ -45,7 +45,7 @@ func progressionItems() -> Locations {
         Location(
             region: Region.Progression,
             name: "Undeadlock: Cane of Somaria",
-            address: 0,
+            address: nil,
             item: Item.Nothing,
             accessRequirements: { items in
                 return items.contains(Item.CaneOfSomaria)
@@ -1757,7 +1757,7 @@ func entranceLocations() -> Locations {
         Location(
             region: Region.Entrance,
             name: "Misery Mire Entrance Medallion",
-            address: 0,
+            address: nil,
             item: Item.MireEther,
             accessRequirements: { _ in true }, // TODO: remove after tidying initializers
             onPatchingRom: { rom, item in
@@ -1789,7 +1789,7 @@ func entranceLocations() -> Locations {
         Location(
             region: Region.Entrance,
             name: "Turtle Rock Entrance Medallion",
-            address: 0,
+            address: nil,
             item: Item.TRQuake,
             accessRequirements: { _ in true }, // TODO: remove after tidying initializers
             onPatchingRom: { rom, item in
