@@ -334,7 +334,7 @@ func lightWorldItems() -> Locations {
             address: 0x180014,
             item: Item.Powder,
             accessRequirements: { items in
-                return items.contains(Item.Powder)
+                return items.contains(Item.Mushroom)
             }
         ),
         Location(
