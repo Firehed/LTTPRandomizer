@@ -123,9 +123,8 @@ extension SetAlgebra where Element == Item {
         if canAccessNorthWestDarkWorld() {
             return true
         }
-        // v5 says hammer or hookshot... I'm pretty sure it's actually just hammer
+        // Intended route based on in-game crystal order
         return canAccessPyramid() && contains(.Hammer)
-//        return canAccessPyramid() && containsAny(.Hammer, .Hookshot)
     }
 
     func canAccessMireArea() -> Bool {

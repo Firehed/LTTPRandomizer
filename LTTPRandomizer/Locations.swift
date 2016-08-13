@@ -903,7 +903,6 @@ func easternDarkWorldDeathMountainItems() -> Locations {
             address: 0x180141,
             item: Item.PieceOfHeart,
             accessRequirements: { items in
-                // No hookshot here, just the invisible path
                 return items.containsAll(Item.MagicMirror, Item.MoonPearl)
             }
         ),
