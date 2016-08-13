@@ -45,6 +45,7 @@ class DifficultyEasy: Difficulty {
      */
     func getItemPool() -> [Item] {
         return pool
+            .map { $0.isMoney ? Item.ThreeHundredRupees : $0 }
             .map { $0.isBottle ? Item.allBottles.selectAtRandom(randomizer) : $0 }
     }
 
