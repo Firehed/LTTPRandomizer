@@ -180,12 +180,12 @@ enum Item: UInt8, CustomStringConvertible {
         case .MoonPearl: return "Moon Pearl"
         case .PegasusBoots: return "Pegasus Boots"
 
-        case .BottleWithGreenPotion: return "Magic Potion"
-        case .BottleWithRedPotion: return "Life Potion"
-        case .BottleWithBluePotion: return "Restoration Potion"
-        case .BottleWithFairy: return "Tinkerbell"
-        case .BottleWithBee: return "Stingers"
-        case .BottleWithGoldBee: return "Golden Stingers"
+        case .BottleWithGreenPotion: return "Bottle (Magic Potion)"
+        case .BottleWithRedPotion: return "Bottle (Life Potion)"
+        case .BottleWithBluePotion: return "Bottle (Restoration Potion)"
+        case .BottleWithFairy: return "Bottle (Fairy)"
+        case .BottleWithBee: return "Bottle (Bee)"
+        case .BottleWithGoldBee: return "Bottle (Golden Bee)"
 
         default:
             return String(self.rawValue)
