@@ -168,15 +168,33 @@ extension SetAlgebra where Element == Item {
             && containsAny(Item.FireRod, Item.Bombos)
     }
 
+    private func findRequiredMedallion(from: [Item], default defaultItem: Item) -> Item {
+        let possible = Set(from) as! Self
+        let medallion = intersection(possible) as! Set<Item>
+        guard medallion.count == 1 else {
+            NSLog("No source medallion found")
+            return defaultItem
+        }
+        return medallion.first!.associatedMedallion ?? defaultItem
+    }
+
+    private func findMireRequiredMedallion() -> Item {
+        return findRequiredMedallion(from: [.MireBombos, .MireEther, .MireQuake], default: .Ether)
+    }
+
     func canEnterMiseryMire() -> Bool {
         return canAccessMireArea()
-            && containsAll(Item.Ether, Item.MoonPearl)
+            && containsAll(findMireRequiredMedallion(), Item.MoonPearl)
             && containsAny(Item.PegasusBoots, Item.Hookshot)
+    }
+
+    private func findTurtleRockRequiredMedallion() -> Item {
+        return findRequiredMedallion(from: [.TRBombos, .TREther, .TRQuake], default: .Quake)
     }
 
     func canEnterTurtleRock() -> Bool {
         return canAccessEastDarkWorldDeathMountain()
-            && containsAll(Item.Hammer, Item.Quake, Item.CaneOfSomaria, Item.MoonPearl)
+            && containsAll(Item.Hammer, findTurtleRockRequiredMedallion(), Item.CaneOfSomaria, Item.MoonPearl)
     }
 
     func canEnterGanonsTower() -> Bool {
@@ -238,8 +256,7 @@ extension SetAlgebra where Element == Item {
 extension SetAlgebra where Element == Item {
 
     func canFly() -> Bool {
-        // Currently the Shovel location is randomized but the Flute is fixed to the dig location. If that changes, this will need to be updated.
-        return containsAny(Item.Shovel, Item.OcarinaInactive, Item.OcarinaActive)
+        return containsAny(Item.OcarinaInactive, Item.OcarinaActive)
     }
 
     func canGetMasterSword() -> Bool {
@@ -259,6 +276,18 @@ extension SetAlgebra where Element == Item {
 
     func canLightTorches() -> Bool {
         return containsAny(Item.Lamp, Item.FireRod)
+    }
+
+    func hasAnyBottle() -> Bool {
+        return containsAny(
+            Item.Bottle,
+            Item.BottleWithGreenPotion,
+            Item.BottleWithRedPotion,
+            Item.BottleWithBluePotion,
+            Item.BottleWithFairy,
+            Item.BottleWithBee,
+            Item.BottleWithGoldBee
+        )
     }
 
 }

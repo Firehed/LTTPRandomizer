@@ -39,12 +39,17 @@ class RomBuilder {
 
     func assignItems() {
         generateItemList()
+        randomizeEntrances()
         generateDungeonItems()
         generateItemPositions()
+        randomizeFairies()
     }
 
     func write() {
-        let path = "/Users/firehed/dev/alttprandomizer/AlttpRandomizer/Resources/alttp.sfc"
+        guard let path = Bundle.main.pathForResource("v5", ofType: "sfc") else {
+            NSLog("Bundled ROM not found")
+            return
+        }
         var rom: Data
         do {
             try rom = Data(contentsOf: URL.init(fileURLWithPath: path))
@@ -64,8 +69,9 @@ class RomBuilder {
                 NSLog("%@: %@", location.item.description, location.name)
             }
 
-            let addr = location.address
-            rom.patch(atByteOffset: addr, withData: location.item.asData())
+            if let addr = location.address {
+                rom.patch(atByteOffset: addr, withData: location.item.asData())
+            }
 
             // Apply additional patch if one exists
             if location.onPatchingRom != nil {
@@ -77,6 +83,7 @@ class RomBuilder {
             let bytes: [UInt8] = [0x00, 0x80, 0x21]
             rom.patch(atByteOffset: 0x57, withData: Data(bytes: bytes))
         }
+        writeRNG(in: &rom)
 
         let output = "/Users/firehed/Desktop/lttp_patched.sfc"
         do {
@@ -85,6 +92,13 @@ class RomBuilder {
             print("write error")
         }
 
+    }
+
+    func writeRNG(in rom: inout Data) {
+        for addr in 0x178000...0x1783FF {
+            let rnd = Data(bytes: [UInt8(randomizer.next(max: 0x100))])
+            rom.patch(atByteOffset: addr, withData: rnd)
+        }
     }
 
     private func generateItemList() -> Void {
@@ -175,4 +189,43 @@ class RomBuilder {
         } while (itemPool.isNonEmpty)
     }
 
+    /**
+     Selects which medallion shall be required for entrance to MM and TR. Must
+     be performed before standard item placement to allow depsolving access to
+     the randomized item.
+    */
+    private func randomizeEntrances() -> Void {
+        for entrance in entranceLocations() {
+            let pool: [Item]
+            guard entrance.item.isMiseryMireEntranceItem || entrance.item.isTurtleRockEntranceItem else {
+                NSLog("Entrance location %@ didn't have an entrance item", entrance.name)
+                return
+            }
+            if entrance.item.isMiseryMireEntranceItem {
+                pool = [.MireBombos, .MireEther, .MireQuake]
+            } else {
+                pool = [.TRBombos, .TREther, .TRQuake]
+            }
+            entrance.item = pool.selectAtRandom(randomizer)
+            // Insert the selected virtual item to the inventory pool. It will
+            // be picked up during solving so the entrance requirements are
+            // accurate.
+            haveItems.insert(entrance.item)
+            // Insert the virtual location so the onWrite callback fires. The
+            // item is not .Nothing so it won't receive an actual item
+            locations.append(entrance)
+            NSLog("%@ opened with %@", entrance.name, entrance.item.description)
+        }
+    }
+
+    /**
+        Selects what to put in your empty bottle when you drop it in a puddle
+    */
+    private func randomizeFairies() -> Void {
+        for fairy in fairyLocations() {
+            fairy.item = Item.filledBottles.selectAtRandom(randomizer)
+            locations.append(fairy)
+            NSLog("%@ fills you with %@", fairy.name, fairy.item.description)
+        }
+    }
 }

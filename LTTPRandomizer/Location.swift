@@ -12,7 +12,7 @@ import Foundation
 class Location {
 
     var name: String
-    var address: Int
+    var address: Int?
     var region: Region
     var _additionalAccessRequirements: ((Set<Item>) -> Bool)?
     var onPatchingRom: ((inout Data, Item) -> Void)?
@@ -31,7 +31,7 @@ class Location {
 
     // MARK: Out-of-dungeon initializers
 
-    init(region: Region, name: String, address: Int, item: Item) {
+    init(region: Region, name: String, address: Int?, item: Item) {
         self.name = name
         self.address = address
         self.region = region
@@ -39,7 +39,7 @@ class Location {
         self.item = item
     }
 
-    init(region: Region, name: String, address: Int, item: Item, accessRequirements: ((Set<Item>) -> Bool)) {
+    init(region: Region, name: String, address: Int?, item: Item, accessRequirements: ((Set<Item>) -> Bool)) {
         self.name = name
         self.address = address
         self.region = region
@@ -48,7 +48,7 @@ class Location {
         self.item = item
     }
 
-    init(region: Region, name: String, address: Int, item: Item, accessRequirements: ((Set<Item>) -> Bool), onPatchingRom: ((inout Data, Item) -> Void)) {
+    init(region: Region, name: String, address: Int?, item: Item, accessRequirements: ((Set<Item>) -> Bool), onPatchingRom: ((inout Data, Item) -> Void)) {
         self.name = name
         self.address = address
         self.region = region
@@ -143,7 +143,7 @@ extension Region {
         case .DarkWorldEasternDeathMountain:
             return inventory.canAccessEastDarkWorldDeathMountain()
 
-        case .Progression:
+        case .Progression, .Fairy, .Entrance:
             return true
         }
     }
@@ -197,6 +197,10 @@ func locationsForRegion(region: Region) -> [Location] {
         return ganonsTowerItems()
     case .Progression:
         return progressionItems()
+    case .Fairy, .Entrance:
+        // Fairies get special placement rules, and are intentionally left out here
+        // Entrances are fake locations that don't get normal items placed
+        return []
     }
 }
 

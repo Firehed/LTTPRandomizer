@@ -90,6 +90,35 @@ enum Item: UInt8, CustomStringConvertible {
     case OcarinaActive = 0x4a
     case PegasusBoots = 0x4b
 
+    /// Open MM with Bombos
+    case MireBombos
+    case MireEther
+    case MireQuake
+    /// Open TR with Bombos
+    case TRBombos
+    case TREther
+    case TRQuake
+
+    /// True if this is one of the "virtual items" for MM opening medallion
+    var isMiseryMireEntranceItem: Bool {
+        switch self {
+        case .MireBombos, .MireEther, .MireQuake:
+            return true
+        default:
+            return false
+        }
+    }
+
+    /// True if this is one of the "virtual items" for TR opening medallion
+    var isTurtleRockEntranceItem: Bool {
+        switch self {
+        case .TRBombos, .TREther, .TRQuake:
+            return true
+        default:
+            return false
+        }
+    }
+
     var description: String {
         switch self {
         case .OneRupee: return "$1"
@@ -114,17 +143,19 @@ enum Item: UInt8, CustomStringConvertible {
         case .Boomerang: return "Blue Boomerang"
         case .Hookshot: return "Hookshot"
             // bombs
+        case .Mushroom: return "Mushroom"
         case .Powder: return "Powder"
 
         case .FireRod: return "Fire rod"
         case .IceRod: return "Ice rod"
-        case .Bombos: return "Bombos"
-        case .Ether: return "Ether"
-        case .Quake: return "Quake"
+        case .Bombos, .MireBombos, .TRBombos: return "Bombos"
+        case .Ether, .MireEther, .TREther: return "Ether"
+        case .Quake, .MireQuake, .TRQuake: return "Quake"
 
         case .Lamp: return "Lamp"
         case .Hammer: return "Hammer"
         case .Shovel: return "Shovel"
+        case .OcarinaInactive: return "Flute"
         case .BugCatchingNet: return "Net"
         case .BookOfMudora: return "Book of Mudora"
 
@@ -134,7 +165,6 @@ enum Item: UInt8, CustomStringConvertible {
         case .Cape: return "Cape"
         case .MagicMirror: return "Mirror"
 
-        case .OcarinaInactive: return "Flute"
         case .RedBoomerang: return "Red Boomerang"
 
         case .BlueMail: return "Blue Mail"
@@ -149,6 +179,13 @@ enum Item: UInt8, CustomStringConvertible {
         case .Flippers: return "Flippers"
         case .MoonPearl: return "Moon Pearl"
         case .PegasusBoots: return "Pegasus Boots"
+
+        case .BottleWithGreenPotion: return "Bottle (Magic Potion)"
+        case .BottleWithRedPotion: return "Bottle (Life Potion)"
+        case .BottleWithBluePotion: return "Bottle (Restoration Potion)"
+        case .BottleWithFairy: return "Bottle (Fairy)"
+        case .BottleWithBee: return "Bottle (Bee)"
+        case .BottleWithGoldBee: return "Bottle (Golden Bee)"
 
         default:
             return String(self.rawValue)
@@ -383,4 +420,38 @@ enum Item: UInt8, CustomStringConvertible {
         }
         return text
     }
+
+    /// Translates the virtual medallions into their physical counterpart. Nil if the source item is not a virtual medallion
+    var associatedMedallion: Item? {
+        switch self {
+        case .MireBombos, .TRBombos:
+            return .Bombos
+        case .MireEther, .TREther:
+            return .Ether
+        case .MireQuake, .TRQuake:
+            return .Quake
+        default:
+            return nil
+        }
+    }
+
+    static let allBottles: [Item] = [
+        .Bottle,
+        .BottleWithGreenPotion,
+        .BottleWithRedPotion,
+        .BottleWithBluePotion,
+        .BottleWithBee,
+        .BottleWithGoldBee,
+        .BottleWithFairy,
+    ]
+
+    static let filledBottles: [Item] = [
+        .BottleWithGreenPotion,
+        .BottleWithRedPotion,
+        .BottleWithBluePotion,
+        .BottleWithBee,
+        .BottleWithGoldBee,
+        .BottleWithFairy,
+    ]
+
 }

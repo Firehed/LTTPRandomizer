@@ -36,7 +36,7 @@ func progressionItems() -> Locations {
         Location(
             region: Region.Progression,
             name: "Undeadlock: Quake",
-            address: 0,
+            address: nil,
             item: Item.Nothing,
             accessRequirements: { items in
                 return items.contains(Item.Quake)
@@ -45,7 +45,7 @@ func progressionItems() -> Locations {
         Location(
             region: Region.Progression,
             name: "Undeadlock: Cane of Somaria",
-            address: 0,
+            address: nil,
             item: Item.Nothing,
             accessRequirements: { items in
                 return items.contains(Item.CaneOfSomaria)
@@ -243,7 +243,7 @@ func lightWorldItems() -> Locations {
             address: 0x339CF,
             item: Item.BugCatchingNet,
             accessRequirements: { items in
-                return items.contains(Item.Bottle)
+                return items.hasAnyBottle()
             }
         ),
         Location(
@@ -321,6 +321,27 @@ func lightWorldItems() -> Locations {
             name: "Piece of Heart (Dam)",
             address: 0x180145,
             item: Item.PieceOfHeart
+        ),
+        Location(
+            region: Region.LightWorld,
+            name: "Mushroom",
+            address: 0x180013,
+            item: Item.Mushroom
+        ),
+        Location(
+            region: Region.LightWorld,
+            name: "Witch",
+            address: 0x180014,
+            item: Item.Powder,
+            accessRequirements: { items in
+                return items.contains(Item.Mushroom)
+            }
+        ),
+        Location(
+            region: Region.LightWorld,
+            name: "Haunted Grove Item",
+            address: 0x18014A,
+            item: Item.OcarinaInactive
         ),
     ]
 }
@@ -692,18 +713,6 @@ func darkWorldPyramidItems() -> Locations {
             address: 0x180147,
             item: Item.PieceOfHeart
         ),
-        // MARK: not late game
-        //new Location
-        //{
-        //    lateGameItem: false,
-        //    region: Region.DarkWorld,
-        //    name: "Piece of Heart (Digging Game)",
-        //    address: 0x180148,
-        //    item: PieceOfHeart,
-        //    accessRequirements: { items in
-        //        return items.canAccessLowerDarkWorld()
-        //    }
-        //),
     ]
 }
 
@@ -785,6 +794,13 @@ func southDarkWorldItems() -> Locations {
                 return items.containsAll(Item.Flippers, Item.MagicMirror)
             }
         ),
+        // MARK: not late game
+        Location(
+            region: Region.DarkWorldSouth,
+            name: "Piece of Heart (Digging Game)",
+            address: 0x180148,
+            item: Item.PieceOfHeart
+        ),
     ]
 }
 
@@ -843,6 +859,12 @@ func northWestDarkWorldItems() -> Locations {
             accessRequirements: { items in
                 return items.contains(Item.MagicMirror)
             }
+        ),
+        Location(
+            region: Region.DarkWorldNorthWest,
+            name: "Piece of Heart (Treasure Chest Game)",
+            address: 0xEDA8,
+            item: Item.PieceOfHeart
         ),
     ]
 }
@@ -1717,6 +1739,83 @@ func ganonsTowerItems() -> Locations {
             rules: DungeonRules(zone: 5, bigKeyZone: true),
             accessRequirements: { items in
                 return items.canLightTorches()
+            }
+        ),
+    ]
+}
+
+
+func fairyLocations() -> Locations {
+    return [
+        Location(region: Region.Fairy, name: "Waterfall of Wishing Fairy", address: 0x348FF, item: Item.BottleWithGreenPotion),
+        Location(region: Region.Fairy, name: "Cursed Fairy", address: 0x3493B, item: Item.BottleWithGreenPotion),
+    ]
+}
+
+func entranceLocations() -> Locations {
+    return [
+        Location(
+            region: Region.Entrance,
+            name: "Misery Mire Entrance Medallion",
+            address: nil,
+            item: Item.MireEther,
+            accessRequirements: { _ in true }, // TODO: remove after tidying initializers
+            onPatchingRom: { rom, item in
+                var bytes = [(addr: Int, value: UInt8)]()
+                switch item {
+                case .MireBombos:
+                    bytes.append((addr: 0x4FF2, value: 0x31))
+                    bytes.append((addr: 0x50D1, value: 0x80))
+                    bytes.append((addr: 0x51B0, value: 0))
+                    bytes.append((addr: 0x180022, value: 0))
+                    break
+                case .MireEther:
+                    bytes.append((addr: 0x180022, value: 1))
+                    break
+                case .MireQuake:
+                    bytes.append((addr: 0x4FF2, value: 0x31))
+                    bytes.append((addr: 0x50D1, value: 0x88))
+                    bytes.append((addr: 0x51B0, value: 0))
+                    bytes.append((addr: 0x180022, value: 2))
+                    break
+                default:
+                    break
+                }
+                for byte in bytes {
+                    rom.patch(atByteOffset: byte.addr, withData: Data(bytes: [byte.value]))
+                }
+            }
+        ),
+        Location(
+            region: Region.Entrance,
+            name: "Turtle Rock Entrance Medallion",
+            address: nil,
+            item: Item.TRQuake,
+            accessRequirements: { _ in true }, // TODO: remove after tidying initializers
+            onPatchingRom: { rom, item in
+                var bytes = [(addr: Int, value: UInt8)]()
+                switch item {
+                case .TRBombos:
+                    bytes.append((addr: 0x5020, value: 0x31))
+                    bytes.append((addr: 0x50FF, value: 0x90))
+                    bytes.append((addr: 0x51DE, value: 0))
+                    bytes.append((addr: 0x180023, value: 0))
+                    break
+                case .TREther:
+                    bytes.append((addr: 0x5020, value: 0x31))
+                    bytes.append((addr: 0x50FF, value: 0x98))
+                    bytes.append((addr: 0x51DE, value: 0))
+                    bytes.append((addr: 0x180023, value: 1))
+                    break
+                case .TRQuake:
+                    bytes.append((addr: 0x180023, value: 2))
+                    break
+                default:
+                    break
+                }
+                for byte in bytes {
+                    rom.patch(atByteOffset: byte.addr, withData: Data(bytes: [byte.value]))
+                }
             }
         ),
     ]
