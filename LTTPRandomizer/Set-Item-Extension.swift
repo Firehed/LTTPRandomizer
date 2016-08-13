@@ -256,8 +256,7 @@ extension SetAlgebra where Element == Item {
 extension SetAlgebra where Element == Item {
 
     func canFly() -> Bool {
-        // Currently the Shovel location is randomized but the Flute is fixed to the dig location. If that changes, this will need to be updated.
-        return containsAny(Item.Shovel, Item.OcarinaInactive, Item.OcarinaActive)
+        return containsAny(Item.OcarinaInactive, Item.OcarinaActive)
     }
 
     func canGetMasterSword() -> Bool {
