@@ -279,4 +279,16 @@ extension SetAlgebra where Element == Item {
         return containsAny(Item.Lamp, Item.FireRod)
     }
 
+    func hasAnyBottle() -> Bool {
+        return containsAny(
+            Item.Bottle,
+            Item.BottleWithGreenPotion,
+            Item.BottleWithRedPotion,
+            Item.BottleWithBluePotion,
+            Item.BottleWithFairy,
+            Item.BottleWithBee,
+            Item.BottleWithGoldBee
+        )
+    }
+
 }

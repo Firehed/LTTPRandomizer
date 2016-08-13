@@ -243,7 +243,7 @@ func lightWorldItems() -> Locations {
             address: 0x339CF,
             item: Item.BugCatchingNet,
             accessRequirements: { items in
-                return items.contains(Item.Bottle)
+                return items.hasAnyBottle()
             }
         ),
         Location(
