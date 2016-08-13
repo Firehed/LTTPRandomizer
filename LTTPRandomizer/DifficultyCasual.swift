@@ -88,6 +88,7 @@ class DifficultyCasual: Difficulty {
         // - Replace non-critical inventory items
         // - Replace heart pieces
         return pool
+            .map { $0.isBottle ? Item.allBottles.selectAtRandom(randomizer) : $0 }
     }
 
     private func isLateGameItem(_ item: Item) -> Bool {

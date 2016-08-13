@@ -435,6 +435,16 @@ enum Item: UInt8, CustomStringConvertible {
         }
     }
 
+    static let allBottles: [Item] = [
+        .Bottle,
+        .BottleWithGreenPotion,
+        .BottleWithRedPotion,
+        .BottleWithBluePotion,
+        .BottleWithBee,
+        .BottleWithGoldBee,
+        .BottleWithFairy,
+    ]
+
     static let filledBottles: [Item] = [
         .BottleWithGreenPotion,
         .BottleWithRedPotion,
