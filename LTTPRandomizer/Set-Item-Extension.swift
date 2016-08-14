@@ -223,7 +223,7 @@ extension SetAlgebra where Element == Item {
 
     func canDefeatSwampPalace() -> Bool {
         return canEnterSwampPalace()
-            && contains(Item.Hookshot)
+            && containsAll(Item.Hookshot, Item.Hammer)
     }
 
     func canDefeatSkullWoods() -> Bool {

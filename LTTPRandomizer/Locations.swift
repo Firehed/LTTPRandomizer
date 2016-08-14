@@ -1094,7 +1094,10 @@ func swampPalaceItems() -> Locations {
             name: "[dungeon-D2-B1] Swamp Palace - big chest",
             address: 0xE989,
             item: Item.Hookshot,
-            rules: DungeonRules(zone: 3, bigKeyZone: true)
+            rules: DungeonRules(zone: 3, bigKeyZone: true),
+            accessRequirements: { items in
+                return items.contains(Item.Hammer)
+            }
         ),
         Location(
             region: Region.SwampPalace,
