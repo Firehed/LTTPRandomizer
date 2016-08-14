@@ -67,7 +67,7 @@ func lightWorldItems() -> Locations {
                 return items.contains(Item.PegasusBoots)
                     && (items.canLiftHeavyRocks()
                         || (items.canAccessNorthWestDarkWorld()
-                            && items.contains(Item.MagicMirror)))
+                            && items.containsAll(Item.MagicMirror, Item.MoonPearl)))
             }
         ),
         Location(
