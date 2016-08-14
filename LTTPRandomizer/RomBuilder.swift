@@ -96,7 +96,7 @@ class RomBuilder {
 
     func writeRNG(in rom: inout Data) {
         for addr in 0x178000...0x1783FF {
-            let rnd = Data(bytes: [UInt8(randomizer.next(max: 0x100))])
+            let rnd = Data(bytes: [UInt8(randomizer.next(lessThan: 0xFF))])
             rom.patch(atByteOffset: addr, withData: rnd)
         }
     }

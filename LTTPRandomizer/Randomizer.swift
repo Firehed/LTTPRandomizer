@@ -9,5 +9,7 @@
 import Foundation
 
 protocol Randomizer {
-    func next(max: Int) -> Int
+
+    /// Returns a pseudo-random integer between 0 and `max`, exclusive
+    func next(lessThan: Int) -> Int
 }

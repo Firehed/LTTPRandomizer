@@ -14,7 +14,7 @@ extension Array {
     }
 
     func selectAtRandom(_ randomizer: Randomizer) -> Element {
-        return self[randomizer.next(max: count)]
+        return self[randomizer.next(lessThan: count)]
     }
 }
 
