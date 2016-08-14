@@ -1759,7 +1759,7 @@ func fairyLocations() -> Locations {
 func entranceLocations() -> Locations {
     return [
         Location(
-            region: Region.Entrance,
+            region: Region.PatchOnly,
             name: "Misery Mire Entrance Medallion",
             address: nil,
             item: Item.MireEther,
@@ -1791,7 +1791,7 @@ func entranceLocations() -> Locations {
             }
         ),
         Location(
-            region: Region.Entrance,
+            region: Region.PatchOnly,
             name: "Turtle Rock Entrance Medallion",
             address: nil,
             item: Item.TRQuake,
@@ -1827,7 +1827,7 @@ func entranceLocations() -> Locations {
 
 func getHalfMagicBatLocation() -> Location {
     return Location(
-        region: Region.Entrance,
+        region: Region.PatchOnly,
         name: "Magic Bat",
         address: nil,
         item: Item.HalfMagic,
