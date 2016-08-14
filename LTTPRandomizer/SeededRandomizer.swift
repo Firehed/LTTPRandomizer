@@ -12,8 +12,8 @@ struct SeededRandomizer: Randomizer {
     let seed: Int
 
 
-    func next(max: Int) -> Int {
-        return Int(arc4random_uniform(UInt32(max)))
+    func next(lessThan: Int) -> Int {
+        return Int(arc4random_uniform(UInt32(lessThan)))
 //        return 0
     }
 }
