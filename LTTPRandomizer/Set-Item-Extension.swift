@@ -25,10 +25,8 @@ extension SetAlgebra where Element == Item {
     }
 
     func canAccessZorasDomain() -> Bool {
-        // Original logic said (Flippers OR (Glove AND (Boots or Mitt))), which is just wrong:
-        // * The flippers don't help you get to ZD (can't bypass rock near witch)
-        // * You don't need to do anything with the rocks in front of the pit on the way
-        return canEscapeCastle() && canLiftRocks()
+        return canLiftRocks() // Normal route
+            || contains(Item.Flippers) // Use warp whirlpool near wishing well
     }
 
 }
