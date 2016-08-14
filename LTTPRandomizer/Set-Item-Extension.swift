@@ -57,6 +57,10 @@ extension SetAlgebra where Element == Item {
     }
 
     func canEnterHyruleCastleTower() -> Bool {
+        // Technically, this is canGetAtLeastMasterSword, but using that logic
+        // creates infinite recursion since the check for tempered sword ends up
+        // calling back into this function. As such, just do the explicit master
+        // sword check. In practice it doesn't really matter for spawn points.
         return canGetMasterSword() || contains(Item.Cape)
     }
 
@@ -263,6 +267,29 @@ extension SetAlgebra where Element == Item {
         return canDefeatEasternPalace()
             && canDefeatDesertPalace()
             && canDefeatTowerOfHera()
+    }
+
+    func canGetTemperedSword() -> Bool {
+        return canAccessNorthWestDarkWorld()
+            && canLiftHeavyRocks()
+            && contains(Item.MagicMirror)
+    }
+
+    func canGetGoldenSword() -> Bool {
+        return canAccessPyramid()
+            && canGetTemperedSword()
+            && canDefeatDarkPalace()
+            && canDefeatSwampPalace()
+            && canDefeatSkullWoods()
+            && canDefeatThievesTown()
+            && canDefeatIcePalace()
+            && canDefeatMiseryMire()
+    }
+
+    func canGetAtLeastMasterSword() -> Bool {
+        return canGetMasterSword()
+            || canGetTemperedSword()
+            || canGetGoldenSword()
     }
 
     func canLiftHeavyRocks() -> Bool {

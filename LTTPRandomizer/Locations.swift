@@ -262,7 +262,7 @@ func lightWorldItems() -> Locations {
             item: Item.Ether,
             accessRequirements: { items in
                 return items.canEnterTowerOfHera()
-                    && items.canGetMasterSword()
+                    && items.canGetAtLeastMasterSword()
                     && items.contains(Item.BookOfMudora)
             },
             onPatchingRom: { rom, item in
@@ -764,7 +764,7 @@ func southDarkWorldItems() -> Locations {
             address: 0x48B81,
             item: Item.Bombos,
             accessRequirements: { items in
-                return items.canGetMasterSword()
+                return items.canGetAtLeastMasterSword()
                     && items.containsAll(Item.BookOfMudora, Item.MagicMirror)
             },
             onPatchingRom: { rom, item in
