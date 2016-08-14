@@ -376,7 +376,8 @@ func lightWorthDeathMountainItems() -> Locations {
             address: 0xEA8B,
             item: Item.StaffOfByrna,
             accessRequirements: { items in
-                return items.containsAll(Item.MoonPearl, Item.Hammer)
+                return items.canLiftRocks()
+                    && items.containsAll(Item.MoonPearl, Item.Hammer)
             }
         ),
     ]
