@@ -99,6 +99,11 @@ enum Item: UInt8, CustomStringConvertible {
     case TREther
     case TRQuake
 
+    // Magic meter changes
+    case FullMagic
+    case HalfMagic
+    case QuarterMagic
+
     /// True if this is one of the "virtual items" for MM opening medallion
     var isMiseryMireEntranceItem: Bool {
         switch self {
@@ -186,6 +191,10 @@ enum Item: UInt8, CustomStringConvertible {
         case .BottleWithFairy: return "Bottle (Fairy)"
         case .BottleWithBee: return "Bottle (Bee)"
         case .BottleWithGoldBee: return "Bottle (Golden Bee)"
+
+        case .FullMagic: return "1/1 Magic"
+        case .HalfMagic: return "1/2 Magic"
+        case .QuarterMagic: return "1/4 Magic"
 
         default:
             return String(self.rawValue)

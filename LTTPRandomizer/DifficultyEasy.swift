@@ -37,6 +37,11 @@ class DifficultyEasy: Difficulty {
             }
             location.item = .Nothing
         }
+
+        // Easy mode: always grant 1/4 magic ✨
+        let bat = getHalfMagicBatLocation()
+        bat.item = .QuarterMagic
+        locations.append(bat)
     }
 
     /**

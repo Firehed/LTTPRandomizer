@@ -32,6 +32,13 @@ class DifficultyCasual: Difficulty {
             }
             location.item = .Nothing
         }
+
+        let bat = getHalfMagicBatLocation()
+        // 1/3 chance of granting 1/4 magic instead of 1/2
+        if randomizer.next(lessThan: 3) == 0 {
+            bat.item = .QuarterMagic
+        }
+        locations.append(bat)
     }
 
     func getLocations() -> Locations {
