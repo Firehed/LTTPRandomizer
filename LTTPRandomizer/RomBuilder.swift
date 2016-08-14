@@ -46,7 +46,7 @@ class RomBuilder {
     }
 
     func write() {
-        guard let path = Bundle.main.pathForResource("v5", ofType: "sfc") else {
+        guard let path = Bundle.main.pathForResource("v6", ofType: "sfc") else {
             NSLog("Bundled ROM not found")
             return
         }
