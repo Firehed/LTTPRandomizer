@@ -838,7 +838,7 @@ func northWestDarkWorldItems() -> Locations {
             address: 0x180146,
             item: Item.PieceOfHeart,
             accessRequirements: { items in
-                return items.contains(Item.Cape)
+                return items.containsAll(Item.Cape, Item.Hookshot)
             }
         ),
         // Technically item is in LW, but put here for access reqs
