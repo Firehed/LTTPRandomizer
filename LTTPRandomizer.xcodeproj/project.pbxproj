@@ -33,6 +33,7 @@
 		FAD817771D56862900B0D2FC /* v5.sfc in Resources */ = {isa = PBXBuildFile; fileRef = FAD817751D56862900B0D2FC /* v5.sfc */; };
 		FAD8177C1D5697EE00B0D2FC /* DataExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD8177B1D5697EE00B0D2FC /* DataExtensionTests.swift */; };
 		FAE213481D5D9B32007D5692 /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE213471D5D9B32007D5692 /* LocationTests.swift */; };
+		FAE2134A1D60F19D007D5692 /* v6.sfc in Resources */ = {isa = PBXBuildFile; fileRef = FAE213491D60F19D007D5692 /* v6.sfc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		FAD817751D56862900B0D2FC /* v5.sfc */ = {isa = PBXFileReference; lastKnownFileType = file; name = v5.sfc; path = Roms/v5.sfc; sourceTree = "<group>"; };
 		FAD8177B1D5697EE00B0D2FC /* DataExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExtensionTests.swift; sourceTree = "<group>"; };
 		FAE213471D5D9B32007D5692 /* LocationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
+		FAE213491D60F19D007D5692 /* v6.sfc */ = {isa = PBXFileReference; lastKnownFileType = file; name = v6.sfc; path = Roms/v6.sfc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			children = (
 				FAD817741D56862900B0D2FC /* v4.sfc */,
 				FAD817751D56862900B0D2FC /* v5.sfc */,
+				FAE213491D60F19D007D5692 /* v6.sfc */,
 			);
 			name = Roms;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAE2134A1D60F19D007D5692 /* v6.sfc in Resources */,
 				FAD817761D56862900B0D2FC /* v4.sfc in Resources */,
 				FA29C7131D43FFC700CB1D7A /* Assets.xcassets in Resources */,
 				FA29C7161D43FFC700CB1D7A /* Main.storyboard in Resources */,
