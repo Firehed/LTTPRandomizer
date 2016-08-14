@@ -807,10 +807,11 @@ func southDarkWorldItems() -> Locations {
 func northWestDarkWorldItems() -> Locations {
     return [
         Location(
+            // If you've already picked up the blue boomerang, this spawns 300 rupees in a normal run
             region: Region.DarkWorldNorthWest,
             name: "[cave-063] doorless hut",
             address: 0xE9EC,
-            item: Item.ThreeHundredRupees
+            item: Item.RedBoomerang
         ),
         Location(
             region: Region.DarkWorldNorthWest,
