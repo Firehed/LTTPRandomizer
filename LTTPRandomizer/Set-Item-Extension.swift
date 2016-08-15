@@ -188,7 +188,7 @@ extension SetAlgebra where Element == Item {
             && containsAny(Item.PegasusBoots, Item.Hookshot)
     }
 
-    private func findTurtleRockRequiredMedallion() -> Item {
+    func findTurtleRockRequiredMedallion() -> Item {
         return findRequiredMedallion(from: [.TRBombos, .TREther, .TRQuake], default: .Quake)
     }
 

@@ -20,6 +20,8 @@ func allLocations() -> Locations {
 
 // MARK: Progression (deadlock prevention)
 /**
+ (Substitute the randomized medallion for Quake)
+
  The entrance to TRock require Quake and Cane of Somaria. Neither is
  individually required for any location, so during item placement neither will
  be selected during the search for expansion-enabling items unless the other had
@@ -35,11 +37,11 @@ func progressionItems() -> Locations {
     return [
         Location(
             region: Region.Progression,
-            name: "Undeadlock: Quake",
+            name: "Undeadlock: Turtle Rock Medallion",
             address: nil,
             item: Item.Nothing,
             accessRequirements: { items in
-                return items.contains(Item.Quake)
+                return items.contains(items.findTurtleRockRequiredMedallion())
             }
         ),
         Location(
