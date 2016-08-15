@@ -1649,40 +1649,29 @@ func ganonsTowerItems() -> Locations {
             name: "[dungeon-A2-1F] Ganon's Tower - compass room [top left chest]",
             address: 0xEAE5,
             item: Item.Compass,
-            rules: DungeonRules(zone: 1, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.canLightTorches()
-            }
+            rules: DungeonRules(zone: 1, bigKeyZone: false)
+            // This room needs FireRod, but it's guaranteed from SW
         ),
         Location(
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - compass room [top right chest]",
             address: 0xEAE8,
             item: Item.OneRupee,
-            rules: DungeonRules(zone: 1, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.canLightTorches()
-            }
+            rules: DungeonRules(zone: 1, bigKeyZone: false)
         ),
         Location(
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - compass room [bottom left chest]",
             address: 0xEAEB,
             item: Item.TwentyRupees,
-            rules: DungeonRules(zone: 1, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.canLightTorches()
-            }
+            rules: DungeonRules(zone: 1, bigKeyZone: false)
         ),
         Location(
             region: Region.GanonsTower,
             name: "[dungeon-A2-1F] Ganon's Tower - compass room [bottom right chest]",
             address: 0xEAEE,
             item: Item.TenArrows,
-            rules: DungeonRules(zone: 1, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.canLightTorches()
-            }
+            rules: DungeonRules(zone: 1, bigKeyZone: false)
         ),
         Location(
             region: Region.GanonsTower,
@@ -1710,40 +1699,28 @@ func ganonsTowerItems() -> Locations {
             name: "[dungeon-A2-6F] Ganon's Tower - north of falling floor four torches [top left chest]",
             address: 0xEAFD,
             item: Item.ThreeBombs,
-            rules: DungeonRules(zone: 3, bigKeyZone: true),
-            accessRequirements: { items in
-                return items.canLightTorches()
-            }
+            rules: DungeonRules(zone: 3, bigKeyZone: true)
         ),
         Location(
             region: Region.GanonsTower,
             name: "[dungeon-A2-6F] Ganon's Tower - north of falling floor four torches [top right chest]",
             address: 0xEB00,
             item: Item.ThreeBombs,
-            rules: DungeonRules(zone: 3, bigKeyZone: true),
-            accessRequirements: { items in
-                return items.canLightTorches()
-            }
+            rules: DungeonRules(zone: 3, bigKeyZone: true)
         ),
         Location(
             region: Region.GanonsTower,
             name: "[dungeon-A2-6F] Ganon's Tower - before Moldorm",
             address: 0xEB03,
             item: Item.Key,
-            rules: DungeonRules(zone: 4, bigKeyZone: true),
-            accessRequirements: { items in
-                return items.canLightTorches()
-            }
+            rules: DungeonRules(zone: 4, bigKeyZone: true)
         ),
         Location(
             region: Region.GanonsTower,
             name: "[dungeon-A2-6F] Ganon's Tower - Moldorm room",
             address: 0xEB06,
             item: Item.TwentyRupees,
-            rules: DungeonRules(zone: 5, bigKeyZone: true),
-            accessRequirements: { items in
-                return items.canLightTorches()
-            }
+            rules: DungeonRules(zone: 5, bigKeyZone: true)
         ),
     ]
 }
