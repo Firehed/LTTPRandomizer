@@ -118,7 +118,7 @@ enum Dungeon: String {
         case .DW5:
             return [(2, 2, true)]
         case .DW6:
-            return [(0, 2, false), (1, 1, false)]
+            return [(0, 3, false)]
         case .DW7:
             return [(0, 1, false), (2, 1, true), (5, 1, true), (6, 1, false)]
         case .DWTower:
