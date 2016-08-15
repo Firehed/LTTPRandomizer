@@ -38,10 +38,38 @@ class DifficultyEasy: Difficulty {
             location.item = .Nothing
         }
 
+        randomizeEntrances()
+
         // Easy mode: always grant 1/4 magic ✨
         let bat = getHalfMagicBatLocation()
         bat.item = .QuarterMagic
         locations.append(bat)
+    }
+
+    /**
+     Selects which medallion shall be required for entrance to MM and TR. Must
+     be performed before standard item placement to allow depsolving access to
+     the randomized item.
+     */
+    private func randomizeEntrances() -> Void {
+        for entrance in entranceLocations() {
+            let pool: [Item]
+            guard entrance.item.isMiseryMireEntranceItem || entrance.item.isTurtleRockEntranceItem else {
+                NSLog("Entrance location %@ didn't have an entrance item", entrance.name)
+                locations.append(entrance)
+                return
+            }
+            if entrance.item.isMiseryMireEntranceItem {
+                pool = [.MireBombos, .MireEther, .MireQuake]
+            } else {
+                pool = [.TRBombos, .TREther, .TRQuake]
+            }
+            entrance.item = pool.selectAtRandom(randomizer)
+            // Insert the virtual location so the onWrite callback fires. The
+            // item is not .Nothing so it won't receive an actual item
+            locations.append(entrance)
+            NSLog("%@ opened with %@", entrance.name, entrance.item.description)
+        }
     }
 
     /**
