@@ -1363,7 +1363,7 @@ func miseryMireItems() -> Locations {
             name: "[dungeon-D6-B1] Misery Mire - big hub room",
             address: 0xEA5E,
             item: Item.Key,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
+            rules: DungeonRules(zone: 0, bigKeyZone: false)
         ),
         Location(
             region: Region.MiseryMire,
@@ -1377,7 +1377,7 @@ func miseryMireItems() -> Locations {
             name: "[dungeon-D6-B1] Misery Mire - compass",
             address: 0xEA64,
             item: Item.Compass,
-            rules: DungeonRules(zone: 2, bigKeyZone: false),
+            rules: DungeonRules(zone: 0, bigKeyZone: false),
             accessRequirements: { items in
                 return items.canLightTorches()
             }
@@ -1397,14 +1397,14 @@ func miseryMireItems() -> Locations {
             name: "[dungeon-D6-B1] Misery Mire - map room",
             address: 0xEA6A,
             item: Item.Map,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
+            rules: DungeonRules(zone: 0, bigKeyZone: false)
         ),
         Location(
             region: Region.MiseryMire,
             name: "[dungeon-D6-B1] Misery Mire - big key",
             address: 0xEA6D,
             item: Item.BigKey,
-            rules: DungeonRules(zone: 2, bigKeyZone: false),
+            rules: DungeonRules(zone: 0, bigKeyZone: false),
             accessRequirements: { items in
                 return items.canLightTorches()
             }
