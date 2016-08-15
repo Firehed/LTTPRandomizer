@@ -19,7 +19,7 @@ class RomBuilder {
     private var difficulty: Difficulty
 
     /// Locations to be randomized
-    private var locations: Locations
+    private var locations: Locations = []
 
     /// Items that have been placed into randomized locations.
     ///
@@ -34,7 +34,6 @@ class RomBuilder {
     init(randomizer: Randomizer, difficulty: Difficulty) {
         self.difficulty = difficulty
         self.randomizer = randomizer
-        self.locations = difficulty.getLocations()
     }
 
     func assignItems() {
@@ -103,6 +102,7 @@ class RomBuilder {
     private func generateItemList() -> Void {
         difficulty.reset()
         itemPool = difficulty.getItemPool()
+        locations = difficulty.getLocations()
         haveItems = []
 
         // Pick up any pre-assigned items from virtual locations
