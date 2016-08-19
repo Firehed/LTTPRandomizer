@@ -217,8 +217,3 @@ class RomBuilder {
     }
 }
 
-extension Array where Element: Equatable {
-    mutating func removeFirst(_ item: Element) {
-        remove(at: index(of: item)!)
-    }
-}

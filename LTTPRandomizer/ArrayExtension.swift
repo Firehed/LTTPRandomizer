@@ -23,3 +23,11 @@ extension Array where Element: Location {
         return self.filter({ $0.item == .Nothing })
     }
 }
+
+extension Array where Element: Equatable {
+
+    /// Removes the first element in the array equal to the specified value
+    mutating func removeFirst(_ item: Element) {
+        remove(at: index(of: item)!)
+    }
+}
