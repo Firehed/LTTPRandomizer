@@ -8,71 +8,9 @@
 
 import Foundation
 
-class DifficultyCasual: Difficulty {
+class DifficultyCasual: DifficultyAbstract, Difficulty {
 
-    private var randomizer: Randomizer
-
-    /// Locations that will be randomized
-    private var locations: [Location] = []
-
-    /// Items that can be placed
-    private var pool = [Item]()
-
-    required init(randomizer: Randomizer) {
-        self.randomizer = randomizer
-        reset()
-    }
-
-    func reset() {
-        pool = []
-        locations = allLocations()
-        for location in locations {
-            if !location.item.isDungeonItem {
-                pool.append(location.item)
-            }
-            location.item = .Nothing
-        }
-
-        randomizeEntrances()
-
-        let bat = getHalfMagicBatLocation()
-        // 1/3 chance of granting 1/4 magic instead of 1/2
-        if randomizer.next(lessThan: 3) == 0 {
-            bat.item = .QuarterMagic
-        }
-        locations.append(bat)
-    }
-
-    /**
-     Selects which medallion shall be required for entrance to MM and TR. Must
-     be performed before standard item placement to allow depsolving access to
-     the randomized item.
-     */
-    private func randomizeEntrances() -> Void {
-        for entrance in entranceLocations() {
-            let pool: [Item]
-            guard entrance.item.isMiseryMireEntranceItem || entrance.item.isTurtleRockEntranceItem else {
-                NSLog("Entrance location %@ didn't have an entrance item", entrance.name)
-                locations.append(entrance)
-                return
-            }
-            if entrance.item.isMiseryMireEntranceItem {
-                pool = [.MireBombos, .MireEther, .MireQuake]
-            } else {
-                pool = [.TRBombos, .TREther, .TRQuake]
-            }
-            entrance.item = pool.selectAtRandom(randomizer)
-            // Insert the virtual location so the onWrite callback fires. The
-            // item is not .Nothing so it won't receive an actual item
-            locations.append(entrance)
-            NSLog("%@ opened with %@", entrance.name, entrance.item.description)
-        }
-    }
-
-    func getLocations() -> Locations {
-        return locations
-    }
-
+    /// Selects the item to place mostly at random, slightly preferring to put certain items towards the late game
     func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location]) -> Item {
         if possibleItems.count == 1 {
             return possibleItems.first!
@@ -98,6 +36,16 @@ class DifficultyCasual: Difficulty {
         return item
     }
 
+    func getItemPool() -> [Item] {
+        // TODO: possible difficulty shifts
+        // - Change rupees/bombs/arrows
+        // - Replace non-critical inventory items
+        // - Replace heart pieces
+        return pool
+            .map { $0.isBottle ? Item.allBottles.selectAtRandom(randomizer) : $0 }
+    }
+
+    /// Places the item mostly at random, preferring to put ceratain items in the late game
     func getLocationForItemPlacement(possibleLocations: [Location], item: Item) -> Location {
         if possibleLocations.count == 1 {
             return possibleLocations.first!
@@ -116,18 +64,28 @@ class DifficultyCasual: Difficulty {
         return location
     }
 
-    func getItemPool() -> [Item] {
-        // TODO: possible difficulty shifts
-        // - Change rupees/bombs/arrows
-        // - Change bottle contents
-        // - Replace non-critical inventory items
-        // - Replace heart pieces
-        return pool
-            .map { $0.isBottle ? Item.allBottles.selectAtRandom(randomizer) : $0 }
+    /// Rebuilds the item pool, location list, and other areas
+    func reset() -> Void {
+        pool = []
+        locations = allLocations()
+        for location in locations {
+            if !location.item.isDungeonItem {
+                pool.append(location.item)
+            }
+            location.item = .Nothing
+        }
+
+        randomizeEntrances()
+
+        let bat = getHalfMagicBatLocation()
+        // 1/3 chance of granting 1/4 magic instead of 1/2
+        if randomizer.next(lessThan: 3) == 0 {
+            bat.item = .QuarterMagic
+        }
+        locations.append(bat)
     }
 
     private func isLateGameItem(_ item: Item) -> Bool {
-        // TODO: original randomizer seeds one of four (mitt, hammer, mitt again, hammer+mitt) to raise difficulty during earlier setup. not touching that for now.
         switch item {
         case .TitansMitt: fallthrough
         case .RedMail: fallthrough

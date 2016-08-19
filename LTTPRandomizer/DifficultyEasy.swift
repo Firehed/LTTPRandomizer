@@ -8,26 +8,36 @@
 
 import Foundation
 
-class DifficultyEasy: Difficulty {
+class DifficultyEasy: DifficultyAbstract, Difficulty {
 
-    private var randomizer: Randomizer
-    private var pool = [Item]()
-    private var locations = Locations()
-
-    /**
-     Initializer. Provides a randomizer to use during selection
-     - parameters:
-        - randomizer: a Randomizer
-     */
-    required init(randomizer: Randomizer) {
-        self.randomizer = randomizer
-        reset()
-
+    /// Selects an item at semi-random, preferring to place progression items first
+    func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location]) -> Item {
+        let progression = possibleItems.filter { !$0.isJunk }
+        // Prefer to place progression items first
+        if progression.count > 0 {
+            return progression.selectAtRandom(randomizer)
+        }
+        return possibleItems.selectAtRandom(randomizer)
     }
 
-    /**
-     Reset any state in the difficulty
-     */
+    /// Returns the items to be placed. Upgrades some item types because this is easy mode
+    func getItemPool() -> [Item] {
+        return pool
+            .map { $0.isMoney ? Item.ThreeHundredRupees : $0 }
+            .map { $0.isBottle ? Item.allBottles.selectAtRandom(randomizer) : $0 }
+            .map { $0.isHealth ? Item.HeartContainer : $0 }
+    }
+
+    /// Selects a location at semi-random, preferring to place progression items in the light world
+    func getLocationForItemPlacement(possibleLocations: [Location], item: Item) -> Location {
+        let lightWorld = possibleLocations.filter { $0.region.isLightWorld }
+        if !item.isJunk && lightWorld.count > 0 {
+            return lightWorld.selectAtRandom(randomizer)
+        }
+        return possibleLocations.selectAtRandom(randomizer)
+    }
+
+    /// Resets item pool, locations, etc.
     func reset() -> Void {
         pool = []
         locations = allLocations()
@@ -46,78 +56,4 @@ class DifficultyEasy: Difficulty {
         locations.append(bat)
     }
 
-    /**
-     Selects which medallion shall be required for entrance to MM and TR. Must
-     be performed before standard item placement to allow depsolving access to
-     the randomized item.
-     */
-    private func randomizeEntrances() -> Void {
-        for entrance in entranceLocations() {
-            let pool: [Item]
-            guard entrance.item.isMiseryMireEntranceItem || entrance.item.isTurtleRockEntranceItem else {
-                NSLog("Entrance location %@ didn't have an entrance item", entrance.name)
-                locations.append(entrance)
-                return
-            }
-            if entrance.item.isMiseryMireEntranceItem {
-                pool = [.MireBombos, .MireEther, .MireQuake]
-            } else {
-                pool = [.TRBombos, .TREther, .TRQuake]
-            }
-            entrance.item = pool.selectAtRandom(randomizer)
-            // Insert the virtual location so the onWrite callback fires. The
-            // item is not .Nothing so it won't receive an actual item
-            locations.append(entrance)
-            NSLog("%@ opened with %@", entrance.name, entrance.item.description)
-        }
-    }
-
-    /**
-     Return a list of `Item`s that can be randomly placed
-     - returns: an array of `Item`s
-     */
-    func getItemPool() -> [Item] {
-        return pool
-            .map { $0.isMoney ? Item.ThreeHundredRupees : $0 }
-            .map { $0.isBottle ? Item.allBottles.selectAtRandom(randomizer) : $0 }
-    }
-
-    /**
-     Return a list of `Location`s that need items
-     - returns: an array of `Location`s
-     */
-    func getLocations() -> Locations {
-        return locations
-    }
-
-    /**
-     Given a pool of items and currently-accessible locations, returns an item to place.
-     - parameters:
-        - possibleItems: the item pool
-        - possibleLocations: the currently accessible locations
-     - returns: the Item to place
-     */
-    func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location]) -> Item {
-        let progression = possibleItems.filter { !$0.isJunk }
-        // Prefer to place progression items first
-        if progression.count > 0 {
-            return progression.selectAtRandom(randomizer)
-        }
-        return possibleItems.selectAtRandom(randomizer)
-    }
-
-    /**
-     Given an item to place and currently-accessible locations, return the location to place the item
-     - parameters:
-        - possibleLocations: the currently accessible locations
-        - item: the Item being placed
-     - returns: the Location to place the Item
-     */
-    func getLocationForItemPlacement(possibleLocations: [Location], item: Item) -> Location {
-        let lightWorld = possibleLocations.filter { $0.region.isLightWorld }
-        if lightWorld.count > 0 {
-            return lightWorld.selectAtRandom(randomizer)
-        }
-        return possibleLocations.selectAtRandom(randomizer)
-    }
 }
