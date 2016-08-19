@@ -220,12 +220,23 @@ enum Item: UInt8, CustomStringConvertible {
 
     /// Bombs and arrows
     var isConsumable: Bool {
+        return isBombs || isArrows
+    }
+
+    /// Bombs of any quantity
+    var isBombs: Bool {
         switch self {
-        case .Bomb: fallthrough
-        case .ThreeBombs: fallthrough
-        case .TenBombs: fallthrough
-        case .Arrow: fallthrough
-        case .TenArrows:
+        case .Bomb, .ThreeBombs, .TenBombs:
+            return true
+        default:
+            return false
+        }
+    }
+
+    /// Arrows of any quantity
+    var isArrows: Bool {
+        switch self {
+        case .Arrow, .TenArrows:
             return true
         default:
             return false
