@@ -11,6 +11,6 @@ import Foundation
 extension Data {
     mutating func patch(atByteOffset: Int, withData data: Data) {
         let range = atByteOffset..<(atByteOffset+data.count) as Range<Index>
-        replaceBytes(in: range, with: data)
+        replaceSubrange(range, with: data)
     }
 }

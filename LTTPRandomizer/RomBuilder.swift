@@ -44,7 +44,7 @@ class RomBuilder {
     }
 
     func write() {
-        guard let path = Bundle.main.pathForResource("v6", ofType: "sfc") else {
+        guard let path = Bundle.main.path(forResource: "v6", ofType: "sfc") else {
             NSLog("Bundled ROM not found")
             return
         }
@@ -52,7 +52,7 @@ class RomBuilder {
         do {
             try rom = Data(contentsOf: URL.init(fileURLWithPath: path))
         } catch { return }
-        locations.sort(isOrderedBefore: { $0.region.rawValue < $1.region.rawValue })
+        locations.sort { $0.region.rawValue < $1.region.rawValue }
 
         for location in locations {
 

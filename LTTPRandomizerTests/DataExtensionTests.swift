@@ -13,7 +13,7 @@ import XCTest
 class DataExtensionTests: XCTestCase {
 
     func testFullDataPatch() {
-        var data = Data(count: 10)!
+        var data = Data(count: 10)
         let patch = Data(bytes: [0,1,2,3,4,5,6,7,8,9])
         data.patch(atByteOffset: 0, withData: patch)
         for i in 0..<10 {
@@ -22,7 +22,7 @@ class DataExtensionTests: XCTestCase {
     }
 
     func testSubDataPatch() {
-        var data = Data(count: 10)!
+        var data = Data(count: 10)
         let patch = Data(bytes: [1,2])
         data.patch(atByteOffset: 1, withData: patch)
         XCTAssertEqual(data[0], UInt8(0), "Byte 0 changed")
