@@ -44,9 +44,7 @@ class DifficultyEasy: DifficultyAbstract, Difficulty {
         pool = []
         locations = allLocations()
         for location in locations {
-            if !location.item.isDungeonItem {
-                pool.append(location.item)
-            }
+            pool.append(location.item)
             location.item = .Nothing
         }
 

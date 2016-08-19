@@ -116,6 +116,10 @@ class RomBuilder {
         on which areas are locked behind keyed doors
     */
     private func generateDungeonItems() -> Void {
+        guard itemPool.filter({ $0.isDungeonItem }).count > 0 else {
+            NSLog("No dungeon items to place")
+            exit(EXIT_FAILURE)
+        }
         for dungeon in Dungeon.all {
             let dungeonLocations = locations
                 .filter({ $0.region == dungeon.region })
@@ -131,19 +135,23 @@ class RomBuilder {
                         current = dungeonLocations.filter({ $0.isInKeyZone(zone.id) })
                     }
                     current.selectAtRandom(randomizer).item = Item.Key
+                    itemPool.removeFirst(.Key)
                 }
             }
             if dungeon.hasBigKey {
                 let avail = dungeonLocations.withNoItems().filter({ !$0.dungeonRules.isBigKeyZone })
                 avail.selectAtRandom(randomizer).item = Item.BigKey
+                itemPool.removeFirst(.BigKey)
             }
             if dungeon.hasMap {
                 let avail = dungeonLocations.withNoItems()
                 avail.selectAtRandom(randomizer).item = Item.Map
+                itemPool.removeFirst(.Map)
             }
             if dungeon.hasCompass {
                 let avail = dungeonLocations.withNoItems()
                 avail.selectAtRandom(randomizer).item = Item.Compass
+                itemPool.removeFirst(.Compass)
             }
         }
     }
@@ -155,6 +163,10 @@ class RomBuilder {
         late-game items can be forced early or vice-versa
     */
     private func generateItemPositions() -> Void {
+        guard itemPool.filter({ $0.isDungeonItem }).count == 0 else {
+            NSLog("Dungeon items remain")
+            exit(EXIT_FAILURE)
+        }
         repeat {
             let emptyLocations = locations.withNoItems()
             var possibleLocations = emptyLocations.filter({ $0.isAccessible(inventory: haveItems) })
@@ -187,7 +199,7 @@ class RomBuilder {
                 selected = difficulty.getItemForInsertion(possibleItems: itemPool, possibleLocations: possibleLocations)
             }
             haveItems.insert(selected)
-            itemPool.remove(at: itemPool.index(of: selected)!) // remove the first one found
+            itemPool.removeFirst(selected)
             let targetLocation = difficulty.getLocationForItemPlacement(possibleLocations: possibleLocations, item: selected)
             targetLocation.item = selected
         } while (itemPool.isNonEmpty)
@@ -202,5 +214,11 @@ class RomBuilder {
             locations.append(fairy)
             NSLog("%@ fills you with %@", fairy.name, fairy.item.description)
         }
+    }
+}
+
+extension Array where Element: Equatable {
+    mutating func removeFirst(_ item: Element) {
+        remove(at: index(of: item)!)
     }
 }
