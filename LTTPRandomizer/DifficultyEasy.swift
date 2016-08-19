@@ -26,6 +26,8 @@ class DifficultyEasy: DifficultyAbstract, Difficulty {
             .map { $0.isMoney ? Item.ThreeHundredRupees : $0 }
             .map { $0.isBottle ? Item.allBottles.selectAtRandom(randomizer) : $0 }
             .map { $0.isHealth ? Item.HeartContainer : $0 }
+            .map { $0.isBombs ? Item.TenBombs : $0 }
+            .map { $0.isArrows ? Item.TenArrows : $0 }
     }
 
     /// Selects a location at semi-random, preferring to place progression items in the light world
