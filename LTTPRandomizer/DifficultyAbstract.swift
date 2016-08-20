@@ -74,4 +74,13 @@ class DifficultyAbstract {
         }
     }
 
+    internal func randomizeBat(chance numerator: Int, in denominator: Int) -> Void {
+        let bat = getHalfMagicBatLocation()
+        // chance of granting 1/4 magic instead of 1/2
+        if randomizer.next(lessThan: denominator) < numerator {
+            bat.item = .QuarterMagic
+        }
+        locations.append(bat)
+    }
+
 }

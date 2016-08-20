@@ -48,13 +48,10 @@ class DifficultyEasy: DifficultyAbstract, Difficulty {
             location.item = .Nothing
         }
 
+        // Easy mode: always grant 1/4 magic ✨
+        randomizeBat(chance: 1, in: 1)
         randomizeEntrances()
         randomizeFairies()
-
-        // Easy mode: always grant 1/4 magic ✨
-        let bat = getHalfMagicBatLocation()
-        bat.item = .QuarterMagic
-        locations.append(bat)
     }
 
 }

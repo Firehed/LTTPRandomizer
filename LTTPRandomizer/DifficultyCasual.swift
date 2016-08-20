@@ -73,15 +73,9 @@ class DifficultyCasual: DifficultyAbstract, Difficulty {
             location.item = .Nothing
         }
 
+        randomizeBat(chance: 1, in: 3)
         randomizeEntrances()
         randomizeFairies()
-
-        let bat = getHalfMagicBatLocation()
-        // 1/3 chance of granting 1/4 magic instead of 1/2
-        if randomizer.next(lessThan: 3) == 0 {
-            bat.item = .QuarterMagic
-        }
-        locations.append(bat)
     }
 
     private func isLateGameItem(_ item: Item) -> Bool {
