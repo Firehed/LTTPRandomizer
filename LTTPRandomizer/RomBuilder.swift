@@ -40,7 +40,6 @@ class RomBuilder {
         generateItemList()
         generateDungeonItems()
         generateItemPositions()
-        randomizeFairies()
     }
 
     func write() {
@@ -205,15 +204,5 @@ class RomBuilder {
         } while (itemPool.isNonEmpty)
     }
 
-    /**
-        Selects what to put in your empty bottle when you drop it in a puddle
-    */
-    private func randomizeFairies() -> Void {
-        for fairy in fairyLocations() {
-            fairy.item = Item.filledBottles.selectAtRandom(randomizer)
-            locations.append(fairy)
-            NSLog("%@ fills you with %@", fairy.name, fairy.item.description)
-        }
-    }
 }
 

@@ -62,5 +62,16 @@ class DifficultyAbstract {
             NSLog("%@ opened with %@", entrance.name, entrance.item.description)
         }
     }
-    
+
+    /**
+     Selects what to put in your empty bottle when you drop it in a puddle
+     */
+    internal func randomizeFairies() -> Void {
+        for fairy in fairyLocations() {
+            fairy.item = Item.filledBottles.selectAtRandom(randomizer)
+            locations.append(fairy)
+            NSLog("%@ fills you with %@", fairy.name, fairy.item.description)
+        }
+    }
+
 }
