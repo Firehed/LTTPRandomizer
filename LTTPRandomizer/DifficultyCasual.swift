@@ -37,10 +37,6 @@ class DifficultyCasual: DifficultyAbstract, Difficulty {
     }
 
     func getItemPool() -> [Item] {
-        // TODO: possible difficulty shifts
-        // - Change rupees/bombs/arrows
-        // - Replace non-critical inventory items
-        // - Replace heart pieces
         return pool
             .map { $0.isBottle ? Item.allBottles.selectAtRandom(randomizer) : $0 }
     }
