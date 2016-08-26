@@ -20,6 +20,9 @@ class DifficultyAbstract {
     /// The pseudo-randomizer
     internal var randomizer: Randomizer
 
+    /// Array of computed dungeon item info
+    internal var dungeonInfo = [DungeonInfo]()
+
     /**
      Initializer. Provides a randomizer to use during selection
      - parameters:
@@ -35,6 +38,10 @@ class DifficultyAbstract {
      */
     func getLocations() -> Locations {
         return locations
+    }
+
+    func getDungeonInfo() -> [DungeonInfo] {
+        return dungeonInfo
     }
 
     /**

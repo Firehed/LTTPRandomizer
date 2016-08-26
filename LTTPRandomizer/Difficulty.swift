@@ -35,6 +35,12 @@ protocol Difficulty {
     func getLocations() -> Locations
 
     /**
+     Return a list of `DungeonInfo`s for all of the randomized dungeon items
+     - returns: an array of `DungeonInfo`s
+    */
+    func getDungeonInfo() -> [DungeonInfo]
+
+    /**
      Given a pool of items and currently-accessible locations, returns an item to place.
      - parameters:
         - possibleItems: the item pool

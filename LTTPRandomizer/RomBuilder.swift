@@ -119,20 +119,25 @@ class RomBuilder {
             NSLog("No dungeon items to place")
             exit(EXIT_FAILURE)
         }
-        for dungeon in Dungeon.all {
+        for dungeon in difficulty.getDungeonInfo() {
             let dungeonLocations = locations
                 .filter({ $0.region == dungeon.region })
                 .filter({ $0.dungeonRules.canHoldDungeonItems })
-
-            for zone in dungeon.keyZones {
+            let sortedZones = dungeon.keyZones.map {
+                // Dict to list of tuples so it can be sorted
+                (id: $0.key, count: $0.value)
+            }.sorted {
+                $0.id < $1.id
+            }
+            for zone in sortedZones {
                 for _ in 0..<zone.count {
                     let current: [Location]
                     // I'm reasonably sure this could drop the isInKeyZone logic entirely and always use inOrBefore
-                    if zone.lte {
+                    //if zone.lte {
                         current = dungeonLocations.filter({ $0.isInOrBeforeKeyZone(zone.id) })
-                    } else {
-                        current = dungeonLocations.filter({ $0.isInKeyZone(zone.id) })
-                    }
+                    //} else {
+                    //  current = dungeonLocations.filter({ $0.isInKeyZone(zone.id) })
+                    //}
                     current.selectAtRandom(randomizer).item = Item.Key
                     itemPool.removeFirst(.Key)
                 }

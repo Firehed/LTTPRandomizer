@@ -64,6 +64,7 @@ class DifficultyCasual: DifficultyAbstract, Difficulty {
     func reset() -> Void {
         pool = []
         locations = allLocations()
+        dungeonInfo = DungeonInfo.get(locations: locations)
         for location in locations {
             pool.append(location.item)
             location.item = .Nothing
