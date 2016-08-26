@@ -20,7 +20,6 @@
 		FA3929BB1D440AF4006BDC9A /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3929BA1D440AF4006BDC9A /* Region.swift */; };
 		FA3929BD1D440C25006BDC9A /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3929BC1D440C25006BDC9A /* Difficulty.swift */; };
 		FA3929BF1D440C73006BDC9A /* RomBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3929BE1D440C73006BDC9A /* RomBuilder.swift */; };
-		FA4E845D1D459660001789E8 /* Dungeon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E845C1D459660001789E8 /* Dungeon.swift */; };
 		FA4E84611D459885001789E8 /* DifficultyCasual.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E84601D459885001789E8 /* DifficultyCasual.swift */; };
 		FA4E84631D45B586001789E8 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E84621D45B586001789E8 /* ArrayExtension.swift */; };
 		FA7F0B8B1D45372C00DF642E /* SeededRandomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B8A1D45372C00DF642E /* SeededRandomizer.swift */; };
@@ -75,7 +74,6 @@
 		FA3929BA1D440AF4006BDC9A /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		FA3929BC1D440C25006BDC9A /* Difficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
 		FA3929BE1D440C73006BDC9A /* RomBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomBuilder.swift; sourceTree = "<group>"; };
-		FA4E845C1D459660001789E8 /* Dungeon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dungeon.swift; sourceTree = "<group>"; };
 		FA4E84601D459885001789E8 /* DifficultyCasual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyCasual.swift; sourceTree = "<group>"; };
 		FA4E84621D45B586001789E8 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		FA7F0B8A1D45372C00DF642E /* SeededRandomizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeededRandomizer.swift; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 				FAE2134B1D618AAE007D5692 /* DifficultyAbstract.swift */,
 				FA4E84601D459885001789E8 /* DifficultyCasual.swift */,
 				FAD8176D1D56764D00B0D2FC /* DifficultyEasy.swift */,
-				FA4E845C1D459660001789E8 /* Dungeon.swift */,
 				FA3729041D701771000D107E /* DungeonInfo.swift */,
 				FAC686251D530D600044D17E /* DungeonRules.swift */,
 				FA29C7391D44032500CB1D7A /* Item.swift */,
@@ -345,7 +342,6 @@
 				FAC6861E1D4D53370044D17E /* SetAlgebraExtension.swift in Sources */,
 				FAC6861C1D4D525C0044D17E /* Set-Item-Extension.swift in Sources */,
 				FA4E84611D459885001789E8 /* DifficultyCasual.swift in Sources */,
-				FA4E845D1D459660001789E8 /* Dungeon.swift in Sources */,
 				FAC686241D52F4B90044D17E /* Locations.swift in Sources */,
 				FA4E84631D45B586001789E8 /* ArrayExtension.swift in Sources */,
 				FA11DFE31D56990300349FF2 /* DataExtension.swift in Sources */,
