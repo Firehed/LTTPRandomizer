@@ -23,6 +23,7 @@
 		FA4E84611D459885001789E8 /* DifficultyCasual.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E84601D459885001789E8 /* DifficultyCasual.swift */; };
 		FA4E84631D45B586001789E8 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E84621D45B586001789E8 /* ArrayExtension.swift */; };
 		FA7F0B8B1D45372C00DF642E /* SeededRandomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B8A1D45372C00DF642E /* SeededRandomizer.swift */; };
+		FA985CC41D7212990010B2F3 /* DungeonInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA985CC31D7212990010B2F3 /* DungeonInfoTests.swift */; };
 		FAC6861A1D45EEA30044D17E /* Randomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC686191D45EEA30044D17E /* Randomizer.swift */; };
 		FAC6861C1D4D525C0044D17E /* Set-Item-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6861B1D4D525C0044D17E /* Set-Item-Extension.swift */; };
 		FAC6861E1D4D53370044D17E /* SetAlgebraExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6861D1D4D53370044D17E /* SetAlgebraExtension.swift */; };
@@ -77,6 +78,7 @@
 		FA4E84601D459885001789E8 /* DifficultyCasual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyCasual.swift; sourceTree = "<group>"; };
 		FA4E84621D45B586001789E8 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		FA7F0B8A1D45372C00DF642E /* SeededRandomizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeededRandomizer.swift; sourceTree = "<group>"; };
+		FA985CC31D7212990010B2F3 /* DungeonInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DungeonInfoTests.swift; sourceTree = "<group>"; };
 		FAC686191D45EEA30044D17E /* Randomizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Randomizer.swift; sourceTree = "<group>"; };
 		FAC6861B1D4D525C0044D17E /* Set-Item-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Set-Item-Extension.swift"; sourceTree = "<group>"; };
 		FAC6861D1D4D53370044D17E /* SetAlgebraExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetAlgebraExtension.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		FA29C71F1D43FFC700CB1D7A /* LTTPRandomizerTests */ = {
 			isa = PBXGroup;
 			children = (
+				FA985CC31D7212990010B2F3 /* DungeonInfoTests.swift */,
 				FAE213471D5D9B32007D5692 /* LocationTests.swift */,
 				FAD8177B1D5697EE00B0D2FC /* DataExtensionTests.swift */,
 				FA29C7201D43FFC700CB1D7A /* LTTPRandomizerTests.swift */,
@@ -364,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA985CC41D7212990010B2F3 /* DungeonInfoTests.swift in Sources */,
 				FA29C7211D43FFC700CB1D7A /* LTTPRandomizerTests.swift in Sources */,
 				FAD8177C1D5697EE00B0D2FC /* DataExtensionTests.swift in Sources */,
 				FAE213481D5D9B32007D5692 /* LocationTests.swift in Sources */,
