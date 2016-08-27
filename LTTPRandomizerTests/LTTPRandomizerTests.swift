@@ -21,47 +21,11 @@ class LTTPRandomizerTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testDungeonsItems() {
-        let locations = allLocations()
-        for dungeon in Dungeon.all {
-            let dungeonLocations = locations.filter { $0.region == dungeon.region }
-            // Big key
-            XCTAssertLessThanOrEqual(dungeonLocations.filter({ $0.item == .BigKey }).count,
-                                     1,
-                                     "Region \(dungeon.region) has multiple big keys")
-            // Map
-            XCTAssertLessThanOrEqual(dungeonLocations.filter({ $0.item == .Map }).count,
-                                     1,
-                                     "Region \(dungeon.region) has multiple maps")
-            // Compass
-            XCTAssertLessThanOrEqual(dungeonLocations.filter({ $0.item == .Compass }).count,
-                                     1,
-                                     "Region \(dungeon.region) has multiple compasses")
-            // Small keys
-            let numKeys = dungeon.keyZones.reduce(0) { $0 + $1.count }
-            XCTAssertEqual(dungeonLocations.filter({ $0.item == .Key }).count,
-                           numKeys,
-                           "Region \(dungeon.region) has the wrong number of keys")
-        }
-    }
-
     func testNoLocationsAreMissingItems() {
         let locations = allLocations().filter { $0.region != .Progression }
         for location in locations {
             XCTAssertFalse(location.item == .Nothing,
                            "No item in \(location.name)")
-        }
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
         }
     }
     
