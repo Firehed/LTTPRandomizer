@@ -690,8 +690,6 @@ func hyruleCastleTowerItems() -> Locations {
 
 func darkWorldPyramidItems() -> Locations {
     return [
-
-        // MARK: not late game
         Location(
             region: Region.DarkWorldPyramid,
             name: "Catfish",
@@ -708,8 +706,6 @@ func darkWorldPyramidItems() -> Locations {
                 rom.patch(atByteOffset: 0x180204, withData: item.bytesForInventoryCheckOverride)
             }
         ),
-
-        // MARK: not late game
         Location(
             region: Region.DarkWorldPyramid,
             name: "Piece of Heart (Pyramid)",
@@ -745,14 +741,12 @@ func southDarkWorldItems() -> Locations {
             address: 0xEB27,
             item: Item.TwentyRupees
         ),
-        // MARK: not late game
         Location(
             region: Region.DarkWorldSouth,
             name: "Flute Boy",
             address: 0x330C7,
             item: Item.Shovel
         ),
-        // MARK: not late game
         Location(
             region: Region.DarkWorldSouth,
             name: "[cave-073] cave northeast of swamp palace - generous guy",
@@ -760,7 +754,6 @@ func southDarkWorldItems() -> Locations {
             item: Item.ThreeHundredRupees
         ),
         // Technically spawns in LW (warp from peg area)
-        // MARK: not late game
         Location(
             region: Region.DarkWorldSouth,
             name: "Bombos",
@@ -776,7 +769,6 @@ func southDarkWorldItems() -> Locations {
             }
         ),
         // Technically spawns in LW (warp from circle of bushes)
-        // MARK: not late game
         Location(
             region: Region.DarkWorldSouth,
             name: "Piece of Heart (south of Haunted Grove)",
@@ -787,7 +779,6 @@ func southDarkWorldItems() -> Locations {
             }
         ),
         // Technically spawns in LW (warp from circle of stones in lake)
-        // MARK: not late game
         Location(
             region: Region.DarkWorldSouth,
             name: "Piece of Heart (Lake Hylia)",
@@ -797,7 +788,6 @@ func southDarkWorldItems() -> Locations {
                 return items.containsAll(Item.Flippers, Item.MagicMirror)
             }
         ),
-        // MARK: not late game
         Location(
             region: Region.DarkWorldSouth,
             name: "Piece of Heart (Digging Game)",
@@ -822,7 +812,6 @@ func northWestDarkWorldItems() -> Locations {
             address: 0xE9EF,
             item: Item.ThreeHundredRupees
         ),
-        // MARK: not late game
         Location(
             region: Region.DarkWorldNorthWest,
             name: "Piece of Heart (Dark World blacksmith pegs)",
@@ -833,7 +822,6 @@ func northWestDarkWorldItems() -> Locations {
                     && items.contains(Item.Hammer)
             }
         ),
-        // MARK: not late game
         Location(
             region: Region.DarkWorldNorthWest,
             name: "Piece of Heart (Dark World - bumper cave)",
