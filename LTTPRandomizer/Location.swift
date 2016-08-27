@@ -80,9 +80,7 @@ class Location {
     func isInOrBeforeKeyZone(_ zone: Int) -> Bool {
         return item == .Nothing && !name.contains("big chest") && dungeonRules.zone <= zone
     }
-    func isInKeyZone(_ zone: Int) -> Bool {
-        return item == .Nothing && !name.contains("big chest") && dungeonRules.zone == zone
-    }
+
     func isAccessible(inventory: Set<Item>) -> Bool {
         return region.isAccessible(inventory: inventory)
             && (_additionalAccessRequirements?(inventory) ?? true)

@@ -38,7 +38,7 @@ class RomBuilder {
 
     func assignItems() {
         generateItemList()
-        let _ = generateDungeonItems()
+        let _ = placeDungeonItems()
         let _ = generateItemPositions()
     }
 
@@ -114,7 +114,7 @@ class RomBuilder {
         For each dungeon, figure out where to place its progression items based
         on which areas are locked behind keyed doors
     */
-    private func generateDungeonItems() -> Bool {
+    private func placeDungeonItems() -> Bool {
         guard itemPool.filter({ $0.isDungeonItem }).count > 0 else {
             NSLog("No dungeon items to place")
             return false
@@ -123,22 +123,11 @@ class RomBuilder {
             let dungeonLocations = locations
                 .filter({ $0.region == dungeon.region })
                 .filter({ $0.dungeonRules.canHoldDungeonItems })
-            let sortedZones = dungeon.keyZones.map {
-                // Dict to list of tuples so it can be sorted
-                (id: $0.key, count: $0.value)
-            }.sorted {
-                $0.id < $1.id
-            }
-            for zone in sortedZones {
-                for _ in 0..<zone.count {
-                    let current: Locations
-                    // I'm reasonably sure this could drop the isInKeyZone logic entirely and always use inOrBefore
-                    //if zone.lte {
-                        current = dungeonLocations.filter({ $0.isInOrBeforeKeyZone(zone.id) })
-                    //} else {
-                    //  current = dungeonLocations.filter({ $0.isInKeyZone(zone.id) })
-                    //}
-                    current.selectAtRandom(randomizer).item = Item.Key
+
+            for zone in dungeon.keyZones.sorted(by: { $0.key < $1.key }) {
+                for _ in 0..<zone.value {
+                    let avail = dungeonLocations.filter { $0.isInOrBeforeKeyZone(zone.key) }
+                    avail.selectAtRandom(randomizer).item = Item.Key
                     itemPool.removeFirst(.Key)
                 }
             }
