@@ -149,7 +149,7 @@ extension Region {
     }
 }
 
-func locationsForRegion(region: Region) -> [Location] {
+func locationsForRegion(region: Region) -> Locations {
     switch region {
     case .HyruleCastleEscape:
         return hyruleEscapeItems()

@@ -11,7 +11,7 @@ import Foundation
 class DifficultyEasy: DifficultyAbstract, Difficulty {
 
     /// Selects an item at semi-random, preferring to place progression items first
-    func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location]) -> Item {
+    func getItemForInsertion(possibleItems: [Item], possibleLocations: Locations) -> Item {
         let progression = possibleItems.filter { !$0.isJunk }
         // Prefer to place progression items first
         if progression.count > 0 {
@@ -31,7 +31,7 @@ class DifficultyEasy: DifficultyAbstract, Difficulty {
     }
 
     /// Selects a location at semi-random, preferring to place progression items in the light world
-    func getLocationForItemPlacement(possibleLocations: [Location], item: Item) -> Location {
+    func getLocationForItemPlacement(possibleLocations: Locations, item: Item) -> Location {
         let lightWorld = possibleLocations.filter { $0.region.isLightWorld }
         if !item.isJunk && lightWorld.count > 0 {
             return lightWorld.selectAtRandom(randomizer)

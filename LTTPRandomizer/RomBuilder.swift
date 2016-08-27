@@ -131,7 +131,7 @@ class RomBuilder {
             }
             for zone in sortedZones {
                 for _ in 0..<zone.count {
-                    let current: [Location]
+                    let current: Locations
                     // I'm reasonably sure this could drop the isInKeyZone logic entirely and always use inOrBefore
                     //if zone.lte {
                         current = dungeonLocations.filter({ $0.isInOrBeforeKeyZone(zone.id) })

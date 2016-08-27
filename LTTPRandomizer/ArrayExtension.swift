@@ -19,7 +19,7 @@ extension Array {
 }
 
 extension Array where Element: Location {
-    func withNoItems() -> [Location] {
+    func withNoItems() -> Locations {
         return self.filter({ $0.item == .Nothing })
     }
 }

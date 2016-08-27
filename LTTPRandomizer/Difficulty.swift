@@ -47,7 +47,7 @@ protocol Difficulty {
         - possibleLocations: the currently accessible locations
      - returns: the Item to place
     */
-    func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location]) -> Item
+    func getItemForInsertion(possibleItems: [Item], possibleLocations: Locations) -> Item
 
     /**
      Given an item to place and currently-accessible locations, return the location to place the item
@@ -56,5 +56,5 @@ protocol Difficulty {
         - item: the Item being placed
      - returns: the Location to place the Item
     */
-    func getLocationForItemPlacement(possibleLocations: [Location], item: Item) -> Location
+    func getLocationForItemPlacement(possibleLocations: Locations, item: Item) -> Location
 }

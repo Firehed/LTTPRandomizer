@@ -11,7 +11,7 @@ import Foundation
 class DifficultyCasual: DifficultyAbstract, Difficulty {
 
     /// Selects the item to place mostly at random, slightly preferring to put certain items towards the late game
-    func getItemForInsertion(possibleItems: [Item], possibleLocations: [Location]) -> Item {
+    func getItemForInsertion(possibleItems: [Item], possibleLocations: Locations) -> Item {
         if possibleItems.count == 1 {
             return possibleItems.first!
         }
@@ -42,7 +42,7 @@ class DifficultyCasual: DifficultyAbstract, Difficulty {
     }
 
     /// Places the item mostly at random, preferring to put ceratain items in the late game
-    func getLocationForItemPlacement(possibleLocations: [Location], item: Item) -> Location {
+    func getLocationForItemPlacement(possibleLocations: Locations, item: Item) -> Location {
         if possibleLocations.count == 1 {
             return possibleLocations.first!
         }
