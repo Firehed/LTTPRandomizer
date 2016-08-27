@@ -38,8 +38,8 @@ class RomBuilder {
 
     func assignItems() {
         generateItemList()
-        generateDungeonItems()
-        generateItemPositions()
+        let _ = generateDungeonItems()
+        let _ = generateItemPositions()
     }
 
     func write() {
@@ -114,10 +114,10 @@ class RomBuilder {
         For each dungeon, figure out where to place its progression items based
         on which areas are locked behind keyed doors
     */
-    private func generateDungeonItems() -> Void {
+    private func generateDungeonItems() -> Bool {
         guard itemPool.filter({ $0.isDungeonItem }).count > 0 else {
             NSLog("No dungeon items to place")
-            exit(EXIT_FAILURE)
+            return false
         }
         for dungeon in difficulty.getDungeonInfo() {
             let dungeonLocations = locations
@@ -158,6 +158,7 @@ class RomBuilder {
                 itemPool.removeFirst(.Compass)
             }
         }
+        return true
     }
 
     /**
@@ -166,10 +167,10 @@ class RomBuilder {
         Delegates general item "appropriateness" to the Difficulty so that e.g.
         late-game items can be forced early or vice-versa
     */
-    private func generateItemPositions() -> Void {
+    private func generateItemPositions() -> Bool {
         guard itemPool.filter({ $0.isDungeonItem }).count == 0 else {
             NSLog("Dungeon items remain")
-            exit(EXIT_FAILURE)
+            return false
         }
         repeat {
             let emptyLocations = locations.withNoItems()
@@ -179,7 +180,7 @@ class RomBuilder {
             if (possibleLocations.isEmpty) {
                 NSLog("Created inaccessible locations")
                 emptyLocations.forEach({ NSLog("%@", $0.name) })
-                return
+                return false
             }
 
             var progressionItems: [Item] = []
@@ -207,6 +208,7 @@ class RomBuilder {
             let targetLocation = difficulty.getLocationForItemPlacement(possibleLocations: possibleLocations, item: selected)
             targetLocation.item = selected
         } while (itemPool.isNonEmpty)
+        return true
     }
 
 }
