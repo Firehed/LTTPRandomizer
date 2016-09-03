@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA09B8741D7B6BA90080DFC0 /* DifficultyAnnoying.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09B8731D7B6BA90080DFC0 /* DifficultyAnnoying.swift */; };
 		FA11DFE31D56990300349FF2 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11DFE21D56990300349FF2 /* DataExtension.swift */; };
 		FA29C70F1D43FFC700CB1D7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29C70E1D43FFC700CB1D7A /* AppDelegate.swift */; };
 		FA29C7111D43FFC700CB1D7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29C7101D43FFC700CB1D7A /* ViewController.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA09B8731D7B6BA90080DFC0 /* DifficultyAnnoying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyAnnoying.swift; sourceTree = "<group>"; };
 		FA11DFE21D56990300349FF2 /* DataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		FA29C70B1D43FFC700CB1D7A /* LTTPRandomizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LTTPRandomizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA29C70E1D43FFC700CB1D7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				FA3929BC1D440C25006BDC9A /* Difficulty.swift */,
 				FAE2134B1D618AAE007D5692 /* DifficultyAbstract.swift */,
 				FA4E84601D459885001789E8 /* DifficultyCasual.swift */,
+				FA09B8731D7B6BA90080DFC0 /* DifficultyAnnoying.swift */,
 				FAD8176D1D56764D00B0D2FC /* DifficultyEasy.swift */,
 				FA3729041D701771000D107E /* DungeonInfo.swift */,
 				FAC686251D530D600044D17E /* DungeonRules.swift */,
@@ -358,6 +361,7 @@
 				FA29C73C1D44079500CB1D7A /* Location.swift in Sources */,
 				FA3929BB1D440AF4006BDC9A /* Region.swift in Sources */,
 				FA7F0B8B1D45372C00DF642E /* SeededRandomizer.swift in Sources */,
+				FA09B8741D7B6BA90080DFC0 /* DifficultyAnnoying.swift in Sources */,
 				FAC6861A1D45EEA30044D17E /* Randomizer.swift in Sources */,
 				FA29C70F1D43FFC700CB1D7A /* AppDelegate.swift in Sources */,
 			);
