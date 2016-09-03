@@ -11,6 +11,7 @@ import Cocoa
 class ViewController: NSViewController {
 
     enum difficulties: String {
+        case Annoying
         case Casual
         case Easy
     }
@@ -32,6 +33,9 @@ class ViewController: NSViewController {
         let randomizer: Randomizer = SeededRandomizer(seed: seed)
         let difficulty: Difficulty
         switch currentDifficulty {
+        case .Annoying:
+            difficulty = DifficultyAnnoying(randomizer: randomizer)
+            break
         case .Casual:
             difficulty = DifficultyCasual(randomizer: randomizer)
             break
@@ -55,6 +59,7 @@ class ViewController: NSViewController {
         difficultyButton.removeAllItems()
         difficultyButton.addItem(withTitle: difficulties.Easy.rawValue)
         difficultyButton.addItem(withTitle: difficulties.Casual.rawValue)
+        difficultyButton.addItem(withTitle: difficulties.Annoying.rawValue)
     }
 
     override var representedObject: Any? {
