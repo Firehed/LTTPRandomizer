@@ -699,9 +699,9 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9zV-07-6Mc">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9zV-07-6Mc">
                                 <rect key="frame" x="169" y="117" width="143" height="32"/>
-                                <buttonCell key="cell" type="push" title="Pray to RNGesus" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5Xu-A0-qA6">
+                                <buttonCell key="cell" type="push" title="Pray to RNGesus" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="axesIndependently" inset="2" id="5Xu-A0-qA6">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -727,6 +727,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="9zV-07-6Mc" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="fYf-0c-UAc"/>
+                            <constraint firstItem="9zV-07-6Mc" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="zYQ-Jd-t7c"/>
                         </constraints>
                     </view>
                     <connections>
