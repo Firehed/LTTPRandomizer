@@ -10,6 +10,9 @@ import Foundation
 
 class DifficultyEasy: DifficultyAbstract, Difficulty {
 
+    /// a one-character string for encoding the ROM information
+    internal var abbreviatedName: String { return "E" }
+
     /// Selects an item at semi-random, preferring to place progression items first
     func getItemForInsertion(possibleItems: [Item], possibleLocations: Locations) -> Item {
         let progression = possibleItems.filter { !$0.isJunk }

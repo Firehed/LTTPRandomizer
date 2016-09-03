@@ -9,8 +9,11 @@
 import Foundation
 
 struct SeededRandomizer: Randomizer {
-    let seed: Int
 
+    /// a one-character string for encoding the ROM information
+    internal var abbreviatedName: String { return "S" }
+
+    let seed: Int
 
     func next(lessThan: Int) -> Int {
         return Int(arc4random_uniform(UInt32(lessThan)))

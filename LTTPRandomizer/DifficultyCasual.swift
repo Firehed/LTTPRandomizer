@@ -10,6 +10,9 @@ import Foundation
 
 class DifficultyCasual: DifficultyAbstract, Difficulty {
 
+    /// a one-character string for encoding the ROM information
+    internal var abbreviatedName: String { return "C" }
+
     /// Selects the item to place mostly at random, slightly preferring to put certain items towards the late game
     func getItemForInsertion(possibleItems: [Item], possibleLocations: Locations) -> Item {
         if possibleItems.count == 1 {

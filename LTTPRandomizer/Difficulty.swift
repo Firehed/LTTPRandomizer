@@ -40,6 +40,9 @@ protocol Difficulty {
     */
     func getDungeonInfo() -> [DungeonInfo]
 
+    /// a one-character string for encoding the ROM information
+    var abbreviatedName: String { get }
+
     /**
      Given a pool of items and currently-accessible locations, returns an item to place.
      - parameters:

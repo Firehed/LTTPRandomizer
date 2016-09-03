@@ -10,6 +10,8 @@ import Foundation
 
 class RomBuilder {
 
+    private let version = 6
+
     var writeSRAMTrace: Bool = false
 
     /// The pseudo-randomizer
@@ -42,14 +44,22 @@ class RomBuilder {
         let _ = generateItemPositions()
     }
 
+    func getFileName() -> String {
+        return String(format: "LTTP_%d%@%@%@.sfc",
+                      version,
+                      difficulty.abbreviatedName,
+                      randomizer.abbreviatedName,
+                      String(format: "%06d", randomizer.seed))
+    }
+
     func write() {
-        guard let path = Bundle.main.path(forResource: "v6", ofType: "sfc") else {
+        guard let sourcePath = Bundle.main.path(forResource: "v6", ofType: "sfc") else {
             NSLog("Bundled ROM not found")
             return
         }
         var rom: Data
         do {
-            try rom = Data(contentsOf: URL.init(fileURLWithPath: path))
+            try rom = Data(contentsOf: URL.init(fileURLWithPath: sourcePath))
         } catch { return }
         locations.sort { $0.region.rawValue < $1.region.rawValue }
 
@@ -82,9 +92,10 @@ class RomBuilder {
         }
         writeRNG(in: &rom)
 
-        let output = "/Users/firehed/Desktop/lttp_patched.sfc"
+        let output = String(format: "/Users/firehed/Desktop/%@", getFileName())
+        let path = URL(fileURLWithPath: output)
         do {
-            try rom.write(to: URL.init(fileURLWithPath: output), options: .atomic)
+            try rom.write(to: path, options: .atomic)
         } catch {
             print("write error")
         }

@@ -10,6 +10,11 @@ import Foundation
 
 protocol Randomizer {
 
+    /// a one-character string for encoding the ROM information
+    var abbreviatedName: String { get }
+
+    var seed: Int { get }
+
     /// Returns a pseudo-random integer between 0 and `max`, exclusive
     func next(lessThan: Int) -> Int
 }

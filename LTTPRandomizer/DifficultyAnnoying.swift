@@ -10,6 +10,9 @@ import Foundation
 
 class DifficultyAnnoying: DifficultyAbstract, Difficulty {
 
+    /// a one-character string for encoding the ROM information
+    internal var abbreviatedName: String { return "A" }
+
     func reset() -> Void {
         pool = []
         locations = allLocations().map {
