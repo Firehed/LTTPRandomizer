@@ -220,7 +220,7 @@ enum Item: UInt8, CustomStringConvertible {
 
     /// Bombs and arrows
     var isConsumable: Bool {
-        return isBombs || isArrows
+        return isBombs || isArrows || isMoney
     }
 
     /// Bombs of any quantity
@@ -299,7 +299,7 @@ enum Item: UInt8, CustomStringConvertible {
 
     /// Does not help game progression
     var isJunk: Bool {
-        return isConsumable || isMoney || isHealth || isDungeonItem || isArmor
+        return isConsumable || isHealth || isDungeonItem || isArmor
     }
 
     private var level: UInt8 {
