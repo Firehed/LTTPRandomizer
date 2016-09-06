@@ -410,9 +410,11 @@ enum Item: UInt8, CustomStringConvertible {
     }
 
     var bytesForCredits: Data {
-        // TODO: Vary text based on item
-        let creditText = " cash money for sale"
-        guard var bytes = creditText.data(using: String.Encoding.ascii, allowLossyConversion: false) else {
+        guard creditText.lengthOfBytes(using: .ascii) == 20 else {
+            NSLog("Zora credit text not 20 characters")
+            return Data(count: 20)
+        }
+        guard var bytes = creditText.data(using: .ascii, allowLossyConversion: false) else {
             return Data(count: 20) // NUL x20
         }
 
@@ -440,6 +442,72 @@ enum Item: UInt8, CustomStringConvertible {
             text[i] = byte
         }
         return text
+    }
+
+    var creditText: String {
+        if isMoney {
+            return "very bad investments"
+        } else if isBombs {
+            return " explosives for sale"
+        } else if isArrows {
+            return "pointy wood for sale"
+        } else if isBottle {
+            return " glassware for sale "
+        } else if isDungeonItem || isMiseryMireEntranceItem || isTurtleRockEntranceItem {
+            return " this code is buggy "
+        } else if isHealth {
+            return " lifeforce for sale "
+        } else if isArmor {
+            return " have a safe journey"
+        }
+        switch self {
+        case .Bow, .BowAndSilverArrows:
+            return " play as robin hood "
+        case .Boomerang, .RedBoomerang:
+            return "surprise austrailian"
+        case .Hookshot:
+            return "grab far-away things"
+        case .Mushroom:
+            return " buy your drugs here"
+        case .Powder:
+            return "transfiguration dust"
+        case .FireRod:
+            return " pyrotechnics master"
+        case .IceRod:
+            return "freeze ray developer"
+        case .Bombos, .Ether, .Quake:
+            return "spin and kill things"
+        case .Lamp:
+            return "see in the dark with"
+        case .Hammer:
+            return " stop.  hammer time "
+        case .Shovel:
+            return "mining gear for sale"
+        case .OcarinaInactive, .OcarinaActive:
+            return "wake a sleeping bird"
+        case .BugCatchingNet:
+            return "steals from sick kid"
+        case .BookOfMudora:
+            return "get your wisdom here"
+        case .CaneOfSomaria:
+            return " push orange blocks "
+        case .StaffOfByrna:
+            return "literally pay to win"
+        case .Cape:
+            return " be invisible zorro "
+        case .MagicMirror:
+            return "see your pretty face"
+        case .PegasusBoots:
+            return "soggy boots for sale"
+        case .PowerGlove, .TitansMitt:
+            return "bro do you even lift"
+        case .Flippers:
+            return "finger webs for sale"
+        case .MoonPearl:
+            return "a cute bunny no more"
+        default:
+            return " yer a wizard harry "
+        }
     }
 
     /// Translates the virtual medallions into their physical counterpart. Nil if the source item is not a virtual medallion
