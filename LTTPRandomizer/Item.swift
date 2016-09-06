@@ -417,20 +417,21 @@ enum Item: UInt8, CustomStringConvertible {
         }
 
         var text = Data(count: 20)
+        // valid known characters: [a-z -.']
         for i in 0..<20 {
             var byte: UInt8
             switch bytes[i] {
             case 0x20: // space
                 byte = 0x9f
                 break
-            case 0x5c: // \
-                byte = 0x35
-                break
             case 0x2d: // -
                 byte = 0x36
                 break
-            case 0x2c: // ,
+            case 0x2e: // .
                 byte = 0x37
+                break
+            case 0x27: // '
+                byte = 0x35
                 break
             default:
                 byte = bytes[i] - 0x47
