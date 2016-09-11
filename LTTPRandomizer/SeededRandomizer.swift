@@ -13,22 +13,20 @@ class SeededRandomizer: Randomizer {
     /// a one-character string for encoding the ROM information
     internal var abbreviatedName: String { return "S" }
 
-    init(seed: Int) {
+    init(seed: UInt) {
         self.seed = seed
-        state = UInt64(seed)
+        state = seed
     }
 
-    let seed: Int
+    let seed: UInt
 
-    private var state: UInt64
+    private var state: UInt
 
-    func next(lessThan: Int) -> Int {
-        // This does some fiddling to ensure the output is always positive
-        // despite being a signed value
-        return abs(Int(truncatingBitPattern: xorshift())) % lessThan
+    func next(lessThan: UInt) -> UInt {
+        return xorshift() % lessThan
     }
 
-    private func xorshift() -> UInt64 {
+    private func xorshift() -> UInt {
         // There is absolutely no significance to these values, they were copied
         // as-is from [the Wikipedia article on `xorshift`]
         // (https://en.wikipedia.org/wiki/Xorshift#xorshift.2A)
@@ -37,7 +35,7 @@ class SeededRandomizer: Randomizer {
         state ^= state >> 12
         state ^= state << 25
         state ^= state >> 27
-        return UInt64.multiplyWithOverflow(state, 2_685_821_657_736_338_717).0
+        return UInt.multiplyWithOverflow(state, 2_685_821_657_736_338_717).0
     }
 
 }

@@ -29,7 +29,7 @@ class ViewController: NSViewController {
             return
         }
 
-        let seed = seedField.integerValue
+        let seed = UInt(seedField.integerValue)
         let randomizer: Randomizer = SeededRandomizer(seed: seed)
         let difficulty: Difficulty
         switch currentDifficulty {
