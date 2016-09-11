@@ -867,13 +867,19 @@ func mireItems() -> Locations {
             region: Region.DarkWorldMire,
             name: "[cave-071] Misery Mire west area [left chest]",
             address: 0xEA73,
-            item: Item.PieceOfHeart
+            item: Item.PieceOfHeart,
+            accessRequirements: { items in
+                return items.contains(.MoonPearl)
+            }
         ),
         Location(
             region: Region.DarkWorldMire,
             name: "[cave-071] Misery Mire west area [right chest]",
             address: 0xEA76,
-            item: Item.TwentyRupees
+            item: Item.TwentyRupees,
+            accessRequirements: { items in
+                return items.contains(.MoonPearl)
+            }
         ),
         Location(
             region: Region.DarkWorldMire,
