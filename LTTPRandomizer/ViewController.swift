@@ -20,8 +20,16 @@ class ViewController: NSViewController {
     @IBOutlet weak var difficultyButton: NSPopUpButton!
     @IBOutlet var spoilerLog: NSTextView!
     @IBOutlet weak var spoilerDisclosureButton: NSButton!
-    @IBOutlet weak var spoilerDisclosureButtonLabel: NSTextField!
+    @IBOutlet weak var spoilerDisclosureButtonLabel: NSButton!
 
+    @IBAction func spoilerDisclosureButtonLabelPressed(_ sender: AnyObject) {
+        if spoilerDisclosureButton.state == 1 {
+            spoilerDisclosureButton.state = 0
+        } else {
+            spoilerDisclosureButton.state = 1
+        }
+        spoilerDisclosureButtonPressed(sender)
+    }
     @IBAction func spoilerDisclosureButtonPressed(_ sender: AnyObject) {
         toggleShowSpoliers(show: spoilerDisclosureButton.state == 1)
     }
@@ -29,10 +37,10 @@ class ViewController: NSViewController {
     func toggleShowSpoliers(show: Bool) {
         if show {
             spoilerLog.enclosingScrollView?.isHidden = false
-            spoilerDisclosureButtonLabel.stringValue = "Hide spoliers"
+            spoilerDisclosureButtonLabel.title = "Hide spoliers"
         } else {
             spoilerLog.enclosingScrollView?.isHidden = true
-            spoilerDisclosureButtonLabel.stringValue = "Show spoliers"
+            spoilerDisclosureButtonLabel.title = "Show spoliers"
         }
     }
 

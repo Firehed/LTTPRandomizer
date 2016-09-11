@@ -761,14 +761,6 @@
                                     <action selector="spoilerDisclosureButtonPressed:" target="XfG-lQ-9wD" id="ZXx-Ar-JVd"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x0F-TL-ziS">
-                                <rect key="frame" x="352" y="136" width="89" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show spoliers" id="a9m-Pw-eeT">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9zV-07-6Mc">
                                 <rect key="frame" x="169" y="129" width="143" height="32"/>
                                 <buttonCell key="cell" type="push" title="Pray to RNGesus" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="axesIndependently" inset="2" id="5Xu-A0-qA6">
@@ -779,10 +771,24 @@
                                     <action selector="generateROM:" target="XfG-lQ-9wD" id="Acg-v2-qiD"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="of7-PQ-xWZ">
+                                <rect key="frame" x="348" y="134" width="91" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="741-jd-Sza"/>
+                                </constraints>
+                                <buttonCell key="cell" type="bevel" title="Spoiler Button" bezelStyle="rounded" alignment="right" imageScaling="proportionallyDown" inset="2" id="0VA-uG-Kc9">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="spoilerDisclosureButtonLabelPressed:" target="XfG-lQ-9wD" id="7gV-u6-Nlc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="gi7-GH-lEK" firstAttribute="top" secondItem="of7-PQ-xWZ" secondAttribute="bottom" constant="6" id="3ie-IZ-ZDs"/>
                             <constraint firstItem="9zV-07-6Mc" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="4tw-Ws-vFO"/>
-                            <constraint firstItem="buW-h4-IiS" firstAttribute="leading" secondItem="x0F-TL-ziS" secondAttribute="trailing" constant="8" id="A9e-5i-gEK"/>
+                            <constraint firstItem="buW-h4-IiS" firstAttribute="leading" secondItem="of7-PQ-xWZ" secondAttribute="trailing" constant="8" id="AlJ-ZZ-xVj"/>
                             <constraint firstAttribute="trailing" secondItem="buW-h4-IiS" secondAttribute="trailing" constant="20" id="BvA-vS-p4W"/>
                             <constraint firstItem="gi7-GH-lEK" firstAttribute="top" secondItem="buW-h4-IiS" secondAttribute="bottom" constant="9" id="CA1-0a-XQj"/>
                             <constraint firstItem="oS2-Mz-Uo3" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="112" id="FBk-N0-5eg"/>
@@ -790,14 +796,13 @@
                             <constraint firstAttribute="bottom" secondItem="oS2-Mz-Uo3" secondAttribute="bottom" constant="20" id="ZjN-6W-XJp"/>
                             <constraint firstAttribute="trailing" secondItem="oS2-Mz-Uo3" secondAttribute="trailing" constant="20" id="jiE-94-UDC"/>
                             <constraint firstItem="gi7-GH-lEK" firstAttribute="top" secondItem="9zV-07-6Mc" secondAttribute="bottom" constant="8" id="lnQ-9h-cbc"/>
-                            <constraint firstItem="gi7-GH-lEK" firstAttribute="top" secondItem="x0F-TL-ziS" secondAttribute="bottom" constant="8" id="ujv-fe-rlZ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="difficultyButton" destination="Rk1-KT-lDx" id="t0z-JR-fgx"/>
                         <outlet property="seedField" destination="JH9-WI-Ltu" id="87q-bb-Su3"/>
                         <outlet property="spoilerDisclosureButton" destination="buW-h4-IiS" id="zBx-Wk-iQl"/>
-                        <outlet property="spoilerDisclosureButtonLabel" destination="x0F-TL-ziS" id="6o8-Zl-hib"/>
+                        <outlet property="spoilerDisclosureButtonLabel" destination="of7-PQ-xWZ" id="5ue-jv-6Vj"/>
                         <outlet property="spoilerLog" destination="gi7-GH-lEK" id="6uH-Pq-U1F"/>
                     </connections>
                 </viewController>
