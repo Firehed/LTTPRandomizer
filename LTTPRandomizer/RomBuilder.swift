@@ -44,7 +44,7 @@ class RomBuilder {
         let _ = generateItemPositions()
     }
 
-    func getFileName() -> String {
+    var defaultFileName: String {
         return String(format: "LTTP_%d%@%@%@.sfc",
                       version,
                       difficulty.abbreviatedName,
@@ -52,7 +52,7 @@ class RomBuilder {
                       String(format: "%06d", randomizer.seed))
     }
 
-    func write() {
+    func write(to destination: URL) {
         guard let sourcePath = Bundle.main.path(forResource: "v6", ofType: "sfc") else {
             NSLog("Bundled ROM not found")
             return
@@ -92,10 +92,8 @@ class RomBuilder {
         }
         writeRNG(in: &rom)
 
-        let output = String(format: "/Users/firehed/Desktop/%@", getFileName())
-        let path = URL(fileURLWithPath: output)
         do {
-            try rom.write(to: path, options: .atomic)
+            try rom.write(to: destination, options: .atomic)
         } catch {
             print("write error")
         }

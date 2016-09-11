@@ -45,8 +45,14 @@ class ViewController: NSViewController {
         }
 
         let builder = RomBuilder(randomizer: randomizer, difficulty: difficulty)
-        builder.assignItems()
-        builder.write()
+
+        let panel = NSSavePanel()
+        panel.allowedFileTypes = ["sfc"]
+        panel.nameFieldStringValue = builder.defaultFileName
+        if panel.runModal() == NSFileHandlingPanelOKButton {
+            builder.assignItems()
+            builder.write(to: panel.url!)
+        }
     }
 
     @IBAction func randomizeSeed(_ sender: AnyObject?) {
