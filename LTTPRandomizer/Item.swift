@@ -498,7 +498,7 @@ enum Item: UInt8, CustomStringConvertible {
         case .MagicMirror:
             return "see your pretty face"
         case .PegasusBoots:
-            return "soggy boots for sale"
+            return "beware of trenchfoot"
         case .PowerGlove, .TitansMitt:
             return "bro do you even lift"
         case .Flippers:
