@@ -108,6 +108,7 @@ class ViewController: NSViewController {
         difficultyButton.addItem(withTitle: difficulties.Easy.rawValue)
         difficultyButton.addItem(withTitle: difficulties.Casual.rawValue)
         difficultyButton.addItem(withTitle: difficulties.Annoying.rawValue)
+        difficultyButton.sizeToFit()
 
         spoilerLog.font = NSFont.userFixedPitchFont(ofSize: NSFont.systemFontSize()-1)
         spoilerLog.string = "ROM not yet generated"
