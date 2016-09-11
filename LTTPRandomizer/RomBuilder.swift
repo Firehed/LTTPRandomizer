@@ -57,6 +57,10 @@ class RomBuilder {
             NSLog("Bundled ROM not found")
             return
         }
+        guard itemPool.isEmpty else {
+            NSLog("There are unplaced items")
+            return
+        }
         var rom: Data
         do {
             try rom = Data(contentsOf: URL.init(fileURLWithPath: sourcePath))
