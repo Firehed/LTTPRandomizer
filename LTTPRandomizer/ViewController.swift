@@ -19,10 +19,11 @@ class ViewController: NSViewController {
     @IBOutlet weak var seedField: NSTextField!
     @IBOutlet weak var difficultyButton: NSPopUpButton!
     @IBOutlet var spoilerLog: NSTextView!
+    @IBOutlet weak var spoilerDisclosureButton: NSButton!
     @IBOutlet weak var spoilerDisclosureButtonLabel: NSTextField!
 
-    @IBAction func spoilerDisclosureButtonPressed(_ sender: NSButton) {
-        toggleShowSpoliers(show: sender.state == 1)
+    @IBAction func spoilerDisclosureButtonPressed(_ sender: AnyObject) {
+        toggleShowSpoliers(show: spoilerDisclosureButton.state == 1)
     }
 
     func toggleShowSpoliers(show: Bool) {
