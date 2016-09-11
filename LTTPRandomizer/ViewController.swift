@@ -74,7 +74,7 @@ class ViewController: NSViewController {
 
     func writeSpolierLog(locations: Locations) {
         spoilerLog.isEditable = true
-        spoilerLog.font = NSFont.userFixedPitchFont(ofSize: NSFont.systemFontSize()-1)
+        spoilerLog.string = ""
         for location in locations {
             let text = String(format: "%@: %@\n", location.item.description, location.name)
             spoilerLog.insertText(text, replacementRange: NSRange(location: 0, length: 0))
@@ -99,6 +99,10 @@ class ViewController: NSViewController {
         difficultyButton.addItem(withTitle: difficulties.Easy.rawValue)
         difficultyButton.addItem(withTitle: difficulties.Casual.rawValue)
         difficultyButton.addItem(withTitle: difficulties.Annoying.rawValue)
+
+        spoilerLog.font = NSFont.userFixedPitchFont(ofSize: NSFont.systemFontSize()-1)
+        spoilerLog.string = "ROM not yet generated"
+        spoilerLog.isEditable = false
     }
 
     override var representedObject: Any? {
