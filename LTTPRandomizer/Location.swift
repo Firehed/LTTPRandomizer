@@ -39,7 +39,7 @@ class Location {
         self.item = item
     }
 
-    init(region: Region, name: String, address: Int?, item: Item, accessRequirements: ((Set<Item>) -> Bool)) {
+    init(region: Region, name: String, address: Int?, item: Item, accessRequirements: @escaping ((Set<Item>) -> Bool)) {
         self.name = name
         self.address = address
         self.region = region
@@ -48,7 +48,7 @@ class Location {
         self.item = item
     }
 
-    init(region: Region, name: String, address: Int?, item: Item, accessRequirements: ((Set<Item>) -> Bool), onPatchingRom: ((inout Data, Item) -> Void)) {
+    init(region: Region, name: String, address: Int?, item: Item, accessRequirements: @escaping ((Set<Item>) -> Bool), onPatchingRom: @escaping ((inout Data, Item) -> Void)) {
         self.name = name
         self.address = address
         self.region = region
@@ -68,7 +68,7 @@ class Location {
         self.item = item
     }
 
-    init(region: Region, name: String, address: Int, item: Item, rules: DungeonRules, accessRequirements: ((Set<Item>) -> Bool)) {
+    init(region: Region, name: String, address: Int, item: Item, rules: DungeonRules, accessRequirements: @escaping ((Set<Item>) -> Bool)) {
         self.name = name
         self.address = address
         self.region = region
