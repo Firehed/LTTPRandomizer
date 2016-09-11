@@ -49,6 +49,11 @@ class ViewController: NSViewController {
         builder.write()
     }
 
+    @IBAction func randomizeSeed(_ sender: AnyObject) {
+        let max = 1000000
+        let seed = Int(arc4random_uniform(UInt32(max)))
+        seedField.stringValue = String(seed)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
