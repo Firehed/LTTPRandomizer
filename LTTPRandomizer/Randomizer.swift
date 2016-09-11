@@ -15,6 +15,12 @@ protocol Randomizer {
 
     var seed: Int { get }
 
-    /// Returns a pseudo-random integer between 0 and `max`, exclusive
+    /**
+     Returns a pseudo-random integer between 0 and `max`, exclusive.
+
+     - parameters:
+        - lessThan: the exclusive upper limit of valid output
+     - returns: a positive integer
+    */
     func next(lessThan: Int) -> Int
 }
