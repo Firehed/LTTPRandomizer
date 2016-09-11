@@ -21,7 +21,7 @@ class RomBuilder {
     private var difficulty: Difficulty
 
     /// Locations to be randomized
-    private var locations: Locations = []
+    private(set) public var locations: Locations = []
 
     /// Items that have been placed into randomized locations.
     ///
@@ -70,10 +70,6 @@ class RomBuilder {
                     NSLog("%@ has no item", location.name)
                 }
                 continue
-            }
-
-            if !location.item.isJunk {
-                NSLog("%@: %@", location.item.description, location.name)
             }
 
             if let addr = location.address {

@@ -18,6 +18,22 @@ class ViewController: NSViewController {
 
     @IBOutlet weak var seedField: NSTextField!
     @IBOutlet weak var difficultyButton: NSPopUpButton!
+    @IBOutlet var spoilerLog: NSTextView!
+    @IBOutlet weak var spoilerDisclosureButtonLabel: NSTextField!
+
+    @IBAction func spoilerDisclosureButtonPressed(_ sender: NSButton) {
+        toggleShowSpoliers(show: sender.state == 1)
+    }
+
+    func toggleShowSpoliers(show: Bool) {
+        if show {
+            spoilerLog.enclosingScrollView?.isHidden = false
+            spoilerDisclosureButtonLabel.stringValue = "Hide spoliers"
+        } else {
+            spoilerLog.enclosingScrollView?.isHidden = true
+            spoilerDisclosureButtonLabel.stringValue = "Show spoliers"
+        }
+    }
 
     @IBAction func generateROM(_ sender: NSButton) {
         guard let selectedDifficulty = difficultyButton.selectedItem else {
@@ -51,8 +67,19 @@ class ViewController: NSViewController {
         panel.nameFieldStringValue = builder.defaultFileName
         if panel.runModal() == NSFileHandlingPanelOKButton {
             builder.assignItems()
+            writeSpolierLog(locations: builder.locations)
             builder.write(to: panel.url!)
         }
+    }
+
+    func writeSpolierLog(locations: Locations) {
+        spoilerLog.isEditable = true
+        spoilerLog.font = NSFont.userFixedPitchFont(ofSize: NSFont.systemFontSize()-1)
+        for location in locations {
+            let text = String(format: "%@: %@\n", location.item.description, location.name)
+            spoilerLog.insertText(text, replacementRange: NSRange(location: 0, length: 0))
+        }
+        spoilerLog.isEditable = false
     }
 
     @IBAction func randomizeSeed(_ sender: AnyObject?) {
@@ -65,6 +92,8 @@ class ViewController: NSViewController {
 
         // Do any additional setup after loading the view.
         randomizeSeed(nil)
+
+        toggleShowSpoliers(show: false)
 
         difficultyButton.removeAllItems()
         difficultyButton.addItem(withTitle: difficulties.Easy.rawValue)
