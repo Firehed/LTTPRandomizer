@@ -13,19 +13,22 @@ class SeededRandomizer: Randomizer {
     /// a one-character string for encoding the ROM information
     internal var abbreviatedName: String { return "S" }
 
+    /// The initial randomization seed
+    let seed: UInt
+
+    /// Current randomization state
+    private var state: UInt
+
     init(seed: UInt) {
         self.seed = seed
         state = seed
     }
 
-    let seed: UInt
-
-    private var state: UInt
-
     func next(lessThan: UInt) -> UInt {
         return xorshift() % lessThan
     }
 
+    /// Modifies the internal state to return a pseudo-random value
     private func xorshift() -> UInt {
         // There is absolutely no significance to these values, they were copied
         // as-is from [the Wikipedia article on `xorshift`]
