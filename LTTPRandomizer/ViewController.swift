@@ -23,11 +23,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var spoilerDisclosureButtonLabel: NSButton!
 
     @IBAction func spoilerDisclosureButtonLabelPressed(_ sender: AnyObject) {
-        if spoilerDisclosureButton.state == 1 {
-            spoilerDisclosureButton.state = 0
-        } else {
-            spoilerDisclosureButton.state = 1
-        }
+        // XOR 1 to flip state
+        spoilerDisclosureButton.state ^= 1
         spoilerDisclosureButtonPressed(sender)
     }
     @IBAction func spoilerDisclosureButtonPressed(_ sender: AnyObject) {
