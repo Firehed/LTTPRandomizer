@@ -260,10 +260,9 @@ extension SetAlgebra where Element == Item {
     }
 
     func canGetMasterSword() -> Bool {
-        // Or containsAny(Sword2, Sword3, Sword4) ?
-        return canDefeatEasternPalace()
-            && canDefeatDesertPalace()
-            && canDefeatTowerOfHera()
+        return (canDefeatEasternPalace() || contains(.PendantOfCourage))
+            && (canDefeatDesertPalace() || contains(.PendantOfPower))
+            && (canDefeatTowerOfHera() || contains(.PendantOfWisdom))
     }
 
     func canGetTemperedSword() -> Bool {
