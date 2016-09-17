@@ -199,7 +199,13 @@ enum Item: UInt8, CustomStringConvertible {
         case .HalfMagic: return "1/2 Magic"
         case .QuarterMagic: return "1/4 Magic"
 
+        case .BowAndSilverArrows: return "Bow and Silver Arrows"
+        case .L2Sword: return "Master Sword"
+        case .L3Sword: return "Tempered Sword"
+        case .L4Sword: return "Golden Sword"
+
         default:
+            NSLog("Description not defined for item %d", self.rawValue)
             return String(self.rawValue)
 //            return "Something I need to write"
         }
