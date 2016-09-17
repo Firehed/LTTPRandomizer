@@ -56,9 +56,9 @@ enum Item: UInt8, CustomStringConvertible {
     case ThreeBombs = 0x28
     case Mushroom = 0x29
     case RedBoomerang = 0x2a
-    case BottleWithRedPotion = 0x2b // does nothing if no bottle
-    case BottleWithGreenPotion = 0x2c // does nothing if no bottle
-    case BottleWithBluePotion = 0x2d // does nothing if no bottle
+    case BottleWithRedPotion = 0x2b
+    case BottleWithGreenPotion = 0x2c
+    case BottleWithBluePotion = 0x2d
     case RedPotion = 0x2e // does nothing if no bottle
     case GreenPotion = 0x2f // does nothing if no bottle
     case BluePotion = 0x30 // does nothing if no bottle
@@ -68,13 +68,16 @@ enum Item: UInt8, CustomStringConvertible {
     case OneRupee = 0x34
     case FiveRupees = 0x35
     case TwentyRupees = 0x36
-    case PendantOfCourage = 0x37 // green
-    case PendantOfWisdom = 0x38 // red
-    case PendantOfPower = 0x39 // blue
+    /// Green Pendant: Eastern
+    case PendantOfCourage = 0x37
+    /// Red Pendant: Hera
+    case PendantOfWisdom = 0x38
+    /// Blue Pendant: Desert
+    case PendantOfPower = 0x39
     case BowAndArrows = 0x3a
     case BowAndSilverArrows = 0x3b
-    case BottleWithBee = 0x3c // does nothing if no bottle
-    case BottleWithFairy = 0x3d // does nothing if no bottle
+    case BottleWithBee = 0x3c
+    case BottleWithFairy = 0x3d
     case HeartContainerNoDialog = 0x3e
     case HeartContainer = 0x3f
     case OneHundredRupees = 0x40
@@ -85,7 +88,7 @@ enum Item: UInt8, CustomStringConvertible {
     case SmallMagic = 0x45
     case ThreeHundredRupees = 0x46
     case TwentyRupees2 = 0x47
-    case BottleWithGoldBee = 0x48 // does nothing if no bottle
+    case BottleWithGoldBee = 0x48
     case L1Sword = 0x49 // can't be used until after uncle dies
     case OcarinaActive = 0x4a
     case PegasusBoots = 0x4b
