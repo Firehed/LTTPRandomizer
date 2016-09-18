@@ -260,26 +260,29 @@ extension SetAlgebra where Element == Item {
     }
 
     func canGetMasterSword() -> Bool {
-        return (canDefeatEasternPalace() || contains(.PendantOfCourage))
-            && (canDefeatDesertPalace() || contains(.PendantOfPower))
-            && (canDefeatTowerOfHera() || contains(.PendantOfWisdom))
+        return containsAny(.L2Sword, .L3Sword, .L4Sword)
+            || ((canDefeatEasternPalace() || contains(.PendantOfCourage))
+                && (canDefeatDesertPalace() || contains(.PendantOfPower))
+                && (canDefeatTowerOfHera() || contains(.PendantOfWisdom)))
     }
 
     func canGetTemperedSword() -> Bool {
-        return canAccessNorthWestDarkWorld()
-            && canLiftHeavyRocks()
-            && contains(Item.MagicMirror)
+        return containsAny(.L3Sword, .L4Sword)
+            || (canAccessNorthWestDarkWorld()
+                && canLiftHeavyRocks()
+                && contains(Item.MagicMirror))
     }
 
     func canGetGoldenSword() -> Bool {
-        return canAccessPyramid()
-            && canGetTemperedSword()
-            && canDefeatDarkPalace()
-            && canDefeatSwampPalace()
-            && canDefeatSkullWoods()
-            && canDefeatThievesTown()
-            && canDefeatIcePalace()
-            && canDefeatMiseryMire()
+        return contains(.L4Sword)
+            || (canAccessPyramid()
+                && canGetTemperedSword()
+                && canDefeatDarkPalace()
+                && canDefeatSwampPalace()
+                && canDefeatSkullWoods()
+                && canDefeatThievesTown()
+                && canDefeatIcePalace()
+                && canDefeatMiseryMire())
     }
 
     func canGetAtLeastMasterSword() -> Bool {
