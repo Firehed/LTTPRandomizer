@@ -442,7 +442,7 @@ func zorasDomainItems() -> Locations {
     return [
         // Zora's appearance is based on if you items flippers or not
         Location(
-            region: Region.LightWorld,
+            region: Region.ZorasDomain,
             name: "King Zora",
             address: 0xEE1C3,
             item: Item.Flippers,
@@ -457,7 +457,7 @@ func zorasDomainItems() -> Locations {
             }
         ),
         Location(
-            region: Region.LightWorld,
+            region: Region.ZorasDomain,
             name: "Piece of Heart (Zora's River)",
             address: 0x180149,
             item: Item.PieceOfHeart,
