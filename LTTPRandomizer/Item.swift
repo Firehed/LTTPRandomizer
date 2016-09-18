@@ -458,7 +458,7 @@ enum Item: UInt8, CustomStringConvertible {
 
     var creditText: String {
         if isMoney {
-            return "very bad investments"
+            return "terrible investments"
         } else if isBombs {
             return " explosives for sale"
         } else if isArrows {
