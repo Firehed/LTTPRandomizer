@@ -1477,7 +1477,7 @@ func turtleRockItems() -> Locations {
             item: Item.OneRupee,
             rules: DungeonRules(zone: 6, bigKeyZone: true),
             accessRequirements: { items in
-                return items.containsAll(Item.MirrorShield, Item.FireRod, Item.Lamp)
+                return items.containsAll(Item.MirrorShield, Item.FireRod)
             }
         ),
         Location(
@@ -1487,7 +1487,7 @@ func turtleRockItems() -> Locations {
             item: Item.FiveRupees,
             rules: DungeonRules(zone: 6, bigKeyZone: true),
             accessRequirements: { items in
-                return items.containsAll(Item.MirrorShield, Item.FireRod, Item.Lamp)
+                return items.containsAll(Item.MirrorShield, Item.FireRod)
             }
         ),
         Location(
@@ -1497,7 +1497,7 @@ func turtleRockItems() -> Locations {
             item: Item.TwentyRupees,
             rules: DungeonRules(zone: 6, bigKeyZone: true),
             accessRequirements: { items in
-                return items.containsAll(Item.MirrorShield, Item.FireRod, Item.Lamp)
+                return items.containsAll(Item.MirrorShield, Item.FireRod)
             }
         ),
         Location(
