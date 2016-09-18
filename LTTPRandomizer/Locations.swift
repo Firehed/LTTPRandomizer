@@ -471,13 +471,16 @@ func zorasDomainItems() -> Locations {
 // MARK: LW Dungeons
 
 func hyruleEscapeItems() -> Locations {
+    // Special definition process to define holding rules without making an additional one-off constructor
+    let linksHouse = Location(
+        region: Region.HyruleCastleEscape,
+        name: "[cave-040] Link's House",
+        address: 0xE9BC,
+        item: Item.Lamp
+    )
+    linksHouse.canHoldItem = { !$0.isSword && !$0.isShield }
     return [
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[cave-040] Link's House",
-            address: 0xE9BC,
-            item: Item.Lamp
-        ),
+        linksHouse,
         Location(
             region: Region.HyruleCastleEscape,
             name: "[cave-034] Hyrule Castle secret entrance",

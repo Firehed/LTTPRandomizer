@@ -276,6 +276,19 @@ enum Item: UInt8, CustomStringConvertible {
         }
     }
 
+    var isShield: Bool {
+        return self == .BlueShield
+            || self == .RedShield
+            || self == .MirrorShield
+    }
+
+    var isSword: Bool {
+        return self == .L1Sword
+            || self == .L2Sword
+            || self == .L3Sword
+            || self == .L4Sword
+    }
+
     /// Clothes and shields
     var isArmor: Bool {
         switch self {
