@@ -68,7 +68,7 @@ extension SetAlgebra where Element == Item {
 
     func canDefeatEasternPalace() -> Bool {
         return canEnterEasternPalace()
-            && contains(Item.Bow)
+            && hasAnyBow()
     }
 
     func canDefeatDesertPalace() -> Bool {
@@ -215,7 +215,8 @@ extension SetAlgebra where Element == Item {
     func canDefeatDarkPalace() -> Bool {
         return canEnterDarkPalace()
             && canLightTorches()
-            && containsAll(Item.Bow, Item.Hammer)
+            && hasAnyBow()
+            && contains(Item.Hammer)
     }
 
     func canDefeatSwampPalace() -> Bool {
@@ -313,6 +314,10 @@ extension SetAlgebra where Element == Item {
             Item.BottleWithBee,
             Item.BottleWithGoldBee
         )
+    }
+
+    func hasAnyBow() -> Bool {
+        return containsAny(.Bow, .BowAndArrows, .BowAndSilverArrows)
     }
 
 }

@@ -990,7 +990,7 @@ func darkPalaceItems() -> Locations {
             item: Item.Key,
             rules: DungeonRules(zone: 0, bigKeyZone: false),
             accessRequirements: { items in
-                return items.contains(Item.Bow)
+                return items.hasAnyBow()
             }
         ),
         Location(
@@ -1007,7 +1007,8 @@ func darkPalaceItems() -> Locations {
             item: Item.Hammer,
             rules: DungeonRules(zone: 3, bigKeyZone: true),
             accessRequirements: { items in
-                return items.containsAll(Item.Lamp, Item.Bow)
+                // FIXME: bow shouldn't be strictly required here
+                return items.contains(Item.Lamp) && items.hasAnyBow()
             }
         ),
         Location(
@@ -1058,7 +1059,7 @@ func darkPalaceItems() -> Locations {
             item: Item.Map,
             rules: DungeonRules(zone: 0, bigKeyZone: false),
             accessRequirements: { items in
-                return items.contains(Item.Bow)
+                return items.hasAnyBow()
             }
         ),
         Location(
