@@ -1409,6 +1409,9 @@ func miseryMireItems() -> Locations {
 }
 
 func turtleRockItems() -> Locations {
+    // FIXME: everywhere except the map room chests don't actually require the
+    // Fire Rod. This is a workaround for a shortcoming in dependency solving
+    // where available keys aren't considered when placing items in a dungeon.
     return [
         Location(
             region: Region.TurtleRock,
