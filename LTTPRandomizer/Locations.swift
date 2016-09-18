@@ -613,7 +613,8 @@ func desertPalaceItems() -> Locations {
             name: "[dungeon-L2-B1] Desert Palace - big chest",
             address: 0xE98F,
             item: Item.PowerGlove,
-            rules: DungeonRules(zone: 0, bigKeyZone: true)
+            rules: DungeonRules(zone: 0, bigKeyZone: true),
+            accessRequirements: { $0.contains(.PegasusBoots) }
         ),
         Location(
             region: Region.DesertPalace,
