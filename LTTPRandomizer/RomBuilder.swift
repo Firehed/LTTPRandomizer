@@ -203,6 +203,10 @@ class RomBuilder {
             }
             haveItems.insert(selected)
             itemPool.removeFirst(selected)
+
+            // Remove locations that can't hold the selected item
+            possibleLocations = possibleLocations.filter { $0.canHoldItem?(selected) ?? true }
+
             let targetLocation = difficulty.getLocationForItemPlacement(possibleLocations: possibleLocations, item: selected)
             targetLocation.item = selected
         } while (itemPool.isNonEmpty)

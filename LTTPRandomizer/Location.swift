@@ -16,6 +16,7 @@ class Location {
     var region: Region
     var _additionalAccessRequirements: ((Set<Item>) -> Bool)?
     var onPatchingRom: ((inout Data, Item) -> Void)?
+    var canHoldItem: ((Item) -> Bool)?
 
     var dungeonRules: DungeonRules
 
