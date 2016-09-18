@@ -14,6 +14,10 @@ extension Array {
     }
 
     func selectAtRandom(_ randomizer: Randomizer) -> Element {
+        guard count > 0 else {
+            NSLog("Selecting at random from an empty array")
+            exit(EXIT_FAILURE)
+        }
         return self[Int(randomizer.next(lessThan: UInt(count)))]
     }
 }
