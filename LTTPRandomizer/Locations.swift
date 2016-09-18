@@ -471,7 +471,8 @@ func zorasDomainItems() -> Locations {
 // MARK: LW Dungeons
 
 func hyruleEscapeItems() -> Locations {
-    // Special definition process to define holding rules without making an additional one-off constructor
+    // If you get a sword or shield upgrade before reaching your uncle (link's house chest only), it looks like he hands you the upgraded item but it's just a visual bug and they get reset
+    // If you get a sword upgrade before entering the room with Zelda's jail cell, she won't spawn and the game is deadlocked
     let linksHouse = Location(
         region: Region.HyruleCastleEscape,
         name: "[cave-040] Link's House",
@@ -479,35 +480,38 @@ func hyruleEscapeItems() -> Locations {
         item: Item.Lamp
     )
     linksHouse.canHoldItem = { !$0.isSword && !$0.isShield }
+
+    let secret = Location(
+        region: Region.HyruleCastleEscape,
+        name: "[cave-034] Hyrule Castle secret entrance",
+        address: 0xE971,
+        item: Item.FiveRupees
+    )
+    secret.canHoldItem = { !$0.isSword }
+
+    let map = Location(
+        region: Region.HyruleCastleEscape,
+        name: "[dungeon-C-B1] Hyrule Castle - map room",
+        address: 0xEB0C,
+        item: Item.Map,
+        rules: DungeonRules(zone: 0, bigKeyZone: false)
+    )
+    map.canHoldItem = { !$0.isSword }
+
+    let boomerang = Location(
+        region: Region.HyruleCastleEscape,
+        name: "[dungeon-C-B1] Hyrule Castle - boomerang room",
+        address: 0xE974,
+        item: Item.Boomerang,
+        rules: DungeonRules(zone: 1, bigKeyZone: false)
+    )
+    boomerang.canHoldItem = { !$0.isSword }
+
     return [
         linksHouse,
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[cave-034] Hyrule Castle secret entrance",
-            address: 0xE971,
-            item: Item.FiveRupees
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B1] Escape - first B1 room",
-            address: 0xE96E,
-            item: Item.Key,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B1] Hyrule Castle - boomerang room",
-            address: 0xE974,
-            item: Item.Boomerang,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-1F] Sanctuary",
-            address: 0xEA79,
-            item: Item.HeartContainer,
-            rules: DungeonRules(zone: 4, bigKeyZone: false)
-        ),
+        secret,
+        map,
+        boomerang,
         Location(
             region: Region.HyruleCastleEscape,
             name: "[dungeon-C-B3] Hyrule Castle - next to Zelda",
@@ -517,10 +521,10 @@ func hyruleEscapeItems() -> Locations {
         ),
         Location(
             region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B1] Hyrule Castle - map room",
-            address: 0xEB0C,
-            item: Item.Map,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
+            name: "[dungeon-C-B1] Escape - first B1 room",
+            address: 0xE96E,
+            item: Item.Key,
+            rules: DungeonRules(zone: 2, bigKeyZone: false)
         ),
         Location(
             region: Region.HyruleCastleEscape,
@@ -551,6 +555,13 @@ func hyruleEscapeItems() -> Locations {
             accessRequirements: { items in
                 return items.canLiftRocks()
             }
+        ),
+        Location(
+            region: Region.HyruleCastleEscape,
+            name: "[dungeon-C-1F] Sanctuary",
+            address: 0xEA79,
+            item: Item.HeartContainer,
+            rules: DungeonRules(zone: 4, bigKeyZone: false)
         ),
     ]
 }
