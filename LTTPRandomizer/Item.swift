@@ -308,7 +308,10 @@ enum Item: UInt8, CustomStringConvertible {
 
     /// Does not help game progression
     var isJunk: Bool {
-        return isConsumable || isHealth || isDungeonItem || isArmor
+        return isConsumable
+            || isHealth
+            || isDungeonItem
+            || (isArmor && self != .MirrorShield)
     }
 
     private var level: UInt8 {
