@@ -74,6 +74,7 @@ enum Item: UInt8, CustomStringConvertible {
     case PendantOfWisdom = 0x38
     /// Blue Pendant: Desert
     case PendantOfPower = 0x39
+    /// Identical to `.Bow` but shows an arrow in the spawn thing
     case BowAndArrows = 0x3a
     case BowAndSilverArrows = 0x3b
     case BottleWithBee = 0x3c
