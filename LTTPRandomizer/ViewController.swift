@@ -85,6 +85,9 @@ class ViewController: NSViewController {
         spoilerLog.isEditable = true
         spoilerLog.string = ""
         for location in locations {
+            if location.item.isJunk {
+                continue
+            }
             let text = String(format: "%@: %@\n", location.item.description, location.name)
             spoilerLog.insertText(text, replacementRange: range)
         }
