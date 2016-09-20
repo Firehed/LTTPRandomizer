@@ -73,18 +73,22 @@ class ViewController: NSViewController {
         panel.nameFieldStringValue = builder.defaultFileName
         if panel.runModal() == NSFileHandlingPanelOKButton {
             builder.assignItems()
-            writeSpolierLog(locations: builder.locations)
+            writeSpolierLog(seedName: builder.defaultFileName, locations: builder.locations)
             builder.write(to: panel.url!)
         }
     }
 
-    func writeSpolierLog(locations: Locations) {
+    func writeSpolierLog(seedName: String, locations: Locations) {
+        // This is kind of backwards: it's prepending every time... works well
+        // enough for now but obviously not quite correct
+        let range = NSRange(location: 0, length: 0)
         spoilerLog.isEditable = true
         spoilerLog.string = ""
         for location in locations {
             let text = String(format: "%@: %@\n", location.item.description, location.name)
-            spoilerLog.insertText(text, replacementRange: NSRange(location: 0, length: 0))
+            spoilerLog.insertText(text, replacementRange: range)
         }
+        spoilerLog.insertText(String(format:"Seed %@\n", seedName), replacementRange: range)
         spoilerLog.isEditable = false
     }
 
