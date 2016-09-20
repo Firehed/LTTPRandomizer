@@ -25,6 +25,23 @@ class DifficultyEasy: DifficultyAbstract, Difficulty {
 
     /// Returns the items to be placed. Upgrades some item types because this is easy mode
     func getItemPool() -> [Item] {
+        // Turn some money into upgrades that wouldn't normally be encountered
+
+        pool[pool.index(of: .TwentyRupees)!] = .BowAndSilverArrows
+
+        // No .L2Sword, it crashes the game :(
+        pool[pool.index(of: .TwentyRupees)!] = .L3Sword
+        // If luck doesn't favor you, you'll pick this up before finding the
+        // L3Sword and downgrade. With some luck this will get fixed in a v7
+        // ROM. https://github.com/Dessyreqt/alttprandomizer/issues/159
+        pool[pool.index(of: .TwentyRupees)!] = .L4Sword
+
+        /* To increase sillyness of easy mode, this may happen at some point
+        pool[pool.index(of: .TwentyRupees)!] = .PendantOfPower
+        pool[pool.index(of: .TwentyRupees)!] = .PendantOfWisdom
+        pool[pool.index(of: .TwentyRupees)!] = .PendantOfCourage
+        */
+
         return pool
             .map { $0.isMoney ? Item.ThreeHundredRupees : $0 }
             .map { $0.isBottle ? Item.allBottles.selectAtRandom(randomizer) : $0 }
