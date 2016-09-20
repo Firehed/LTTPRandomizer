@@ -82,11 +82,9 @@ extension SetAlgebra where Element == Item {
         return canEnterTowerOfHera()
     }
 
-    // Technically cape+net could work in place of master sword I think, so this may be wrong
     func canDefeatAgahnim1() -> Bool {
         return canEnterHyruleCastleTower()
     }
-
 
 }
 
