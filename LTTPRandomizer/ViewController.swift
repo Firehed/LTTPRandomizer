@@ -16,6 +16,8 @@ class ViewController: NSViewController {
         case Easy
     }
 
+    let font = NSFont.userFixedPitchFont(ofSize: NSFont.systemFontSize()-1)!
+
     @IBOutlet weak var seedField: NSTextField!
     @IBOutlet weak var difficultyButton: NSPopUpButton!
     @IBOutlet var spoilerLog: NSTextView!
@@ -79,20 +81,33 @@ class ViewController: NSViewController {
     }
 
     func writeSpolierLog(seedName: String, locations: Locations) {
-        // This is kind of backwards: it's prepending every time... works well
-        // enough for now but obviously not quite correct
-        let range = NSRange(location: 0, length: 0)
-        spoilerLog.isEditable = true
-        spoilerLog.string = ""
-        for location in locations {
-            if location.item.isJunk {
-                continue
-            }
-            let text = String(format: "%@: %@\n", location.item.description, location.name)
-            spoilerLog.insertText(text, replacementRange: range)
+        var logText = ""
+        logText.append(String(format: "Seed %@\n", seedName))
+
+        let keyItems: [Item] = [
+            .Bow, .Boomerang, .RedBoomerang, .Hookshot, .Mushroom, .Powder,
+            .FireRod, .IceRod, .Bombos, .Ether, .Quake,
+            .Lamp, .Hammer, .Shovel, .OcarinaInactive, .BugCatchingNet, .BookOfMudora,
+            .CaneOfSomaria, .StaffOfByrna, .Cape, .MagicMirror,
+            .PegasusBoots, .PowerGlove, .TitansMitt, .Flippers, .MoonPearl
+        ]
+
+        let keyItemText = keyItems.map { item in
+            return locations.filter { $0.item == item }.first
+        }.reduce("") {
+            guard $1 != nil else { return $0 }
+            return $0 + $1!.spoilerLogText + "\n"
         }
-        spoilerLog.insertText(String(format:"Seed %@\n", seedName), replacementRange: range)
-        spoilerLog.isEditable = false
+
+        logText.append(String(format: "Key items:\n%@\n\n", keyItemText))
+
+        for location in locations {
+            logText.append(location.spoilerLogText + "\n")
+        }
+
+        let atstr = NSAttributedString(string: logText, attributes: [NSFontAttributeName: font])
+        spoilerLog.string = "" // Clear any existing text
+        spoilerLog.textStorage?.insert(atstr, at: 0)
     }
 
     @IBAction func randomizeSeed(_ sender: AnyObject?) {
@@ -114,7 +129,7 @@ class ViewController: NSViewController {
         difficultyButton.addItem(withTitle: difficulties.Annoying.rawValue)
         difficultyButton.sizeToFit()
 
-        spoilerLog.font = NSFont.userFixedPitchFont(ofSize: NSFont.systemFontSize()-1)
+        spoilerLog.font = font
         spoilerLog.string = "ROM not yet generated"
         spoilerLog.isEditable = false
     }
@@ -128,3 +143,8 @@ class ViewController: NSViewController {
 
 }
 
+private extension Location {
+    var spoilerLogText: String {
+        return String(format: "%@: %@", item.description, name)
+    }
+}
