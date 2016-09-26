@@ -259,7 +259,7 @@ func lightWorldItems() -> Locations {
         ),
         Location(
             region: Region.LightWorld,
-            name: "Ether",
+            name: "Ether Tablet",
             address: 0x48B7C,
             item: Item.Ether,
             accessRequirements: { items in
@@ -771,7 +771,7 @@ func southDarkWorldItems() -> Locations {
         // Technically spawns in LW (warp from peg area)
         Location(
             region: Region.DarkWorldSouth,
-            name: "Bombos",
+            name: "Bombos Tablet",
             address: 0x48B81,
             item: Item.Bombos,
             accessRequirements: { items in
