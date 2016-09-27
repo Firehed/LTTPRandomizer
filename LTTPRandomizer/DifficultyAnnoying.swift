@@ -34,7 +34,7 @@ class DifficultyAnnoying: DifficultyAbstract, Difficulty {
         }
 
         // No extra magic power for you
-        let bat = getHalfMagicBatLocation()
+        var bat = getHalfMagicBatLocation()
         bat.item = .FullMagic
         locations.append(bat)
 

@@ -473,7 +473,7 @@ func zorasDomainItems() -> Locations {
 func hyruleEscapeItems() -> Locations {
     // If you get a sword or shield upgrade before reaching your uncle (link's house chest only), it looks like he hands you the upgraded item but it's just a visual bug and they get reset
     // If you get a sword upgrade before entering the room with Zelda's jail cell, she won't spawn and the game is deadlocked
-    let linksHouse = Location(
+    var linksHouse = Location(
         region: Region.HyruleCastleEscape,
         name: "[cave-040] Link's House",
         address: 0xE9BC,
@@ -481,7 +481,7 @@ func hyruleEscapeItems() -> Locations {
     )
     linksHouse.canHoldItem = { !$0.isSword && !$0.isShield }
 
-    let secret = Location(
+    var secret = Location(
         region: Region.HyruleCastleEscape,
         name: "[cave-034] Hyrule Castle secret entrance",
         address: 0xE971,
@@ -489,7 +489,7 @@ func hyruleEscapeItems() -> Locations {
     )
     secret.canHoldItem = { !$0.isSword }
 
-    let map = Location(
+    var map = Location(
         region: Region.HyruleCastleEscape,
         name: "[dungeon-C-B1] Hyrule Castle - map room",
         address: 0xEB0C,
@@ -498,7 +498,7 @@ func hyruleEscapeItems() -> Locations {
     )
     map.canHoldItem = { !$0.isSword }
 
-    let boomerang = Location(
+    var boomerang = Location(
         region: Region.HyruleCastleEscape,
         name: "[dungeon-C-B1] Hyrule Castle - boomerang room",
         address: 0xE974,

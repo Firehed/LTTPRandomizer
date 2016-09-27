@@ -50,7 +50,7 @@ class DifficultyAbstract {
      the randomized item.
      */
     internal func randomizeEntrances() -> Void {
-        for entrance in entranceLocations() {
+        for var entrance in entranceLocations() {
             let pool: [Item]
             guard entrance.item.isMiseryMireEntranceItem || entrance.item.isTurtleRockEntranceItem else {
                 NSLog("Entrance location %@ didn't have an entrance item", entrance.name)
@@ -74,7 +74,7 @@ class DifficultyAbstract {
      Selects what to put in your empty bottle when you drop it in a puddle
      */
     internal func randomizeFairies() -> Void {
-        for fairy in fairyLocations() {
+        for var fairy in fairyLocations() {
             fairy.item = Item.filledBottles.selectAtRandom(randomizer)
             locations.append(fairy)
             NSLog("%@ fills you with %@", fairy.name, fairy.item.description)
@@ -82,7 +82,7 @@ class DifficultyAbstract {
     }
 
     internal func randomizeBat(chance numerator: UInt, in denominator: UInt) -> Void {
-        let bat = getHalfMagicBatLocation()
+        var bat = getHalfMagicBatLocation()
         // chance of granting 1/4 magic instead of 1/2
         if randomizer.next(lessThan: denominator) < numerator {
             bat.item = .QuarterMagic
