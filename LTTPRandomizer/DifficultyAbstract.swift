@@ -90,4 +90,11 @@ class DifficultyAbstract {
         locations.append(bat)
     }
 
+    internal func setItemsToNothing(locations: Locations) -> Locations {
+        return locations.map {
+            var loc = $0
+            loc.item = .Nothing
+            return loc
+        }
+    }
 }
