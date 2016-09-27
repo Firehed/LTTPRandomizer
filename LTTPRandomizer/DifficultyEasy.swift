@@ -66,9 +66,8 @@ class DifficultyEasy: DifficultyAbstract, Difficulty {
         dungeonInfo = DungeonInfo.get(locations: locations)
         for location in locations {
             pool.append(location.item)
-            location.item = .Nothing
         }
-
+        locations = setItemsToNothing(locations: locations)
         // Easy mode: always grant 1/4 magic ✨
         randomizeBat(chance: 1, in: 1)
         randomizeEntrances()

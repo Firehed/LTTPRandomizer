@@ -30,9 +30,8 @@ class DifficultyAnnoying: DifficultyAbstract, Difficulty {
 
         for location in locations {
             pool.append(location.item)
-            location.item = .Nothing
         }
-
+        locations = setItemsToNothing(locations: locations)
         // No extra magic power for you
         var bat = getHalfMagicBatLocation()
         bat.item = .FullMagic

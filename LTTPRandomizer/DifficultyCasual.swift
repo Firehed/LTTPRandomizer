@@ -70,9 +70,8 @@ class DifficultyCasual: DifficultyAbstract, Difficulty {
         dungeonInfo = DungeonInfo.get(locations: locations)
         for location in locations {
             pool.append(location.item)
-            location.item = .Nothing
         }
-
+        locations = setItemsToNothing(locations: locations)
         randomizeBat(chance: 1, in: 3)
         randomizeEntrances()
         randomizeFairies()
