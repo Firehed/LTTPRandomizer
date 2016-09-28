@@ -22,8 +22,8 @@ extension Array {
     }
 }
 
-extension Array where Element: Location {
-    func withNoItems() -> Locations {
+extension Array where Element: ItemBearer {
+    func withNoItems() -> [Element] {
         return self.filter({ $0.item == .Nothing })
     }
 }
