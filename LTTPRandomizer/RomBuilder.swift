@@ -129,31 +129,32 @@ class RomBuilder {
             return false
         }
         for dungeon in difficulty.getDungeonInfo() {
-            let dungeonLocations = locations
-                .filter({ $0.region == dungeon.region })
-                .filter({ $0.dungeonRules.canHoldDungeonItems })
+            var filters = [(item: Item, callback: (Location) -> Bool)]()
 
             for zone in dungeon.keyZones.sorted(by: { $0.key < $1.key }) {
                 for _ in 0..<zone.value {
-                    let avail = dungeonLocations.filter { $0.isInOrBeforeKeyZone(zone.key) }
-                    avail.selectAtRandom(randomizer).item = Item.Key
-                    itemPool.removeFirst(.Key)
+                    filters.append((.Key, { $0.isInOrBeforeKeyZone(zone.key) } ))
                 }
             }
             if dungeon.hasBigKey {
-                let avail = dungeonLocations.withNoItems().filter({ !$0.dungeonRules.isBigKeyZone })
-                avail.selectAtRandom(randomizer).item = Item.BigKey
-                itemPool.removeFirst(.BigKey)
+                filters.append((.BigKey, { !$0.dungeonRules.isBigKeyZone }))
             }
             if dungeon.hasMap {
-                let avail = dungeonLocations.withNoItems()
-                avail.selectAtRandom(randomizer).item = Item.Map
-                itemPool.removeFirst(.Map)
+                filters.append((.Map, { _ in true } ))
             }
             if dungeon.hasCompass {
-                let avail = dungeonLocations.withNoItems()
-                avail.selectAtRandom(randomizer).item = Item.Compass
-                itemPool.removeFirst(.Compass)
+                filters.append((.Compass, { _ in true } ))
+            }
+
+            for filter in filters {
+                let location = locations
+                    .withNoItems()
+                    .filter { $0.region == dungeon.region }
+                    .filter { $0.dungeonRules.canHoldDungeonItems }
+                    .filter(filter.callback)
+                    .selectAtRandom(randomizer)
+                location.item = filter.item
+                itemPool.removeFirst(filter.item)
             }
         }
         return true
