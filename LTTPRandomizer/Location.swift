@@ -94,6 +94,7 @@ struct Location: Equatable, ItemBearer {
     static func ==(lhs: Location, rhs: Location) -> Bool {
         return lhs.item == rhs.item
             && lhs.address == rhs.address
+            && lhs.dungeonRules == rhs.dungeonRules
             && lhs.region == rhs.region
     }
 }
