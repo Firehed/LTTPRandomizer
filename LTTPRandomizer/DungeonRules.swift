@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct DungeonRules {
+struct DungeonRules: Equatable {
 
     /// Key zone
     private(set) public var zone: Int
@@ -32,4 +32,9 @@ public struct DungeonRules {
         self.canHoldDungeonItems = true
     }
 
+    static func ==(lhs: DungeonRules, rhs: DungeonRules) -> Bool {
+        return lhs.canHoldDungeonItems == rhs.canHoldDungeonItems
+            && lhs.isBigKeyZone == rhs.isBigKeyZone
+            && lhs.zone == rhs.zone
+    }
 }
