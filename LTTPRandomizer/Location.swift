@@ -13,7 +13,7 @@ protocol ItemBearer {
 }
 
 /// This is a class not a struct since (for now) we want the side-effect of setting the `item` to non-nil to propagate over all containers
-class Location: ItemBearer {
+struct Location: Equatable, ItemBearer {
 
     var name: String
     var address: Int?
@@ -89,6 +89,12 @@ class Location: ItemBearer {
     func isAccessible(inventory: Set<Item>) -> Bool {
         return region.isAccessible(inventory: inventory)
             && (_additionalAccessRequirements?(inventory) ?? true)
+    }
+
+    static func ==(lhs: Location, rhs: Location) -> Bool {
+        return lhs.item == rhs.item
+            && lhs.address == rhs.address
+            && lhs.region == rhs.region
     }
 }
 

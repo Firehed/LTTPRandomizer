@@ -16,15 +16,16 @@ class DifficultyAnnoying: DifficultyAbstract, Difficulty {
     func reset() -> Void {
         pool = []
         locations = allLocations().map {
+            var location = $0
             // Replace map and compass with more junk so it's less practical to quick-exit a dungeon
-            var item = $0.item
+            var item = location.item
             if item == .Compass {
                 item = .OneRupee
             } else if item == .Map {
                 item = .Arrow
             }
-            $0.item = item
-            return $0
+            location.item = item
+            return location
         }
         dungeonInfo = DungeonInfo.get(locations: locations)
 

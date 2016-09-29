@@ -153,8 +153,7 @@ class RomBuilder {
                     .filter { $0.dungeonRules.canHoldDungeonItems }
                     .filter(filter.callback)
                     .selectAtRandom(randomizer)
-                location.item = filter.item
-                itemPool.removeFirst(filter.item)
+                place(item: filter.item, in: location)
             }
         }
         return true
@@ -202,16 +201,30 @@ class RomBuilder {
             } else {
                 selected = difficulty.getItemForInsertion(possibleItems: itemPool, possibleLocations: possibleLocations)
             }
-            haveItems.insert(selected)
-            itemPool.removeFirst(selected)
 
             // Remove locations that can't hold the selected item
             possibleLocations = possibleLocations.filter { $0.canHoldItem?(selected) ?? true }
 
             let targetLocation = difficulty.getLocationForItemPlacement(possibleLocations: possibleLocations, item: selected)
-            targetLocation.item = selected
+            place(item: selected, in: targetLocation)
         } while (itemPool.isNonEmpty)
         return true
+    }
+
+    /// Places an item in the given location, tracking Link's inventory contents
+    /// for subsequent item placement
+    ///
+    /// - parameter item:     the item to place
+    /// - parameter location: the location that will hold the item
+    private func place(item: Item, in location: Location) -> Void {
+        // This is the approximate effect of modifying it in place
+        locations.removeFirst(location)
+        var location = location
+        location.item = item
+        locations.append(location)
+
+        itemPool.removeFirst(item)
+        haveItems.insert(item)
     }
 
 }
