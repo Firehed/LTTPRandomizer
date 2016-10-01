@@ -47,4 +47,35 @@ class LocationTests: XCTestCase {
         }
     }
 
+    /// Without resorting to glitches, there's only one actual dark world
+    /// location that the Moon Pearl can be (the Pyramid). This test asserts
+    /// that's the only DW location that passes the accessibility tests when all
+    /// other items are in the inventory
+    func testDarkWorldMoonPearlRequirements() {
+        // Actual progression items (plus the random dungeon unlocks), minus MP
+        let inv = Set(arrayLiteral:
+            Item.Bow, .Hookshot, .FireRod, .IceRod, .Bombos, .Quake, .Ether,
+                      .Lamp, .Hammer, .OcarinaInactive, .BugCatchingNet,
+                      .BookOfMudora, .Bottle, .CaneOfSomaria, .Cape,
+                      .MagicMirror, .PegasusBoots, .TitansMitt, .Flippers,
+                      .L4Sword, .MirrorShield, .TRBombos, .MireBombos)
+
+        let accessibleDarkWorldLocationAddresses = allLocations()
+            .filter { $0.region.isDarkWorld }
+            .filter { $0.isAccessible(inventory: inv) }
+            .map { $0.address! }
+
+        // Addresses for Pyramid heart piece and the desert northeast boulder (which isn't technically DW
+        let desertAddress = 0x180005
+        let pyramidAddress = 0x180147
+        let expectedLocations = Set([pyramidAddress, desertAddress])
+
+        XCTAssertEqual(accessibleDarkWorldLocationAddresses.count,
+                       expectedLocations.count,
+                       "Count of accessible locations did not match")
+        XCTAssertEqual(Set(accessibleDarkWorldLocationAddresses),
+                       expectedLocations,
+                       "Wrong locations were accessible")
+    }
+
 }

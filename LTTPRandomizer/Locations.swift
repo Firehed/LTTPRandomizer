@@ -923,13 +923,15 @@ func easternDarkWorldDeathMountainItems() -> Locations {
             region: Region.DarkWorldEasternDeathMountain,
             name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [top chest]",
             address: 0xEA7C,
-            item: Item.ThreeBombs
+            item: Item.ThreeBombs,
+            accessRequirements: { $0.contains(.MoonPearl) }
         ),
         Location(
             region: Region.DarkWorldEasternDeathMountain,
             name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [bottom chest]",
             address: 0xEA7F,
-            item: Item.TwentyRupees
+            item: Item.TwentyRupees,
+            accessRequirements: { $0.contains(.MoonPearl) }
         ),
         Location(
             region: Region.DarkWorldEasternDeathMountain,
