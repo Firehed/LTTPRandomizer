@@ -9,7 +9,7 @@ This is an OS X variant of [Dessyreqt/alttprandomizer](https://github.com/Dessyr
 
 ## Variations from the original game
 
-This uses the (currently v4) ROM from the Windows version, and has the same [variations](https://github.com/Dessyreqt/alttprandomizer#differences-from-the-normal-game)
+This uses the (currently v6) ROM from the Windows version, and has the same [variations](https://github.com/Dessyreqt/alttprandomizer#differences-from-the-normal-game)
 
 ## Motivation
 
