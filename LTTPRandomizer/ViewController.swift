@@ -68,15 +68,17 @@ class ViewController: NSViewController {
             break
         }
 
-        let builder = RomBuilder(randomizer: randomizer, difficulty: difficulty)
+        let itemRandomizer = ItemRandomizer(randomizer: randomizer, difficulty: difficulty)
+
+        let builder = RomBuilder(randomizer: randomizer)
 
         let panel = NSSavePanel()
         panel.allowedFileTypes = ["sfc"]
-        panel.nameFieldStringValue = builder.defaultFileName
+        panel.nameFieldStringValue = itemRandomizer.defaultFileName
         if panel.runModal() == NSFileHandlingPanelOKButton {
-            builder.assignItems()
-            writeSpolierLog(seedName: builder.defaultFileName, locations: builder.locations)
-            builder.write(to: panel.url!)
+            let locations = itemRandomizer.randomizeItems()
+            writeSpolierLog(seedName: itemRandomizer.defaultFileName, locations: locations)
+            builder.write(to: panel.url!, with: locations)
         }
     }
 
