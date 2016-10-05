@@ -78,7 +78,9 @@ class ViewController: NSViewController {
         if panel.runModal() == NSFileHandlingPanelOKButton {
             let (locations, patches) = itemRandomizer.randomize()
             writeSpolierLog(seedName: itemRandomizer.defaultFileName, locations: locations)
-            if let rom = builder.patch(locations: locations, additionalPatches: patches) {
+            if let rom = builder.patch(version: itemRandomizer.romFilename,
+                                       locations: locations,
+                                       additionalPatches: patches) {
                 builder.write(rom: rom, to: panel.url!)
             } else {
                 NSLog("builder.patch returned nil")

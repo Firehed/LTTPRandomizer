@@ -42,7 +42,10 @@ class ItemRandomizer {
     /// The pseudo-random number generator
     private var randomizer: PRNG
 
-    /// Version of the underlying patched ROM
+    /// The filename to patch
+    var romFilename = "v6"
+
+    /// Version of the randomizer
     private let version = 6
 
     init(randomizer: PRNG, difficulty: Difficulty) {

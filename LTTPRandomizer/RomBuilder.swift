@@ -12,8 +12,8 @@ class RomBuilder {
 
     var writeSRAMTrace: Bool = false
 
-    func patch(locations: Locations, additionalPatches patches: [Patch]) -> Data? {
-        guard let sourcePath = Bundle.main.path(forResource: "v6", ofType: "sfc") else {
+    func patch(version filename: String, locations: Locations, additionalPatches patches: [Patch]) -> Data? {
+        guard let sourcePath = Bundle.main.path(forResource: filename, ofType: "sfc") else {
             NSLog("Bundled ROM not found")
             return nil
         }
