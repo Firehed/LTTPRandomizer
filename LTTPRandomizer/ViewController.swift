@@ -70,7 +70,7 @@ class ViewController: NSViewController {
 
         let itemRandomizer = ItemRandomizer(randomizer: randomizer, difficulty: difficulty)
 
-        let builder = RomBuilder(randomizer: randomizer)
+        let builder = RomBuilder()
 
         let panel = NSSavePanel()
         panel.allowedFileTypes = ["sfc"]

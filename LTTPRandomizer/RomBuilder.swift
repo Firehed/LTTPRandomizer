@@ -12,13 +12,6 @@ class RomBuilder {
 
     var writeSRAMTrace: Bool = false
 
-    /// The pseudo-randomizer
-    private var randomizer: PRNG
-
-    init(randomizer: PRNG) {
-        self.randomizer = randomizer
-    }
-
     func patch(locations: Locations, additionalPatches patches: [Patch]) -> Data? {
         guard let sourcePath = Bundle.main.path(forResource: "v6", ofType: "sfc") else {
             NSLog("Bundled ROM not found")
