@@ -76,9 +76,13 @@ class ViewController: NSViewController {
         panel.allowedFileTypes = ["sfc"]
         panel.nameFieldStringValue = itemRandomizer.defaultFileName
         if panel.runModal() == NSFileHandlingPanelOKButton {
-            let locations = itemRandomizer.randomizeItems()
+            let (locations, patches) = itemRandomizer.randomize()
             writeSpolierLog(seedName: itemRandomizer.defaultFileName, locations: locations)
-            builder.write(to: panel.url!, with: locations)
+            if let rom = builder.patch(locations: locations, additionalPatches: patches) {
+                builder.write(rom: rom, to: panel.url!)
+            } else {
+                NSLog("builder.patch returned nil")
+            }
         }
     }
 

@@ -19,15 +19,18 @@ class RomBuilder {
         self.randomizer = randomizer
     }
 
-    func write(to destination: URL, with locations: Locations) {
+    func patch(locations: Locations, additionalPatches patches: [Patch]) -> Data? {
         guard let sourcePath = Bundle.main.path(forResource: "v6", ofType: "sfc") else {
             NSLog("Bundled ROM not found")
-            return
+            return nil
         }
+
         var rom: Data
         do {
             try rom = Data(contentsOf: URL.init(fileURLWithPath: sourcePath))
-        } catch { return }
+        } catch {
+            return nil
+        }
 
         for location in locations {
 
@@ -52,21 +55,21 @@ class RomBuilder {
             let bytes: [UInt8] = [0x00, 0x80, 0x21]
             rom.patch(atByteOffset: 0x57, withData: Data(bytes: bytes))
         }
-        writeRNG(in: &rom)
 
+        for patch in patches {
+            patch(&rom)
+        }
+
+        return rom
+    }
+
+    func write(rom: Data, to destination: URL) {
         do {
             try rom.write(to: destination, options: .atomic)
         } catch {
             print("write error")
         }
 
-    }
-
-    private func writeRNG(in rom: inout Data) {
-        for addr in 0x178000...0x1783FF {
-            let rnd = Data(bytes: [UInt8(randomizer.next(lessThan: 0x100))])
-            rom.patch(atByteOffset: addr, withData: rnd)
-        }
     }
 
 }

@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias Patch = (inout Data) -> Void
+
 class ItemRandomizer {
 
     /// The default filename, encoding the version, seed and difficulty
@@ -35,6 +37,8 @@ class ItemRandomizer {
     /// Locations to be randomized
     private var locations: Locations = []
 
+    private var patches: [Patch] = []
+
     /// The pseudo-random number generator
     private var randomizer: PRNG
 
@@ -50,9 +54,10 @@ class ItemRandomizer {
     /// `Location`s that need to be patched, with the items to place and any
     /// additional patching logic filled in
     ///
-    /// - returns: the modified Locations to patch the ROM with
-    func randomizeItems() -> Locations {
-        generateItemList()
+    /// - returns: a tuple containing the modified Locations to patch the ROM
+    ///            with, and any additional patches that should be performed
+    func randomize() -> (Locations, [Patch]) {
+        reset()
         let _ = placeDungeonItems()
         let _ = placeOverworldItems()
 
@@ -61,17 +66,25 @@ class ItemRandomizer {
             exit(EXIT_FAILURE)
         }
 
-        return locations
+        // Random bytes to be patched into the ROM
+        patches.append({ rom in
+            for addr in 0x178000...0x1783FF {
+                let rnd = Data(bytes: [UInt8(self.randomizer.next(lessThan: 0x100))])
+                rom.patch(atByteOffset: addr, withData: rnd)
+            }
+        })
 
+        return (locations, patches)
     }
 
     /// After resetting states where applicable, builds the list of items to
     /// place and locations to hold them
-    private func generateItemList() -> Void {
+    private func reset() -> Void {
         difficulty.reset()
         itemPool = difficulty.getItemPool()
         locations = difficulty.getLocations()
         haveItems = []
+        patches = []
 
         // Pick up any pre-assigned items from virtual locations
         for location in locations.filter({ $0.item != .Nothing && $0.region == .PatchOnly }) {
