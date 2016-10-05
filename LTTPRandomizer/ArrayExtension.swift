@@ -13,7 +13,7 @@ extension Array {
         return !isEmpty
     }
 
-    func selectAtRandom(_ randomizer: Randomizer) -> Element {
+    func selectAtRandom(_ randomizer: PRNG) -> Element {
         guard count > 0 else {
             NSLog("Selecting at random from an empty array")
             exit(EXIT_FAILURE)

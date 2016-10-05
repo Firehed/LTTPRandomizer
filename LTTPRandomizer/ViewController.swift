@@ -54,7 +54,7 @@ class ViewController: NSViewController {
         }
 
         let seed = UInt(seedField.integerValue)
-        let randomizer: Randomizer = SeededRandomizer(seed: seed)
+        let randomizer: PRNG = SeededRandomizer(seed: seed)
         let difficulty: Difficulty
         switch currentDifficulty {
         case .Annoying:

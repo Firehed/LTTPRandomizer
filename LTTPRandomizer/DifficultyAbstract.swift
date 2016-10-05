@@ -18,7 +18,7 @@ class DifficultyAbstract {
     internal var pool = [Item]()
 
     /// The pseudo-randomizer
-    internal var randomizer: Randomizer
+    internal var randomizer: PRNG
 
     /// Array of computed dungeon item info
     internal var dungeonInfo = [DungeonInfo]()
@@ -28,7 +28,7 @@ class DifficultyAbstract {
      - parameters:
         - randomizer: a Randomizer
      */
-    required init(randomizer: Randomizer) {
+    required init(randomizer: PRNG) {
         self.randomizer = randomizer
     }
 

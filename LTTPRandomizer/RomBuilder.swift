@@ -15,7 +15,7 @@ class RomBuilder {
     var writeSRAMTrace: Bool = false
 
     /// The pseudo-randomizer
-    private var randomizer: Randomizer
+    private var randomizer: PRNG
 
     /// The provider of the item pool, location list, and placement rules
     private var difficulty: Difficulty
@@ -33,7 +33,7 @@ class RomBuilder {
     /// Items that are available to be placed in randomized locations.
     private var itemPool: [Item] = []
 
-    init(randomizer: Randomizer, difficulty: Difficulty) {
+    init(randomizer: PRNG, difficulty: Difficulty) {
         self.difficulty = difficulty
         self.randomizer = randomizer
     }
@@ -128,6 +128,7 @@ class RomBuilder {
             NSLog("No dungeon items to place")
             return false
         }
+
         for dungeon in difficulty.getDungeonInfo() {
             var filters = [(item: Item, callback: (Location) -> Bool)]()
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SeededRandomizer: Randomizer {
+class SeededRandomizer: PRNG {
 
     /// a one-character string for encoding the ROM information
     internal var abbreviatedName: String { return "S" }

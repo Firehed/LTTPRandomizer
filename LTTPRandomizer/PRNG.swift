@@ -8,7 +8,9 @@
 
 import Foundation
 
-protocol Randomizer {
+
+/// Pseudo Random Number Generator
+protocol PRNG {
 
     /// a one-character string for encoding the ROM information
     var abbreviatedName: String { get }

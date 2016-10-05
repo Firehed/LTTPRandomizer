@@ -15,7 +15,7 @@ protocol Difficulty {
      - parameters:
         - randomizer: a Randomizer
     */
-    init(randomizer: Randomizer)
+    init(randomizer: PRNG)
 
     /**
      Reset any state in the difficulty
