@@ -237,84 +237,27 @@ func darkWorldPyramidItems() -> Locations {
 }
 
 func southDarkWorldItems() -> Locations {
+    let r = Region.DarkWorldSouth
+
+    // Technically spawns in LW (warp from peg area)
+    var bombos = Location(region: r, name: "Bombos Tablet", address: 0x48B81, item: .Bombos, accessRequirements: { $0.canGetAtLeastMasterSword() && $0.containsAll(.BookOfMudora, .MagicMirror) })
+    bombos.onPatchingRom = { rom, item in
+        rom.patch(atByteOffset: 0x44AAE, withData: item.asData())
+    }
+
     return [
-        Location(
-            region: Region.DarkWorldSouth,
-            name: "[cave-073] cave northeast of swamp palace [top chest]",
-            address: 0xEB1E,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.DarkWorldSouth,
-            name: "[cave-073] cave northeast of swamp palace [top middle chest]",
-            address: 0xEB21,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.DarkWorldSouth,
-            name: "[cave-073] cave northeast of swamp palace [bottom middle chest]",
-            address: 0xEB24,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.DarkWorldSouth,
-            name: "[cave-073] cave northeast of swamp palace [bottom chest]",
-            address: 0xEB27,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.DarkWorldSouth,
-            name: "Flute Boy",
-            address: 0x330C7,
-            item: Item.Shovel
-        ),
-        Location(
-            region: Region.DarkWorldSouth,
-            name: "[cave-073] cave northeast of swamp palace - generous guy",
-            address: 0x180011,
-            item: Item.ThreeHundredRupees
-        ),
-        // Technically spawns in LW (warp from peg area)
-        Location(
-            region: Region.DarkWorldSouth,
-            name: "Bombos Tablet",
-            address: 0x48B81,
-            item: Item.Bombos,
-            accessRequirements: { items in
-                return items.canGetAtLeastMasterSword()
-                    && items.containsAll(Item.BookOfMudora, Item.MagicMirror)
-            },
-            onPatchingRom: { rom, item in
-                // Inventory item check?
-                rom.patch(atByteOffset: 0x44AAE, withData: item.asData())
-            }
-        ),
+        bombos,
+        Location(region: r, name: "[cave-073] cave northeast of swamp palace [top chest]", address: 0xEB1E, item: .TwentyRupees),
+        Location(region: r, name: "[cave-073] cave northeast of swamp palace [top middle chest]", address: 0xEB21, item: .TwentyRupees),
+        Location(region: r, name: "[cave-073] cave northeast of swamp palace [bottom middle chest]", address: 0xEB24, item: .TwentyRupees),
+        Location(region: r, name: "[cave-073] cave northeast of swamp palace [bottom chest]", address: 0xEB27, item: .TwentyRupees),
+        Location(region: r, name: "[cave-073] cave northeast of swamp palace - generous guy", address: 0x180011, item: .ThreeHundredRupees),
+        Location(region: r, name: "Flute Boy", address: 0x330C7, item: .Shovel),
         // Technically spawns in LW (warp from circle of bushes)
-        Location(
-            region: Region.DarkWorldSouth,
-            name: "Piece of Heart (south of Haunted Grove)",
-            address: 0x180003,
-            item: Item.PieceOfHeart,
-            accessRequirements: { items in
-                return items.contains(Item.MagicMirror)
-            }
-        ),
+        Location(region: r, name: "Piece of Heart (south of Haunted Grove)", address: 0x180003, item: .PieceOfHeart, accessRequirements: { $0.contains(.MagicMirror) }),
         // Technically spawns in LW (warp from circle of stones in lake)
-        Location(
-            region: Region.DarkWorldSouth,
-            name: "Piece of Heart (Lake Hylia)",
-            address: 0x180144,
-            item: Item.PieceOfHeart,
-            accessRequirements: { items in
-                return items.containsAll(Item.Flippers, Item.MagicMirror)
-            }
-        ),
-        Location(
-            region: Region.DarkWorldSouth,
-            name: "Piece of Heart (Digging Game)",
-            address: 0x180148,
-            item: Item.PieceOfHeart
-        ),
+        Location(region: r, name: "Piece of Heart (Lake Hylia)", address: 0x180144, item: .PieceOfHeart, accessRequirements: { $0.containsAll(.Flippers, .MagicMirror) }),
+        Location(region: r, name: "Piece of Heart (Digging Game)", address: 0x180148, item: .PieceOfHeart),
     ]
 }
 
