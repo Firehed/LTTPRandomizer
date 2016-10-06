@@ -1555,190 +1555,34 @@ func turtleRockItems() -> Locations {
 }
 
 func ganonsTowerItems() -> Locations {
+    let r = Region.GanonsTower
     return [
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [top left chest]",
-            address: 0xEAB8,
-            item: Item.ThreeBombs,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [top right chest]",
-            address: 0xEABB,
-            item: Item.TenArrows,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [bottom left chest]",
-            address: 0xEABE,
-            item: Item.TwentyRupees,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [bottom right chest]",
-            address: 0xEAC1,
-            item: Item.TwentyRupees,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [top left chest]",
-            address: 0xEAC4,
-            item: Item.TenArrows,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [top right chest]",
-            address: 0xEAC7,
-            item: Item.TenArrows,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [bottom left chest]",
-            address: 0xEACA,
-            item: Item.ThreeBombs,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [bottom right chest]",
-            address: 0xEACD,
-            item: Item.ThreeBombs,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - north of teleport room",
-            address: 0xEAD0,
-            item: Item.Key,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - map room",
-            address: 0xEAD3,
-            item: Item.Map,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - big chest",
-            address: 0xEAD6,
-            item: Item.RedMail,
-            rules: DungeonRules(zone: 2, bigKeyZone: true)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - down right staircase from entrance [left chest]",
-            address: 0xEAD9,
-            item: Item.TenArrows,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - down right staircase from entrance [right chest]",
-            address: 0xEADC,
-            item: Item.ThreeBombs,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - above Armos",
-            address: 0xEADF,
-            item: Item.TenArrows,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - east of down right staircase from entrace",
-            address: 0xEAE2,
-            item: Item.Key,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - compass room [top left chest]",
-            address: 0xEAE5,
-            item: Item.Compass,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-            // This room needs FireRod, but it's guaranteed from SW
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - compass room [top right chest]",
-            address: 0xEAE8,
-            item: Item.OneRupee,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - compass room [bottom left chest]",
-            address: 0xEAEB,
-            item: Item.TwentyRupees,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-1F] Ganon's Tower - compass room [bottom right chest]",
-            address: 0xEAEE,
-            item: Item.TenArrows,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-B1] Ganon's Tower - north of Armos room [bottom chest]",
-            address: 0xEAF1,
-            item: Item.BigKey,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-B1] Ganon's Tower - north of Armos room [left chest]",
-            address: 0xEAF4,
-            item: Item.TenArrows,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-B1] Ganon's Tower - north of Armos room [right chest]",
-            address: 0xEAF7,
-            item: Item.ThreeBombs,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-6F] Ganon's Tower - north of falling floor four torches [top left chest]",
-            address: 0xEAFD,
-            item: Item.ThreeBombs,
-            rules: DungeonRules(zone: 3, bigKeyZone: true)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-6F] Ganon's Tower - north of falling floor four torches [top right chest]",
-            address: 0xEB00,
-            item: Item.ThreeBombs,
-            rules: DungeonRules(zone: 3, bigKeyZone: true)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-6F] Ganon's Tower - before Moldorm",
-            address: 0xEB03,
-            item: Item.Key,
-            rules: DungeonRules(zone: 4, bigKeyZone: true)
-        ),
-        Location(
-            region: Region.GanonsTower,
-            name: "[dungeon-A2-6F] Ganon's Tower - Moldorm room",
-            address: 0xEB06,
-            item: Item.TwentyRupees,
-            rules: DungeonRules(zone: 5, bigKeyZone: true)
-        ),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [top left chest]", address: 0xEAB8, item: .ThreeBombs, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [top right chest]", address: 0xEABB, item: .TenArrows, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [bottom left chest]", address: 0xEABE, item: .TwentyRupees, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - north of gap room [bottom right chest]", address: 0xEAC1, item: .TwentyRupees, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [top left chest]", address: 0xEAC4, item: .TenArrows, rules: DungeonRules(zone: 2, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [top right chest]", address: 0xEAC7, item: .TenArrows, rules: DungeonRules(zone: 2, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [bottom left chest]", address: 0xEACA, item: .ThreeBombs, rules: DungeonRules(zone: 2, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - west of teleport room [bottom right chest]", address: 0xEACD, item: .ThreeBombs, rules: DungeonRules(zone: 2, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - north of teleport room", address: 0xEAD0, item: .Key, rules: DungeonRules(zone: 1, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - map room", address: 0xEAD3, item: .Map, rules: DungeonRules(zone: 1, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - big chest", address: 0xEAD6, item: .RedMail, rules: DungeonRules(zone: 2, bigKeyZone: true)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - down right staircase from entrance [left chest]", address: 0xEAD9, item: .TenArrows, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - down right staircase from entrance [right chest]", address: 0xEADC, item: .ThreeBombs, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - above Armos", address: 0xEADF, item: .TenArrows, rules: DungeonRules(zone: 2, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - east of down right staircase from entrace", address: 0xEAE2, item: .Key, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - compass room [top left chest]", address: 0xEAE5, item: .Compass, rules: DungeonRules(zone: 1, bigKeyZone: false)), // This room needs FireRod, but it's guaranteed from SW
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - compass room [top right chest]", address: 0xEAE8, item: .OneRupee, rules: DungeonRules(zone: 1, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - compass room [bottom left chest]", address: 0xEAEB, item: .TwentyRupees, rules: DungeonRules(zone: 1, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-1F] Ganon's Tower - compass room [bottom right chest]", address: 0xEAEE, item: .TenArrows, rules: DungeonRules(zone: 1, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-B1] Ganon's Tower - north of Armos room [bottom chest]", address: 0xEAF1, item: .BigKey, rules: DungeonRules(zone: 2, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-B1] Ganon's Tower - north of Armos room [left chest]", address: 0xEAF4, item: .TenArrows, rules: DungeonRules(zone: 2, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-B1] Ganon's Tower - north of Armos room [right chest]", address: 0xEAF7, item: .ThreeBombs, rules: DungeonRules(zone: 2, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A2-6F] Ganon's Tower - north of falling floor four torches [top left chest]", address: 0xEAFD, item: .ThreeBombs, rules: DungeonRules(zone: 3, bigKeyZone: true)),
+        Location(region: r, name: "[dungeon-A2-6F] Ganon's Tower - north of falling floor four torches [top right chest]", address: 0xEB00, item: .ThreeBombs, rules: DungeonRules(zone: 3, bigKeyZone: true)),
+        Location(region: r, name: "[dungeon-A2-6F] Ganon's Tower - before Moldorm", address: 0xEB03, item: .Key, rules: DungeonRules(zone: 4, bigKeyZone: true)),
+        Location(region: r, name: "[dungeon-A2-6F] Ganon's Tower - Moldorm room", address: 0xEB06, item: .TwentyRupees, rules: DungeonRules(zone: 5, bigKeyZone: true)),
     ]
 }
 
