@@ -349,39 +349,13 @@ func lightWorldItems() -> Locations {
 }
 
 func lightWorthDeathMountainItems() -> Locations {
+    let r = Region.LightWorldDeathMountain
     return [
-        Location(
-            region: Region.LightWorldDeathMountain,
-            name: "Old mountain man",
-            address: 0xF69FA,
-            item: Item.MagicMirror
-        ),
-        Location(
-            region: Region.LightWorldDeathMountain,
-            name: "Piece of Heart (Spectacle Rock Cave)",
-            address: 0x180002,
-            item: Item.PieceOfHeart
-        ),
-        Location(
-            region: Region.LightWorldDeathMountain,
-            name: "Piece of Heart (Spectacle Rock)",
-            address: 0x180140,
-            item: Item.PieceOfHeart,
-            accessRequirements: { items in
-                return items.contains(Item.MagicMirror)
-            }
-        ),
+        Location(region: r, name: "Old mountain man", address: 0xF69FA, item: .MagicMirror),
+        Location(region: r, name: "Piece of Heart (Spectacle Rock Cave)", address: 0x180002, item: .PieceOfHeart),
+        Location(region: r, name: "Piece of Heart (Spectacle Rock)", address: 0x180140, item: .PieceOfHeart, accessRequirements: { $0.contains(.MagicMirror) }),
         // This is technically in DW directly below the warp tile
-        Location(
-            region: Region.LightWorldDeathMountain,
-            name: "[cave-055] Spike cave",
-            address: 0xEA8B,
-            item: Item.StaffOfByrna,
-            accessRequirements: { items in
-                return items.canLiftRocks()
-                    && items.containsAll(Item.MoonPearl, Item.Hammer)
-            }
-        ),
+        Location(region: r, name: "[cave-055] Spike cave", address: 0xEA8B, item: .StaffOfByrna, accessRequirements: { $0.canLiftRocks() && $0.containsAll(.MoonPearl, .Hammer) }),
     ]
 }
 
