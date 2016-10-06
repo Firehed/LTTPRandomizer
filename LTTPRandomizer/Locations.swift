@@ -302,120 +302,24 @@ func easternDarkWorldDeathMountainItems() -> Locations {
 // MARK: DW Dungeons
 
 func darkPalaceItems() -> Locations {
+    let r = Region.DarkPalace
+    // Note: None of the lamp requirements are strictly necessary, but the room
+    // will be totally dark without it which is fully miserable
     return [
-        Location(
-            region: Region.DarkPalace,
-            name: "[dungeon-D1-1F] Dark Palace - big key room",
-            address: 0xEA37,
-            item: Item.BigKey,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.DarkPalace,
-            name: "[dungeon-D1-1F] Dark Palace - jump room [right chest]",
-            address: 0xEA3A,
-            item: Item.Key,
-            rules: DungeonRules(zone: 0, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.hasAnyBow()
-            }
-        ),
-        Location(
-            region: Region.DarkPalace,
-            name: "[dungeon-D1-1F] Dark Palace - jump room [left chest]",
-            address: 0xEA3D,
-            item: Item.Key,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.DarkPalace,
-            name: "[dungeon-D1-1F] Dark Palace - big chest",
-            address: 0xEA40,
-            item: Item.Hammer,
-            rules: DungeonRules(zone: 3, bigKeyZone: true),
-            accessRequirements: { items in
-                // FIXME: bow shouldn't be strictly required here
-                return items.contains(Item.Lamp) && items.hasAnyBow()
-            }
-        ),
-        Location(
-            region: Region.DarkPalace,
-            name: "[dungeon-D1-1F] Dark Palace - compass room",
-            address: 0xEA43,
-            item: Item.Compass,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.DarkPalace,
-            name: "[dungeon-D1-1F] Dark Palace - spike statue room",
-            address: 0xEA46,
-            item: Item.FiveRupees,
-            rules: DungeonRules(zone: 3, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.DarkPalace,
-            name: "[dungeon-D1-B1] Dark Palace - turtle stalfos room",
-            address: 0xEA49,
-            item: Item.Key,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.DarkPalace,
-            name: "[dungeon-D1-B1] Dark Palace - room leading to Helmasaur [left chest]",
-            address: 0xEA4C,
-            item: Item.Arrow,
-            rules: DungeonRules(zone: 2, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.Lamp)
-            }
-        ),
-        Location(
-            region: Region.DarkPalace,
-            name: "[dungeon-D1-B1] Dark Palace - room leading to Helmasaur [right chest]",
-            address: 0xEA4F,
-            item: Item.Key,
-            rules: DungeonRules(zone: 2, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.Lamp)
-            }
-        ),
-        Location(
-            region: Region.DarkPalace,
-            name: "[dungeon-D1-1F] Dark Palace - statue push room",
-            address: 0xEA52,
-            item: Item.Map,
-            rules: DungeonRules(zone: 0, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.hasAnyBow()
-            }
-        ),
-        Location(
-            region: Region.DarkPalace,
-            name: "[dungeon-D1-1F] Dark Palace - maze room [top chest]",
-            address: 0xEA55,
-            item: Item.ThreeBombs,
-            rules: DungeonRules(zone: 3, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.Lamp)
-            }
-        ),
-        Location(
-            region: Region.DarkPalace,
-            name: "[dungeon-D1-1F] Dark Palace - maze room [bottom chest]",
-            address: 0xEA58,
-            item: Item.Key,
-            rules: DungeonRules(zone: 3, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.Lamp)
-            }
-        ),
-        Location(
-            region: Region.DarkPalace,
-            name: "[dungeon-D1-B1] Dark Palace - shooter room",
-            address: 0xEA5B,
-            item: Item.Key,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
+        Location(region: r, name: "[dungeon-D1-1F] Dark Palace - big key room", address: 0xEA37, item: .BigKey, rules: DungeonRules(zone: 2, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D1-1F] Dark Palace - jump room [right chest]", address: 0xEA3A, item: .Key, rules: DungeonRules(zone: 0, bigKeyZone: false), accessRequirements: { $0.hasAnyBow() }),
+        Location(region: r, name: "[dungeon-D1-1F] Dark Palace - jump room [left chest]", address: 0xEA3D, item: .Key, rules: DungeonRules(zone: 1, bigKeyZone: false)),
+        // FIXME: bow shouldn't be strictly required here
+        Location(region: r, name: "[dungeon-D1-1F] Dark Palace - big chest", address: 0xEA40, item: .Hammer, rules: DungeonRules(zone: 3, bigKeyZone: true), accessRequirements: { $0.contains(.Lamp) && $0.hasAnyBow() }),
+        Location(region: r, name: "[dungeon-D1-1F] Dark Palace - compass room", address: 0xEA43, item: .Compass, rules: DungeonRules(zone: 2, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D1-1F] Dark Palace - spike statue room", address: 0xEA46, item: .FiveRupees, rules: DungeonRules(zone: 3, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D1-B1] Dark Palace - turtle stalfos room", address: 0xEA49, item: .Key, rules: DungeonRules(zone: 1, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D1-B1] Dark Palace - room leading to Helmasaur [left chest]", address: 0xEA4C, item: .Arrow, rules: DungeonRules(zone: 2, bigKeyZone: false), accessRequirements: { $0.contains(.Lamp) }),
+        Location(region: r, name: "[dungeon-D1-B1] Dark Palace - room leading to Helmasaur [right chest]", address: 0xEA4F, item: .Key, rules: DungeonRules(zone: 2, bigKeyZone: false), accessRequirements: { $0.contains(.Lamp) }),
+        Location(region: r, name: "[dungeon-D1-1F] Dark Palace - statue push room", address: 0xEA52, item: .Map, rules: DungeonRules(zone: 0, bigKeyZone: false), accessRequirements: { $0.hasAnyBow() }),
+        Location(region: r, name: "[dungeon-D1-1F] Dark Palace - maze room [top chest]", address: 0xEA55, item: .ThreeBombs, rules: DungeonRules(zone: 3, bigKeyZone: false), accessRequirements: { $0.contains(.Lamp) }),
+        Location(region: r, name: "[dungeon-D1-1F] Dark Palace - maze room [bottom chest]", address: 0xEA58, item: .Key, rules: DungeonRules(zone: 3, bigKeyZone: false), accessRequirements: { $0.contains(.Lamp) }),
+        Location(region: r, name: "[dungeon-D1-B1] Dark Palace - shooter room", address: 0xEA5B, item: .Key, rules: DungeonRules(zone: 0, bigKeyZone: false)),
     ]
 }
 
