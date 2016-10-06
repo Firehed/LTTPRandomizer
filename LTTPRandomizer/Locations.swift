@@ -920,59 +920,15 @@ func skullWoodsItems() -> Locations {
 }
 
 func thievesTownItems() -> Locations {
+    let r = Region.ThievesTown
     return [
-        Location(
-            region: Region.ThievesTown,
-            name: "[dungeon-D4-B1] Thieves' Town - Bottom left of huge room [top left chest]",
-            address: 0xEA01,
-            item: Item.Map,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.ThievesTown,
-            name: "[dungeon-D4-B1] Thieves' Town - Bottom left of huge room [bottom right chest]",
-            address: 0xEA04,
-            item: Item.BigKey,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.ThievesTown,
-            name: "[dungeon-D4-B1] Thieves' Town - Bottom right of huge room",
-            address: 0xEA07,
-            item: Item.Compass,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.ThievesTown,
-            name: "[dungeon-D4-B1] Thieves' Town - Top left of huge room",
-            address: 0xEA0A,
-            item: Item.TwentyRupees,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.ThievesTown,
-            name: "[dungeon-D4-1F] Thieves' Town - Room above boss",
-            address: 0xEA0D,
-            item: Item.ThreeBombs,
-            rules: DungeonRules(zone: 2, bigKeyZone: true)
-        ),
-        Location(
-            region: Region.ThievesTown,
-            name: "[dungeon-D4-B2] Thieves' Town - big chest",
-            address: 0xEA10,
-            item: Item.TitansMitt,
-            rules: DungeonRules(zone: 2, bigKeyZone: true),
-            accessRequirements: { items in
-                return items.contains(Item.Hammer)
-            }
-        ),
-        Location(
-            region: Region.ThievesTown,
-            name: "[dungeon-D4-B2] Thieves' Town - next to Blind",
-            address: 0xEA13,
-            item: Item.Key,
-            rules: DungeonRules(zone: 1, bigKeyZone: true)
-        ),
+        Location(region: r, name: "[dungeon-D4-B1] Thieves' Town - Bottom left of huge room [top left chest]", address: 0xEA01, item: .Map, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D4-B1] Thieves' Town - Bottom left of huge room [bottom right chest]", address: 0xEA04, item: .BigKey, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D4-B1] Thieves' Town - Bottom right of huge room", address: 0xEA07, item: .Compass, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D4-B1] Thieves' Town - Top left of huge room", address: 0xEA0A, item: .TwentyRupees, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D4-1F] Thieves' Town - Room above boss", address: 0xEA0D, item: .ThreeBombs, rules: DungeonRules(zone: 2, bigKeyZone: true)),
+        Location(region: r, name: "[dungeon-D4-B2] Thieves' Town - big chest", address: 0xEA10, item: .TitansMitt, rules: DungeonRules(zone: 2, bigKeyZone: true), accessRequirements: { $0.contains(.Hammer) }),
+        Location(region: r, name: "[dungeon-D4-B2] Thieves' Town - next to Blind", address: 0xEA13, item: .Key, rules: DungeonRules(zone: 1, bigKeyZone: true)),
     ]
 }
 
