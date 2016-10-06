@@ -94,6 +94,7 @@ extension SetAlgebra where Element == Item {
     func canAccessEastDarkWorldDeathMountain() -> Bool {
         return canAccessEasternDeathMountain()
             && canLiftHeavyRocks() // All warp tiles require
+            && contains(.MoonPearl)
     }
 
     func canAccessNorthWestDarkWorld() -> Bool {

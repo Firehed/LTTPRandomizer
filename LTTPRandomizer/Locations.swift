@@ -639,22 +639,20 @@ func easternDarkWorldDeathMountainItems() -> Locations {
             address: 0x180141,
             item: Item.PieceOfHeart,
             accessRequirements: { items in
-                return items.containsAll(Item.MagicMirror, Item.MoonPearl)
+                return items.contains(Item.MagicMirror)
             }
         ),
         Location(
             region: Region.DarkWorldEasternDeathMountain,
             name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [top chest]",
             address: 0xEA7C,
-            item: Item.ThreeBombs,
-            accessRequirements: { $0.contains(.MoonPearl) }
+            item: Item.ThreeBombs
         ),
         Location(
             region: Region.DarkWorldEasternDeathMountain,
             name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [bottom chest]",
             address: 0xEA7F,
-            item: Item.TwentyRupees,
-            accessRequirements: { $0.contains(.MoonPearl) }
+            item: Item.TwentyRupees
         ),
         Location(
             region: Region.DarkWorldEasternDeathMountain,
@@ -662,7 +660,7 @@ func easternDarkWorldDeathMountainItems() -> Locations {
             address: 0xEB51,
             item: Item.FiftyRupees,
             accessRequirements: { items in
-                return items.containsAll(Item.Hookshot, Item.MoonPearl)
+                return items.contains(Item.Hookshot)
             }
         ),
         Location(
@@ -671,7 +669,7 @@ func easternDarkWorldDeathMountainItems() -> Locations {
             address: 0xEB54,
             item: Item.FiftyRupees,
             accessRequirements: { items in
-                return items.containsAll(Item.Hookshot, Item.MoonPearl)
+                return items.contains(Item.Hookshot)
             }
         ),
         Location(
@@ -680,7 +678,7 @@ func easternDarkWorldDeathMountainItems() -> Locations {
             address: 0xEB57,
             item: Item.FiftyRupees,
             accessRequirements: { items in
-                return items.containsAll(Item.Hookshot, Item.MoonPearl)
+                return items.contains(Item.Hookshot)
             }
         ),
         Location(
@@ -689,7 +687,7 @@ func easternDarkWorldDeathMountainItems() -> Locations {
             address: 0xEB5A,
             item: Item.FiftyRupees,
             accessRequirements: { items in
-                return items.containsAll(Item.Hookshot, Item.MoonPearl)
+                return items.contains(Item.Hookshot)
                     // not actually required here, but stops some deadlocks
                     && items.contains(Item.FireRod)
             }
