@@ -29,6 +29,9 @@ func allLocations() -> Locations {
  circumstance of filling all remaining chests with junk items and deadlocking
  progress.
 
+ The Fire Rod shouldn't be able to create a deadlock but a breaker was present
+ in the original version, so I'm leaving it in.
+
  The locations in here create artification progression so that the items *do*
  get picked up during the expansion search. They get filtered out as potential
  destinatons during placement so no items get vanished.
@@ -37,7 +40,8 @@ func progressionItems() -> Locations {
     let r = Region.Progression
     return [
         Location(region: r, name: "Undeadlock: Turtle Rock Medallion", address: nil, item: .Nothing, accessRequirements: { $0.contains($0.findTurtleRockRequiredMedallion()) }),
-        Location(region: r, name: "Undeadlock: Cane of Somaria", address: nil, item: .Nothing, accessRequirements: { $0.contains(Item.CaneOfSomaria) }),
+        Location(region: r, name: "Undeadlock: Cane of Somaria", address: nil, item: .Nothing, accessRequirements: { $0.contains(.CaneOfSomaria) }),
+        Location(region: r, name: "Undeadlock: Fire Rod", address: nil, item: .Nothing, accessRequirements: { $0.contains(.FireRod) }),
     ]
 }
 
@@ -640,7 +644,7 @@ func easternDarkWorldDeathMountainItems() -> Locations {
         Location(region: r, name: "[cave-056] Dark World Death Mountain - cave under boulder [top right chest]", address: 0xEB51, item: .FiftyRupees, accessRequirements: { $0.contains(.Hookshot) }),
         Location(region: r, name: "[cave-056] Dark World Death Mountain - cave under boulder [top left chest]", address: 0xEB54, item: .FiftyRupees, accessRequirements: { $0.contains(.Hookshot) }),
         Location(region: r, name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom left chest]", address: 0xEB57, item: .FiftyRupees, accessRequirements: { $0.contains(.Hookshot) }),
-        Location(region: r, name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom right chest]", address: 0xEB5A, item: .FiftyRupees, accessRequirements: { $0.containsAll(.Hookshot,/* deadlocks? */ .FireRod) }),
+        Location(region: r, name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom right chest]", address: 0xEB5A, item: .FiftyRupees, accessRequirements: { $0.contains(.Hookshot) }),
     ]
 }
 
