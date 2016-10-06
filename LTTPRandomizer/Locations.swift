@@ -933,68 +933,15 @@ func thievesTownItems() -> Locations {
 }
 
 func icePalaceItems() -> Locations {
+    let r = Region.IcePalace
     return [
-        Location(
-            region: Region.IcePalace,
-            name: "[dungeon-D5-B4] Ice Palace - above Blue Mail room",
-            address: 0xE995,
-            item: Item.ThreeBombs,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.IcePalace,
-            name: "[dungeon-D5-B1] Ice Palace - Big Key room",
-            address: 0xE9A4,
-            item: Item.BigKey,
-            rules: DungeonRules(zone: 2, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.containsAll(Item.Hookshot, Item.Hammer)
-            }
-        ),
-        Location(
-            region: Region.IcePalace,
-            name: "[dungeon-D5-B5] Ice Palace - big chest",
-            address: 0xE9AA,
-            item: Item.BlueMail,
-            rules: DungeonRules(zone: 2, bigKeyZone: true),
-            accessRequirements: { items in
-                return items.containsAll(Item.Hookshot, Item.Hammer)
-            }
-        ),
-        Location(
-            region: Region.IcePalace,
-            name: "[dungeon-D5-B1] Ice Palace - compass room",
-            address: 0xE9D4,
-            item: Item.Compass,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.IcePalace,
-            name: "[dungeon-D5-B2] Ice Palace - map room",
-            address: 0xE9DD,
-            item: Item.Map,
-            rules: DungeonRules(zone: 2, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.containsAll(Item.Hookshot, Item.Hammer)
-            }
-        ),
-        Location(
-            region: Region.IcePalace,
-            name: "[dungeon-D5-B3] Ice Palace - spike room",
-            address: 0xE9E0,
-            item: Item.Key,
-            rules: DungeonRules(zone: 2, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.Hookshot)
-            }
-        ),
-        Location(
-            region: Region.IcePalace,
-            name: "[dungeon-D5-B5] Ice Palace - b5 up staircase",
-            address: 0xE9E3,
-            item: Item.Key,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
+        Location(region: r, name: "[dungeon-D5-B4] Ice Palace - above Blue Mail room", address: 0xE995, item: .ThreeBombs, rules: DungeonRules(zone: 2, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D5-B1] Ice Palace - Big Key room", address: 0xE9A4, item: .BigKey, rules: DungeonRules(zone: 2, bigKeyZone: false), accessRequirements: { $0.containsAll(.Hookshot, .Hammer) }),
+        Location(region: r, name: "[dungeon-D5-B5] Ice Palace - big chest", address: 0xE9AA, item: .BlueMail, rules: DungeonRules(zone: 2, bigKeyZone: true), accessRequirements: { $0.containsAll(.Hookshot, .Hammer) }),
+        Location(region: r, name: "[dungeon-D5-B1] Ice Palace - compass room", address: 0xE9D4, item: .Compass, rules: DungeonRules(zone: 1, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D5-B2] Ice Palace - map room", address: 0xE9DD, item: .Map, rules: DungeonRules(zone: 2, bigKeyZone: false), accessRequirements: { $0.containsAll(.Hookshot, .Hammer) }),
+        Location(region: r, name: "[dungeon-D5-B3] Ice Palace - spike room", address: 0xE9E0, item: .Key, rules: DungeonRules(zone: 2, bigKeyZone: false), accessRequirements: { $0.contains(.Hookshot) }),
+        Location(region: r, name: "[dungeon-D5-B5] Ice Palace - b5 up staircase", address: 0xE9E3, item: .Key, rules: DungeonRules(zone: 2, bigKeyZone: false)),
     ]
 }
 
