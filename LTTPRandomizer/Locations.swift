@@ -34,25 +34,10 @@ func allLocations() -> Locations {
  destinatons during placement so no items get vanished.
  */
 func progressionItems() -> Locations {
+    let r = Region.Progression
     return [
-        Location(
-            region: Region.Progression,
-            name: "Undeadlock: Turtle Rock Medallion",
-            address: nil,
-            item: Item.Nothing,
-            accessRequirements: { items in
-                return items.contains(items.findTurtleRockRequiredMedallion())
-            }
-        ),
-        Location(
-            region: Region.Progression,
-            name: "Undeadlock: Cane of Somaria",
-            address: nil,
-            item: Item.Nothing,
-            accessRequirements: { items in
-                return items.contains(Item.CaneOfSomaria)
-            }
-        ),
+        Location(region: r, name: "Undeadlock: Turtle Rock Medallion", address: nil, item: .Nothing, accessRequirements: { $0.contains($0.findTurtleRockRequiredMedallion()) }),
+        Location(region: r, name: "Undeadlock: Cane of Somaria", address: nil, item: .Nothing, accessRequirements: { $0.contains(Item.CaneOfSomaria) }),
     ]
 }
 
