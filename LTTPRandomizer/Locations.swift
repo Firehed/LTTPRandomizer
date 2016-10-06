@@ -262,66 +262,18 @@ func southDarkWorldItems() -> Locations {
 }
 
 func northWestDarkWorldItems() -> Locations {
+    let r = Region.DarkWorldNorthWest
     return [
-        Location(
-            // If you've already picked up the blue boomerang, this spawns 300 rupees in a normal run
-            region: Region.DarkWorldNorthWest,
-            name: "[cave-063] doorless hut",
-            address: 0xE9EC,
-            item: Item.RedBoomerang
-        ),
-        Location(
-            region: Region.DarkWorldNorthWest,
-            name: "[cave-062] C-shaped house",
-            address: 0xE9EF,
-            item: Item.ThreeHundredRupees
-        ),
-        Location(
-            region: Region.DarkWorldNorthWest,
-            name: "Piece of Heart (Dark World blacksmith pegs)",
-            address: 0x180006,
-            item: Item.PieceOfHeart,
-            accessRequirements: { items in
-                return items.canLiftHeavyRocks()
-                    && items.contains(Item.Hammer)
-            }
-        ),
-        Location(
-            region: Region.DarkWorldNorthWest,
-            name: "Piece of Heart (Dark World - bumper cave)",
-            address: 0x180146,
-            item: Item.PieceOfHeart,
-            accessRequirements: { items in
-                return items.containsAll(Item.Cape, Item.Hookshot)
-            }
-        ),
+        Location(region: r, name: "[cave-062] C-shaped house", address: 0xE9EF, item: .ThreeHundredRupees),
+        // If you've already picked up the blue boomerang, this spawns 300 rupees in a normal run
+        Location(region: r, name: "[cave-063] doorless hut", address: 0xE9EC, item: .RedBoomerang),
+        Location(region: r, name: "Piece of Heart (Dark World blacksmith pegs)", address: 0x180006, item: .PieceOfHeart, accessRequirements: { $0.canLiftHeavyRocks() && $0.contains(.Hammer) }),
+        Location(region: r, name: "Piece of Heart (Dark World - bumper cave)", address: 0x180146, item: .PieceOfHeart, accessRequirements: { $0.containsAll(.Cape, .Hookshot) }),
         // Technically item is in LW, but put here for access reqs
-        Location(
-            region: Region.DarkWorldNorthWest,
-            name: "Purple Chest",
-            address: 0x33D68,
-            item: Item.Bottle,
-            accessRequirements: { items in
-                return items.canLiftHeavyRocks()
-                    && items.contains(Item.MagicMirror)
-            }
-        ),
+        Location(region: r, name: "Piece of Heart (Graveyard)", address: 0x180004, item: .PieceOfHeart, accessRequirements: { $0.contains(.MagicMirror) }),
+        Location(region: r, name: "Piece of Heart (Treasure Chest Game)", address: 0xEDA8, item: .PieceOfHeart),
         // Same
-        Location(
-            region: Region.DarkWorldNorthWest,
-            name: "Piece of Heart (Graveyard)",
-            address: 0x180004,
-            item: Item.PieceOfHeart,
-            accessRequirements: { items in
-                return items.contains(Item.MagicMirror)
-            }
-        ),
-        Location(
-            region: Region.DarkWorldNorthWest,
-            name: "Piece of Heart (Treasure Chest Game)",
-            address: 0xEDA8,
-            item: Item.PieceOfHeart
-        ),
+        Location(region: r, name: "Purple Chest", address: 0x33D68, item: .Bottle, accessRequirements: { $0.canLiftHeavyRocks() && $0.contains(.MagicMirror) }),
     ]
 }
 
