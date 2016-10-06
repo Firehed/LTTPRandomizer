@@ -379,40 +379,19 @@ func zorasDomainItems() -> Locations {
 // MARK: LW Dungeons
 
 func hyruleEscapeItems() -> Locations {
+    let r = Region.HyruleCastleEscape
     // If you get a sword or shield upgrade before reaching your uncle (link's house chest only), it looks like he hands you the upgraded item but it's just a visual bug and they get reset
     // If you get a sword upgrade before entering the room with Zelda's jail cell, she won't spawn and the game is deadlocked
-    var linksHouse = Location(
-        region: Region.HyruleCastleEscape,
-        name: "[cave-040] Link's House",
-        address: 0xE9BC,
-        item: Item.Lamp
-    )
+    var linksHouse = Location(region: r, name: "[cave-040] Link's House", address: 0xE9BC, item: .Lamp)
     linksHouse.canHoldItem = { !$0.isSword && !$0.isShield }
 
-    var secret = Location(
-        region: Region.HyruleCastleEscape,
-        name: "[cave-034] Hyrule Castle secret entrance",
-        address: 0xE971,
-        item: Item.FiveRupees
-    )
+    var secret = Location(region: r, name: "[cave-034] Hyrule Castle secret entrance", address: 0xE971, item: .FiveRupees)
     secret.canHoldItem = { !$0.isSword }
 
-    var map = Location(
-        region: Region.HyruleCastleEscape,
-        name: "[dungeon-C-B1] Hyrule Castle - map room",
-        address: 0xEB0C,
-        item: Item.Map,
-        rules: DungeonRules(zone: 0, bigKeyZone: false)
-    )
+    var map = Location(region: r, name: "[dungeon-C-B1] Hyrule Castle - map room", address: 0xEB0C, item: .Map, rules: DungeonRules(zone: 0, bigKeyZone: false))
     map.canHoldItem = { !$0.isSword }
 
-    var boomerang = Location(
-        region: Region.HyruleCastleEscape,
-        name: "[dungeon-C-B1] Hyrule Castle - boomerang room",
-        address: 0xE974,
-        item: Item.Boomerang,
-        rules: DungeonRules(zone: 1, bigKeyZone: false)
-    )
+    var boomerang = Location(region: r, name: "[dungeon-C-B1] Hyrule Castle - boomerang room", address: 0xE974, item: .Boomerang, rules: DungeonRules(zone: 1, bigKeyZone: false))
     boomerang.canHoldItem = { !$0.isSword }
 
     return [
@@ -420,57 +399,12 @@ func hyruleEscapeItems() -> Locations {
         secret,
         map,
         boomerang,
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B3] Hyrule Castle - next to Zelda",
-            address: 0xEB09,
-            item: Item.FiveRupees,
-            rules: DungeonRules(zone: 2, bigKeyZone: false) // Technically it is needed, but BK doesn't spawn in a chest so this would break
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B1] Escape - first B1 room",
-            address: 0xE96E,
-            item: Item.Key,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B1] Escape - final basement room [left chest]",
-            address: 0xEB5D,
-            item: Item.ThreeBombs,
-            rules: DungeonRules(zone: 4, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.canLiftRocks()
-            }
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B1] Escape - final basement room [middle chest]",
-            address: 0xEB60,
-            item: Item.ThreeHundredRupees,
-            rules: DungeonRules(zone: 4, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.canLiftRocks()
-            }
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-B1] Escape - final basement room [right chest]",
-            address: 0xEB63,
-            item: Item.TenArrows,
-            rules: DungeonRules(zone: 4, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.canLiftRocks()
-            }
-        ),
-        Location(
-            region: Region.HyruleCastleEscape,
-            name: "[dungeon-C-1F] Sanctuary",
-            address: 0xEA79,
-            item: Item.HeartContainer,
-            rules: DungeonRules(zone: 4, bigKeyZone: false)
-        ),
+        Location(region: r, name: "[dungeon-C-B3] Hyrule Castle - next to Zelda", address: 0xEB09, item: .FiveRupees, rules: DungeonRules(zone: 2, bigKeyZone: false)), // Technically it is needed, but BK doesn't spawn in a chest so this would break
+        Location(region: r, name: "[dungeon-C-B1] Escape - first B1 room", address: 0xE96E, item: .Key, rules: DungeonRules(zone: 2, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-C-B1] Escape - final basement room [left chest]", address: 0xEB5D, item: .ThreeBombs, rules: DungeonRules(zone: 4, bigKeyZone: false), accessRequirements: { $0.canLiftRocks() }),
+        Location(region: r, name: "[dungeon-C-B1] Escape - final basement room [middle chest]", address: 0xEB60, item: .ThreeHundredRupees, rules: DungeonRules(zone: 4, bigKeyZone: false), accessRequirements: { $0.canLiftRocks() }),
+        Location(region: r, name: "[dungeon-C-B1] Escape - final basement room [right chest]", address: 0xEB63, item: .TenArrows, rules: DungeonRules(zone: 4, bigKeyZone: false), accessRequirements: { $0.canLiftRocks() }),
+        Location(region: r, name: "[dungeon-C-1F] Sanctuary", address: 0xEA79, item: .HeartContainer, rules: DungeonRules(zone: 4, bigKeyZone: false)),
     ]
 }
 
