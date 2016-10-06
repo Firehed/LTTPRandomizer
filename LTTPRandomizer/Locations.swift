@@ -656,72 +656,63 @@ func fairyLocations() -> Locations {
 }
 
 func entranceLocations() -> Locations {
-    return [
-        Location(
-            region: Region.PatchOnly,
-            name: "Misery Mire Entrance Medallion",
-            address: nil,
-            item: Item.MireEther,
-            accessRequirements: { _ in true }, // TODO: remove after tidying initializers
-            onPatchingRom: { rom, item in
-                var bytes = [(addr: Int, value: UInt8)]()
-                switch item {
-                case .MireBombos:
-                    bytes.append((addr: 0x4FF2, value: 0x31))
-                    bytes.append((addr: 0x50D1, value: 0x80))
-                    bytes.append((addr: 0x51B0, value: 0))
-                    bytes.append((addr: 0x180022, value: 0))
-                    break
-                case .MireEther:
-                    bytes.append((addr: 0x180022, value: 1))
-                    break
-                case .MireQuake:
-                    bytes.append((addr: 0x4FF2, value: 0x31))
-                    bytes.append((addr: 0x50D1, value: 0x88))
-                    bytes.append((addr: 0x51B0, value: 0))
-                    bytes.append((addr: 0x180022, value: 2))
-                    break
-                default:
-                    break
-                }
-                for byte in bytes {
-                    rom.patch(atByteOffset: byte.addr, withData: Data(bytes: [byte.value]))
-                }
-            }
-        ),
-        Location(
-            region: Region.PatchOnly,
-            name: "Turtle Rock Entrance Medallion",
-            address: nil,
-            item: Item.TRQuake,
-            accessRequirements: { _ in true }, // TODO: remove after tidying initializers
-            onPatchingRom: { rom, item in
-                var bytes = [(addr: Int, value: UInt8)]()
-                switch item {
-                case .TRBombos:
-                    bytes.append((addr: 0x5020, value: 0x31))
-                    bytes.append((addr: 0x50FF, value: 0x90))
-                    bytes.append((addr: 0x51DE, value: 0))
-                    bytes.append((addr: 0x180023, value: 0))
-                    break
-                case .TREther:
-                    bytes.append((addr: 0x5020, value: 0x31))
-                    bytes.append((addr: 0x50FF, value: 0x98))
-                    bytes.append((addr: 0x51DE, value: 0))
-                    bytes.append((addr: 0x180023, value: 1))
-                    break
-                case .TRQuake:
-                    bytes.append((addr: 0x180023, value: 2))
-                    break
-                default:
-                    break
-                }
-                for byte in bytes {
-                    rom.patch(atByteOffset: byte.addr, withData: Data(bytes: [byte.value]))
-                }
-            }
-        ),
-    ]
+    let r = Region.PatchOnly
+
+    var mire = Location(region: r, name: "Misery Mire Entrance Medallion", address: nil, item: .MireEther)
+    mire.onPatchingRom = { rom, item in
+        var bytes = [(addr: Int, value: UInt8)]()
+        switch item {
+        case .MireBombos:
+            bytes.append((addr: 0x4FF2, value: 0x31))
+            bytes.append((addr: 0x50D1, value: 0x80))
+            bytes.append((addr: 0x51B0, value: 0))
+            bytes.append((addr: 0x180022, value: 0))
+            break
+        case .MireEther:
+            bytes.append((addr: 0x180022, value: 1))
+            break
+        case .MireQuake:
+            bytes.append((addr: 0x4FF2, value: 0x31))
+            bytes.append((addr: 0x50D1, value: 0x88))
+            bytes.append((addr: 0x51B0, value: 0))
+            bytes.append((addr: 0x180022, value: 2))
+            break
+        default:
+            break
+        }
+        for byte in bytes {
+            rom.patch(atByteOffset: byte.addr, withData: Data(bytes: [byte.value]))
+        }
+    }
+
+    var turtleRock = Location(region: r, name: "Turtle Rock Entrance Medallion", address: nil, item: .TRQuake)
+    turtleRock.onPatchingRom = { rom, item in
+        var bytes = [(addr: Int, value: UInt8)]()
+        switch item {
+        case .TRBombos:
+            bytes.append((addr: 0x5020, value: 0x31))
+            bytes.append((addr: 0x50FF, value: 0x90))
+            bytes.append((addr: 0x51DE, value: 0))
+            bytes.append((addr: 0x180023, value: 0))
+            break
+        case .TREther:
+            bytes.append((addr: 0x5020, value: 0x31))
+            bytes.append((addr: 0x50FF, value: 0x98))
+            bytes.append((addr: 0x51DE, value: 0))
+            bytes.append((addr: 0x180023, value: 1))
+            break
+        case .TRQuake:
+            bytes.append((addr: 0x180023, value: 2))
+            break
+        default:
+            break
+        }
+        for byte in bytes {
+            rom.patch(atByteOffset: byte.addr, withData: Data(bytes: [byte.value]))
+        }
+    }
+
+    return [mire, turtleRock]
 }
 
 func getHalfMagicBatLocation() -> Location {
