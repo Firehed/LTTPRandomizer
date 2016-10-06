@@ -48,292 +48,61 @@ func progressionItems() -> Locations {
 // MARK: LW Overworld
 
 func lightWorldItems() -> Locations {
+    let r = Region.LightWorld
+
+    var ether = Location(region: r, name: "Ether Tablet", address: 0x48B7C, item: .Ether, accessRequirements: { $0.canEnterTowerOfHera() && $0.canGetAtLeastMasterSword() && $0.contains(.BookOfMudora) })
+    ether.onPatchingRom = { rom, item in
+        // Inventory item check?
+        rom.patch(atByteOffset: 0x44AA9, withData: item.asData())
+    }
+
+    let capeAccess: (Set<Item>) -> Bool = { items in
+        return items.contains(.PegasusBoots)
+            && (items.canLiftHeavyRocks() // LW intended
+                || (items.canAccessNorthWestDarkWorld()
+                    && items.containsAll(.MagicMirror, .MoonPearl)))
+    }
+
     return [
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-018] Graveyard - top right grave",
-            address: 0xE97A,
-            item: Item.Cape,
-            accessRequirements: { items in
-                return items.contains(Item.PegasusBoots)
-                    && (items.canLiftHeavyRocks()
-                        || (items.canAccessNorthWestDarkWorld()
-                            && items.containsAll(Item.MagicMirror, Item.MoonPearl)))
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-047] Dam",
-            address: 0xE98C,
-            item: Item.ThreeBombs
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-031] Tavern",
-            address: 0xE9CE,
-            item: Item.Bottle
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-026] chicken house",
-            address: 0xE9E9,
-            item: Item.TenArrows
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-044] Aginah's cave",
-            address: 0xE9F2,
-            item: Item.PieceOfHeart
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-035] Sahasrahla's Hut [left chest]",
-            address: 0xEA82,
-            item: Item.FiftyRupees
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-035] Sahasrahla's Hut [center chest]",
-            address: 0xEA85,
-            item: Item.ThreeBombs
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-035] Sahasrahla's Hut [right chest]",
-            address: 0xEA88,
-            item: Item.FiftyRupees
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-021] Kakariko well [top chest]",
-            address: 0xEA8E,
-            item: Item.PieceOfHeart
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-021] Kakariko well [left chest row of 3]",
-            address: 0xEA91,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-021] Kakariko well [center chest row of 3]",
-            address: 0xEA94,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-021] Kakariko well [right chest row of 3]",
-            address: 0xEA97,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-021] Kakariko well [bottom chest]",
-            address: 0xEA9A,
-            item: Item.ThreeBombs
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-022-B1] Thief's hut [top chest]",
-            address: 0xEB0F,
-            item: Item.PieceOfHeart
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-022-B1] Thief's hut [top left chest]",
-            address: 0xEB12,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-022-B1] Thief's hut [top right chest]",
-            address: 0xEB15,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-022-B1] Thief's hut [bottom left chest]",
-            address: 0xEB18,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-022-B1] Thief's hut [bottom right chest]",
-            address: 0xEB1B,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-016] cave under rocks west of Santuary",
-            address: 0xEB3F,
-            item: Item.PieceOfHeart,
-            accessRequirements: { items in
-                return items.contains(Item.PegasusBoots)
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-050] cave southwest of Lake Hylia [bottom left chest]",
-            address: 0xEB42,
-            item: Item.ThreeBombs
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-050] cave southwest of Lake Hylia [top left chest]",
-            address: 0xEB45,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-050] cave southwest of Lake Hylia [top right chest]",
-            address: 0xEB48,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-050] cave southwest of Lake Hylia [bottom right chest]",
-            address: 0xEB4B,
-            item: Item.TenArrows
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-051] Ice Cave",
-            address: 0xEB4E,
-            item: Item.IceRod
-        ),
-        //// Getting anything other than the sword here can be bad for progress... may as well keep the sword here since you can't use it if you get it before the uncle.
-        //Location(
-        //    lateGameItem: false,
-        //    region: Region.LightWorld,
-        //    name: "Uncle",
-        //    address: 0x2DF45,
-        //    item: Item.Nothing,
-        //    accessRequirements: { items in
-        //        return true
-        //    }
-        //),
-        Location(
-            region: Region.LightWorld,
-            name: "Bottle Vendor",
-            address: 0x2EB18,
-            item: Item.Bottle
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Sahasrahla",
-            address: 0x2F1FC,
-            item: Item.PegasusBoots,
-            accessRequirements: { items in
-                return items.canDefeatEasternPalace()
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Sick Kid",
-            address: 0x339CF,
-            item: Item.BugCatchingNet,
-            accessRequirements: { items in
-                return items.hasAnyBottle()
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Hobo",
-            address: 0x33E7D,
-            item: Item.Bottle,
-            accessRequirements: { items in
-                return items.contains(Item.Flippers)
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Ether Tablet",
-            address: 0x48B7C,
-            item: Item.Ether,
-            accessRequirements: { items in
-                return items.canEnterTowerOfHera()
-                    && items.canGetAtLeastMasterSword()
-                    && items.contains(Item.BookOfMudora)
-            },
-            onPatchingRom: { rom, item in
-                // Inventory item check?
-                rom.patch(atByteOffset: 0x44AA9, withData: item.asData())
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Piece of Heart (Thieves' Forest Hideout)",
-            address: 0x180000,
-            item: Item.PieceOfHeart
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Piece of Heart (Lumberjack Tree)",
-            address: 0x180001,
-            item: Item.PieceOfHeart,
-            accessRequirements: { items in
-                return items.canDefeatAgahnim1()
-                    && items.contains(Item.PegasusBoots)
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "[cave-050] cave southwest of Lake Hylia - generous guy",
-            address: 0x180010,
-            item: Item.ThreeHundredRupees
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Library",
-            address: 0x180012,
-            item: Item.BookOfMudora,
-            accessRequirements: { items in
-                return items.contains(Item.PegasusBoots)
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Piece of Heart (Maze Race)",
-            address: 0x180142,
-            item: Item.PieceOfHeart
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Piece of Heart (Desert - west side)",
-            address: 0x180143,
-            item: Item.PieceOfHeart,
-            accessRequirements: { items in
-                return items.contains(Item.BookOfMudora)
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Piece of Heart (Dam)",
-            address: 0x180145,
-            item: Item.PieceOfHeart
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Mushroom",
-            address: 0x180013,
-            item: Item.Mushroom
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Witch",
-            address: 0x180014,
-            item: Item.Powder,
-            accessRequirements: { items in
-                return items.contains(Item.Mushroom)
-            }
-        ),
-        Location(
-            region: Region.LightWorld,
-            name: "Haunted Grove Item",
-            address: 0x18014A,
-            item: Item.OcarinaInactive
-        ),
+        ether,
+        Location(region: r, name: "[cave-016] cave under rocks west of Santuary", address: 0xEB3F, item: .PieceOfHeart, accessRequirements: { $0.contains(.PegasusBoots) }),
+        Location(region: r, name: "[cave-018] Graveyard - top right grave", address: 0xE97A, item: .Cape, accessRequirements: capeAccess),
+        Location(region: r, name: "[cave-021] Kakariko well [top chest]", address: 0xEA8E, item: .PieceOfHeart),
+        Location(region: r, name: "[cave-021] Kakariko well [left chest row of 3]", address: 0xEA91, item: .TwentyRupees),
+        Location(region: r, name: "[cave-021] Kakariko well [center chest row of 3]", address: 0xEA94, item: .TwentyRupees),
+        Location(region: r, name: "[cave-021] Kakariko well [right chest row of 3]", address: 0xEA97, item: .TwentyRupees),
+        Location(region: r, name: "[cave-021] Kakariko well [bottom chest]", address: 0xEA9A, item: .ThreeBombs),
+        Location(region: r, name: "[cave-022-B1] Thief's hut [top chest]", address: 0xEB0F, item: .PieceOfHeart),
+        Location(region: r, name: "[cave-022-B1] Thief's hut [top left chest]", address: 0xEB12, item: .TwentyRupees),
+        Location(region: r, name: "[cave-022-B1] Thief's hut [top right chest]", address: 0xEB15, item: .TwentyRupees),
+        Location(region: r, name: "[cave-022-B1] Thief's hut [bottom left chest]", address: 0xEB18, item: .TwentyRupees),
+        Location(region: r, name: "[cave-022-B1] Thief's hut [bottom right chest]", address: 0xEB1B, item: .TwentyRupees),
+        Location(region: r, name: "[cave-026] chicken house", address: 0xE9E9, item: .TenArrows),
+        Location(region: r, name: "[cave-031] Tavern", address: 0xE9CE, item: .Bottle),
+        Location(region: r, name: "[cave-035] Sahasrahla's Hut [left chest]", address: 0xEA82, item: .FiftyRupees),
+        Location(region: r, name: "[cave-035] Sahasrahla's Hut [center chest]", address: 0xEA85, item: .ThreeBombs),
+        Location(region: r, name: "[cave-035] Sahasrahla's Hut [right chest]", address: 0xEA88, item: .FiftyRupees),
+        Location(region: r, name: "[cave-044] Aginah's cave", address: 0xE9F2, item: .PieceOfHeart),
+        Location(region: r, name: "[cave-047] Dam", address: 0xE98C, item: .ThreeBombs),
+        Location(region: r, name: "[cave-050] cave southwest of Lake Hylia - generous guy", address: 0x180010, item: .ThreeHundredRupees),
+        Location(region: r, name: "[cave-050] cave southwest of Lake Hylia [bottom left chest]", address: 0xEB42, item: .ThreeBombs),
+        Location(region: r, name: "[cave-050] cave southwest of Lake Hylia [top left chest]", address: 0xEB45, item: .TwentyRupees),
+        Location(region: r, name: "[cave-050] cave southwest of Lake Hylia [top right chest]", address: 0xEB48, item: .TwentyRupees),
+        Location(region: r, name: "[cave-050] cave southwest of Lake Hylia [bottom right chest]", address: 0xEB4B, item: .TenArrows),
+        Location(region: r, name: "[cave-051] Ice Cave", address: 0xEB4E, item: .IceRod),
+        Location(region: r, name: "Bottle Vendor", address: 0x2EB18, item: .Bottle),
+        Location(region: r, name: "Haunted Grove Item", address: 0x18014A, item: .OcarinaInactive, accessRequirements: { $0.contains(.Shovel) }),
+        Location(region: r, name: "Hobo", address: 0x33E7D, item: .Bottle, accessRequirements: { $0.contains(.Flippers) }),
+        Location(region: r, name: "Library", address: 0x180012, item: .BookOfMudora, accessRequirements: { $0.contains(.PegasusBoots) }),
+        Location(region: r, name: "Mushroom", address: 0x180013, item: .Mushroom),
+        Location(region: r, name: "Piece of Heart (Dam)", address: 0x180145, item: .PieceOfHeart),
+        Location(region: r, name: "Piece of Heart (Desert - west side)", address: 0x180143, item: .PieceOfHeart, accessRequirements: { $0.contains(.BookOfMudora) }),
+        Location(region: r, name: "Piece of Heart (Lumberjack Tree)", address: 0x180001, item: .PieceOfHeart, accessRequirements: { $0.canDefeatAgahnim1() && $0.contains(.PegasusBoots) }),
+        Location(region: r, name: "Piece of Heart (Maze Race)", address: 0x180142, item: .PieceOfHeart),
+        Location(region: r, name: "Piece of Heart (Thieves' Forest Hideout)", address: 0x180000, item: .PieceOfHeart),
+        Location(region: r, name: "Sahasrahla", address: 0x2F1FC, item: .PegasusBoots, accessRequirements: { $0.canDefeatEasternPalace() }),
+        Location(region: r, name: "Sick Kid", address: 0x339CF, item: .BugCatchingNet, accessRequirements: { $0.hasAnyBottle() }),
+        Location(region: r, name: "Witch", address: 0x180014, item: .Powder, accessRequirements: { $0.contains(.Mushroom) }),
     ]
 }
 
@@ -403,6 +172,7 @@ func hyruleEscapeItems() -> Locations {
         secret,
         map,
         boomerang,
+        // Location(region: r, name: "Uncle", address: 0x2DF45, item: .L1SwordAndShield) // Leave your uncle alone
         Location(region: r, name: "[dungeon-C-B3] Hyrule Castle - next to Zelda", address: 0xEB09, item: .FiveRupees, rules: DungeonRules(zone: 2, bigKeyZone: false)), // Technically it is needed, but BK doesn't spawn in a chest so this would break
         Location(region: r, name: "[dungeon-C-B1] Escape - first B1 room", address: 0xE96E, item: .Key, rules: DungeonRules(zone: 2, bigKeyZone: false)),
         Location(region: r, name: "[dungeon-C-B1] Escape - final basement room [left chest]", address: 0xEB5D, item: .ThreeBombs, rules: DungeonRules(zone: 4, bigKeyZone: false), accessRequirements: { $0.canLiftRocks() }),
