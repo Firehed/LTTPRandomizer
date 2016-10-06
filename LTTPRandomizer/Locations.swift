@@ -374,32 +374,20 @@ func lightWorldEasternDeathMountainItems() -> Locations {
 }
 
 func zorasDomainItems() -> Locations {
-    return [
-        // Zora's appearance is based on if you items flippers or not
-        Location(
-            region: Region.ZorasDomain,
-            name: "King Zora",
-            address: 0xEE1C3,
-            item: Item.Flippers,
-            accessRequirements: { _ in return true }, // TODO: remove after tidying initializers
-            onPatchingRom: { rom, item in
-                // (This is a guess based on the Windows source)
-                // Indicates what item's presence will block the Zora scene
-                rom.patch(atByteOffset: 0x180200, withData: item.bytesForInventoryCheckOverride)
-                // Update end-game credits
-                rom.patch(atByteOffset: 0x76A85, withData: item.bytesForCredits)
+    let r = Region.ZorasDomain
 
-            }
-        ),
-        Location(
-            region: Region.ZorasDomain,
-            name: "Piece of Heart (Zora's River)",
-            address: 0x180149,
-            item: Item.PieceOfHeart,
-            accessRequirements: { items in
-                return items.contains(Item.Flippers)
-            }
-        ),
+    var zora = Location(region: r, name: "King Zora", address: 0xEE1C3, item: .Flippers)
+    zora.onPatchingRom = { rom, item in
+        // (This is a guess based on the Windows source)
+        // Indicates what item's presence will block the Zora scene
+        rom.patch(atByteOffset: 0x180200, withData: item.bytesForInventoryCheckOverride)
+        // Update end-game credits
+        rom.patch(atByteOffset: 0x76A85, withData: item.bytesForCredits)
+    }
+
+    return [
+        zora,
+        Location(region: r, name: "Piece of Heart (Zora's River)", address: 0x180149, item: .PieceOfHeart, accessRequirements: { $0.contains(.Flippers) }),
     ]
 }
 
