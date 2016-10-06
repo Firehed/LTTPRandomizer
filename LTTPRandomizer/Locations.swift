@@ -632,66 +632,15 @@ func mireItems() -> Locations {
 }
 
 func easternDarkWorldDeathMountainItems() -> Locations {
+    let r = Region.DarkWorldEasternDeathMountain
     return [
-        Location(
-            region: Region.DarkWorldEasternDeathMountain,
-            name: "Piece of Heart (Death Mountain - floating island)",
-            address: 0x180141,
-            item: Item.PieceOfHeart,
-            accessRequirements: { items in
-                return items.contains(Item.MagicMirror)
-            }
-        ),
-        Location(
-            region: Region.DarkWorldEasternDeathMountain,
-            name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [top chest]",
-            address: 0xEA7C,
-            item: Item.ThreeBombs
-        ),
-        Location(
-            region: Region.DarkWorldEasternDeathMountain,
-            name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [bottom chest]",
-            address: 0xEA7F,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.DarkWorldEasternDeathMountain,
-            name: "[cave-056] Dark World Death Mountain - cave under boulder [top right chest]",
-            address: 0xEB51,
-            item: Item.FiftyRupees,
-            accessRequirements: { items in
-                return items.contains(Item.Hookshot)
-            }
-        ),
-        Location(
-            region: Region.DarkWorldEasternDeathMountain,
-            name: "[cave-056] Dark World Death Mountain - cave under boulder [top left chest]",
-            address: 0xEB54,
-            item: Item.FiftyRupees,
-            accessRequirements: { items in
-                return items.contains(Item.Hookshot)
-            }
-        ),
-        Location(
-            region: Region.DarkWorldEasternDeathMountain,
-            name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom left chest]",
-            address: 0xEB57,
-            item: Item.FiftyRupees,
-            accessRequirements: { items in
-                return items.contains(Item.Hookshot)
-            }
-        ),
-        Location(
-            region: Region.DarkWorldEasternDeathMountain,
-            name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom right chest]",
-            address: 0xEB5A,
-            item: Item.FiftyRupees,
-            accessRequirements: { items in
-                return items.contains(Item.Hookshot)
-                    // not actually required here, but stops some deadlocks
-                    && items.contains(Item.FireRod)
-            }
-        ),
+        Location(region: r, name: "Piece of Heart (Death Mountain - floating island)", address: 0x180141, item: .PieceOfHeart, accessRequirements: { $0.contains(.MagicMirror) }),
+        Location(region: r, name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [top chest]", address: 0xEA7C, item: .ThreeBombs),
+        Location(region: r, name: "[cave-057-1F] Dark World Death Mountain - cave from top to bottom [bottom chest]", address: 0xEA7F, item: .TwentyRupees),
+        Location(region: r, name: "[cave-056] Dark World Death Mountain - cave under boulder [top right chest]", address: 0xEB51, item: .FiftyRupees, accessRequirements: { $0.contains(.Hookshot) }),
+        Location(region: r, name: "[cave-056] Dark World Death Mountain - cave under boulder [top left chest]", address: 0xEB54, item: .FiftyRupees, accessRequirements: { $0.contains(.Hookshot) }),
+        Location(region: r, name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom left chest]", address: 0xEB57, item: .FiftyRupees, accessRequirements: { $0.contains(.Hookshot) }),
+        Location(region: r, name: "[cave-056] Dark World Death Mountain - cave under boulder [bottom right chest]", address: 0xEB5A, item: .FiftyRupees, accessRequirements: { $0.containsAll(.Hookshot,/* deadlocks? */ .FireRod) }),
     ]
 }
 
