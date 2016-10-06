@@ -623,34 +623,11 @@ func northWestDarkWorldItems() -> Locations {
 }
 
 func mireItems() -> Locations {
+    let r = Region.DarkWorldMire
     return [
-        Location(
-            region: Region.DarkWorldMire,
-            name: "[cave-071] Misery Mire west area [left chest]",
-            address: 0xEA73,
-            item: Item.PieceOfHeart,
-            accessRequirements: { items in
-                return items.contains(.MoonPearl)
-            }
-        ),
-        Location(
-            region: Region.DarkWorldMire,
-            name: "[cave-071] Misery Mire west area [right chest]",
-            address: 0xEA76,
-            item: Item.TwentyRupees,
-            accessRequirements: { items in
-                return items.contains(.MoonPearl)
-            }
-        ),
-        Location(
-            region: Region.DarkWorldMire,
-            name: "Piece of Heart (Desert - northeast corner)",
-            address: 0x180005,
-            item: Item.PieceOfHeart,
-            accessRequirements: { items in
-                return items.contains(Item.MagicMirror)
-            }
-        ),
+        Location(region: r, name: "[cave-071] Misery Mire west area [left chest]", address: 0xEA73, item: .PieceOfHeart, accessRequirements: { $0.contains(.MoonPearl) }),
+        Location(region: r, name: "[cave-071] Misery Mire west area [right chest]", address: 0xEA76, item: .TwentyRupees, accessRequirements: { $0.contains(.MoonPearl) }),
+        Location(region: r, name: "Piece of Heart (Desert - northeast corner)", address: 0x180005, item: .PieceOfHeart, accessRequirements: { $0.contains(.MagicMirror) }),
     ]
 }
 
