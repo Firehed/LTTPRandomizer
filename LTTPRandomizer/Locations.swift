@@ -386,55 +386,16 @@ func lightWorthDeathMountainItems() -> Locations {
 }
 
 func lightWorldEasternDeathMountainItems() -> Locations {
+    let r = Region.LightWorldEasternDeathMountain
     return [
-        Location(
-            region: Region.LightWorldEasternDeathMountain,
-            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top left chest]",
-            address: 0xEB2A,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.LightWorldEasternDeathMountain,
-            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top left middle chest]",
-            address: 0xEB2D,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.LightWorldEasternDeathMountain,
-            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top right middle chest]",
-            address: 0xEB30,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.LightWorldEasternDeathMountain,
-            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top right chest]",
-            address: 0xEB33,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.LightWorldEasternDeathMountain,
-            name: "[cave-009-1F] Death Mountain - wall of caves - right cave [bottom chest]",
-            address: 0xEB36,
-            item: Item.TwentyRupees
-        ),
-        Location(
-            region: Region.LightWorldEasternDeathMountain,
-            name: "[cave-009-B1] Death Mountain - wall of caves - right cave [left chest]",
-            address: 0xEB39,
-            item: Item.ThreeBombs
-        ),
-        Location(
-            region: Region.LightWorldEasternDeathMountain,
-            name: "[cave-009-B1] Death Mountain - wall of caves - right cave [right chest]",
-            address: 0xEB3C,
-            item: Item.TenArrows
-        ),
-        Location(
-            region: Region.LightWorldEasternDeathMountain,
-            name: "[cave-012-1F] Death Mountain - wall of caves - left cave",
-            address: 0xE9BF,
-            item: Item.FiftyRupees
-        ),
+        Location(region: r, name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top left chest]", address: 0xEB2A, item: .TwentyRupees),
+        Location(region: r, name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top left middle chest]", address: 0xEB2D, item: .TwentyRupees),
+        Location(region: r, name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top right middle chest]", address: 0xEB30, item: .TwentyRupees),
+        Location(region: r, name: "[cave-009-1F] Death Mountain - wall of caves - right cave [top right chest]", address: 0xEB33, item: .TwentyRupees),
+        Location(region: r, name: "[cave-009-1F] Death Mountain - wall of caves - right cave [bottom chest]", address: 0xEB36, item: .TwentyRupees),
+        Location(region: r, name: "[cave-009-B1] Death Mountain - wall of caves - right cave [left chest]", address: 0xEB39, item: .ThreeBombs),
+        Location(region: r, name: "[cave-009-B1] Death Mountain - wall of caves - right cave [right chest]", address: 0xEB3C, item: .TenArrows),
+        Location(region: r, name: "[cave-012-1F] Death Mountain - wall of caves - left cave", address: 0xE9BF, item: .FiftyRupees),
     ]
 }
 
