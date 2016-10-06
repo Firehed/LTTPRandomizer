@@ -487,130 +487,33 @@ func miseryMireItems() -> Locations {
 }
 
 func turtleRockItems() -> Locations {
+    let r = Region.TurtleRock
+
     // FIXME: everywhere except the map room chests don't actually require the
     // Fire Rod. This is a workaround for a shortcoming in dependency solving
-    // where available keys aren't considered when placing items in a dungeon.
+    // where available keys aren't considered when placing items in a dungeon;
+    // i.e. if the map room key and the compass are swapped, there's no reason
+    // that the entire dungeon isn't solvable without the Fire Rod (boss battle
+    // excepted)
+    let burn: (Set<Item>) -> Bool = { $0.contains(.FireRod) }
     return [
-        Location(
-            region: Region.TurtleRock,
-            name: "[dungeon-D7-1F] Turtle Rock - Chain chomp room",
-            address: 0xEA16,
-            item: Item.Key,
-            rules: DungeonRules(zone: 2, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.FireRod)
-            }
-        ),
-        Location(
-            region: Region.TurtleRock,
-            name: "[dungeon-D7-B1] Turtle Rock - big chest",
-            address: 0xEA19,
-            item: Item.MirrorShield,
-            rules: DungeonRules(zone: 3, bigKeyZone: true),
-            accessRequirements: { items in
-                return items.contains(Item.FireRod)
-            }
-        ),
-        Location(
-            region: Region.TurtleRock,
-            name: "[dungeon-D7-1F] Turtle Rock - Map room [left chest]",
-            address: 0xEA1C,
-            item: Item.Map,
-            rules: DungeonRules(zone: 0, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.FireRod)
-            }
-        ),
-        Location(
-            region: Region.TurtleRock,
-            name: "[dungeon-D7-1F] Turtle Rock - Map room [right chest]",
-            address: 0xEA1F,
-            item: Item.Key,
-            rules: DungeonRules(zone: 0, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.FireRod)
-            }
-        ),
-        Location(
-            region: Region.TurtleRock,
-            name: "[dungeon-D7-1F] Turtle Rock - compass room",
-            address: 0xEA22,
-            item: Item.Compass,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.TurtleRock,
-            name: "[dungeon-D7-B1] Turtle Rock - big key room",
-            address: 0xEA25,
-            item: Item.BigKey,
-            rules: DungeonRules(zone: 4, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.FireRod)
-            }
-        ),
-        Location(
-            region: Region.TurtleRock,
-            name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [top right chest]",
-            address: 0xEA28,
-            item: Item.OneRupee,
-            rules: DungeonRules(zone: 6, bigKeyZone: true),
-            accessRequirements: { items in
-                return items.contains(.FireRod) && items.containsAny(.MirrorShield, .StaffOfByrna, .Cape)
-            }
-        ),
-        Location(
-            region: Region.TurtleRock,
-            name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [top left chest]",
-            address: 0xEA2B,
-            item: Item.FiveRupees,
-            rules: DungeonRules(zone: 6, bigKeyZone: true),
-            accessRequirements: { items in
-                return items.contains(.FireRod) && items.containsAny(.MirrorShield, .StaffOfByrna, .Cape)
-            }
-        ),
-        Location(
-            region: Region.TurtleRock,
-            name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [bottom right chest]",
-            address: 0xEA2E,
-            item: Item.TwentyRupees,
-            rules: DungeonRules(zone: 6, bigKeyZone: true),
-            accessRequirements: { items in
-                return items.contains(.FireRod) && items.containsAny(.MirrorShield, .StaffOfByrna, .Cape)
-            }
-        ),
-        Location(
-            region: Region.TurtleRock,
-            name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [bottom left chest]",
-            address: 0xEA31,
-            item: Item.Key,
-            rules: DungeonRules(zone: 6, bigKeyZone: true),
-            accessRequirements: { items in
-                return items.contains(.FireRod) && items.containsAny(.MirrorShield, .StaffOfByrna, .Cape)
-            }
-        ),
-        Location(
-            region: Region.TurtleRock,
-            name: "[dungeon-D7-B1] Turtle Rock - Roller switch room",
-            address: 0xEA34,
-            item: Item.Key,
-            rules: DungeonRules(zone: 5, bigKeyZone: true),
-            accessRequirements: { items in
-                return items.contains(Item.FireRod)
-            }
-        ),
-        // Technically it's LW, but accessed inside TR
-        // FIXME: no key here
-        Location(
-            region: Region.TurtleRock,
-            name: "[cave-013] Mimic cave (from Turtle Rock)",
-            address: 0xE9C5,
-            item: Item.PieceOfHeart,
-            accessRequirements: { items in
-                return items.canEnterTurtleRock()
-                    // FireRod should not strictly be necessary depending on key placement
-                    && items.containsAll(Item.FireRod, Item.MagicMirror)
-            }
-        ),
+        Location(region: r, name: "[dungeon-D7-1F] Turtle Rock - compass room", address: 0xEA22, item: .Compass, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        // Actual FR requirement
+        Location(region: r, name: "[dungeon-D7-1F] Turtle Rock - Map room [left chest]", address: 0xEA1C, item: .Map, rules: DungeonRules(zone: 0, bigKeyZone: false), accessRequirements: burn),
+        Location(region: r, name: "[dungeon-D7-1F] Turtle Rock - Map room [right chest]", address: 0xEA1F, item: .Key, rules: DungeonRules(zone: 0, bigKeyZone: false), accessRequirements: burn),
+        // All fake FR per above
+        Location(region: r, name: "[dungeon-D7-1F] Turtle Rock - Chain chomp room", address: 0xEA16, item: .Key, rules: DungeonRules(zone: 2, bigKeyZone: false), accessRequirements: burn),
+        Location(region: r, name: "[dungeon-D7-B1] Turtle Rock - big chest", address: 0xEA19, item: .MirrorShield, rules: DungeonRules(zone: 3, bigKeyZone: true), accessRequirements: burn),
+        Location(region: r, name: "[dungeon-D7-B1] Turtle Rock - big key room", address: 0xEA25, item: .BigKey, rules: DungeonRules(zone: 4, bigKeyZone: false), accessRequirements: burn),
+        Location(region: r, name: "[dungeon-D7-B1] Turtle Rock - Roller switch room", address: 0xEA34, item: .Key, rules: DungeonRules(zone: 5, bigKeyZone: true), accessRequirements: burn),
+        // Technically these are doable with no items and just high precision
+        // (or maybe boots are required?) but that's just mean
+        Location(region: r, name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [top right chest]", address: 0xEA28, item: .OneRupee, rules: DungeonRules(zone: 6, bigKeyZone: true), accessRequirements: { $0.contains(.FireRod) && $0.containsAny(.MirrorShield, .StaffOfByrna, .Cape) }),
+        Location(region: r, name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [top left chest]", address: 0xEA2B, item: .FiveRupees, rules: DungeonRules(zone: 6, bigKeyZone: true), accessRequirements: { $0.contains(.FireRod) && $0.containsAny(.MirrorShield, .StaffOfByrna, .Cape) }),
+        Location(region: r, name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [bottom right chest]", address: 0xEA2E, item: .TwentyRupees, rules: DungeonRules(zone: 6, bigKeyZone: true), accessRequirements: { $0.contains(.FireRod) && $0.containsAny(.MirrorShield, .StaffOfByrna, .Cape) }),
+        Location(region: r, name: "[dungeon-D7-B2] Turtle Rock - Eye bridge room [bottom left chest]", address: 0xEA31, item: .Key, rules: DungeonRules(zone: 6, bigKeyZone: true), accessRequirements: { $0.contains(.FireRod) && $0.containsAny(.MirrorShield, .StaffOfByrna, .Cape) }),
+        // LW, but accessed from inside TR
+        Location(region: r, name: "[cave-013] Mimic cave (from Turtle Rock)", address: 0xE9C5, item: .PieceOfHeart, accessRequirements: { $0.containsAll(.FireRod, .MagicMirror) }),
     ]
 }
 
