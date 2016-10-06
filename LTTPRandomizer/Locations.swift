@@ -430,38 +430,12 @@ func desertPalaceItems() -> Locations {
 }
 
 func towerOfHeraItems() -> Locations {
+    let r = Region.TowerOfHera
     return [
-        Location(
-            region: Region.TowerOfHera,
-            name: "[dungeon-L3-2F] Tower of Hera - Entrance",
-            address: 0xE9AD,
-            item: Item.Map,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.TowerOfHera,
-            name: "[dungeon-L3-1F] Tower of Hera - first floor",
-            address: 0xE9E6,
-            item: Item.BigKey,
-            rules: DungeonRules(zone: 1, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.canLightTorches()
-            }
-        ),
-        Location(
-            region: Region.TowerOfHera,
-            name: "[dungeon-L3-4F] Tower of Hera - big chest",
-            address: 0xE9F8,
-            item: Item.MoonPearl,
-            rules: DungeonRules(zone: 0, bigKeyZone: true)
-        ),
-        Location(
-            region: Region.TowerOfHera,
-            name: "[dungeon-L3-4F] Tower of Hera - 4F [small chest]",
-            address: 0xE9FB,
-            item: Item.Compass,
-            rules: DungeonRules(zone: 0, bigKeyZone: true)
-        ),
+        Location(region: r, name: "[dungeon-L3-2F] Tower of Hera - Entrance", address: 0xE9AD, item: .Map, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-L3-1F] Tower of Hera - first floor", address: 0xE9E6, item: .BigKey, rules: DungeonRules(zone: 1, bigKeyZone: false), accessRequirements: { $0.canLightTorches() }),
+        Location(region: r, name: "[dungeon-L3-4F] Tower of Hera - big chest", address: 0xE9F8, item: .MoonPearl, rules: DungeonRules(zone: 0, bigKeyZone: true)),
+        Location(region: r, name: "[dungeon-L3-4F] Tower of Hera - 4F [small chest]", address: 0xE9FB, item: .Compass, rules: DungeonRules(zone: 0, bigKeyZone: true)),
     ]
 }
 
