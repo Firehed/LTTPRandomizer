@@ -615,21 +615,10 @@ func towerOfHeraItems() -> Locations {
 }
 
 func hyruleCastleTowerItems() -> Locations {
+    let r = Region.HyruleCastleTower
     return [
-        Location(
-            region: Region.HyruleCastleTower,
-            name: "[dungeon-A1-3F] Hyrule Castle Tower - maze room",
-            address: 0xEAB2,
-            item: Item.Key,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.HyruleCastleTower,
-            name: "[dungeon-A1-2F] Hyrule Castle Tower - 2 knife guys room",
-            address: 0xEAB5,
-            item: Item.Key,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
+        Location(region: r, name: "[dungeon-A1-3F] Hyrule Castle Tower - maze room", address: 0xEAB2, item: .Key, rules: DungeonRules(zone: 1, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-A1-2F] Hyrule Castle Tower - 2 knife guys room", address: 0xEAB5, item: .Key, rules: DungeonRules(zone: 0, bigKeyZone: false)),
     ]
 }
 
