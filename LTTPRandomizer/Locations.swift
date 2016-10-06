@@ -528,42 +528,13 @@ func hyruleEscapeItems() -> Locations {
 }
 
 func easternPalaceItems() -> Locations {
+    let r = Region.EasternPalace
     return [
-        Location(
-            region: Region.EasternPalace,
-            name: "[dungeon-L1-1F] Eastern Palace - compass room",
-            address: 0xE977,
-            item: Item.Compass,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.EasternPalace,
-            name: "[dungeon-L1-1F] Eastern Palace - big chest",
-            address: 0xE97D,
-            item: Item.Bow,
-            rules: DungeonRules(zone: 0, bigKeyZone: true)
-        ),
-        Location(
-            region: Region.EasternPalace,
-            name: "[dungeon-L1-1F] Eastern Palace - big ball room",
-            address: 0xE9B3,
-            item: Item.OneHundredRupees,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.EasternPalace,
-            name: "[dungeon-L1-1F] Eastern Palace - Big key",
-            address: 0xE9B9,
-            item: Item.BigKey,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.EasternPalace,
-            name: "[dungeon-L1-1F] Eastern Palace - map room",
-            address: 0xE9F5,
-            item: Item.Map,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
+        Location(region: r, name: "[dungeon-L1-1F] Eastern Palace - compass room", address: 0xE977, item: .Compass, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-L1-1F] Eastern Palace - big chest", address: 0xE97D, item: .Bow, rules: DungeonRules(zone: 0, bigKeyZone: true)),
+        Location(region: r, name: "[dungeon-L1-1F] Eastern Palace - big ball room", address: 0xE9B3, item: .OneHundredRupees, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-L1-1F] Eastern Palace - Big key", address: 0xE9B9, item: .BigKey, rules: DungeonRules(zone: 1, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-L1-1F] Eastern Palace - map room", address: 0xE9F5, item: .Map, rules: DungeonRules(zone: 0, bigKeyZone: false)),
     ]
 }
 
