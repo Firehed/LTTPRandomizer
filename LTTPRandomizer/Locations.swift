@@ -420,42 +420,12 @@ func easternPalaceItems() -> Locations {
 }
 
 func desertPalaceItems() -> Locations {
+    let r = Region.DesertPalace
     return [
-        Location(
-            region: Region.DesertPalace,
-            name: "[dungeon-L2-B1] Desert Palace - big chest",
-            address: 0xE98F,
-            item: Item.PowerGlove,
-            rules: DungeonRules(zone: 0, bigKeyZone: true),
-            accessRequirements: { $0.contains(.PegasusBoots) }
-        ),
-        Location(
-            region: Region.DesertPalace,
-            name: "[dungeon-L2-B1] Desert Palace - Map room",
-            address: 0xE9B6,
-            item: Item.Map,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.DesertPalace,
-            name: "[dungeon-L2-B1] Desert Palace - Big key room",
-            address: 0xE9C2,
-            item: Item.BigKey,
-            rules: DungeonRules(zone: 1, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.PegasusBoots)
-            }
-        ),
-        Location(
-            region: Region.DesertPalace,
-            name: "[dungeon-L2-B1] Desert Palace - compass room",
-            address: 0xE9CB,
-            item: Item.Compass,
-            rules: DungeonRules(zone: 1, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.PegasusBoots)
-            }
-        ),
+        Location(region: r, name: "[dungeon-L2-B1] Desert Palace - big chest", address: 0xE98F, item: .PowerGlove, rules: DungeonRules(zone: 0, bigKeyZone: true), accessRequirements: { $0.contains(.PegasusBoots) }),
+        Location(region: r, name: "[dungeon-L2-B1] Desert Palace - Map room", address: 0xE9B6, item: .Map, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-L2-B1] Desert Palace - Big key room", address: 0xE9C2, item: .BigKey, rules: DungeonRules(zone: 1, bigKeyZone: false), accessRequirements: { $0.contains(.PegasusBoots) }),
+        Location(region: r, name: "[dungeon-L2-B1] Desert Palace - compass room", address: 0xE9CB, item: .Compass, rules: DungeonRules(zone: 1, bigKeyZone: false), accessRequirements: { $0.contains(.PegasusBoots) }),
     ]
 }
 
