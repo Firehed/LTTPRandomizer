@@ -454,29 +454,15 @@ func hyruleCastleTowerItems() -> Locations {
 // MARK: DW Overworld
 
 func darkWorldPyramidItems() -> Locations {
+    let r = Region.DarkWorldPyramid
+    var catfish = Location(region: r, name: "Catfish", address: 0xEE185, item: .Quake, accessRequirements: { $0.canLiftRocks() && $0.contains(.MoonPearl) })
+    // Credits patch
+    catfish.onPatchingRom = { rom, item in
+        rom.patch(atByteOffset: 0x180204, withData: item.bytesForInventoryCheckOverride)
+    }
     return [
-        Location(
-            region: Region.DarkWorldPyramid,
-            name: "Catfish",
-            address: 0xEE185,
-            item: Item.Quake,
-            accessRequirements: { items in
-                // Note: Upstream says (boots || mitt) also required
-                return items.canLiftRocks()
-                    && items.contains(Item.MoonPearl)
-            },
-            onPatchingRom: { rom, item in
-                // (This is a guess based on the Windows source)
-                // Indicates what item's presence will block the Catfish scene
-                rom.patch(atByteOffset: 0x180204, withData: item.bytesForInventoryCheckOverride)
-            }
-        ),
-        Location(
-            region: Region.DarkWorldPyramid,
-            name: "Piece of Heart (Pyramid)",
-            address: 0x180147,
-            item: Item.PieceOfHeart
-        ),
+        catfish,
+        Location(region: r, name: "Piece of Heart (Pyramid)", address: 0x180147, item: .PieceOfHeart),
     ]
 }
 
