@@ -818,91 +818,17 @@ func darkPalaceItems() -> Locations {
 }
 
 func swampPalaceItems() -> Locations {
+    let r = Region.SwampPalace
     return [
-        Location(
-            region: Region.SwampPalace,
-            name: "[dungeon-D2-B1] Swamp Palace - map room",
-            address: 0xE986,
-            item: Item.Map,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.SwampPalace,
-            name: "[dungeon-D2-B1] Swamp Palace - big chest",
-            address: 0xE989,
-            item: Item.Hookshot,
-            rules: DungeonRules(zone: 3, bigKeyZone: true),
-            accessRequirements: { items in
-                return items.contains(Item.Hammer)
-            }
-        ),
-        Location(
-            region: Region.SwampPalace,
-            name: "[dungeon-D2-1F] Swamp Palace - first room",
-            address: 0xEA9D,
-            item: Item.Key,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.SwampPalace,
-            name: "[dungeon-D2-B1] Swamp Palace - south of hookshot room",
-            address: 0xEAA0,
-            item: Item.Compass,
-            rules: DungeonRules(zone: 3, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.Hammer)
-            }
-        ),
-        Location(
-            region: Region.SwampPalace,
-            name: "[dungeon-D2-B1] Swamp Palace - push 4 blocks room",
-            address: 0xEAA3,
-            item: Item.TwentyRupees,
-            rules: DungeonRules(zone: 4, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.Hammer)
-            }
-        ),
-        Location(
-            region: Region.SwampPalace,
-            name: "[dungeon-D2-B1] Swamp Palace - big key room",
-            address: 0xEAA6,
-            item: Item.BigKey,
-            rules: DungeonRules(zone: 4, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.Hammer)
-            }
-        ),
-        Location(
-            region: Region.SwampPalace,
-            name: "[dungeon-D2-B2] Swamp Palace - flooded room [left chest]",
-            address: 0xEAA9,
-            item: Item.TwentyRupees,
-            rules: DungeonRules(zone: 4, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.containsAll(Item.Hookshot, Item.Hammer)
-            }
-        ),
-        Location(
-            region: Region.SwampPalace,
-            name: "[dungeon-D2-B2] Swamp Palace - flooded room [right chest]",
-            address: 0xEAAC,
-            item: Item.TwentyRupees,
-            rules: DungeonRules(zone: 4, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.containsAll(Item.Hookshot, Item.Hammer)
-            }
-        ),
-        Location(
-            region: Region.SwampPalace,
-            name: "[dungeon-D2-B2] Swamp Palace - hidden waterfall door room",
-            address: 0xEAAF,
-            item: Item.TwentyRupees,
-            rules: DungeonRules(zone: 4, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.containsAll(Item.Hookshot, Item.Hammer)
-            }
-        ),
+        Location(region: r, name: "[dungeon-D2-B1] Swamp Palace - map room", address: 0xE986, item: .Map, rules: DungeonRules(zone: 1, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D2-B1] Swamp Palace - big chest", address: 0xE989, item: .Hookshot, rules: DungeonRules(zone: 3, bigKeyZone: true), accessRequirements: { $0.contains(.Hammer) }),
+        Location(region: r, name: "[dungeon-D2-1F] Swamp Palace - first room", address: 0xEA9D, item: .Key, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D2-B1] Swamp Palace - south of hookshot room", address: 0xEAA0, item: .Compass, rules: DungeonRules(zone: 3, bigKeyZone: false), accessRequirements: { $0.contains(.Hammer) }),
+        Location(region: r, name: "[dungeon-D2-B1] Swamp Palace - push 4 blocks room", address: 0xEAA3, item: .TwentyRupees, rules: DungeonRules(zone: 4, bigKeyZone: false), accessRequirements: { $0.contains(.Hammer) }),
+        Location(region: r, name: "[dungeon-D2-B1] Swamp Palace - big key room", address: 0xEAA6, item: .BigKey, rules: DungeonRules(zone: 4, bigKeyZone: false), accessRequirements: { $0.contains(.Hammer) }),
+        Location(region: r, name: "[dungeon-D2-B2] Swamp Palace - flooded room [left chest]", address: 0xEAA9, item: .TwentyRupees, rules: DungeonRules(zone: 4, bigKeyZone: false), accessRequirements: { $0.containsAll(.Hookshot, .Hammer) }),
+        Location(region: r, name: "[dungeon-D2-B2] Swamp Palace - flooded room [right chest]", address: 0xEAAC, item: .TwentyRupees, rules: DungeonRules(zone: 4, bigKeyZone: false), accessRequirements: { $0.containsAll(.Hookshot, .Hammer) }),
+        Location(region: r, name: "[dungeon-D2-B2] Swamp Palace - hidden waterfall door room", address: 0xEAAF, item: .TwentyRupees, rules: DungeonRules(zone: 4, bigKeyZone: false), accessRequirements: { $0.containsAll(.Hookshot, .Hammer) }),
     ]
 }
 
