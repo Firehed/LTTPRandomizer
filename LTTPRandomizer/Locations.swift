@@ -453,6 +453,7 @@ func ganonsTowerItems() -> Locations {
     ]
 }
 
+// MARK: Pseudo-locations
 
 func fairyLocations() -> Locations {
     let r = Region.Fairy
