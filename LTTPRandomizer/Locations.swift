@@ -725,30 +725,23 @@ func entranceLocations() -> Locations {
 }
 
 func getHalfMagicBatLocation() -> Location {
-    return Location(
-        region: Region.PatchOnly,
-        name: "Magic Bat",
-        address: nil,
-        item: Item.HalfMagic,
-        accessRequirements: { items in
-            return items.containsAll(Item.Hammer, Item.Powder)
-        },
-        onPatchingRom: { rom, item in
-            var byte: UInt8
-            switch item {
-            case .FullMagic:
-                byte = 0
-                break
-            case .HalfMagic:
-                byte = 1
-                break
-            case .QuarterMagic:
-                byte = 2
-                break
-            default:
-                return
-            }
-            rom.patch(atByteOffset: 0x2FBD2, withData: Data(bytes: [byte]))
+    var bat = Location(region: .PatchOnly, name: "Magic Bat", address: nil, item: .HalfMagic, accessRequirements: { $0.containsAll(.Hammer, .Powder) })
+    bat.onPatchingRom = { rom, item in
+        var byte: UInt8
+        switch item {
+        case .FullMagic:
+            byte = 0
+            break
+        case .HalfMagic:
+            byte = 1
+            break
+        case .QuarterMagic:
+            byte = 2
+            break
+        default:
+            return
         }
-    )
+        rom.patch(atByteOffset: 0x2FBD2, withData: Data(bytes: [byte]))
+    }
+    return bat
 }
