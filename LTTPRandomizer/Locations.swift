@@ -946,65 +946,15 @@ func icePalaceItems() -> Locations {
 }
 
 func miseryMireItems() -> Locations {
+    let r = Region.MiseryMire
     return [
-        Location(
-            region: Region.MiseryMire,
-            name: "[dungeon-D6-B1] Misery Mire - spike room",
-            address: 0xE9DA,
-            item: Item.Key,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.MiseryMire,
-            name: "[dungeon-D6-B1] Misery Mire - big hub room",
-            address: 0xEA5E,
-            item: Item.Key,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.MiseryMire,
-            name: "[dungeon-D6-B1] Misery Mire - end of bridge",
-            address: 0xEA61,
-            item: Item.Key,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.MiseryMire,
-            name: "[dungeon-D6-B1] Misery Mire - compass",
-            address: 0xEA64,
-            item: Item.Compass,
-            rules: DungeonRules(zone: 0, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.canLightTorches()
-            }
-        ),
-        Location(
-            region: Region.MiseryMire,
-            name: "[dungeon-D6-B1] Misery Mire - big chest",
-            address: 0xEA67,
-            item: Item.CaneOfSomaria,
-            rules: DungeonRules(zone: 0, bigKeyZone: true),
-            accessRequirements: { items in
-                return items.containsAny(Item.Hookshot, Item.PegasusBoots)
-            }
-        ),
-        Location(
-            region: Region.MiseryMire,
-            name: "[dungeon-D6-B1] Misery Mire - map room",
-            address: 0xEA6A,
-            item: Item.Map,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.MiseryMire,
-            name: "[dungeon-D6-B1] Misery Mire - big key",
-            address: 0xEA6D,
-            item: Item.BigKey,
-            rules: DungeonRules(zone: 0, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.canLightTorches()
-            }
-        ),
+        Location(region: r, name: "[dungeon-D6-B1] Misery Mire - spike room", address: 0xE9DA, item: .Key, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D6-B1] Misery Mire - big hub room", address: 0xEA5E, item: .Key, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D6-B1] Misery Mire - end of bridge", address: 0xEA61, item: .Key, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D6-B1] Misery Mire - compass", address: 0xEA64, item: .Compass, rules: DungeonRules(zone: 0, bigKeyZone: false), accessRequirements: { $0.canLightTorches() }),
+        Location(region: r, name: "[dungeon-D6-B1] Misery Mire - big chest", address: 0xEA67, item: .CaneOfSomaria, rules: DungeonRules(zone: 0, bigKeyZone: true), accessRequirements: { $0.containsAny(.Hookshot, .PegasusBoots) }),
+        Location(region: r, name: "[dungeon-D6-B1] Misery Mire - map room", address: 0xEA6A, item: .Map, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D6-B1] Misery Mire - big key", address: 0xEA6D, item: .BigKey, rules: DungeonRules(zone: 0, bigKeyZone: false), accessRequirements: { $0.canLightTorches() }),
     ]
 }
 
