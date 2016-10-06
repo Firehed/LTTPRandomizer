@@ -66,7 +66,6 @@ class DifficultyAbstract {
             // Insert the virtual location so the onWrite callback fires. The
             // item is not .Nothing so it won't receive an actual item
             locations.append(entrance)
-            NSLog("%@ opened with %@", entrance.name, entrance.item.description)
         }
     }
 
@@ -77,7 +76,6 @@ class DifficultyAbstract {
         for var fairy in fairyLocations() {
             fairy.item = Item.filledBottles.selectAtRandom(randomizer)
             locations.append(fairy)
-            NSLog("%@ fills you with %@", fairy.name, fairy.item.description)
         }
     }
 
