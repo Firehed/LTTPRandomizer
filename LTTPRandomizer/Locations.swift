@@ -907,59 +907,15 @@ func swampPalaceItems() -> Locations {
 }
 
 func skullWoodsItems() -> Locations {
+    let r = Region.SkullWoods
     return [
-        Location(
-            region: Region.SkullWoods,
-            name: "[dungeon-D3-B1] Skull Woods - Compass room",
-            address: 0xE992,
-            item: Item.Compass,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.SkullWoods,
-            name: "[dungeon-D3-B1] Skull Woods - big chest",
-            address: 0xE998,
-            item: Item.FireRod,
-            rules: DungeonRules(zone: 2, bigKeyZone: true)
-        ),
-        Location(
-            region: Region.SkullWoods,
-            name: "[dungeon-D3-B1] Skull Woods - east of Fire Rod room",
-            address: 0xE99B,
-            item: Item.Map,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.SkullWoods,
-            name: "[dungeon-D3-B1] Skull Woods - Big Key room",
-            address: 0xE99E,
-            item: Item.BigKey,
-            rules: DungeonRules(zone: 2, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.SkullWoods,
-            name: "[dungeon-D3-B1] Skull Woods - Gibdo/Stalfos room",
-            address: 0xE9A1,
-            item: Item.Key,
-            rules: DungeonRules(zone: 1, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.SkullWoods,
-            name: "[dungeon-D3-B1] Skull Woods - south of Fire Rod room",
-            address: 0xE9C8,
-            item: Item.Key,
-            rules: DungeonRules(zone: 0, bigKeyZone: false)
-        ),
-        Location(
-            region: Region.SkullWoods,
-            name: "[dungeon-D3-B1] Skull Woods - Entrance to part 2",
-            address: 0xE9FE,
-            item: Item.Key,
-            rules: DungeonRules(zone: 2, bigKeyZone: false),
-            accessRequirements: { items in
-                return items.contains(Item.FireRod)
-            }
-        ),
+        Location(region: r, name: "[dungeon-D3-B1] Skull Woods - Compass room", address: 0xE992, item: .Compass, rules: DungeonRules(zone: 1, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D3-B1] Skull Woods - big chest", address: 0xE998, item: .FireRod, rules: DungeonRules(zone: 2, bigKeyZone: true)),
+        Location(region: r, name: "[dungeon-D3-B1] Skull Woods - east of Fire Rod room", address: 0xE99B, item: .Map, rules: DungeonRules(zone: 2, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D3-B1] Skull Woods - Big Key room", address: 0xE99E, item: .BigKey, rules: DungeonRules(zone: 2, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D3-B1] Skull Woods - Gibdo/Stalfos room", address: 0xE9A1, item: .Key, rules: DungeonRules(zone: 1, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D3-B1] Skull Woods - south of Fire Rod room", address: 0xE9C8, item: .Key, rules: DungeonRules(zone: 0, bigKeyZone: false)),
+        Location(region: r, name: "[dungeon-D3-B1] Skull Woods - Entrance to part 2", address: 0xE9FE, item: .Key, rules: DungeonRules(zone: 2, bigKeyZone: false), accessRequirements: { $0.contains(.FireRod) }),
     ]
 }
 
