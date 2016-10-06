@@ -1520,9 +1520,10 @@ func ganonsTowerItems() -> Locations {
 
 
 func fairyLocations() -> Locations {
+    let r = Region.Fairy
     return [
-        Location(region: Region.Fairy, name: "Waterfall of Wishing Fairy", address: 0x348FF, item: Item.BottleWithGreenPotion),
-        Location(region: Region.Fairy, name: "Cursed Fairy", address: 0x3493B, item: Item.BottleWithGreenPotion),
+        Location(region: r, name: "Waterfall of Wishing Fairy", address: 0x348FF, item: .BottleWithGreenPotion),
+        Location(region: r, name: "Cursed Fairy", address: 0x3493B, item: .BottleWithGreenPotion),
     ]
 }
 
