@@ -8,8 +8,6 @@
 
 import Foundation
 
-typealias Patch = (inout Data) -> Void
-
 class ItemRandomizer {
 
     /// The default filename, encoding the version, seed and difficulty

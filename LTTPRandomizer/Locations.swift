@@ -8,8 +8,6 @@
 
 import Foundation
 
-typealias Locations = [Location]
-
 func allLocations() -> Locations {
     var all = Locations()
     for region in Region.all {

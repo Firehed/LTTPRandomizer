@@ -89,8 +89,6 @@ struct Location: Equatable, ItemBearer {
     }
 }
 
-typealias Inventory = Set<Item>
-
 private extension Region {
     func isAccessible(with inventory: Inventory) -> Bool {
         switch self {
