@@ -91,7 +91,7 @@ struct Location: Equatable, ItemBearer {
 
 typealias Inventory = Set<Item>
 
-extension Region {
+private extension Region {
     func isAccessible(inventory: Inventory) -> Bool {
         switch self {
 
