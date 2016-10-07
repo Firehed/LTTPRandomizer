@@ -29,7 +29,7 @@ class ItemRandomizer {
     /// This is stored as a Set rather than an Array for performance reasons
     /// (faster `contains` during dependency solving) with no negative impact
     /// since no dependencies care about having e.g. two bottles
-    private var haveItems = Set<Item>()
+    private var haveItems = Inventory()
 
     /// Items that are available to be placed in randomized locations.
     private var itemPool: [Item] = []

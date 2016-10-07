@@ -13,7 +13,7 @@ struct Location: Equatable, ItemBearer {
     var name: String
     var address: Int?
     var region: Region
-    var _additionalAccessRequirements: ((Set<Item>) -> Bool)?
+    var _additionalAccessRequirements: ((Inventory) -> Bool)?
     var onPatchingRom: ((inout Data, Item) -> Void)?
     var canHoldItem: ((Item) -> Bool)?
 
@@ -34,7 +34,7 @@ struct Location: Equatable, ItemBearer {
         self.item = item
     }
 
-    init(region: Region, name: String, address: Int?, item: Item, accessRequirements: @escaping ((Set<Item>) -> Bool)) {
+    init(region: Region, name: String, address: Int?, item: Item, accessRequirements: @escaping ((Inventory) -> Bool)) {
         self.name = name
         self.address = address
         self.region = region
@@ -43,7 +43,7 @@ struct Location: Equatable, ItemBearer {
         self.item = item
     }
 
-    init(region: Region, name: String, address: Int?, item: Item, accessRequirements: @escaping ((Set<Item>) -> Bool), onPatchingRom: @escaping ((inout Data, Item) -> Void)) {
+    init(region: Region, name: String, address: Int?, item: Item, accessRequirements: @escaping ((Inventory) -> Bool), onPatchingRom: @escaping ((inout Data, Item) -> Void)) {
         self.name = name
         self.address = address
         self.region = region
@@ -63,7 +63,7 @@ struct Location: Equatable, ItemBearer {
         self.item = item
     }
 
-    init(region: Region, name: String, address: Int, item: Item, rules: DungeonRules, accessRequirements: @escaping ((Set<Item>) -> Bool)) {
+    init(region: Region, name: String, address: Int, item: Item, rules: DungeonRules, accessRequirements: @escaping ((Inventory) -> Bool)) {
         self.name = name
         self.address = address
         self.region = region
@@ -76,7 +76,7 @@ struct Location: Equatable, ItemBearer {
         return item == .Nothing && !name.contains("big chest") && dungeonRules.zone <= zone
     }
 
-    func isAccessible(with inventory: Set<Item>) -> Bool {
+    func isAccessible(with inventory: Inventory) -> Bool {
         return region.isAccessible(with: inventory)
             && (_additionalAccessRequirements?(inventory) ?? true)
     }

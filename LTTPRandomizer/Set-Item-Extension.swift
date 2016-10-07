@@ -169,7 +169,7 @@ extension SetAlgebra where Element == Item {
 
     private func findRequiredMedallion(from: [Item], default defaultItem: Item) -> Item {
         let possible = Set(from) as! Self
-        let medallion = intersection(possible) as! Set<Item>
+        let medallion = intersection(possible) as! Inventory
         guard medallion.count == 1 else {
             NSLog("No source medallion found")
             return defaultItem

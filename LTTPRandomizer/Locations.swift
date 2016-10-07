@@ -56,7 +56,7 @@ func lightWorldItems() -> Locations {
         rom.patch(atByteOffset: 0x44AA9, withData: item.asData())
     }
 
-    let capeAccess: (Set<Item>) -> Bool = { items in
+    let capeAccess: (Inventory) -> Bool = { items in
         return items.contains(.PegasusBoots)
             && (items.canLiftHeavyRocks() // LW intended
                 || (items.canAccessNorthWestDarkWorld()
@@ -399,7 +399,7 @@ func turtleRockItems() -> Locations {
     // i.e. if the map room key and the compass are swapped, there's no reason
     // that the entire dungeon isn't solvable without the Fire Rod (boss battle
     // excepted)
-    let burn: (Set<Item>) -> Bool = { $0.contains(.FireRod) }
+    let burn: (Inventory) -> Bool = { $0.contains(.FireRod) }
     return [
         Location(region: r, name: "[dungeon-D7-1F] Turtle Rock - compass room", address: 0xEA22, item: .Compass, rules: DungeonRules(zone: 0, bigKeyZone: false)),
         // Actual FR requirement
