@@ -77,6 +77,7 @@ class DifficultyCasual: DifficultyAbstract, Difficulty {
         randomizeFairies()
     }
 
+
     private func isLateGameItem(_ item: Item) -> Bool {
         switch item {
         case .TitansMitt: fallthrough
@@ -87,6 +88,9 @@ class DifficultyCasual: DifficultyAbstract, Difficulty {
             return false
         }
     }
-
 }
-
+private extension Location {
+    var isLateGame: Bool {
+        return region.isDarkWorld
+    }
+}

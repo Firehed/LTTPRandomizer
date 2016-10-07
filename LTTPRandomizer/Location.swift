@@ -29,11 +29,6 @@ struct Location: Equatable, ItemBearer {
     var item: Item = Item.Nothing
     var weight: Int = 0
 
-    var isLateGame: Bool {
-        // There are a few exceptions in this in the original, filing under "close enough" for now
-        return region.isDarkWorld
-    }
-
     // MARK: Out-of-dungeon initializers
 
     init(region: Region, name: String, address: Int?, item: Item) {
