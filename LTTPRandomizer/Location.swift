@@ -8,11 +8,6 @@
 
 import Foundation
 
-protocol ItemBearer {
-    var item: Item { get }
-}
-
-/// This is a class not a struct since (for now) we want the side-effect of setting the `item` to non-nil to propagate over all containers
 struct Location: Equatable, ItemBearer {
 
     var name: String

@@ -18,6 +18,7 @@
 		FA29C73A1D44032500CB1D7A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29C7391D44032500CB1D7A /* Item.swift */; };
 		FA29C73C1D44079500CB1D7A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29C73B1D44079500CB1D7A /* Location.swift */; };
 		FA3729051D701771000D107E /* DungeonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3729041D701771000D107E /* DungeonInfo.swift */; };
+		FA38007B1DA777CD0009CEAB /* ItemBearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA38007A1DA777CD0009CEAB /* ItemBearer.swift */; };
 		FA3929BB1D440AF4006BDC9A /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3929BA1D440AF4006BDC9A /* Region.swift */; };
 		FA3929BD1D440C25006BDC9A /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3929BC1D440C25006BDC9A /* Difficulty.swift */; };
 		FA3929BF1D440C73006BDC9A /* RomBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3929BE1D440C73006BDC9A /* RomBuilder.swift */; };
@@ -76,6 +77,7 @@
 		FA29C7391D44032500CB1D7A /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		FA29C73B1D44079500CB1D7A /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FA3729041D701771000D107E /* DungeonInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DungeonInfo.swift; sourceTree = "<group>"; };
+		FA38007A1DA777CD0009CEAB /* ItemBearer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemBearer.swift; sourceTree = "<group>"; };
 		FA3929BA1D440AF4006BDC9A /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		FA3929BC1D440C25006BDC9A /* Difficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
 		FA3929BE1D440C73006BDC9A /* RomBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomBuilder.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				FA3729041D701771000D107E /* DungeonInfo.swift */,
 				FAC686251D530D600044D17E /* DungeonRules.swift */,
 				FA29C7391D44032500CB1D7A /* Item.swift */,
+				FA38007A1DA777CD0009CEAB /* ItemBearer.swift */,
 				FA9145911DA584E1008A7A64 /* ItemRandomizer.swift */,
 				FA29C73B1D44079500CB1D7A /* Location.swift */,
 				FAC686231D52F4B90044D17E /* Locations.swift */,
@@ -371,6 +374,7 @@
 				FA09B8741D7B6BA90080DFC0 /* DifficultyAnnoying.swift in Sources */,
 				FAC6861A1D45EEA30044D17E /* PRNG.swift in Sources */,
 				FA29C70F1D43FFC700CB1D7A /* AppDelegate.swift in Sources */,
+				FA38007B1DA777CD0009CEAB /* ItemBearer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
