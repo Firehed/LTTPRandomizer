@@ -146,7 +146,7 @@ class ItemRandomizer {
         }
         repeat {
             let emptyLocations = locations.withNoItems()
-            var possibleLocations = emptyLocations.filter({ $0.isAccessible(inventory: haveItems) })
+            var possibleLocations = emptyLocations.filter { $0.isAccessible(with: haveItems) }
 
             // Something has gone deeply wrong during the dependency-solving process
             if (possibleLocations.isEmpty) {
@@ -161,7 +161,7 @@ class ItemRandomizer {
             for item in itemPool.filter({ !$0.isJunk }) { // Only solve on items that even have a chance of improving progression - just a performance optimization
                 var haveTemp = haveItems
                 haveTemp.insert(item)
-                let newLocations = emptyLocations.filter({ $0.isAccessible(inventory: haveTemp) })
+                let newLocations = emptyLocations.filter { $0.isAccessible(with: haveTemp) }
                 if newLocations.count > possibleLocations.count {
                     progressionItems.append(item)
                 }

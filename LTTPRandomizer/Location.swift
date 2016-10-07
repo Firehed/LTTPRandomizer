@@ -76,8 +76,8 @@ struct Location: Equatable, ItemBearer {
         return item == .Nothing && !name.contains("big chest") && dungeonRules.zone <= zone
     }
 
-    func isAccessible(inventory: Set<Item>) -> Bool {
-        return region.isAccessible(inventory: inventory)
+    func isAccessible(with inventory: Set<Item>) -> Bool {
+        return region.isAccessible(with: inventory)
             && (_additionalAccessRequirements?(inventory) ?? true)
     }
 
@@ -92,7 +92,7 @@ struct Location: Equatable, ItemBearer {
 typealias Inventory = Set<Item>
 
 private extension Region {
-    func isAccessible(inventory: Inventory) -> Bool {
+    func isAccessible(with inventory: Inventory) -> Bool {
         switch self {
 
         case .HyruleCastleEscape:

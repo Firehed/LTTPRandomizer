@@ -62,7 +62,7 @@ class LocationTests: XCTestCase {
 
         let accessibleDarkWorldLocationAddresses = allLocations()
             .filter { $0.region.isDarkWorld }
-            .filter { $0.isAccessible(inventory: inv) }
+            .filter { $0.isAccessible(with: inv) }
             .map { $0.address! }
 
         // Addresses for Pyramid heart piece and the desert northeast boulder (which isn't technically DW
