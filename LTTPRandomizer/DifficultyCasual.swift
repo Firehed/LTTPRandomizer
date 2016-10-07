@@ -27,13 +27,13 @@ class DifficultyCasual: DifficultyAbstract, Difficulty {
             item = possibleItems.selectAtRandom(randomizer)
 
             // Late-game items are discarded if no late-game locations are available
-            badLateGameItem = isLateGameItem(item)
+            badLateGameItem = item.isLateGame
                 && possibleLocations.filter({ $0.isLateGame }).isEmpty
 
             // If we picked a non-late game item, and we have both late-game items and late-game locations, discard
-            preferLateGameItem = !isLateGameItem(item)
+            preferLateGameItem = !item.isLateGame
                 && possibleLocations.filter({ $0.isLateGame }).isNonEmpty
-                && possibleItems.filter({ isLateGameItem($0) }).isNonEmpty
+                && possibleItems.filter({ $0.isLateGame }).isNonEmpty
 
         } while (badLateGameItem || preferLateGameItem)
         return item
@@ -55,7 +55,7 @@ class DifficultyCasual: DifficultyAbstract, Difficulty {
         repeat {
             location = possibleLocations.selectAtRandom(randomizer)
 
-            badLateGameLocation = isLateGameItem(item) // Late game item
+            badLateGameLocation = item.isLateGame // Late game item
                 && !location.isLateGame // early-game location
 
             // TODO: bad first item (don't really care)
@@ -77,18 +77,19 @@ class DifficultyCasual: DifficultyAbstract, Difficulty {
         randomizeFairies()
     }
 
+}
 
-    private func isLateGameItem(_ item: Item) -> Bool {
-        switch item {
-        case .TitansMitt: fallthrough
-        case .RedMail: fallthrough
-        case .MirrorShield:
+private extension Item {
+    var isLateGame: Bool {
+        switch self {
+        case .TitansMitt, .RedMail, .MirrorShield:
             return true
         default:
             return false
         }
     }
 }
+
 private extension Location {
     var isLateGame: Bool {
         return region.isDarkWorld
