@@ -69,7 +69,7 @@ class DifficultyEasy: DifficultyAbstract, Difficulty {
         }
         locations = setItemsToNothing(locations: locations)
         // Easy mode: always grant 1/4 magic ✨
-        randomizeBat(chance: 1, in: 1)
+        locations.append(randomizeBat(quarterChance: (1, in: 1), fullChance: (0, in: 1)))
         randomizeEntrances()
         randomizeFairies()
     }

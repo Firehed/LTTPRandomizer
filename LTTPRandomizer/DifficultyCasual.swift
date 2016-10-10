@@ -72,7 +72,7 @@ class DifficultyCasual: DifficultyAbstract, Difficulty {
             pool.append(location.item)
         }
         locations = setItemsToNothing(locations: locations)
-        randomizeBat(chance: 1, in: 3)
+        locations.append(randomizeBat(quarterChance: (1, in: 3), fullChance: (1, in: 3)))
         randomizeEntrances()
         randomizeFairies()
     }

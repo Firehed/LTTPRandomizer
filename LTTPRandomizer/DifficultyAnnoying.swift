@@ -34,9 +34,7 @@ class DifficultyAnnoying: DifficultyAbstract, Difficulty {
         }
         locations = setItemsToNothing(locations: locations)
         // No extra magic power for you
-        var bat = getHalfMagicBatLocation()
-        bat.item = .FullMagic
-        locations.append(bat)
+        locations.append(randomizeBat(quarterChance: (0, in: 1), fullChance: (1, in: 1)))
 
         randomizeEntrances()
         randomizeFairies()

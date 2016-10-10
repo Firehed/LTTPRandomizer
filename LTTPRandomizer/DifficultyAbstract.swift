@@ -79,13 +79,40 @@ class DifficultyAbstract {
         }
     }
 
-    internal func randomizeBat(chance numerator: UInt, in denominator: UInt) -> Void {
+
+    /// Builds the 1/2 magic bat location, randomly turning it into 1/4 or
+    /// non-upgraded magic based on the provided parameters
+    ///
+    /// - parameter quarterChance: the fractional chance of giving 1/4 magic
+    /// - parameter fullChance:    the fractional chance of giving no upgrade
+    ///
+    /// - returns: the Location of the magic bat, with the correct upgrade item
+    internal func randomizeBat(quarterChance: (UInt, in: UInt), fullChance: (UInt, in: UInt)) -> Location {
         var bat = getHalfMagicBatLocation()
-        // chance of granting 1/4 magic instead of 1/2
-        if randomizer.next(lessThan: denominator) < numerator {
+
+        // Cross-multiply to ensure we don't cheat the distribution; e.g. 1/3
+        // and 1/2 chances are 2/6 and 3/6 (with 1/6 of no change)
+        let denominator = quarterChance.in * fullChance.in
+        let quarterNumerator = quarterChance.0 * fullChance.in
+        let fullNumerator = fullChance.0 * quarterChance.in
+
+        guard quarterNumerator + fullNumerator <= denominator else {
+            NSLog("Combined chances of 1/4 and 1/1 magic exceed 100%")
+            return bat
+        }
+
+        // Number line of sorts: per above, random value will be in 0...5
+        let value = randomizer.next(lessThan: denominator)
+        // 0, 1 for quarter magic
+        if value < quarterNumerator {
             bat.item = .QuarterMagic
         }
-        locations.append(bat)
+        // effectively 2, 3, 4 for full magic
+        else if value < (quarterNumerator + fullNumerator) {
+            bat.item = .FullMagic
+        }
+        // effectively 5 for standard 1/2 magic (default)
+        return bat
     }
 
     internal func setItemsToNothing(locations: Locations) -> Locations {
