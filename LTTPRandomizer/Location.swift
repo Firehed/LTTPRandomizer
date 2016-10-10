@@ -43,16 +43,6 @@ struct Location: Equatable, ItemBearer {
         self.item = item
     }
 
-    init(region: Region, name: String, address: Int?, item: Item, accessRequirements: @escaping ((Inventory) -> Bool), onPatchingRom: @escaping ((inout Data, Item) -> Void)) {
-        self.name = name
-        self.address = address
-        self.region = region
-        self._additionalAccessRequirements = accessRequirements
-        self.onPatchingRom = onPatchingRom
-        self.dungeonRules = DungeonRules.none()
-        self.item = item
-    }
-
     // MARK: In-dungeon initializers
 
     init(region: Region, name: String, address: Int, item: Item, rules: DungeonRules) {
